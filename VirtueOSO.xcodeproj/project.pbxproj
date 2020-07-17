@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43308CFB24BC0C6700DDE2E5 /* SubmitEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308CFA24BC0C6700DDE2E5 /* SubmitEmailViewController.swift */; };
+		43308CFE24BC211500DDE2E5 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308CFD24BC211500DDE2E5 /* SignupViewController.swift */; };
+		43308D0124BC266600DDE2E5 /* EmptySpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308D0024BC266600DDE2E5 /* EmptySpaceView.swift */; };
+		43308D0324BC2A1100DDE2E5 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308D0224BC2A1100DDE2E5 /* UIStackView+Extensions.swift */; };
+		4364A4CA24C16EE300AE9881 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364A4C924C16EE300AE9881 /* CheckboxView.swift */; };
 		43BC86ED24B98A70004CBB07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC86EC24B98A70004CBB07 /* AppDelegate.swift */; };
 		43BC86EF24B98A70004CBB07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC86EE24B98A70004CBB07 /* SceneDelegate.swift */; };
 		43BC86F124B98A70004CBB07 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC86F024B98A70004CBB07 /* ViewController.swift */; };
@@ -16,7 +21,7 @@
 		43BC86FC24B98A71004CBB07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43BC86FA24B98A71004CBB07 /* LaunchScreen.storyboard */; };
 		43BC870724B98A72004CBB07 /* VirtueOSOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC870624B98A72004CBB07 /* VirtueOSOTests.swift */; };
 		43BC871224B98A72004CBB07 /* VirtueOSOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC871124B98A72004CBB07 /* VirtueOSOUITests.swift */; };
-		43BC872A24B98E18004CBB07 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC872924B98E18004CBB07 /* AuthenticationViewController.swift */; };
+		43BC872A24B98E18004CBB07 /* AuthenticationHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC872924B98E18004CBB07 /* AuthenticationHomeViewController.swift */; };
 		43BC872C24B98E32004CBB07 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC872B24B98E32004CBB07 /* UIColor+Extensions.swift */; };
 		43BC872F24B98F29004CBB07 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC872E24B98F29004CBB07 /* NavigationController.swift */; };
 		43BC873124B98F87004CBB07 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC873024B98F87004CBB07 /* UIView+Extensions.swift */; };
@@ -29,6 +34,13 @@
 		43BC874224BA028B004CBB07 /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC874124BA028B004CBB07 /* Border.swift */; };
 		43BC874524BA0535004CBB07 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC874424BA0535004CBB07 /* TextView.swift */; };
 		43BC874824BA3BD4004CBB07 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC874724BA3BD4004CBB07 /* TitleView.swift */; };
+		43BC874B24BA9CCA004CBB07 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC874A24BA9CCA004CBB07 /* Button.swift */; };
+		43BC874E24BAEF0F004CBB07 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC874D24BAEF0F004CBB07 /* NotificationViewController.swift */; };
+		43BC875124BB6592004CBB07 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC875024BB6592004CBB07 /* LoginViewController.swift */; };
+		43BC875424BB6669004CBB07 /* BorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC875324BB6669004CBB07 /* BorderedTextField.swift */; };
+		43F5D40124BB86E6004AE586 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F5D40024BB86E6004AE586 /* TextField.swift */; };
+		43F5D40324BB87C9004AE586 /* BorderedTextField+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F5D40224BB87C9004AE586 /* BorderedTextField+UITextView.swift */; };
+		43F5D40624BC06C5004AE586 /* AButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F5D40524BC06C5004AE586 /* AButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +61,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		43308CFA24BC0C6700DDE2E5 /* SubmitEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitEmailViewController.swift; sourceTree = "<group>"; };
+		43308CFD24BC211500DDE2E5 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		43308D0024BC266600DDE2E5 /* EmptySpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpaceView.swift; sourceTree = "<group>"; };
+		43308D0224BC2A1100DDE2E5 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
+		4364A4C924C16EE300AE9881 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		43BC86E924B98A70004CBB07 /* VirtueOSO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtueOSO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43BC86EC24B98A70004CBB07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43BC86EE24B98A70004CBB07 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +81,7 @@
 		43BC870D24B98A72004CBB07 /* VirtueOSOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtueOSOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43BC871124B98A72004CBB07 /* VirtueOSOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtueOSOUITests.swift; sourceTree = "<group>"; };
 		43BC871324B98A72004CBB07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		43BC872924B98E18004CBB07 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		43BC872924B98E18004CBB07 /* AuthenticationHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHomeViewController.swift; sourceTree = "<group>"; };
 		43BC872B24B98E32004CBB07 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		43BC872E24B98F29004CBB07 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		43BC873024B98F87004CBB07 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -77,6 +94,13 @@
 		43BC874124BA028B004CBB07 /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
 		43BC874424BA0535004CBB07 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		43BC874724BA3BD4004CBB07 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		43BC874A24BA9CCA004CBB07 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		43BC874D24BAEF0F004CBB07 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		43BC875024BB6592004CBB07 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		43BC875324BB6669004CBB07 /* BorderedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextField.swift; sourceTree = "<group>"; };
+		43F5D40024BB86E6004AE586 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		43F5D40224BB87C9004AE586 /* BorderedTextField+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BorderedTextField+UITextView.swift"; sourceTree = "<group>"; };
+		43F5D40524BC06C5004AE586 /* AButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +128,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43308CF924BC0C5400DDE2E5 /* SubmitEmailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				43308CFA24BC0C6700DDE2E5 /* SubmitEmailViewController.swift */,
+			);
+			path = SubmitEmailViewController;
+			sourceTree = "<group>";
+		};
+		43308CFC24BC210300DDE2E5 /* SignupViewController */ = {
+			isa = PBXGroup;
+			children = (
+				43308CFD24BC211500DDE2E5 /* SignupViewController.swift */,
+			);
+			path = SignupViewController;
+			sourceTree = "<group>";
+		};
+		43308CFF24BC265400DDE2E5 /* EmptySpaceView */ = {
+			isa = PBXGroup;
+			children = (
+				43308D0024BC266600DDE2E5 /* EmptySpaceView.swift */,
+			);
+			path = EmptySpaceView;
+			sourceTree = "<group>";
+		};
+		4364A4C824C16ECA00AE9881 /* CheckboxTextView */ = {
+			isa = PBXGroup;
+			children = (
+				4364A4C924C16EE300AE9881 /* CheckboxView.swift */,
+			);
+			path = CheckboxTextView;
+			sourceTree = "<group>";
+		};
 		43BC86E024B98A70004CBB07 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +229,12 @@
 		43BC872024B98B8F004CBB07 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4364A4C824C16ECA00AE9881 /* CheckboxTextView */,
+				43308CFF24BC265400DDE2E5 /* EmptySpaceView */,
+				43F5D40424BC06B1004AE586 /* AButton */,
+				43F5D3FF24BB86D8004AE586 /* TextField */,
+				43BC875224BB6655004CBB07 /* BorderedTextField */,
+				43BC874924BA9CBD004CBB07 /* Button */,
 				43BC874624BA3BC8004CBB07 /* TitleView */,
 				43BC874324BA0525004CBB07 /* TextView */,
 				43BC874024BA0280004CBB07 /* Border */,
@@ -185,8 +247,12 @@
 		43BC872124B98B95004CBB07 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				43308CFC24BC210300DDE2E5 /* SignupViewController */,
+				43308CF924BC0C5400DDE2E5 /* SubmitEmailViewController */,
+				43BC874F24BB6583004CBB07 /* LoginViewController */,
+				43BC874C24BAEEF8004CBB07 /* NotificationViewController */,
 				43BC872D24B98F1A004CBB07 /* NavigationController */,
-				43BC872824B98E02004CBB07 /* AuthenticationViewController */,
+				43BC872824B98E02004CBB07 /* AuthenticationHomeViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -200,6 +266,7 @@
 				43BC873424B98FE4004CBB07 /* UIImageView+Extensions.swift */,
 				43BC873624B99002004CBB07 /* UIFont+Extensions.swift */,
 				43BC873824B9902C004CBB07 /* UITextField+Extensions.swift */,
+				43308D0224BC2A1100DDE2E5 /* UIStackView+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -218,12 +285,12 @@
 			path = Delegate;
 			sourceTree = "<group>";
 		};
-		43BC872824B98E02004CBB07 /* AuthenticationViewController */ = {
+		43BC872824B98E02004CBB07 /* AuthenticationHomeViewController */ = {
 			isa = PBXGroup;
 			children = (
-				43BC872924B98E18004CBB07 /* AuthenticationViewController.swift */,
+				43BC872924B98E18004CBB07 /* AuthenticationHomeViewController.swift */,
 			);
-			path = AuthenticationViewController;
+			path = AuthenticationHomeViewController;
 			sourceTree = "<group>";
 		};
 		43BC872D24B98F1A004CBB07 /* NavigationController */ = {
@@ -272,6 +339,55 @@
 				43BC874724BA3BD4004CBB07 /* TitleView.swift */,
 			);
 			path = TitleView;
+			sourceTree = "<group>";
+		};
+		43BC874924BA9CBD004CBB07 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				43BC874A24BA9CCA004CBB07 /* Button.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		43BC874C24BAEEF8004CBB07 /* NotificationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				43BC874D24BAEF0F004CBB07 /* NotificationViewController.swift */,
+			);
+			path = NotificationViewController;
+			sourceTree = "<group>";
+		};
+		43BC874F24BB6583004CBB07 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				43BC875024BB6592004CBB07 /* LoginViewController.swift */,
+			);
+			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		43BC875224BB6655004CBB07 /* BorderedTextField */ = {
+			isa = PBXGroup;
+			children = (
+				43BC875324BB6669004CBB07 /* BorderedTextField.swift */,
+				43F5D40224BB87C9004AE586 /* BorderedTextField+UITextView.swift */,
+			);
+			path = BorderedTextField;
+			sourceTree = "<group>";
+		};
+		43F5D3FF24BB86D8004AE586 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				43F5D40024BB86E6004AE586 /* TextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		43F5D40424BC06B1004AE586 /* AButton */ = {
+			isa = PBXGroup;
+			children = (
+				43F5D40524BC06C5004AE586 /* AButton.swift */,
+			);
+			path = AButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,20 +522,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				43BC873524B98FE4004CBB07 /* UIImageView+Extensions.swift in Sources */,
+				43F5D40124BB86E6004AE586 /* TextField.swift in Sources */,
 				43BC874224BA028B004CBB07 /* Border.swift in Sources */,
+				4364A4CA24C16EE300AE9881 /* CheckboxView.swift in Sources */,
 				43BC873724B99002004CBB07 /* UIFont+Extensions.swift in Sources */,
 				43BC86F124B98A70004CBB07 /* ViewController.swift in Sources */,
+				43308CFB24BC0C6700DDE2E5 /* SubmitEmailViewController.swift in Sources */,
 				43BC873C24BA01C6004CBB07 /* TextFieldView.swift in Sources */,
+				43BC875424BB6669004CBB07 /* BorderedTextField.swift in Sources */,
 				43BC872C24B98E32004CBB07 /* UIColor+Extensions.swift in Sources */,
 				43BC86ED24B98A70004CBB07 /* AppDelegate.swift in Sources */,
-				43BC872A24B98E18004CBB07 /* AuthenticationViewController.swift in Sources */,
+				43BC874B24BA9CCA004CBB07 /* Button.swift in Sources */,
+				43BC875124BB6592004CBB07 /* LoginViewController.swift in Sources */,
+				43BC872A24B98E18004CBB07 /* AuthenticationHomeViewController.swift in Sources */,
 				43BC873324B98FB8004CBB07 /* UIViewController+Extensions.swift in Sources */,
 				43BC874524BA0535004CBB07 /* TextView.swift in Sources */,
 				43BC86F724B98A70004CBB07 /* VirtueOSO.xcdatamodeld in Sources */,
+				43BC874E24BAEF0F004CBB07 /* NotificationViewController.swift in Sources */,
 				43BC872F24B98F29004CBB07 /* NavigationController.swift in Sources */,
 				43BC874824BA3BD4004CBB07 /* TitleView.swift in Sources */,
 				43BC873F24BA01FD004CBB07 /* ComponentView.swift in Sources */,
 				43BC873924B9902C004CBB07 /* UITextField+Extensions.swift in Sources */,
+				43F5D40324BB87C9004AE586 /* BorderedTextField+UITextView.swift in Sources */,
+				43308CFE24BC211500DDE2E5 /* SignupViewController.swift in Sources */,
+				43F5D40624BC06C5004AE586 /* AButton.swift in Sources */,
+				43308D0124BC266600DDE2E5 /* EmptySpaceView.swift in Sources */,
+				43308D0324BC2A1100DDE2E5 /* UIStackView+Extensions.swift in Sources */,
 				43BC873124B98F87004CBB07 /* UIView+Extensions.swift in Sources */,
 				43BC86EF24B98A70004CBB07 /* SceneDelegate.swift in Sources */,
 			);

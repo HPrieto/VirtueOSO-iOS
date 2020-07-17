@@ -67,7 +67,6 @@ class TextFieldView: ComponentView {
     }
     
     override func initializeSubviews() {
-        translatesAutoresizingMaskIntoConstraints = false
         addSubview(textView)
         addSubview(textField)
         addSubview(border)

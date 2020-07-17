@@ -9,6 +9,15 @@
 import UIKit
 
 extension UIViewController {
+    
+    enum Margins: CGFloat {
+        case formTop = 50
+        case top = 100
+        case left = 20
+        case right = -20
+        case bottom = 0
+        case width = -40
+    }
 
     public var _darkModeEnabled: Bool {
         return UITraitCollection().userInterfaceStyle == .dark

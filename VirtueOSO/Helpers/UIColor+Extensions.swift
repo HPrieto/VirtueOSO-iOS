@@ -39,11 +39,22 @@ extension UIColor {
     static let _gray: UIColor = UIColor(113, 113, 113)
 
     static let _darkGray: UIColor = UIColor(72, 72, 72)
-
-    static let _primary: UIColor = UIColor(netHex: 0xff5a5f)
-
-    static let _secondary: UIColor = UIColor(netHex: 0x00a699)
     
-    static let _tertiary: UIColor = UIColor(netHex: 0xfc642d)
+    static let _borderColor: UIColor = UIColor(235, 235, 235)
+
+    static let _redError: UIColor = UIColor(netHex: 0xd93900)
+
+    static let _redErrorBackground: UIColor = UIColor(netHex: 0xd93900, alpha: 0.25)
+
+//    static let _primary: UIColor = UIColor(netHex: 0xb29dd9)
+//    static let _secondary: UIColor = UIColor(netHex:0x779ecb)
+//    static let _tertiary: UIColor = UIColor(netHex: 0xfe6b64)
+    
+    /// `Airbnb` color palette
+    static let _primary: UIColor = UIColor(netHex: 0x832C99)
+    static let _secondary: UIColor = UIColor(netHex: 0xE9184E)
+    static let _tertiary: UIColor = UIColor(netHex: 0x38BD67)
+    
+    
     
 }

@@ -37,7 +37,7 @@ class TitleView: ComponentView {
     
     lazy var subtitleTextView: TextView = {
         let view = TextView()
-        view.font = UIFont(type: .regular, size: .small)
+        view.font = UIFont(type: .regular, size: .regular)
         return view
     }()
     
@@ -50,18 +50,24 @@ class TitleView: ComponentView {
         initializeSubviews()
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: CGRect.zero)
+        initializeSubviews()
+    }
+    
     override func initializeSubviews() {
         addSubview(titleTextView)
         addSubview(subtitleTextView)
         
-        titleTextView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        titleTextView.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
         titleTextView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         titleTextView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         subtitleTextView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         subtitleTextView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         subtitleTextView.topAnchor.constraint(equalTo: titleTextView.bottomAnchor).isActive = true
-        subtitleTextView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        subtitleTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+        
     }
     
     override func updateSubviews() {

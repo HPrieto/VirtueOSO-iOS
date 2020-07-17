@@ -10,6 +10,41 @@ import UIKit
 
 class NavigationController: UINavigationController {
     
+    var _barStyle: UIBarStyle = .default {
+        didSet {
+            navigationBar.barStyle = _barStyle
+        }
+    }
+    
+    var _font: UIFont? = UIFont(type: .medium, size: .regular) {
+        didSet {
+            guard let font = _font else { return }
+            navigationBar.titleTextAttributes = [NSAttributedString.Key.font: font]
+        }
+    }
+    
+    var _tintColor: UIColor = .black {
+        didSet {
+            navigationBar.tintColor = _tintColor
+        }
+    }
+    
+    var _backgroundColor: UIColor = .white {
+        didSet {
+            navigationBar.backgroundColor = _backgroundColor
+        }
+    }
+    
+    var _isClear: Bool = false {
+        didSet {
+            navigationBar.isTranslucent = _isClear
+            if !_isClear { return }
+            navigationBar.backgroundColor = .clear
+            navigationBar.shadowImage = UIImage()
+            navigationBar.setBackgroundImage(UIImage(), for: .default)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeSubviews()
@@ -20,8 +55,10 @@ class NavigationController: UINavigationController {
         navigationBar.backgroundColor = self._darkModeEnabled ? .black : .white
         navigationBar.tintColor = self._darkModeEnabled ? .white : .black
         navigationBar.barStyle = .default
-        UINavigationBar.appearance().barTintColor = self._darkModeEnabled ? .black : .white
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor._black]
+        //UINavigationBar.appearance().barTintColor = self._darkModeEnabled ? .black : .white
+        navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font: _font!
+        ]
     }
     
 }

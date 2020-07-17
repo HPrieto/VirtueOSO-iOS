@@ -16,20 +16,28 @@ class TextView: UITextView {
         }
     }
     
-    func initialize() {
+    private func initialize() {
         backgroundColor = .clear
-        translatesAutoresizingMaskIntoConstraints = false
         sizeToFit()
         isScrollEnabled = false
         isEditable = false
         isUserInteractionEnabled = false
-        contentInset = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 5)
         font = UIFont(type: .regular, size: .regular)
+        textContainerInset = _padding
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: CGRect.zero, textContainer: textContainer)
         initialize()
+    }
+    
+    init(text: String, textColor: UIColor = .black, font: UIFont? = UIFont(type: .regular, size: .regular)) {
+        super.init(frame: CGRect.zero, textContainer: nil)
+        initialize()
+        self.text = text
+        self.textColor = textColor
+        self.font = font
     }
     
     required init?(coder: NSCoder) {
