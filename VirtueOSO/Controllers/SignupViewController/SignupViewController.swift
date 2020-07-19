@@ -123,7 +123,7 @@ class SignupViewController: UIViewController {
         verticalStackView.addTextToStack("We’ll send you marketing promotions, special offers, inspiration, and policy updates via email.")
         verticalStackView.addVerticalEmptySpace(10)
         verticalStackView.addArrangedSubview(receiveMessagesCheckboxView)
-        verticalStackView.addVerticalEmptySpace(10)
+        verticalStackView.addVerticalEmptySpace(15)
         verticalStackView.addArrangedSubview(agreeAndContinueButton)
         verticalStackView.addVerticalEmptySpace(view.frame.height / 2)
     }

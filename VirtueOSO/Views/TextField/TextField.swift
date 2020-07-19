@@ -32,9 +32,12 @@ class TextField: UITextField {
         }
     }
 
-    var _borderColor: UIColor = UIColor._borderColor {
-        didSet {
-            layer.borderColor = _borderColor.cgColor
+    var _borderColor: UIColor {
+        set {
+            layer.borderColor = newValue.cgColor
+        }
+        get {
+            return UIColor(cgColor: layer.borderColor!)
         }
     }
 
@@ -72,7 +75,7 @@ class TextField: UITextField {
         return bounds.inset(by: _padding)
     }
 
-    private func setup() {
+    private func initialize() {
         font = UIFont(type: .regular, size: .regular)
         textColor = self._darkModeEnabled ? .white : ._black
         translatesAutoresizingMaskIntoConstraints = false
@@ -82,7 +85,7 @@ class TextField: UITextField {
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        setup()
+        initialize()
     }
 
     required init?(coder: NSCoder) {

@@ -11,6 +11,7 @@
 		43308CFE24BC211500DDE2E5 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308CFD24BC211500DDE2E5 /* SignupViewController.swift */; };
 		43308D0124BC266600DDE2E5 /* EmptySpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308D0024BC266600DDE2E5 /* EmptySpaceView.swift */; };
 		43308D0324BC2A1100DDE2E5 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308D0224BC2A1100DDE2E5 /* UIStackView+Extensions.swift */; };
+		43518B7624C37E3A009AA30D /* LiveStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43518B7524C37E3A009AA30D /* LiveStreamViewController.swift */; };
 		4364A4CA24C16EE300AE9881 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364A4C924C16EE300AE9881 /* CheckboxView.swift */; };
 		43BC86ED24B98A70004CBB07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC86EC24B98A70004CBB07 /* AppDelegate.swift */; };
 		43BC86EF24B98A70004CBB07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC86EE24B98A70004CBB07 /* SceneDelegate.swift */; };
@@ -65,6 +66,7 @@
 		43308CFD24BC211500DDE2E5 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		43308D0024BC266600DDE2E5 /* EmptySpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpaceView.swift; sourceTree = "<group>"; };
 		43308D0224BC2A1100DDE2E5 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
+		43518B7524C37E3A009AA30D /* LiveStreamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamViewController.swift; sourceTree = "<group>"; };
 		4364A4C924C16EE300AE9881 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		43BC86E924B98A70004CBB07 /* VirtueOSO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtueOSO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43BC86EC24B98A70004CBB07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,14 @@
 				43308D0024BC266600DDE2E5 /* EmptySpaceView.swift */,
 			);
 			path = EmptySpaceView;
+			sourceTree = "<group>";
+		};
+		43518B7424C37E21009AA30D /* LiveStreamViewController */ = {
+			isa = PBXGroup;
+			children = (
+				43518B7524C37E3A009AA30D /* LiveStreamViewController.swift */,
+			);
+			path = LiveStreamViewController;
 			sourceTree = "<group>";
 		};
 		4364A4C824C16ECA00AE9881 /* CheckboxTextView */ = {
@@ -247,6 +257,7 @@
 		43BC872124B98B95004CBB07 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				43518B7424C37E21009AA30D /* LiveStreamViewController */,
 				43308CFC24BC210300DDE2E5 /* SignupViewController */,
 				43308CF924BC0C5400DDE2E5 /* SubmitEmailViewController */,
 				43BC874F24BB6583004CBB07 /* LoginViewController */,
@@ -525,6 +536,7 @@
 				43F5D40124BB86E6004AE586 /* TextField.swift in Sources */,
 				43BC874224BA028B004CBB07 /* Border.swift in Sources */,
 				4364A4CA24C16EE300AE9881 /* CheckboxView.swift in Sources */,
+				43518B7624C37E3A009AA30D /* LiveStreamViewController.swift in Sources */,
 				43BC873724B99002004CBB07 /* UIFont+Extensions.swift in Sources */,
 				43BC86F124B98A70004CBB07 /* ViewController.swift in Sources */,
 				43308CFB24BC0C6700DDE2E5 /* SubmitEmailViewController.swift in Sources */,
@@ -723,6 +735,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D593847M3E;
 				INFOPLIST_FILE = VirtueOSO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -740,6 +753,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D593847M3E;
 				INFOPLIST_FILE = VirtueOSO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

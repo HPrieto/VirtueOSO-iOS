@@ -52,6 +52,20 @@ class SubmitEmailViewController: UIViewController {
         return view
     }()
     
+    lazy var closeBarButtonItem: UIBarButtonItem = {
+        let view = UIBarButtonItem(
+            title: "Close",
+            style: .done,
+            target: self,
+            action: #selector(handleClose)
+        )
+        return view
+    }()
+    
+    @objc func handleClose() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeSubviews()
@@ -59,6 +73,8 @@ class SubmitEmailViewController: UIViewController {
     
     private func initializeSubviews() {
         view.backgroundColor = .white
+        
+        navigationItem.rightBarButtonItem = closeBarButtonItem
         
         view.addSubview(messageTextView)
         view.addSubview(emailTextField)

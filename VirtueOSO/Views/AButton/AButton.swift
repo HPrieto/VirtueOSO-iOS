@@ -10,13 +10,16 @@ import UIKit
 
 class AButton: UIButton {
     
-    var _title: String = "" {
-        didSet {
+    var _title: String? {
+        set {
             let underlineAttribute = [
                 NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue
             ]
-            let attributedString: NSAttributedString = NSAttributedString(string: _title, attributes: underlineAttribute)
+            let attributedString: NSAttributedString = NSAttributedString(string: newValue ?? "", attributes: underlineAttribute)
             setAttributedTitle(attributedString, for: .normal)
+        }
+        get {
+            return titleLabel?.text
         }
     }
     
@@ -28,23 +31,17 @@ class AButton: UIButton {
     
     var _textColor: UIColor = ._black {
         didSet {
-            setTitleColor(_textColor, for: .normal)
+            titleLabel?.textColor = _textColor
         }
     }
     
     private func initialize() {
         translatesAutoresizingMaskIntoConstraints = false
         titleLabel?.font = _font
-        setTitleColor(_textColor, for: .normal)
     }
     
     init(_ title: String) {
         super.init(frame: CGRect.zero)
-        let underlineAttribute = [
-            NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue
-        ]
-        let attributedString: NSAttributedString = NSAttributedString(string: title, attributes: underlineAttribute)
-        setAttributedTitle(attributedString, for: .normal)
         self._title = title
         initialize()
     }

@@ -72,7 +72,7 @@ class CheckboxView: ComponentView {
         checkboxButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
         checkboxButton.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         
-        textView.leftAnchor.constraint(equalTo: checkboxButton.rightAnchor, constant: 10).isActive = true
+        textView.leftAnchor.constraint(equalTo: checkboxButton.rightAnchor, constant: 16).isActive = true
         textView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         textView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         textView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true

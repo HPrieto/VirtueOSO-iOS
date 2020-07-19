@@ -10,11 +10,43 @@ import UIKit
 
 class AuthenticationHomeViewController: UIViewController {
     
+    //MARK:- Strings
+    private enum Strings: String {
+        case loginButtonTitle = "Log in"
+        case title = "Welcome to Virtuoso"
+        case googleButtonTitle = "Continue width Google"
+        case facebookButtonTitle = "Continue width Facebook"
+        case createAccountButtonTitle = "Create an Account"
+        case moreOptionsButtonTitle = "More options"
+        case disclaimer = """
+        By signing up, I agree to Virutuoso's Terms of Service, Non-Discrimination Policy, Payments Terms of Service, and Host Guarantee Terms.
+        """
+    }
+    
+    //MARK:- Views
+    lazy var verticalStackView: UIStackView = {
+        let view = UIStackView()
+        view.alignment = .fill
+        view.spacing = 20
+        view.axis = .vertical
+        view.distribution = .equalSpacing
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var backgroundImageView: UIImageView = {
-        //let image = UIImage(named: "concert_bg")!
         let view = UIImageView()
-        //view.image = image
         view.backgroundColor = ._primary
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var verticalButtonStackView: UIStackView = {
+        let view = UIStackView()
+        view.alignment = .leading
+        view.spacing = 20
+        view.axis = .vertical
+        view.distribution = .fillProportionally
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -32,12 +64,12 @@ class AuthenticationHomeViewController: UIViewController {
         let view = TextView()
         view.font = UIFont(type: .medium, size: .title2)
         view.textColor = .white
-        view.text = "Welcome to Virtuoso."
+        view.text = Strings.title.rawValue
         return view
     }()
     
     lazy var googleButton: Button = {
-        let view = Button("Continue with Google")
+        let view = Button(Strings.googleButtonTitle.rawValue)
         view.backgroundColor = .white
         view._font = UIFont(type: .medium, size: .large)
         view._textColor = ._secondary
@@ -47,7 +79,7 @@ class AuthenticationHomeViewController: UIViewController {
     }()
     
     lazy var facebookButton: Button = {
-        let view = Button("Continue with Facebook")
+        let view = Button(Strings.facebookButtonTitle.rawValue)
         view.backgroundColor = .white
         view._font = UIFont(type: .medium, size: .large)
         view._textColor = ._secondary
@@ -57,7 +89,7 @@ class AuthenticationHomeViewController: UIViewController {
     }()
     
     lazy var createAccountButton: Button = {
-        let view = Button("Create an Account")
+        let view = Button(Strings.createAccountButtonTitle.rawValue)
         view.backgroundColor = .white
         view._font = UIFont(type: .medium, size: .large)
         view._textColor = .white
@@ -65,22 +97,15 @@ class AuthenticationHomeViewController: UIViewController {
         view._borderColor = .white
         view._borderWidth = 1
         view._cornerRadius = 25
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self, action: #selector(handleCreateAccount), for: .touchUpInside)
         return view
     }()
     
-    @objc func handleCreateAccount() {
-        let controller = SignupViewController()
-        navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    lazy var optionsTextView: TextView = {
-        let view = TextView()
-        view.textColor = .white
+    lazy var optionsButton: AButton = {
+        let view = AButton(Strings.moreOptionsButtonTitle.rawValue)
+        view._textColor = .white
         view.backgroundColor = .clear
-        view.font = UIFont(type: .medium, size: .regular)
-        view.text = "More options"
+        view._font = UIFont(type: .demiBold, size: .regular)
         return view
     }()
     
@@ -88,15 +113,13 @@ class AuthenticationHomeViewController: UIViewController {
         let view = TextView()
         view.textColor = .white
         view.font = UIFont(type: .medium, size: .regular)
-        view.text = """
-        By signing up, I agree to Virutuoso's Terms of Service, Non-Discrimination Policy, Payments Terms of Service, and Host Guarantee Terms.
-        """
+        view.text = Strings.disclaimer.rawValue
         return view
     }()
     
     lazy var loginBarButton: UIBarButtonItem = {
         let view = UIBarButtonItem(
-            title: "Log in",
+            title: Strings.loginButtonTitle.rawValue,
             style: .plain,
             target: self,
             action: #selector(handleLogin)
@@ -104,11 +127,7 @@ class AuthenticationHomeViewController: UIViewController {
         return view
     }()
     
-    @objc func handleLogin() {
-        let controller = LoginViewController()
-        navigationController?.pushViewController(controller, animated: true)
-    }
-    
+    //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeSubviews()
@@ -126,50 +145,48 @@ class AuthenticationHomeViewController: UIViewController {
         }
     }
     
+    //MARK:- Initialize Subview
     private func initializeSubviews() {
         view.backgroundColor = ._secondary
+        navigationItem.rightBarButtonItem = loginBarButton
         
         view.addSubview(iconImageView)
-        view.addSubview(titleTextView)
-        view.addSubview(googleButton)
-        view.addSubview(facebookButton)
-        view.addSubview(createAccountButton)
-        view.addSubview(optionsTextView)
-        view.addSubview(disclaimerTextView)
+        view.addSubview(verticalStackView)
         
-        iconImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.safeAreaInsets.top + Margins.top.rawValue).isActive = true
+        let bottomMargin: CGFloat = -(view.safeAreaInsets.bottom + 40)
+        
+        verticalButtonStackView.addArrangedSubview(googleButton)
+        verticalButtonStackView.addArrangedSubview(facebookButton)
+        verticalButtonStackView.addArrangedSubview(createAccountButton)
+        verticalButtonStackView.addArrangedSubview(optionsButton)
+        
+        iconImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.safeAreaInsets.top + 100).isActive = true
         iconImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor).isActive = true
-        iconImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        iconImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        iconImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 25).isActive = true
         
-        titleTextView.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 20).isActive = true
-        titleTextView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: Margins.width.rawValue).isActive = true
-        titleTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        verticalStackView.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 20).isActive = true
+        verticalStackView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -50).isActive = true
+        verticalStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        verticalStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: bottomMargin).isActive = true
         
-        googleButton.topAnchor.constraint(equalTo: titleTextView.bottomAnchor, constant: 50).isActive = true
-        googleButton.widthAnchor.constraint(equalTo: titleTextView.widthAnchor).isActive = true
-        googleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        googleButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        verticalStackView.addArrangedSubview(titleTextView)
+        verticalStackView.addArrangedSubview(verticalButtonStackView)
+        verticalStackView.addArrangedSubview(disclaimerTextView)
         
-        facebookButton.topAnchor.constraint(equalTo: googleButton.bottomAnchor, constant: 20).isActive = true
-        facebookButton.widthAnchor.constraint(equalTo: googleButton.widthAnchor).isActive = true
-        facebookButton.centerXAnchor.constraint(equalTo: googleButton.centerXAnchor).isActive = true
-        facebookButton.heightAnchor.constraint(equalTo: googleButton.heightAnchor).isActive = true
-        
-        createAccountButton.topAnchor.constraint(equalTo: facebookButton.bottomAnchor, constant: 20).isActive = true
-        createAccountButton.widthAnchor.constraint(equalTo: googleButton.widthAnchor).isActive = true
-        createAccountButton.centerXAnchor.constraint(equalTo: googleButton.centerXAnchor).isActive = true
-        createAccountButton.heightAnchor.constraint(equalTo: googleButton.heightAnchor).isActive = true
-        
-        optionsTextView.topAnchor.constraint(equalTo: createAccountButton.bottomAnchor, constant: 20).isActive = true
-        optionsTextView.widthAnchor.constraint(equalTo: createAccountButton.widthAnchor).isActive = true
-        optionsTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-        disclaimerTextView.topAnchor.constraint(equalTo: optionsTextView.bottomAnchor, constant: 50).isActive = true
-        disclaimerTextView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: Margins.width.rawValue).isActive = true
-        disclaimerTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-        navigationItem.rightBarButtonItem = loginBarButton
+        googleButton.widthAnchor.constraint(equalTo: verticalButtonStackView.widthAnchor).isActive = true
+        facebookButton.widthAnchor.constraint(equalTo: verticalButtonStackView.widthAnchor).isActive = true
+        createAccountButton.widthAnchor.constraint(equalTo: verticalButtonStackView.widthAnchor).isActive = true
     }
     
+    //MARK:- Handlers
+    @objc func handleLogin() {
+        let controller = LoginViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc func handleCreateAccount() {
+        let controller = SignupViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }

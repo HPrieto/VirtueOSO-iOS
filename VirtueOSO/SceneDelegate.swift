@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         // let controller = NotificationViewController()
-        let controller = AuthenticationHomeViewController()
+        let controller = LiveStreamViewController()
         let navigationController: NavigationController = NavigationController(rootViewController: controller)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
