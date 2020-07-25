@@ -31,4 +31,8 @@ extension UIFont {
     convenience init?(type: FontType, size: FontSize) {
         self.init(name: type.rawValue, size: size.rawValue)
     }
+    
+    convenience init?(type: FontType, size: CGFloat) {
+        self.init(name: type.rawValue, size: size)
+    }
 }

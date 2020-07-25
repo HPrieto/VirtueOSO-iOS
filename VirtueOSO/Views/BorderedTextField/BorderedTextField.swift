@@ -8,8 +8,10 @@
 
 import UIKit
 
+//MARK:- Init
 class BorderedTextField: ComponentView {
     
+    //MARK:- Enums
     enum State {
         case normal
         case edit
@@ -22,6 +24,7 @@ class BorderedTextField: ComponentView {
         case paddingTopBottom = 13
     }
     
+    //MARK:- Public Properties
     var _secureTextEntry: Bool = false {
         didSet {
             inputTextView.isSecureTextEntry = _secureTextEntry
@@ -85,10 +88,11 @@ class BorderedTextField: ComponentView {
         }
     }
     
-    //    .layerMinXMinYCorner = Top left corner
-    //    .layerMaxXMinYCorner = Top right corner
-    //    .layerMinXMaxYCorner = Bottom left corner
-    //    .layerMaxXMaxYCorder = Bottom right corner
+    /// Sets the corner radius of individual corners
+    /// .layerMinXMinYCorner = Top left corner
+    /// .layerMaxXMinYCorner = Top right corner
+    /// .layerMinXMaxYCorner = Bottom left corner
+    /// .layerMaxXMaxYCorder = Bottom right corner
     var _roundCorners: CACornerMask = [
         .layerMinXMinYCorner,
         .layerMaxXMinYCorner,
@@ -125,6 +129,8 @@ class BorderedTextField: ComponentView {
         }
     }
     
+    //MARK:- Subviews
+    
     lazy var titleTextView: TextView = {
         let view = TextView()
         view.font = UIFont(type: .regular, size: .small)
@@ -142,6 +148,7 @@ class BorderedTextField: ComponentView {
         return view
     }()
     
+    //MARK:- Initialize Subviews
     override func initializeSubviews() {
         
         layer.masksToBounds = true
@@ -166,6 +173,7 @@ class BorderedTextField: ComponentView {
         addGestureRecognizer(tapGesture)
     }
     
+    //MARK:- Handlers
     @objc func handleViewTapped() {
         inputTextView.becomeFirstResponder()
     }

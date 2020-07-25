@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4302615724CC2CB200ECB4F8 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302615624CC2CB200ECB4F8 /* SettingsTableViewCell.swift */; };
+		4302615A24CC5D2E00ECB4F8 /* SettingsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302615924CC5D2E00ECB4F8 /* SettingsCellView.swift */; };
+		4302615D24CC622B00ECB4F8 /* SettingsHeaderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302615C24CC622B00ECB4F8 /* SettingsHeaderCellView.swift */; };
+		4302616024CC770B00ECB4F8 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302615F24CC770B00ECB4F8 /* SettingsCoordinator.swift */; };
+		4302616224CC772A00ECB4F8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616124CC772A00ECB4F8 /* SettingsViewController.swift */; };
+		4302616524CC7FA700ECB4F8 /* SettingsCellToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616424CC7FA700ECB4F8 /* SettingsCellToggleView.swift */; };
+		4302616824CC90C500ECB4F8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616724CC90C500ECB4F8 /* Coordinator.swift */; };
+		4302616A24CC9C1D00ECB4F8 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616924CC9C1D00ECB4F8 /* UIImage+Extensions.swift */; };
+		4302616D24CC9F1A00ECB4F8 /* SettingsNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616C24CC9F1A00ECB4F8 /* SettingsNavigationBar.swift */; };
 		43308CFB24BC0C6700DDE2E5 /* SubmitEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308CFA24BC0C6700DDE2E5 /* SubmitEmailViewController.swift */; };
 		43308CFE24BC211500DDE2E5 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308CFD24BC211500DDE2E5 /* SignupViewController.swift */; };
 		43308D0124BC266600DDE2E5 /* EmptySpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308D0024BC266600DDE2E5 /* EmptySpaceView.swift */; };
@@ -62,6 +71,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4302615624CC2CB200ECB4F8 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		4302615924CC5D2E00ECB4F8 /* SettingsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellView.swift; sourceTree = "<group>"; };
+		4302615C24CC622B00ECB4F8 /* SettingsHeaderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderCellView.swift; sourceTree = "<group>"; };
+		4302615F24CC770B00ECB4F8 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		4302616124CC772A00ECB4F8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4302616424CC7FA700ECB4F8 /* SettingsCellToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellToggleView.swift; sourceTree = "<group>"; };
+		4302616724CC90C500ECB4F8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		4302616924CC9C1D00ECB4F8 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		4302616C24CC9F1A00ECB4F8 /* SettingsNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationBar.swift; sourceTree = "<group>"; };
 		43308CFA24BC0C6700DDE2E5 /* SubmitEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitEmailViewController.swift; sourceTree = "<group>"; };
 		43308CFD24BC211500DDE2E5 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		43308D0024BC266600DDE2E5 /* EmptySpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpaceView.swift; sourceTree = "<group>"; };
@@ -130,6 +148,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4302615224CC28CE00ECB4F8 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4302616124CC772A00ECB4F8 /* SettingsViewController.swift */,
+			);
+			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		4302615524CC2C9A00ECB4F8 /* SettingsTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4302615624CC2CB200ECB4F8 /* SettingsTableViewCell.swift */,
+			);
+			path = SettingsTableViewCell;
+			sourceTree = "<group>";
+		};
+		4302615824CC5D0700ECB4F8 /* SettingsCellView */ = {
+			isa = PBXGroup;
+			children = (
+				4302615924CC5D2E00ECB4F8 /* SettingsCellView.swift */,
+			);
+			path = SettingsCellView;
+			sourceTree = "<group>";
+		};
+		4302615B24CC621D00ECB4F8 /* SettingsHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				4302615C24CC622B00ECB4F8 /* SettingsHeaderCellView.swift */,
+			);
+			path = SettingsHeaderView;
+			sourceTree = "<group>";
+		};
+		4302615E24CC76F400ECB4F8 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				4302615F24CC770B00ECB4F8 /* SettingsCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		4302616324CC7F7800ECB4F8 /* SettingsCellToggleView */ = {
+			isa = PBXGroup;
+			children = (
+				4302616424CC7FA700ECB4F8 /* SettingsCellToggleView.swift */,
+			);
+			path = SettingsCellToggleView;
+			sourceTree = "<group>";
+		};
+		4302616624CC90B300ECB4F8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4302616724CC90C500ECB4F8 /* Coordinator.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		4302616B24CC9F0700ECB4F8 /* SettingsNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				4302616C24CC9F1A00ECB4F8 /* SettingsNavigationBar.swift */,
+			);
+			path = SettingsNavigationBar;
+			sourceTree = "<group>";
+		};
 		43308CF924BC0C5400DDE2E5 /* SubmitEmailViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +275,8 @@
 		43BC86EB24B98A70004CBB07 /* VirtueOSO */ = {
 			isa = PBXGroup;
 			children = (
+				4302616624CC90B300ECB4F8 /* Protocols */,
+				4302615E24CC76F400ECB4F8 /* Coordinators */,
 				43BC872424B98CF0004CBB07 /* Delegate */,
 				43BC872324B98CE9004CBB07 /* DataSource */,
 				43BC872224B98B9B004CBB07 /* Helpers */,
@@ -239,6 +323,11 @@
 		43BC872024B98B8F004CBB07 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4302616B24CC9F0700ECB4F8 /* SettingsNavigationBar */,
+				4302616324CC7F7800ECB4F8 /* SettingsCellToggleView */,
+				4302615B24CC621D00ECB4F8 /* SettingsHeaderView */,
+				4302615824CC5D0700ECB4F8 /* SettingsCellView */,
+				4302615524CC2C9A00ECB4F8 /* SettingsTableViewCell */,
 				4364A4C824C16ECA00AE9881 /* CheckboxTextView */,
 				43308CFF24BC265400DDE2E5 /* EmptySpaceView */,
 				43F5D40424BC06B1004AE586 /* AButton */,
@@ -257,6 +346,7 @@
 		43BC872124B98B95004CBB07 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4302615224CC28CE00ECB4F8 /* SettingsViewController */,
 				43518B7424C37E21009AA30D /* LiveStreamViewController */,
 				43308CFC24BC210300DDE2E5 /* SignupViewController */,
 				43308CF924BC0C5400DDE2E5 /* SubmitEmailViewController */,
@@ -278,6 +368,7 @@
 				43BC873624B99002004CBB07 /* UIFont+Extensions.swift */,
 				43BC873824B9902C004CBB07 /* UITextField+Extensions.swift */,
 				43308D0224BC2A1100DDE2E5 /* UIStackView+Extensions.swift */,
+				4302616924CC9C1D00ECB4F8 /* UIImage+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -541,27 +632,36 @@
 				43BC86F124B98A70004CBB07 /* ViewController.swift in Sources */,
 				43308CFB24BC0C6700DDE2E5 /* SubmitEmailViewController.swift in Sources */,
 				43BC873C24BA01C6004CBB07 /* TextFieldView.swift in Sources */,
+				4302616D24CC9F1A00ECB4F8 /* SettingsNavigationBar.swift in Sources */,
 				43BC875424BB6669004CBB07 /* BorderedTextField.swift in Sources */,
+				4302615724CC2CB200ECB4F8 /* SettingsTableViewCell.swift in Sources */,
 				43BC872C24B98E32004CBB07 /* UIColor+Extensions.swift in Sources */,
 				43BC86ED24B98A70004CBB07 /* AppDelegate.swift in Sources */,
 				43BC874B24BA9CCA004CBB07 /* Button.swift in Sources */,
 				43BC875124BB6592004CBB07 /* LoginViewController.swift in Sources */,
+				4302616824CC90C500ECB4F8 /* Coordinator.swift in Sources */,
 				43BC872A24B98E18004CBB07 /* AuthenticationHomeViewController.swift in Sources */,
 				43BC873324B98FB8004CBB07 /* UIViewController+Extensions.swift in Sources */,
+				4302615A24CC5D2E00ECB4F8 /* SettingsCellView.swift in Sources */,
 				43BC874524BA0535004CBB07 /* TextView.swift in Sources */,
 				43BC86F724B98A70004CBB07 /* VirtueOSO.xcdatamodeld in Sources */,
 				43BC874E24BAEF0F004CBB07 /* NotificationViewController.swift in Sources */,
 				43BC872F24B98F29004CBB07 /* NavigationController.swift in Sources */,
+				4302615D24CC622B00ECB4F8 /* SettingsHeaderCellView.swift in Sources */,
 				43BC874824BA3BD4004CBB07 /* TitleView.swift in Sources */,
+				4302616024CC770B00ECB4F8 /* SettingsCoordinator.swift in Sources */,
 				43BC873F24BA01FD004CBB07 /* ComponentView.swift in Sources */,
 				43BC873924B9902C004CBB07 /* UITextField+Extensions.swift in Sources */,
 				43F5D40324BB87C9004AE586 /* BorderedTextField+UITextView.swift in Sources */,
 				43308CFE24BC211500DDE2E5 /* SignupViewController.swift in Sources */,
+				4302616524CC7FA700ECB4F8 /* SettingsCellToggleView.swift in Sources */,
 				43F5D40624BC06C5004AE586 /* AButton.swift in Sources */,
 				43308D0124BC266600DDE2E5 /* EmptySpaceView.swift in Sources */,
 				43308D0324BC2A1100DDE2E5 /* UIStackView+Extensions.swift in Sources */,
 				43BC873124B98F87004CBB07 /* UIView+Extensions.swift in Sources */,
+				4302616A24CC9C1D00ECB4F8 /* UIImage+Extensions.swift in Sources */,
 				43BC86EF24B98A70004CBB07 /* SceneDelegate.swift in Sources */,
+				4302616224CC772A00ECB4F8 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

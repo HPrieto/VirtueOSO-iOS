@@ -30,6 +30,10 @@ extension UIColor {
         )
     }
     
+    // acorns background: #f7f7f7
+    
+    static let _background: UIColor = UIColor(netHex: 0xF7F7F7)
+    
     static let _backgroundGray: UIColor = UIColor(247, 247, 247)
 
     static let _black: UIColor = UIColor(34, 34, 34)

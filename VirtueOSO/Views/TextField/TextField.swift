@@ -8,14 +8,19 @@
 
 import UIKit
 
+//MARK:- TextField
 class TextField: UITextField {
 
+    //MARK:- TextFieldState
     enum TextFieldState {
         case normal
         case edit
         case error
     }
 
+    //MARK:- Public Properties
+    
+    /// Depending on the state of `TextField`, update the borderColor
     var _state: TextFieldState = .normal {
         didSet {
             switch _state {
@@ -63,6 +68,7 @@ class TextField: UITextField {
         }
     }
 
+    /// Remove all padding from `TextField`
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: _padding)
     }
@@ -74,7 +80,8 @@ class TextField: UITextField {
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: _padding)
     }
-
+    
+    //MARK:- Initialize `TextField`
     private func initialize() {
         font = UIFont(type: .regular, size: .regular)
         textColor = self._darkModeEnabled ? .white : ._black
@@ -82,12 +89,13 @@ class TextField: UITextField {
         tintColor = ._black
         _state = .normal
     }
-
+    
+    //MARK:- Init
     override init(frame: CGRect) {
         super.init(frame: .zero)
         initialize()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
