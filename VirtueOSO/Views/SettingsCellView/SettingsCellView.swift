@@ -34,10 +34,18 @@ class SettingsCellView: UIView {
         }
     }
     
+    var _image: UIImage? {
+        didSet {
+            let padding = UIEdgeInsets(top: -5, left: -5, bottom: -5, right: -5)
+            imageView.image = _image?.withAlignmentRectInsets(padding)
+        }
+    }
+    
     //MARK:- Views
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = ._gray
+        view.tintColor = ._black
+        view.contentMode = .scaleAspectFit
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -61,10 +69,28 @@ class SettingsCellView: UIView {
     
     private lazy var accessoryImageView: UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = ._gray
+        view.backgroundColor = .clear
+        view.tintColor = ._gray
+        view.contentMode = .scaleAspectFit
+        let padding: CGFloat = 5
+        let imageConfiguration: UIImage.SymbolConfiguration = UIImage.SymbolConfiguration(weight: .light)
+        view.image = UIImage(systemName: "chevron.right", withConfiguration: imageConfiguration)?
+            .withAlignmentRectInsets(
+                UIEdgeInsets(
+                    top: -padding,
+                    left: -padding,
+                    bottom:-padding,
+                    right: -padding
+                )
+        )
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    // MARK: - Utils
+    private func setImage(_ image: UIImage?) {
+        self._image = image
+    }
     
     //MARK:- InitializeSubviews
     private func initializeSubviews(title: String, image: UIImage? = nil, detail: String? = nil, detailTextColor: UIColor = .black) {
@@ -79,7 +105,7 @@ class SettingsCellView: UIView {
         
         titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
-        accessoryImageView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+        accessoryImageView.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
         accessoryImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         accessoryImageView.heightAnchor.constraint(equalTo: heightAnchor, constant: -40).isActive = true
         accessoryImageView.widthAnchor.constraint(equalTo: accessoryImageView.heightAnchor).isActive = true
@@ -119,11 +145,37 @@ class SettingsCellView: UIView {
     }
     
     //MARK:- Init
-    init(title: String, image: UIImage? = nil, detail: String? = nil, detailTextColor: UIColor = .black, tag: Int = 0, delegate: SettingsCellViewDelegate? = nil) {
+    init(
+        title: String,
+        systemImageName: String,
+        detail: String? = nil,
+        detailTextColor: UIColor = .black,
+        tag: Int = 0,
+        delegate: SettingsCellViewDelegate? = nil
+    ) {
         super.init(frame: .zero)
         self.titleLabel.text = title
         self.tag = tag
         self.delegate = delegate
+        let image: UIImage? = UIImage(systemName: systemImageName)
+        self.setImage(image)
+        
+        initializeSubviews(title: title, image: image, detail: detail, detailTextColor: detailTextColor)
+    }
+    
+    init(
+        title: String,
+        image: UIImage? = nil,
+        detail: String? = nil,
+        detailTextColor: UIColor = .black,
+        tag: Int = 0,
+        delegate: SettingsCellViewDelegate? = nil
+    ) {
+        super.init(frame: .zero)
+        self.titleLabel.text = title
+        self.tag = tag
+        self.delegate = delegate
+        self.setImage(image)
         
         initializeSubviews(title: title, image: image, detail: detail, detailTextColor: detailTextColor)
     }

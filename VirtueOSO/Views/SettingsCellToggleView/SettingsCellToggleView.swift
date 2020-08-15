@@ -40,7 +40,9 @@ class SettingsCellToggleView: UIView {
     //MARK:- Views
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = ._gray
+        view.backgroundColor = .clear
+        view.tintColor = ._black
+        view.contentMode = .scaleAspectFit
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -57,11 +59,21 @@ class SettingsCellToggleView: UIView {
         let view = UISwitch()
         view.onTintColor = ._tertiary
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(handleSwitchToggled(switch:)), for: .valueChanged)
+        view.addTarget(
+            self,
+            action: #selector(handleSwitchToggled(switch:)),
+            for: .valueChanged
+        )
         return view
     }()
     
-    //MARK:- InitializeSubviews
+    // MARK: - Utils
+    
+    private func setImage(_ image: UIImage?) {
+        self.imageView.image = image
+    }
+    
+    // MARK:- InitializeSubviews
     private func initializeSubviews(title: String, image: UIImage? = nil, detail: String? = nil, detailTextColor: UIColor = .black) {
         backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
@@ -88,6 +100,7 @@ class SettingsCellToggleView: UIView {
             imageView.heightAnchor.constraint(equalTo: heightAnchor, constant: -30).isActive = true
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
             titleLabel.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: 10).isActive = true
+            self.setImage(image)
         } else {
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
         }
@@ -99,7 +112,30 @@ class SettingsCellToggleView: UIView {
     }
     
     //MARK:- Init
-    init(title: String, isOn: Bool = false, image: UIImage? = nil, tag: Int = 0, delegate: SettingsCellToggleViewDelegate? = nil) {
+    init(
+        title: String,
+        systemImageName: String,
+        isOn: Bool = false,
+        tag: Int = 0,
+        delegate: SettingsCellToggleViewDelegate? = nil
+    ) {
+        let systemImage: UIImage? = UIImage(systemName: systemImageName)
+        super.init(frame: .zero)
+        self.titleLabel.text = title
+        self.tag = tag
+        self.switchView.isOn = isOn
+        self.delegate = delegate
+        
+        initializeSubviews(title: title, image: systemImage)
+    }
+    
+    init(
+        title: String,
+        isOn: Bool = false,
+        image: UIImage? = nil,
+        tag: Int = 0,
+        delegate: SettingsCellToggleViewDelegate? = nil
+    ) {
         super.init(frame: .zero)
         self.titleLabel.text = title
         self.tag = tag

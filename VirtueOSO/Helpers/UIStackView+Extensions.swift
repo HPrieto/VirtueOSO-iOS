@@ -16,13 +16,26 @@ extension UIStackView {
         )
     }
     
-    func addTextToStack(_ message: String) {
+    func addToStack(
+        _ message: String,
+        topPadding: CGFloat = TextView()._padding.top,
+        rightPadding: CGFloat = TextView()._padding.right,
+        bottomPadding: CGFloat = TextView()._padding.bottom,
+        leftPadding: CGFloat = TextView()._padding.left
+    ) {
+        let textView: TextView = TextView(
+            text: message,
+            textColor: ._gray,
+            font: UIFont(type: .regular, size: .small)
+        )
+        textView._padding = UIEdgeInsets(
+            top: topPadding,
+            left: leftPadding,
+            bottom: bottomPadding,
+            right: rightPadding
+        )
         addArrangedSubview(
-            TextView(
-                text: message,
-                textColor: ._gray,
-                font: UIFont(type: .regular, size: .small)
-            )
+            textView
         )
     }
     

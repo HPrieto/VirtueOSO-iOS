@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-//MARK:- SettingsCoordinator
+// MARK: - SettingsCoordinator
 class SettingsCoordinator: Coordinator {
     
-    //MARK:- Enums
+    // MARK: - Enums
     enum Destination: Int {
         case root
         /// Personal Settings
@@ -48,39 +48,7 @@ class SettingsCoordinator: Coordinator {
         case spendPrivacyPolicy
     }
     
-    //MARK:- Public Properties
-    internal var navigationController: UINavigationController
-    
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-    
-    //MARK:- Start
-    func start() {
-        navigate(to: .root)
-    }
-    
-    //MARK:- Coordinator
-    func navigate(to destination: Destination) {
-        let viewController = makeViewController(for: destination)
-        navigationController.pushViewController(viewController, animated: true)
-    }
-    
-    //MARK:- Private
-    private func makeViewController(for destination: Destination) -> UIViewController {
-        switch destination {
-        case .root:
-            return self.createSettingsRootViewController()
-        case .preferences:
-            return self.createHomePreferencesViewController()
-        case .legal:
-            return self.createLegalSettingsViewController()
-        default:
-            return UIViewController()
-        }
-    }
-    
-    //MARK:- CreateSettingsRootViewController
+    // MARK: PersonalSettingsViewController
     private lazy var logoutButtonView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
@@ -110,7 +78,7 @@ class SettingsCoordinator: Coordinator {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    private func createSettingsRootViewController() -> SettingsViewController {
+    private lazy var settingsRootViewController: SettingsViewController = {
         //MARK:- Init Log Out
         logoutButtonView.addSubview(logoutButton)
         logoutButton.topAnchor.constraint(equalTo: logoutButtonView.topAnchor).isActive = true
@@ -123,19 +91,19 @@ class SettingsCoordinator: Coordinator {
             SettingsHeaderCellView(header: "Personal Settings"),
             SettingsCellView(
                 title: "Personal Info",
-                image: UIImage(),
+                systemImageName: "person",
                 tag: Destination.personalInfo.rawValue,
                 delegate: self
             ),
             SettingsCellView(
                 title: "Profile",
-                image: UIImage(),
+                systemImageName: "headphones",
                 tag: Destination.profile.rawValue,
                 delegate: self
             ),
             SettingsCellView(
                 title: "My Subscription",
-                image: UIImage(),
+                systemImageName: "bag.badge.plus",
                 detail: "Personal",
                 detailTextColor: ._tertiary,
                 tag: Destination.mySubscription.rawValue,
@@ -143,7 +111,7 @@ class SettingsCoordinator: Coordinator {
             ),
             SettingsCellView(
                 title: "Linked Accounts",
-                image: UIImage(),
+                systemImageName: "person.2.square.stack",
                 tag: Destination.linkedAccounts.rawValue,
                 delegate: self
             ),
@@ -152,7 +120,7 @@ class SettingsCoordinator: Coordinator {
             SettingsHeaderCellView(header: "Home"),
             SettingsCellView(
                 title: "Preferences",
-                image: UIImage(),
+                systemImageName: "slider.horizontal.3",
                 tag: Destination.preferences.rawValue,
                 delegate: self
             ),
@@ -161,26 +129,26 @@ class SettingsCoordinator: Coordinator {
             SettingsHeaderCellView(header: "Device"),
             SettingsCellView(
                 title: "Notifications",
-                image: UIImage(),
+                systemImageName: "app.badge",
                 tag: Destination.notifications.rawValue,
                 delegate: self
             ),
             SettingsCellView(
                 title: "Change Password",
-                image: UIImage(),
+                systemImageName: "lock",
                 tag: Destination.changePassword.rawValue,
                 delegate: self
             ),
             SettingsCellView(
                 title: "Change Log In PIN",
-                image: UIImage(),
+                systemImageName: "circle.grid.3x3.fill",
                 tag: Destination.changeLoginPIN.rawValue,
                 delegate: self
             ),
             SettingsCellToggleView(
                 title: "Enable Face ID",
+                systemImageName: "faceid",
                 isOn: false,
-                image: UIImage(),
                 tag: Destination.enableFaceID.rawValue,
                 delegate: self
             ),
@@ -214,16 +182,31 @@ class SettingsCoordinator: Coordinator {
             
             /// App Version
             EmptySpaceView(20),
-            appVersionLabel
+            appVersionLabel,
+            EmptySpaceView(20)
         ]
         
-        let settingsController = SettingsViewController(coordinator: self, subviews: subviews)
-        settingsController._title = "My Settings"
-        return settingsController
-    }
+        let controller = SettingsViewController(coordinator: self, subviews: subviews)
+        controller._title = "My Settings"
+        return controller
+    }()
     
-    //MARK:- Home Preferences
-    private func createHomePreferencesViewController() -> SettingsViewController {
+    // MARK: - PersonalInfoViewController
+    private lazy var personalInfoViewController: PersonalInfoViewController = {
+        let controller = PersonalInfoViewController()
+        controller._title = "Personal Info"
+        return controller
+    }()
+    
+    // MARK: - TermsAndConditionsViewController
+    private lazy var termsAndConditionsViewController: WebViewController = {
+        let controller = WebViewController("www.google.com")
+        controller.navbar._title = "Terms & Conditions"
+        return controller
+    }()
+    
+    // MARK: - HomePreferencesViewController
+    private lazy var homePreferencesViewController: SettingsViewController = {
         let subviews: [UIView] = [
             EmptySpaceView(20),
             SettingsCellToggleView(
@@ -233,12 +216,22 @@ class SettingsCoordinator: Coordinator {
                 delegate: self
             )
         ]
-        let settingsController = SettingsViewController(coordinator: self, subviews: subviews)
-        settingsController._title = "Home Preferences"
-        return settingsController
-    }
+        let controller = SettingsViewController(coordinator: self, subviews: subviews)
+        controller._title = "Home Preferences"
+        controller.navbar.leftButton.addTarget(
+            controller,
+            action: #selector(handleGoBack),
+            for: .touchUpInside
+        )
+        return controller
+    }()
     
-    //MARK:- Legal
+    // MARK: - ChangePasswordViewController
+    private lazy var changePasswordViewController: ChangePasswordViewController = {
+        return ChangePasswordViewController()
+    }()
+    
+    //MARK: - LegalSettingsViewController
     /**
      case termsAndConditions
      case privacyPolicy
@@ -250,7 +243,7 @@ class SettingsCoordinator: Coordinator {
      case spendFundsAvailability
      case spendPrivacyPolicy
      */
-    private func createLegalSettingsViewController() -> SettingsViewController {
+    private lazy var legalSettingsViewController: SettingsViewController = {
         let subviews: [UIView] = [
             SettingsCellView(
                 title: "Terms and Conditions",
@@ -298,29 +291,83 @@ class SettingsCoordinator: Coordinator {
                 delegate: self
             )
         ]
-        let settingsController = SettingsViewController(coordinator: self, subviews: subviews)
-        settingsController._title = "Legal"
-        return settingsController
+        let controller = SettingsViewController(coordinator: self, subviews: subviews)
+        controller._title = "Legal"
+        controller.navbar.leftButton.addTarget(
+            controller,
+            action: #selector(handleGoBack),
+            for: .touchUpInside
+        )
+        return controller
+    }()
+    
+    //MARK:- Public Properties
+    internal var navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
+    
+    //MARK:- Start
+    func start() {
+        navigate(to: .root)
+    }
+    
+    //MARK:- Coordinator
+    func navigate(to destination: Destination) {
+        let viewController = makeViewController(for: destination)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    //MARK:- Private
+    private func makeViewController(for destination: Destination) -> UIViewController {
+        switch destination {
+        case .root:
+            return settingsRootViewController
+        case .personalInfo:
+            return personalInfoViewController
+        case .preferences:
+            return homePreferencesViewController
+        case .changePassword:
+            return changePasswordViewController
+        case .legal:
+            return legalSettingsViewController
+        case .termsAndConditions:
+            return termsAndConditionsViewController
+        default:
+            return UIViewController()
+        }
+    }
+    
+    // MARK: - Handlers
+    @objc private func handleGoBack() {
+        navigationController.popViewController(animated: true)
     }
 }
 
-//MARK:- SettingsCellViewDelegate
+//MARK: - SettingsCellViewDelegate
 extension SettingsCoordinator: SettingsCellViewDelegate {
     func settingsCellView(_ settingsCellView: SettingsCellView, didTap tag: Int) {
         switch tag {
         case Destination.root.rawValue:
             navigate(to: .root)
+        case Destination.personalInfo.rawValue:
+            navigate(to: .personalInfo)
         case Destination.preferences.rawValue:
             navigate(to: .preferences)
+        case Destination.changePassword.rawValue:
+            navigate(to: .changePassword)
         case Destination.legal.rawValue:
             navigate(to: .legal)
+        case Destination.termsAndConditions.rawValue:
+            navigate(to: .termsAndConditions)
         default:
             break
         }
     }
 }
 
-//MARK:- SettingsCellToggleViewDelegate
+//MARK: - SettingsCellToggleViewDelegate
 extension SettingsCoordinator: SettingsCellToggleViewDelegate {
     func settingsCellToggleView(_ settingsCellToggleView: SettingsCellToggleView, didToggle isOn: Bool, tag: Int) {
         print("\(tag) isOn: \(isOn)")

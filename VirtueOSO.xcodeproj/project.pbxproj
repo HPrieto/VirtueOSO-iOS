@@ -15,13 +15,25 @@
 		4302616524CC7FA700ECB4F8 /* SettingsCellToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616424CC7FA700ECB4F8 /* SettingsCellToggleView.swift */; };
 		4302616824CC90C500ECB4F8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616724CC90C500ECB4F8 /* Coordinator.swift */; };
 		4302616A24CC9C1D00ECB4F8 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616924CC9C1D00ECB4F8 /* UIImage+Extensions.swift */; };
-		4302616D24CC9F1A00ECB4F8 /* SettingsNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616C24CC9F1A00ECB4F8 /* SettingsNavigationBar.swift */; };
+		4302617024CD172E00ECB4F8 /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616F24CD172E00ECB4F8 /* WebPageViewController.swift */; };
 		43308CFB24BC0C6700DDE2E5 /* SubmitEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308CFA24BC0C6700DDE2E5 /* SubmitEmailViewController.swift */; };
 		43308CFE24BC211500DDE2E5 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308CFD24BC211500DDE2E5 /* SignupViewController.swift */; };
 		43308D0124BC266600DDE2E5 /* EmptySpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308D0024BC266600DDE2E5 /* EmptySpaceView.swift */; };
 		43308D0324BC2A1100DDE2E5 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308D0224BC2A1100DDE2E5 /* UIStackView+Extensions.swift */; };
 		43518B7624C37E3A009AA30D /* LiveStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43518B7524C37E3A009AA30D /* LiveStreamViewController.swift */; };
+		43635CAA24DF08B700759BE2 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43635CA924DF08B700759BE2 /* WebViewController.swift */; };
+		43635CAD24DF0AE500759BE2 /* LoadingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43635CAC24DF0AE500759BE2 /* LoadingBarView.swift */; };
 		4364A4CA24C16EE300AE9881 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364A4C924C16EE300AE9881 /* CheckboxView.swift */; };
+		436ECB7924D705800054BA32 /* ChatRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436ECB7824D705800054BA32 /* ChatRoomTableViewController.swift */; };
+		436ECB7C24D7079E0054BA32 /* ChatInputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436ECB7B24D7079E0054BA32 /* ChatInputBarView.swift */; };
+		4372F02B24CE809200E5FD33 /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372F02A24CE809200E5FD33 /* PersonalInfoViewController.swift */; };
+		4372F02E24CE814500E5FD33 /* SettingsCellTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372F02D24CE814500E5FD33 /* SettingsCellTextFieldView.swift */; };
+		4372F03124CE9EEE00E5FD33 /* SettingsNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372F03024CE9EEE00E5FD33 /* SettingsNavigationBarView.swift */; };
+		4372F03424CFEAE200E5FD33 /* SettingsPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372F03324CFEAE200E5FD33 /* SettingsPickerView.swift */; };
+		4372F03724CFEB0A00E5FD33 /* SettingsViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372F03624CFEB0A00E5FD33 /* SettingsViewDataSource.swift */; };
+		4372F03A24D5D98800E5FD33 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372F03924D5D98800E5FD33 /* RoundButton.swift */; };
+		4372F03D24D5F18E00E5FD33 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372F03C24D5F18E00E5FD33 /* ChangePasswordViewController.swift */; };
+		4372F04024D5F3AE00E5FD33 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372F03F24D5F3AE00E5FD33 /* StackView.swift */; };
 		43BC86ED24B98A70004CBB07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC86EC24B98A70004CBB07 /* AppDelegate.swift */; };
 		43BC86EF24B98A70004CBB07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC86EE24B98A70004CBB07 /* SceneDelegate.swift */; };
 		43BC86F124B98A70004CBB07 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC86F024B98A70004CBB07 /* ViewController.swift */; };
@@ -79,13 +91,25 @@
 		4302616424CC7FA700ECB4F8 /* SettingsCellToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellToggleView.swift; sourceTree = "<group>"; };
 		4302616724CC90C500ECB4F8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4302616924CC9C1D00ECB4F8 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
-		4302616C24CC9F1A00ECB4F8 /* SettingsNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationBar.swift; sourceTree = "<group>"; };
+		4302616F24CD172E00ECB4F8 /* WebPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
 		43308CFA24BC0C6700DDE2E5 /* SubmitEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitEmailViewController.swift; sourceTree = "<group>"; };
 		43308CFD24BC211500DDE2E5 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		43308D0024BC266600DDE2E5 /* EmptySpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpaceView.swift; sourceTree = "<group>"; };
 		43308D0224BC2A1100DDE2E5 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		43518B7524C37E3A009AA30D /* LiveStreamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamViewController.swift; sourceTree = "<group>"; };
+		43635CA924DF08B700759BE2 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		43635CAC24DF0AE500759BE2 /* LoadingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingBarView.swift; sourceTree = "<group>"; };
 		4364A4C924C16EE300AE9881 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
+		436ECB7824D705800054BA32 /* ChatRoomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewController.swift; sourceTree = "<group>"; };
+		436ECB7B24D7079E0054BA32 /* ChatInputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputBarView.swift; sourceTree = "<group>"; };
+		4372F02A24CE809200E5FD33 /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
+		4372F02D24CE814500E5FD33 /* SettingsCellTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellTextFieldView.swift; sourceTree = "<group>"; };
+		4372F03024CE9EEE00E5FD33 /* SettingsNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationBarView.swift; sourceTree = "<group>"; };
+		4372F03324CFEAE200E5FD33 /* SettingsPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPickerView.swift; sourceTree = "<group>"; };
+		4372F03624CFEB0A00E5FD33 /* SettingsViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewDataSource.swift; sourceTree = "<group>"; };
+		4372F03924D5D98800E5FD33 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		4372F03C24D5F18E00E5FD33 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		4372F03F24D5F3AE00E5FD33 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		43BC86E924B98A70004CBB07 /* VirtueOSO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtueOSO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43BC86EC24B98A70004CBB07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43BC86EE24B98A70004CBB07 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,12 +228,12 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		4302616B24CC9F0700ECB4F8 /* SettingsNavigationBar */ = {
+		4302616E24CD171900ECB4F8 /* WebPageViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4302616C24CC9F1A00ECB4F8 /* SettingsNavigationBar.swift */,
+				4302616F24CD172E00ECB4F8 /* WebPageViewController.swift */,
 			);
-			path = SettingsNavigationBar;
+			path = WebPageViewController;
 			sourceTree = "<group>";
 		};
 		43308CF924BC0C5400DDE2E5 /* SubmitEmailViewController */ = {
@@ -244,12 +268,108 @@
 			path = LiveStreamViewController;
 			sourceTree = "<group>";
 		};
+		43635CA824DF08A500759BE2 /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				43635CA924DF08B700759BE2 /* WebViewController.swift */,
+			);
+			path = WebViewController;
+			sourceTree = "<group>";
+		};
+		43635CAB24DF0AD300759BE2 /* LoadingBarView */ = {
+			isa = PBXGroup;
+			children = (
+				43635CAC24DF0AE500759BE2 /* LoadingBarView.swift */,
+			);
+			path = LoadingBarView;
+			sourceTree = "<group>";
+		};
 		4364A4C824C16ECA00AE9881 /* CheckboxTextView */ = {
 			isa = PBXGroup;
 			children = (
 				4364A4C924C16EE300AE9881 /* CheckboxView.swift */,
 			);
 			path = CheckboxTextView;
+			sourceTree = "<group>";
+		};
+		436ECB7724D705680054BA32 /* ChatRoomTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				436ECB7824D705800054BA32 /* ChatRoomTableViewController.swift */,
+			);
+			path = ChatRoomTableViewController;
+			sourceTree = "<group>";
+		};
+		436ECB7A24D707240054BA32 /* ChatInputBarView */ = {
+			isa = PBXGroup;
+			children = (
+				436ECB7B24D7079E0054BA32 /* ChatInputBarView.swift */,
+			);
+			path = ChatInputBarView;
+			sourceTree = "<group>";
+		};
+		4372F02924CE807B00E5FD33 /* PersonalInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4372F02A24CE809200E5FD33 /* PersonalInfoViewController.swift */,
+			);
+			path = PersonalInfoViewController;
+			sourceTree = "<group>";
+		};
+		4372F02C24CE812800E5FD33 /* SettingsCellTextFieldView */ = {
+			isa = PBXGroup;
+			children = (
+				4372F02D24CE814500E5FD33 /* SettingsCellTextFieldView.swift */,
+			);
+			path = SettingsCellTextFieldView;
+			sourceTree = "<group>";
+		};
+		4372F02F24CE9EB800E5FD33 /* SettingsNavigationBarView */ = {
+			isa = PBXGroup;
+			children = (
+				4372F03024CE9EEE00E5FD33 /* SettingsNavigationBarView.swift */,
+			);
+			path = SettingsNavigationBarView;
+			sourceTree = "<group>";
+		};
+		4372F03224CFEAC700E5FD33 /* SettingsPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				4372F03324CFEAE200E5FD33 /* SettingsPickerView.swift */,
+			);
+			path = SettingsPickerView;
+			sourceTree = "<group>";
+		};
+		4372F03524CFEAF500E5FD33 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				4372F03624CFEB0A00E5FD33 /* SettingsViewDataSource.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		4372F03824D5D97900E5FD33 /* RoundButton */ = {
+			isa = PBXGroup;
+			children = (
+				4372F03924D5D98800E5FD33 /* RoundButton.swift */,
+			);
+			path = RoundButton;
+			sourceTree = "<group>";
+		};
+		4372F03B24D5F17100E5FD33 /* ChangePasswordViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4372F03C24D5F18E00E5FD33 /* ChangePasswordViewController.swift */,
+			);
+			path = ChangePasswordViewController;
+			sourceTree = "<group>";
+		};
+		4372F03E24D5F39C00E5FD33 /* StackView */ = {
+			isa = PBXGroup;
+			children = (
+				4372F03F24D5F3AE00E5FD33 /* StackView.swift */,
+			);
+			path = StackView;
 			sourceTree = "<group>";
 		};
 		43BC86E024B98A70004CBB07 = {
@@ -275,6 +395,7 @@
 		43BC86EB24B98A70004CBB07 /* VirtueOSO */ = {
 			isa = PBXGroup;
 			children = (
+				4372F03524CFEAF500E5FD33 /* DataSources */,
 				4302616624CC90B300ECB4F8 /* Protocols */,
 				4302615E24CC76F400ECB4F8 /* Coordinators */,
 				43BC872424B98CF0004CBB07 /* Delegate */,
@@ -323,7 +444,13 @@
 		43BC872024B98B8F004CBB07 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4302616B24CC9F0700ECB4F8 /* SettingsNavigationBar */,
+				43635CAB24DF0AD300759BE2 /* LoadingBarView */,
+				436ECB7A24D707240054BA32 /* ChatInputBarView */,
+				4372F03E24D5F39C00E5FD33 /* StackView */,
+				4372F03824D5D97900E5FD33 /* RoundButton */,
+				4372F03224CFEAC700E5FD33 /* SettingsPickerView */,
+				4372F02F24CE9EB800E5FD33 /* SettingsNavigationBarView */,
+				4372F02C24CE812800E5FD33 /* SettingsCellTextFieldView */,
 				4302616324CC7F7800ECB4F8 /* SettingsCellToggleView */,
 				4302615B24CC621D00ECB4F8 /* SettingsHeaderView */,
 				4302615824CC5D0700ECB4F8 /* SettingsCellView */,
@@ -346,6 +473,11 @@
 		43BC872124B98B95004CBB07 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				43635CA824DF08A500759BE2 /* WebViewController */,
+				436ECB7724D705680054BA32 /* ChatRoomTableViewController */,
+				4372F03B24D5F17100E5FD33 /* ChangePasswordViewController */,
+				4372F02924CE807B00E5FD33 /* PersonalInfoViewController */,
+				4302616E24CD171900ECB4F8 /* WebPageViewController */,
 				4302615224CC28CE00ECB4F8 /* SettingsViewController */,
 				43518B7424C37E21009AA30D /* LiveStreamViewController */,
 				43308CFC24BC210300DDE2E5 /* SignupViewController */,
@@ -625,14 +757,17 @@
 			files = (
 				43BC873524B98FE4004CBB07 /* UIImageView+Extensions.swift in Sources */,
 				43F5D40124BB86E6004AE586 /* TextField.swift in Sources */,
+				4372F03124CE9EEE00E5FD33 /* SettingsNavigationBarView.swift in Sources */,
 				43BC874224BA028B004CBB07 /* Border.swift in Sources */,
 				4364A4CA24C16EE300AE9881 /* CheckboxView.swift in Sources */,
 				43518B7624C37E3A009AA30D /* LiveStreamViewController.swift in Sources */,
 				43BC873724B99002004CBB07 /* UIFont+Extensions.swift in Sources */,
 				43BC86F124B98A70004CBB07 /* ViewController.swift in Sources */,
 				43308CFB24BC0C6700DDE2E5 /* SubmitEmailViewController.swift in Sources */,
+				4302617024CD172E00ECB4F8 /* WebPageViewController.swift in Sources */,
 				43BC873C24BA01C6004CBB07 /* TextFieldView.swift in Sources */,
-				4302616D24CC9F1A00ECB4F8 /* SettingsNavigationBar.swift in Sources */,
+				436ECB7C24D7079E0054BA32 /* ChatInputBarView.swift in Sources */,
+				4372F04024D5F3AE00E5FD33 /* StackView.swift in Sources */,
 				43BC875424BB6669004CBB07 /* BorderedTextField.swift in Sources */,
 				4302615724CC2CB200ECB4F8 /* SettingsTableViewCell.swift in Sources */,
 				43BC872C24B98E32004CBB07 /* UIColor+Extensions.swift in Sources */,
@@ -641,10 +776,13 @@
 				43BC875124BB6592004CBB07 /* LoginViewController.swift in Sources */,
 				4302616824CC90C500ECB4F8 /* Coordinator.swift in Sources */,
 				43BC872A24B98E18004CBB07 /* AuthenticationHomeViewController.swift in Sources */,
+				4372F03724CFEB0A00E5FD33 /* SettingsViewDataSource.swift in Sources */,
 				43BC873324B98FB8004CBB07 /* UIViewController+Extensions.swift in Sources */,
 				4302615A24CC5D2E00ECB4F8 /* SettingsCellView.swift in Sources */,
+				43635CAD24DF0AE500759BE2 /* LoadingBarView.swift in Sources */,
 				43BC874524BA0535004CBB07 /* TextView.swift in Sources */,
 				43BC86F724B98A70004CBB07 /* VirtueOSO.xcdatamodeld in Sources */,
+				4372F02E24CE814500E5FD33 /* SettingsCellTextFieldView.swift in Sources */,
 				43BC874E24BAEF0F004CBB07 /* NotificationViewController.swift in Sources */,
 				43BC872F24B98F29004CBB07 /* NavigationController.swift in Sources */,
 				4302615D24CC622B00ECB4F8 /* SettingsHeaderCellView.swift in Sources */,
@@ -653,11 +791,17 @@
 				43BC873F24BA01FD004CBB07 /* ComponentView.swift in Sources */,
 				43BC873924B9902C004CBB07 /* UITextField+Extensions.swift in Sources */,
 				43F5D40324BB87C9004AE586 /* BorderedTextField+UITextView.swift in Sources */,
+				436ECB7924D705800054BA32 /* ChatRoomTableViewController.swift in Sources */,
 				43308CFE24BC211500DDE2E5 /* SignupViewController.swift in Sources */,
+				4372F02B24CE809200E5FD33 /* PersonalInfoViewController.swift in Sources */,
 				4302616524CC7FA700ECB4F8 /* SettingsCellToggleView.swift in Sources */,
 				43F5D40624BC06C5004AE586 /* AButton.swift in Sources */,
+				4372F03424CFEAE200E5FD33 /* SettingsPickerView.swift in Sources */,
 				43308D0124BC266600DDE2E5 /* EmptySpaceView.swift in Sources */,
+				4372F03A24D5D98800E5FD33 /* RoundButton.swift in Sources */,
 				43308D0324BC2A1100DDE2E5 /* UIStackView+Extensions.swift in Sources */,
+				4372F03D24D5F18E00E5FD33 /* ChangePasswordViewController.swift in Sources */,
+				43635CAA24DF08B700759BE2 /* WebViewController.swift in Sources */,
 				43BC873124B98F87004CBB07 /* UIView+Extensions.swift in Sources */,
 				4302616A24CC9C1D00ECB4F8 /* UIImage+Extensions.swift in Sources */,
 				43BC86EF24B98A70004CBB07 /* SceneDelegate.swift in Sources */,

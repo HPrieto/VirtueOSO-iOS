@@ -30,33 +30,13 @@ class SettingsViewController: UIViewController {
     
     var _title: String? {
         didSet {
-            titleLabel.text = _title
+            navbar._title = _title
         }
     }
     
     //MARK:- Views
-    private lazy var backArrowButton: UIButton = {
-        let view = UIButton()
-        view.setImage(._backArrow, for: .normal)
-        view.tintColor = .black
-        view.backgroundColor = .clear
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(handleGoBack), for: .touchUpInside)
-        return view
-    }()
-    
-    private lazy var titleLabel: UILabel = {
-        let view = UILabel()
-        view.font = UIFont(type: .medium, size: .small)
-        view.textColor = .black
-        view.textAlignment = .center
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private lazy var topBorder: Border = {
-        let view = Border()
-        view.backgroundColor = ._background
+    private(set) lazy var navbar: SettingsNavigationBarView = {
+        let view = SettingsNavigationBarView()
         return view
     }()
     
@@ -111,27 +91,16 @@ class SettingsViewController: UIViewController {
     private func initializeSubviews() {
         view.backgroundColor = .white
         
-        view.addSubview(backArrowButton)
-        view.addSubview(titleLabel)
-        view.addSubview(topBorder)
+        view.addSubview(navbar)
         view.addSubview(scrollView)
         
-        backArrowButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
-        backArrowButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        backArrowButton.rightAnchor.constraint(equalTo: titleLabel.leftAnchor).isActive = true
-        backArrowButton.heightAnchor.constraint(equalTo: backArrowButton.widthAnchor).isActive = true
-        
-        titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: view.safeAreaInsets.top + 60).isActive = true
-        titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -100).isActive = true
-        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-        topBorder.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
-        topBorder.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        topBorder.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        navbar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        navbar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        navbar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
         scrollView.addSubview(vStackView)
         
-        scrollView.topAnchor.constraint(equalTo: topBorder.bottomAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: navbar.bottomAnchor).isActive = true
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
