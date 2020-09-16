@@ -9,8 +9,8 @@
 import UIKit
 
 protocol Coordinator {
-    associatedtype Destination
-    var navigationController: UINavigationController { get set }
+    associatedtype Destination: RawRepresentable
+    var rootViewController: UINavigationController { get }
     func navigate(to destination: Destination)
     func start()
 }

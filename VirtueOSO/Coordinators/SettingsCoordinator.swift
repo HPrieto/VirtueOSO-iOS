@@ -12,6 +12,9 @@ import UIKit
 // MARK: - SettingsCoordinator
 class SettingsCoordinator: Coordinator {
     
+    // MARK: - Public Properties
+    internal var rootViewController: UINavigationController
+    
     // MARK: - Enums
     enum Destination: Int {
         case root
@@ -79,7 +82,7 @@ class SettingsCoordinator: Coordinator {
         return view
     }()
     private lazy var settingsRootViewController: SettingsViewController = {
-        //MARK:- Init Log Out
+        // MARK: - Init Log Out
         logoutButtonView.addSubview(logoutButton)
         logoutButton.topAnchor.constraint(equalTo: logoutButtonView.topAnchor).isActive = true
         logoutButton.leftAnchor.constraint(equalTo: logoutButtonView.leftAnchor, constant: 20).isActive = true
@@ -301,25 +304,24 @@ class SettingsCoordinator: Coordinator {
         return controller
     }()
     
-    //MARK:- Public Properties
-    internal var navigationController: UINavigationController
+    // MARK: - Init
     
     init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+        self.rootViewController = navigationController
     }
     
-    //MARK:- Start
+    // MARK: - Start
     func start() {
         navigate(to: .root)
     }
     
-    //MARK:- Coordinator
+    // MARK: - Coordinator
     func navigate(to destination: Destination) {
         let viewController = makeViewController(for: destination)
-        navigationController.pushViewController(viewController, animated: true)
+        rootViewController.pushViewController(viewController, animated: true)
     }
     
-    //MARK:- Private
+    // MARK: - Private
     private func makeViewController(for destination: Destination) -> UIViewController {
         switch destination {
         case .root:
@@ -341,7 +343,7 @@ class SettingsCoordinator: Coordinator {
     
     // MARK: - Handlers
     @objc private func handleGoBack() {
-        navigationController.popViewController(animated: true)
+        rootViewController.popViewController(animated: true)
     }
 }
 

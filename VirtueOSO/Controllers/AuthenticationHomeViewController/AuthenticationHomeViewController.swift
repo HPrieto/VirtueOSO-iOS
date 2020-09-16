@@ -8,9 +8,16 @@
 
 import UIKit
 
+/**
+ 
+ Root ViewController for user authentication process.
+ 
+ */
+
+// MARK: - AuthenticationHomeViewController
 class AuthenticationHomeViewController: UIViewController {
     
-    //MARK:- Strings
+    // MARK: - Strings
     private enum Strings: String {
         case loginButtonTitle = "Log in"
         case title = "Welcome to Virtuoso"
@@ -23,7 +30,7 @@ class AuthenticationHomeViewController: UIViewController {
         """
     }
     
-    //MARK:- Views
+    // MARK: - Views
     lazy var verticalStackView: UIStackView = {
         let view = UIStackView()
         view.alignment = .fill
@@ -127,7 +134,7 @@ class AuthenticationHomeViewController: UIViewController {
         return view
     }()
     
-    //MARK:- Life Cycle
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeSubviews()
@@ -145,7 +152,7 @@ class AuthenticationHomeViewController: UIViewController {
         }
     }
     
-    //MARK:- Initialize Subview
+    // MARK: - Initialize Subview
     private func initializeSubviews() {
         view.backgroundColor = ._secondary
         navigationItem.rightBarButtonItem = loginBarButton
@@ -179,7 +186,7 @@ class AuthenticationHomeViewController: UIViewController {
         createAccountButton.widthAnchor.constraint(equalTo: verticalButtonStackView.widthAnchor).isActive = true
     }
     
-    //MARK:- Handlers
+    // MARK: - Handlers
     @objc func handleLogin() {
         let controller = LoginViewController()
         navigationController?.pushViewController(controller, animated: true)

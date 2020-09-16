@@ -10,6 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    // MARK: - Subviews
     lazy var emailTextField: BorderedTextField = {
         let view = BorderedTextField()
         view._title = "Email"
@@ -42,18 +43,6 @@ class LoginViewController: UIViewController {
         return view
     }()
     
-    @objc func handleForgotPassword() {
-        let controller = SubmitEmailViewController()
-        controller._message = "Enter the email address associated with your account, and we’ll email you a link to reset your password."
-        controller._title = "Email"
-        controller._submitButtonText = "Send reset link"
-        present(
-            NavigationController(rootViewController: controller),
-            animated: true,
-            completion: nil
-        )
-    }
-    
     lazy var dontHaveAccountTextView: TextView = {
         let view = TextView()
         view.text = "Don't have an account?"
@@ -71,10 +60,24 @@ class LoginViewController: UIViewController {
         return view
     }()
     
+    // MARK: - Handlers
+    @objc func handleForgotPassword() {
+        let controller = SubmitEmailViewController()
+        controller._message = "Enter the email address associated with your account, and we’ll email you a link to reset your password."
+        controller._title = "Email"
+        controller._submitButtonText = "Send reset link"
+        present(
+            NavigationController(rootViewController: controller),
+            animated: true,
+            completion: nil
+        )
+    }
+    
     @objc func handleSignup() {
         navigationController?.popViewController(animated: true)
     }
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeSubviews()
@@ -92,6 +95,7 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // MARK: - Initialize Subviews
     private func initializeSubviews() {
         view.backgroundColor = .white
         

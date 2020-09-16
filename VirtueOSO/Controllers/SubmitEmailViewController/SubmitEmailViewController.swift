@@ -8,8 +8,10 @@
 
 import UIKit
 
+// MARK: - SubmitEmailViewController
 class SubmitEmailViewController: UIViewController {
     
+    // MARK: - Public Properties
     var _message: String = "" {
         didSet {
             messageTextView.text = _message
@@ -34,6 +36,7 @@ class SubmitEmailViewController: UIViewController {
         }
     }
     
+    // MARK: - Subviews
     lazy var messageTextView: TextView = {
         let view = TextView()
         view.font = UIFont(type: .regular, size: .large)
@@ -62,15 +65,18 @@ class SubmitEmailViewController: UIViewController {
         return view
     }()
     
+    // MARK: - Handlers
     @objc func handleClose() {
         dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeSubviews()
     }
     
+    // MARK: - Initialize Subviews
     private func initializeSubviews() {
         view.backgroundColor = .white
         

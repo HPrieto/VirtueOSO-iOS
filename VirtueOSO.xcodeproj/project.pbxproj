@@ -16,6 +16,8 @@
 		4302616824CC90C500ECB4F8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616724CC90C500ECB4F8 /* Coordinator.swift */; };
 		4302616A24CC9C1D00ECB4F8 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616924CC9C1D00ECB4F8 /* UIImage+Extensions.swift */; };
 		4302617024CD172E00ECB4F8 /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616F24CD172E00ECB4F8 /* WebPageViewController.swift */; };
+		430756AC24E96D9900443198 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430756AB24E96D9900443198 /* MainCoordinator.swift */; };
+		432D82F324F1813B007193AD /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D82F224F1813B007193AD /* AuthenticationCoordinator.swift */; };
 		43308CFB24BC0C6700DDE2E5 /* SubmitEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308CFA24BC0C6700DDE2E5 /* SubmitEmailViewController.swift */; };
 		43308CFE24BC211500DDE2E5 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308CFD24BC211500DDE2E5 /* SignupViewController.swift */; };
 		43308D0124BC266600DDE2E5 /* EmptySpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308D0024BC266600DDE2E5 /* EmptySpaceView.swift */; };
@@ -92,6 +94,8 @@
 		4302616724CC90C500ECB4F8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4302616924CC9C1D00ECB4F8 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		4302616F24CD172E00ECB4F8 /* WebPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
+		430756AB24E96D9900443198 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		432D82F224F1813B007193AD /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		43308CFA24BC0C6700DDE2E5 /* SubmitEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitEmailViewController.swift; sourceTree = "<group>"; };
 		43308CFD24BC211500DDE2E5 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		43308D0024BC266600DDE2E5 /* EmptySpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpaceView.swift; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 			isa = PBXGroup;
 			children = (
 				4302615F24CC770B00ECB4F8 /* SettingsCoordinator.swift */,
+				430756AB24E96D9900443198 /* MainCoordinator.swift */,
+				432D82F224F1813B007193AD /* AuthenticationCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -788,6 +794,7 @@
 				4302615D24CC622B00ECB4F8 /* SettingsHeaderCellView.swift in Sources */,
 				43BC874824BA3BD4004CBB07 /* TitleView.swift in Sources */,
 				4302616024CC770B00ECB4F8 /* SettingsCoordinator.swift in Sources */,
+				432D82F324F1813B007193AD /* AuthenticationCoordinator.swift in Sources */,
 				43BC873F24BA01FD004CBB07 /* ComponentView.swift in Sources */,
 				43BC873924B9902C004CBB07 /* UITextField+Extensions.swift in Sources */,
 				43F5D40324BB87C9004AE586 /* BorderedTextField+UITextView.swift in Sources */,
@@ -804,6 +811,7 @@
 				43635CAA24DF08B700759BE2 /* WebViewController.swift in Sources */,
 				43BC873124B98F87004CBB07 /* UIView+Extensions.swift in Sources */,
 				4302616A24CC9C1D00ECB4F8 /* UIImage+Extensions.swift in Sources */,
+				430756AC24E96D9900443198 /* MainCoordinator.swift in Sources */,
 				43BC86EF24B98A70004CBB07 /* SceneDelegate.swift in Sources */,
 				4302616224CC772A00ECB4F8 /* SettingsViewController.swift in Sources */,
 			);
