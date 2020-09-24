@@ -406,7 +406,7 @@
 				4302615E24CC76F400ECB4F8 /* Coordinators */,
 				43BC872424B98CF0004CBB07 /* Delegate */,
 				43BC872324B98CE9004CBB07 /* DataSource */,
-				43BC872224B98B9B004CBB07 /* Helpers */,
+				43BC872224B98B9B004CBB07 /* Extensions */,
 				43BC872124B98B95004CBB07 /* Controllers */,
 				43BC872024B98B8F004CBB07 /* Views */,
 				43BC871F24B98B89004CBB07 /* Models */,
@@ -496,7 +496,7 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		43BC872224B98B9B004CBB07 /* Helpers */ = {
+		43BC872224B98B9B004CBB07 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				43BC872B24B98E32004CBB07 /* UIColor+Extensions.swift */,
@@ -508,7 +508,7 @@
 				43308D0224BC2A1100DDE2E5 /* UIStackView+Extensions.swift */,
 				4302616924CC9C1D00ECB4F8 /* UIImage+Extensions.swift */,
 			);
-			path = Helpers;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		43BC872324B98CE9004CBB07 /* DataSource */ = {

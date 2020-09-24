@@ -25,6 +25,6 @@ class LiveStreamViewController: UIViewController {
     
     //MARK:- Initialize Subviews
     private func initializeSubviews() {
-        view.backgroundColor = .white
+        view.backgroundColor = ._primary
     }
 }

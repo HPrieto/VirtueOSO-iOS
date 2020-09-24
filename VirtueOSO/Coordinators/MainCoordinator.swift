@@ -9,16 +9,25 @@
 import UIKit
 
 // MARK: - MainCoordinator
-class MainCoordinator: Coordinator {
+class MainCoordinator {
+    
+    // MARK: - Private Properties
+    private let window: UIWindow
+    private weak var authenticationCoordinator: AuthenticationCoordinator!
+    private weak var settingsCoordinator: SettingsCoordinator!
+    
+    private lazy var navigationController: UINavigationController = {
+        return UINavigationController()
+    }()
+    
+    private lazy var rootViewController: LiveStreamViewController = {
+        let controller = LiveStreamViewController()
+        return controller
+    }()
     
     // MARK: - Public Properties
-    let window: UIWindow
-    let rootViewController: UINavigationController
-    private var authenticationCoordinator: AuthenticationCoordinator?
-    private var settingsCoordinator: SettingsCoordinator?
     
-    
-    enum Destination: Int {
+    enum Destination {
         case root
         case authentication
         case settings
@@ -27,18 +36,41 @@ class MainCoordinator: Coordinator {
     // MARK: - Init
     init(window: UIWindow) {
         self.window = window
-        rootViewController = UINavigationController()
     }
     
+    
+    // MARK: - Flow
     func navigate(to destination: Destination) {
         switch destination {
+        case .root:
+            navigationController.viewControllers = [rootViewController]
         case .authentication:
-            
+            navigationController.present(
+                authenticationCoordinator.rootViewController,
+                animated: true,
+                completion: nil)
+        case .settings:
+            navigationController.present(
+                settingsCoordinator.rootViewController,
+                animated: true,
+                completion: nil)
         }
     }
     
     func start() {
         window.rootViewController = rootViewController
-        window.makeKeyAndVisible()
+    }
+    
+    func create(viewControllerFor destination: Destination) -> UIViewController {
+        switch destination {
+        case .root:
+            return rootViewController
+        case .authentication:
+            authenticationCoordinator.start()
+            return authenticationCoordinator.rootViewController
+        case .settings:
+            settingsCoordinator.start()
+            return settingsCoordinator.rootViewController
+        }
     }
 }
