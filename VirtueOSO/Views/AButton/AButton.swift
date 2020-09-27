@@ -23,7 +23,7 @@ class AButton: UIButton {
         }
     }
     
-    var _font: UIFont? = UIFont(type: .demiBold, size: .regular) {
+    var _font: UIFont? = UIFont(type: .demiBold, size: .small) {
         didSet {
             titleLabel?.font = _font
         }

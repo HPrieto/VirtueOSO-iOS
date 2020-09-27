@@ -16,7 +16,7 @@ extension UIStackView {
         )
     }
     
-    func addToStack(
+    func addText(
         _ message: String,
         topPadding: CGFloat = TextView()._padding.top,
         rightPadding: CGFloat = TextView()._padding.right,

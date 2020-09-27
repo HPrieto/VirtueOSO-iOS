@@ -133,7 +133,7 @@ class BorderedTextField: ComponentView {
     
     lazy var titleTextView: TextView = {
         let view = TextView()
-        view.font = UIFont(type: .regular, size: .small)
+        view.font = UIFont(type: .regular, size: .micro)
         view.textColor = ._gray
         return view
     }()
@@ -142,7 +142,7 @@ class BorderedTextField: ComponentView {
         let view = TextView()
         view.isEditable = true
         view.isUserInteractionEnabled = true
-        view.font = UIFont(type: .regular, size: .large)
+        view.font = UIFont(type: .regular, size: .small)
         view.textColor = ._black
         view.delegate = self
         return view

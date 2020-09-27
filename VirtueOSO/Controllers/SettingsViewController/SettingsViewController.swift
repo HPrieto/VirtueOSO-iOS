@@ -17,7 +17,7 @@ protocol SettingsViewControllerDelegate {
 class SettingsViewController: UIViewController {
     
     //MARK:- Private Properties
-    private let coordinator: SettingsCoordinator
+    private let coordinator: ProfileCoordinator
     
     //MARK:- Public Properties
     
@@ -37,6 +37,10 @@ class SettingsViewController: UIViewController {
     //MARK:- Views
     private(set) lazy var navbar: SettingsNavigationBarView = {
         let view = SettingsNavigationBarView()
+        view.leftButton.addTarget(
+            self,
+            action: #selector(handleGoBack),
+            for: .touchUpInside)
         return view
     }()
     
@@ -59,8 +63,13 @@ class SettingsViewController: UIViewController {
         return view
     }()
     
-    //MARK:- Init
-    init(coordinator: SettingsCoordinator, subviews: [UIView]) {
+    // MARK: - Handlers
+    @objc private func handleGoBack() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - Init
+    init(coordinator: ProfileCoordinator, subviews: [UIView]) {
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
         self.setSubviews(subviews: subviews)
@@ -109,12 +118,5 @@ class SettingsViewController: UIViewController {
         vStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         vStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         vStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        
-        
-    }
-    
-    //MARK:- Handlers
-    @objc private func handleGoBack() {
-        navigationController?.popViewController(animated: true)
     }
 }

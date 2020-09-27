@@ -11,8 +11,14 @@ import UIKit
 // MARK: - LoginCoordinator
 class AuthenticationCoordinator: Coordinator {
     
+    // MARK: - Private Properties
+    let mainCoordinator: MainCoordinator
+    
     // MARK: - Public Properties
-    var rootViewController: UINavigationController
+    lazy var rootViewController: UINavigationController = {
+        let navController = NavigationController()
+        return navController
+    }()
     
     // MARK: - ViewControllers
     private lazy var homeViewController: AuthenticationHomeViewController = {
@@ -55,8 +61,8 @@ class AuthenticationCoordinator: Coordinator {
     }
     
     // MARK: - Init
-    init(navigationController: UINavigationController) {
-        self.rootViewController = navigationController
+    init(mainCoordinator: MainCoordinator) {
+        self.mainCoordinator = mainCoordinator
     }
     
     func navigate(to destination: Destination) {

@@ -10,6 +10,7 @@ import UIKit
 
 extension UIViewController {
     
+    // MARK: Constants
     enum Margins: CGFloat {
         case formTop = 50
         case top = 100
@@ -19,22 +20,36 @@ extension UIViewController {
         case width = -40
     }
 
+    // MARK: - Public Properties
     public var _darkModeEnabled: Bool {
         return UITraitCollection().userInterfaceStyle == .dark
     }
 
+    // MARK: - Utils
+    public func setTabBarItem(withIcon sfSymbol: UIImage.SFSymbol, selectedIcon: UIImage.SFSymbol, title: String? = nil, weight: UIImage.SymbolWeight = .regular, selectedWeight: UIImage.SymbolWeight = .regular, tag: Int = 0) {
+        guard let image: UIImage = UIImage(sfSymbol: sfSymbol, withWeight: weight),
+              let selectedImage: UIImage = UIImage(sfSymbol: selectedIcon, withWeight: selectedWeight) else { return }
+        let tabBarItem: UITabBarItem = UITabBarItem(
+            title: title,
+            image: image,
+            tag: tag)
+        tabBarItem.selectedImage = selectedImage
+        self.tabBarItem = tabBarItem
+    }
+    
     func presentAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(
+            title: "Error",
+            message: message,
+            preferredStyle: .alert)
         let okAction = UIAlertAction(
             title: "Ok",
             style: .cancel,
-            handler: nil
-        )
+            handler: nil)
         alertController.addAction(okAction)
         present(
             alertController,
             animated: true,
-            completion: nil
-        )
+            completion: nil)
     }
 }

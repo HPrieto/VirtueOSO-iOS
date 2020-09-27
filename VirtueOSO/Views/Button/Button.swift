@@ -16,7 +16,7 @@ class Button: UIButton {
         case paddingTopBottom = 13
     }
     
-    var _font: UIFont? = UIFont(type: .medium, size: .regular) {
+    var _font: UIFont? = UIFont(type: .demiBold, size: .small) {
         didSet {
             titleLabel?.font = _font
         }
@@ -55,7 +55,7 @@ class Button: UIButton {
     private func initialize() {
         translatesAutoresizingMaskIntoConstraints = false
         layer.masksToBounds = true
-        titleLabel?.font = UIFont(type: .demiBold, size: .large)
+        titleLabel?.font = _font
         layer.cornerRadius = _cornerRadius
         contentEdgeInsets = UIEdgeInsets(
             top: DefaultStyle.paddingTopBottom.rawValue,

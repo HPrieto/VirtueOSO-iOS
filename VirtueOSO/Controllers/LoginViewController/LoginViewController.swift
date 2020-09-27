@@ -88,7 +88,7 @@ class LoginViewController: UIViewController {
         
         if let navigationController = navigationController as? NavigationController {
             navigationController._isClear = false
-            navigationController._font = UIFont(type: .medium, size: .large)
+            navigationController._font = UIFont(type: .medium, size: .small)
             navigationController._tintColor = .black
             navigationController._barStyle = .default
             navigationController.navigationBar.backgroundColor = .white

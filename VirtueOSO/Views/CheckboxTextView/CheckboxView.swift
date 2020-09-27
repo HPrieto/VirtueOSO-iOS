@@ -15,8 +15,12 @@ class CheckboxView: ComponentView {
             switch _checked {
             case true:
                 checkboxButton.backgroundColor = _checkboxColor
+                if let checkmarkImage: UIImage = UIImage(sfSymbol: .checkmark, withWeight: .medium) {
+                    checkboxButton.setImage(checkmarkImage, for: .normal)
+                }
             case false:
                 checkboxButton.backgroundColor = .clear
+                checkboxButton.setImage(UIImage(), for: .normal)
             }
         }
     }
@@ -38,7 +42,6 @@ class CheckboxView: ComponentView {
     
     lazy var textView: TextView = {
         let view = TextView()
-        view.font = UIFont(type: .regular, size: .small)
         view.textColor = ._darkGray
         return view
     }()
@@ -50,6 +53,7 @@ class CheckboxView: ComponentView {
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 4
         view.backgroundColor = .clear
+        view.tintColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(
             self,

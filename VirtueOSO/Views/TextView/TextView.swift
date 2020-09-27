@@ -22,7 +22,7 @@ class TextView: UITextView {
         isScrollEnabled = false
         isEditable = false
         isUserInteractionEnabled = false
-        font = UIFont(type: .regular, size: .regular)
+        font = UIFont(type: .regular, size: .small)
         textContainerInset = _padding
         translatesAutoresizingMaskIntoConstraints = false
     }
@@ -32,7 +32,7 @@ class TextView: UITextView {
         initialize()
     }
     
-    init(text: String, textColor: UIColor = .black, font: UIFont? = UIFont(type: .regular, size: .regular)) {
+    init(text: String, textColor: UIColor = .black, font: UIFont? = UIFont(type: .regular, size: .small)) {
         super.init(frame: CGRect.zero, textContainer: nil)
         initialize()
         self.text = text

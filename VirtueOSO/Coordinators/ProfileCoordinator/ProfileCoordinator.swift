@@ -10,14 +10,27 @@ import Foundation
 import UIKit
 
 // MARK: - SettingsCoordinator
-class SettingsCoordinator: Coordinator {
+class ProfileCoordinator: Coordinator {
+    
+    // MARK: - Private Properties
+    let mainCoordinator: MainCoordinator
     
     // MARK: - Public Properties
-    internal var rootViewController: UINavigationController
+    private(set) lazy var rootViewController: UINavigationController = {
+        let controller = UINavigationController()
+        controller.navigationBar.tintColor = ._black
+        controller.navigationBar.backgroundColor = .white
+        controller.navigationBar.isTranslucent = true
+        controller.navigationBar.barTintColor = .white
+        controller.navigationBar.titleTextAttributes = [.foregroundColor: UIColor._black, .font: UIFont(type: .regular, size: .small) as Any]
+        controller.navigationBar.barStyle = .default
+        return controller
+    }()
     
     // MARK: - Enums
     enum Destination: Int {
         case root
+        case settings
         /// Personal Settings
         case personalInfo
         case profile
@@ -68,6 +81,10 @@ class SettingsCoordinator: Coordinator {
         view.backgroundColor = .clear
         view._borderColor = ._gray
         view._textColor = .black
+        view.addTarget(
+            self,
+            action: #selector(handleLogout),
+            for: .touchUpInside)
         return view
     }()
     private lazy var appVersionLabel: UILabel = {
@@ -81,6 +98,14 @@ class SettingsCoordinator: Coordinator {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    // MARK: - Controllers
+    
+    private lazy var profileViewController: ProfileViewController = {
+        let controller = ProfileViewController(coordinator: self)
+        return controller
+    }()
+    
     private lazy var settingsRootViewController: SettingsViewController = {
         // MARK: - Init Log Out
         logoutButtonView.addSubview(logoutButton)
@@ -306,8 +331,8 @@ class SettingsCoordinator: Coordinator {
     
     // MARK: - Init
     
-    init(navigationController: UINavigationController) {
-        self.rootViewController = navigationController
+    init(mainCoordinator: MainCoordinator) {
+        self.mainCoordinator = mainCoordinator
     }
     
     // MARK: - Start
@@ -325,6 +350,8 @@ class SettingsCoordinator: Coordinator {
     private func makeViewController(for destination: Destination) -> UIViewController {
         switch destination {
         case .root:
+            return profileViewController
+        case .settings:
             return settingsRootViewController
         case .personalInfo:
             return personalInfoViewController
@@ -348,11 +375,11 @@ class SettingsCoordinator: Coordinator {
 }
 
 //MARK: - SettingsCellViewDelegate
-extension SettingsCoordinator: SettingsCellViewDelegate {
+extension ProfileCoordinator: SettingsCellViewDelegate {
     func settingsCellView(_ settingsCellView: SettingsCellView, didTap tag: Int) {
         switch tag {
-        case Destination.root.rawValue:
-            navigate(to: .root)
+        case Destination.settings.rawValue:
+            navigate(to: .settings)
         case Destination.personalInfo.rawValue:
             navigate(to: .personalInfo)
         case Destination.preferences.rawValue:
@@ -370,7 +397,7 @@ extension SettingsCoordinator: SettingsCellViewDelegate {
 }
 
 //MARK: - SettingsCellToggleViewDelegate
-extension SettingsCoordinator: SettingsCellToggleViewDelegate {
+extension ProfileCoordinator: SettingsCellToggleViewDelegate {
     func settingsCellToggleView(_ settingsCellToggleView: SettingsCellToggleView, didToggle isOn: Bool, tag: Int) {
         print("\(tag) isOn: \(isOn)")
     }

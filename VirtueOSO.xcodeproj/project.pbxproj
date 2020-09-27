@@ -10,7 +10,7 @@
 		4302615724CC2CB200ECB4F8 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302615624CC2CB200ECB4F8 /* SettingsTableViewCell.swift */; };
 		4302615A24CC5D2E00ECB4F8 /* SettingsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302615924CC5D2E00ECB4F8 /* SettingsCellView.swift */; };
 		4302615D24CC622B00ECB4F8 /* SettingsHeaderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302615C24CC622B00ECB4F8 /* SettingsHeaderCellView.swift */; };
-		4302616024CC770B00ECB4F8 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302615F24CC770B00ECB4F8 /* SettingsCoordinator.swift */; };
+		4302616024CC770B00ECB4F8 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302615F24CC770B00ECB4F8 /* ProfileCoordinator.swift */; };
 		4302616224CC772A00ECB4F8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616124CC772A00ECB4F8 /* SettingsViewController.swift */; };
 		4302616524CC7FA700ECB4F8 /* SettingsCellToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616424CC7FA700ECB4F8 /* SettingsCellToggleView.swift */; };
 		4302616824CC90C500ECB4F8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616724CC90C500ECB4F8 /* Coordinator.swift */; };
@@ -62,6 +62,10 @@
 		43BC874E24BAEF0F004CBB07 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC874D24BAEF0F004CBB07 /* NotificationViewController.swift */; };
 		43BC875124BB6592004CBB07 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC875024BB6592004CBB07 /* LoginViewController.swift */; };
 		43BC875424BB6669004CBB07 /* BorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC875324BB6669004CBB07 /* BorderedTextField.swift */; };
+		43D648CB251C3BFD009A007B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D648CA251C3BFD009A007B /* MainTabBarController.swift */; };
+		43F1D8D3251FE3CB00AC6FA9 /* MainTabBarControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D8D2251FE3CB00AC6FA9 /* MainTabBarControllerDelegate.swift */; };
+		43F1D8D8251FE9B300AC6FA9 /* ProfileCoordinator+Handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D8D7251FE9B300AC6FA9 /* ProfileCoordinator+Handlers.swift */; };
+		43F1D8F12520D65300AC6FA9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D8F02520D65300AC6FA9 /* ProfileViewController.swift */; };
 		43F5D40124BB86E6004AE586 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F5D40024BB86E6004AE586 /* TextField.swift */; };
 		43F5D40324BB87C9004AE586 /* BorderedTextField+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F5D40224BB87C9004AE586 /* BorderedTextField+UITextView.swift */; };
 		43F5D40624BC06C5004AE586 /* AButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F5D40524BC06C5004AE586 /* AButton.swift */; };
@@ -88,7 +92,7 @@
 		4302615624CC2CB200ECB4F8 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		4302615924CC5D2E00ECB4F8 /* SettingsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellView.swift; sourceTree = "<group>"; };
 		4302615C24CC622B00ECB4F8 /* SettingsHeaderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderCellView.swift; sourceTree = "<group>"; };
-		4302615F24CC770B00ECB4F8 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		4302615F24CC770B00ECB4F8 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		4302616124CC772A00ECB4F8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4302616424CC7FA700ECB4F8 /* SettingsCellToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellToggleView.swift; sourceTree = "<group>"; };
 		4302616724CC90C500ECB4F8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -146,6 +150,10 @@
 		43BC874D24BAEF0F004CBB07 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		43BC875024BB6592004CBB07 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		43BC875324BB6669004CBB07 /* BorderedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextField.swift; sourceTree = "<group>"; };
+		43D648CA251C3BFD009A007B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		43F1D8D2251FE3CB00AC6FA9 /* MainTabBarControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerDelegate.swift; sourceTree = "<group>"; };
+		43F1D8D7251FE9B300AC6FA9 /* ProfileCoordinator+Handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+Handlers.swift"; sourceTree = "<group>"; };
+		43F1D8F02520D65300AC6FA9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		43F5D40024BB86E6004AE586 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		43F5D40224BB87C9004AE586 /* BorderedTextField+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BorderedTextField+UITextView.swift"; sourceTree = "<group>"; };
 		43F5D40524BC06C5004AE586 /* AButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AButton.swift; sourceTree = "<group>"; };
@@ -211,9 +219,9 @@
 		4302615E24CC76F400ECB4F8 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				4302615F24CC770B00ECB4F8 /* SettingsCoordinator.swift */,
-				430756AB24E96D9900443198 /* MainCoordinator.swift */,
-				432D82F224F1813B007193AD /* AuthenticationCoordinator.swift */,
+				43B2E393251FE06B0067CA5A /* ProfileCoordinator */,
+				43B2E392251FE05C0067CA5A /* AuthenticationCoordinator */,
+				437E3C2F251FAB480030C23B /* MainCoordinator */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -378,6 +386,31 @@
 			path = StackView;
 			sourceTree = "<group>";
 		};
+		437E3C2F251FAB480030C23B /* MainCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				430756AB24E96D9900443198 /* MainCoordinator.swift */,
+			);
+			path = MainCoordinator;
+			sourceTree = "<group>";
+		};
+		43B2E392251FE05C0067CA5A /* AuthenticationCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				432D82F224F1813B007193AD /* AuthenticationCoordinator.swift */,
+			);
+			path = AuthenticationCoordinator;
+			sourceTree = "<group>";
+		};
+		43B2E393251FE06B0067CA5A /* ProfileCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				4302615F24CC770B00ECB4F8 /* ProfileCoordinator.swift */,
+				43F1D8D7251FE9B300AC6FA9 /* ProfileCoordinator+Handlers.swift */,
+			);
+			path = ProfileCoordinator;
+			sourceTree = "<group>";
+		};
 		43BC86E024B98A70004CBB07 = {
 			isa = PBXGroup;
 			children = (
@@ -479,6 +512,9 @@
 		43BC872124B98B95004CBB07 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				43F1D8EF2520D64200AC6FA9 /* ProfileViewController */,
+				43F1D8EE2520D61700AC6FA9 /* Authentication */,
+				43D648C9251C3BAB009A007B /* MainTabBarController */,
 				43635CA824DF08A500759BE2 /* WebViewController */,
 				436ECB7724D705680054BA32 /* ChatRoomTableViewController */,
 				4372F03B24D5F17100E5FD33 /* ChangePasswordViewController */,
@@ -521,6 +557,7 @@
 		43BC872424B98CF0004CBB07 /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
+				43F1D8D2251FE3CB00AC6FA9 /* MainTabBarControllerDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -612,6 +649,29 @@
 				43F5D40224BB87C9004AE586 /* BorderedTextField+UITextView.swift */,
 			);
 			path = BorderedTextField;
+			sourceTree = "<group>";
+		};
+		43D648C9251C3BAB009A007B /* MainTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				43D648CA251C3BFD009A007B /* MainTabBarController.swift */,
+			);
+			path = MainTabBarController;
+			sourceTree = "<group>";
+		};
+		43F1D8EE2520D61700AC6FA9 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		43F1D8EF2520D64200AC6FA9 /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				43F1D8F02520D65300AC6FA9 /* ProfileViewController.swift */,
+			);
+			path = ProfileViewController;
 			sourceTree = "<group>";
 		};
 		43F5D3FF24BB86D8004AE586 /* TextField */ = {
@@ -770,7 +830,9 @@
 				43BC873724B99002004CBB07 /* UIFont+Extensions.swift in Sources */,
 				43BC86F124B98A70004CBB07 /* ViewController.swift in Sources */,
 				43308CFB24BC0C6700DDE2E5 /* SubmitEmailViewController.swift in Sources */,
+				43F1D8F12520D65300AC6FA9 /* ProfileViewController.swift in Sources */,
 				4302617024CD172E00ECB4F8 /* WebPageViewController.swift in Sources */,
+				43F1D8D8251FE9B300AC6FA9 /* ProfileCoordinator+Handlers.swift in Sources */,
 				43BC873C24BA01C6004CBB07 /* TextFieldView.swift in Sources */,
 				436ECB7C24D7079E0054BA32 /* ChatInputBarView.swift in Sources */,
 				4372F04024D5F3AE00E5FD33 /* StackView.swift in Sources */,
@@ -778,6 +840,7 @@
 				4302615724CC2CB200ECB4F8 /* SettingsTableViewCell.swift in Sources */,
 				43BC872C24B98E32004CBB07 /* UIColor+Extensions.swift in Sources */,
 				43BC86ED24B98A70004CBB07 /* AppDelegate.swift in Sources */,
+				43D648CB251C3BFD009A007B /* MainTabBarController.swift in Sources */,
 				43BC874B24BA9CCA004CBB07 /* Button.swift in Sources */,
 				43BC875124BB6592004CBB07 /* LoginViewController.swift in Sources */,
 				4302616824CC90C500ECB4F8 /* Coordinator.swift in Sources */,
@@ -793,7 +856,8 @@
 				43BC872F24B98F29004CBB07 /* NavigationController.swift in Sources */,
 				4302615D24CC622B00ECB4F8 /* SettingsHeaderCellView.swift in Sources */,
 				43BC874824BA3BD4004CBB07 /* TitleView.swift in Sources */,
-				4302616024CC770B00ECB4F8 /* SettingsCoordinator.swift in Sources */,
+				43F1D8D3251FE3CB00AC6FA9 /* MainTabBarControllerDelegate.swift in Sources */,
+				4302616024CC770B00ECB4F8 /* ProfileCoordinator.swift in Sources */,
 				432D82F324F1813B007193AD /* AuthenticationCoordinator.swift in Sources */,
 				43BC873F24BA01FD004CBB07 /* ComponentView.swift in Sources */,
 				43BC873924B9902C004CBB07 /* UITextField+Extensions.swift in Sources */,

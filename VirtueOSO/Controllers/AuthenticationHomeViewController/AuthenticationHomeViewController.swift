@@ -21,8 +21,8 @@ class AuthenticationHomeViewController: UIViewController {
     private enum Strings: String {
         case loginButtonTitle = "Log in"
         case title = "Welcome to Virtuoso"
-        case googleButtonTitle = "Continue width Google"
-        case facebookButtonTitle = "Continue width Facebook"
+        case googleButtonTitle = "Continue with Google"
+        case facebookButtonTitle = "Continue with Facebook"
         case createAccountButtonTitle = "Create an Account"
         case moreOptionsButtonTitle = "More options"
         case disclaimer = """
@@ -78,9 +78,9 @@ class AuthenticationHomeViewController: UIViewController {
     lazy var googleButton: Button = {
         let view = Button(Strings.googleButtonTitle.rawValue)
         view.backgroundColor = .white
-        view._font = UIFont(type: .medium, size: .large)
+        view._font = UIFont(type: .medium, size: .small)
         view._textColor = ._secondary
-        view._cornerRadius = 25
+        view._cornerRadius = 22.5
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -88,9 +88,9 @@ class AuthenticationHomeViewController: UIViewController {
     lazy var facebookButton: Button = {
         let view = Button(Strings.facebookButtonTitle.rawValue)
         view.backgroundColor = .white
-        view._font = UIFont(type: .medium, size: .large)
+        view._font = UIFont(type: .medium, size: .small)
         view._textColor = ._secondary
-        view._cornerRadius = 25
+        view._cornerRadius = 22.5
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -98,12 +98,12 @@ class AuthenticationHomeViewController: UIViewController {
     lazy var createAccountButton: Button = {
         let view = Button(Strings.createAccountButtonTitle.rawValue)
         view.backgroundColor = .white
-        view._font = UIFont(type: .medium, size: .large)
+        view._font = UIFont(type: .medium, size: .small)
         view._textColor = .white
         view.backgroundColor = ._secondary
         view._borderColor = .white
         view._borderWidth = 1
-        view._cornerRadius = 25
+        view._cornerRadius = 22.5
         view.addTarget(self, action: #selector(handleCreateAccount), for: .touchUpInside)
         return view
     }()
@@ -112,14 +112,14 @@ class AuthenticationHomeViewController: UIViewController {
         let view = AButton(Strings.moreOptionsButtonTitle.rawValue)
         view._textColor = .white
         view.backgroundColor = .clear
-        view._font = UIFont(type: .demiBold, size: .regular)
+        view._font = UIFont(type: .demiBold, size: .small)
         return view
     }()
     
     lazy var disclaimerTextView: TextView = {
         let view = TextView()
         view.textColor = .white
-        view.font = UIFont(type: .medium, size: .regular)
+        view.font = UIFont(type: .medium, size: .small)
         view.text = Strings.disclaimer.rawValue
         return view
     }()
