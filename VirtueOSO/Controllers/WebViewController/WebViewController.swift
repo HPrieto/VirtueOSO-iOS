@@ -27,10 +27,9 @@ class WebViewController: UIViewController {
     }
     
     // MARK: - Subviews
-    private(set) lazy var navbar: SettingsNavigationBarView = {
-        let view = SettingsNavigationBarView()
-        view.leftButton.addTarget(self, action: #selector(handleGoBack), for: .touchUpInside)
-        return view
+    
+    private(set) lazy var leftBarButtonItem: UIBarButtonItem? = {
+        return UIBarButtonItem(sfSymbol: .arrowLeft, style: .plain, target: self, action: #selector(handleGoBack))
     }()
     
     private lazy var loadingBarView: LoadingBarView = {
@@ -89,19 +88,16 @@ class WebViewController: UIViewController {
     private func initializeSubviews() {
         view.backgroundColor = .white
         
-        view.addSubview(navbar)
+        navigationItem.leftBarButtonItem = leftBarButtonItem
+        
         view.addSubview(loadingBarView)
         view.addSubview(webView)
         
-        navbar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        navbar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        navbar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
-        loadingBarView.bottomAnchor.constraint(equalTo: navbar.bottomAnchor).isActive = true
-        loadingBarView.widthAnchor.constraint(equalTo: navbar.widthAnchor).isActive = true
+        loadingBarView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        loadingBarView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         loadingBarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        webView.topAnchor.constraint(equalTo: navbar.bottomAnchor).isActive = true
+        webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         webView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         webView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true

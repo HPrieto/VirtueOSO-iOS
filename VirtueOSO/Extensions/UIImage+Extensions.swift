@@ -72,6 +72,7 @@ extension UIImage {
         // MARK: H
         case heart = "heart"
         case heartFill = "heart.fill"
+        case house = "house"
         case houseFill = "house.fill"
         
         // MARK: I

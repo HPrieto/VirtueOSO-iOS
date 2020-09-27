@@ -31,14 +31,8 @@ class ChangePasswordViewController: UIViewController {
     public var nextButtonBottomConstraint: NSLayoutConstraint?
     
     // MARK: - Subviews
-    private lazy var navbar: SettingsNavigationBarView = {
-        let view = SettingsNavigationBarView()
-        view.leftButton.addTarget(
-            self,
-            action: #selector(handleBack),
-            for: .touchUpInside
-        )
-        return view
+    private(set) lazy var leftBarButtonItem: UIBarButtonItem? = {
+        return UIBarButtonItem(sfSymbol: .arrowLeft, style: .plain, target: self, action: #selector(handleGoBack))
     }()
     
     private lazy var vStackView: StackView = {
@@ -98,7 +92,7 @@ class ChangePasswordViewController: UIViewController {
     }
     
     // MARK: - Utils
-    @objc private func handleBack() {
+    @objc private func handleGoBack() {
         navigationController?.popViewController(animated: true)
     }
     
@@ -106,6 +100,15 @@ class ChangePasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeSubviews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        currentPasswordTextField.becomeFirstResponder()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         NotificationCenter.default.addObserver(
             self,
@@ -122,30 +125,19 @@ class ChangePasswordViewController: UIViewController {
         )
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        currentPasswordTextField.becomeFirstResponder()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     // MARK: - Initialize Subviews
     private func initializeSubviews() {
         view.backgroundColor = .white
         
-        view.addSubview(navbar)
+        navigationItem.title = "Change Password"
+        navigationItem.leftBarButtonItem = leftBarButtonItem
+        
         view.addSubview(vStackView)
         view.addSubview(nextButton)
         
-        navbar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        navbar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        navbar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
         vStackView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         vStackView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        vStackView.topAnchor.constraint(equalTo: navbar.bottomAnchor).isActive = true
+        vStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         vStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         vStackView.addArrangedSubviews([

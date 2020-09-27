@@ -15,7 +15,6 @@
 		4302616524CC7FA700ECB4F8 /* SettingsCellToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616424CC7FA700ECB4F8 /* SettingsCellToggleView.swift */; };
 		4302616824CC90C500ECB4F8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616724CC90C500ECB4F8 /* Coordinator.swift */; };
 		4302616A24CC9C1D00ECB4F8 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616924CC9C1D00ECB4F8 /* UIImage+Extensions.swift */; };
-		4302617024CD172E00ECB4F8 /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302616F24CD172E00ECB4F8 /* WebPageViewController.swift */; };
 		430756AC24E96D9900443198 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430756AB24E96D9900443198 /* MainCoordinator.swift */; };
 		432D82F324F1813B007193AD /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D82F224F1813B007193AD /* AuthenticationCoordinator.swift */; };
 		43308CFB24BC0C6700DDE2E5 /* SubmitEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308CFA24BC0C6700DDE2E5 /* SubmitEmailViewController.swift */; };
@@ -66,6 +65,9 @@
 		43F1D8D3251FE3CB00AC6FA9 /* MainTabBarControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D8D2251FE3CB00AC6FA9 /* MainTabBarControllerDelegate.swift */; };
 		43F1D8D8251FE9B300AC6FA9 /* ProfileCoordinator+Handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D8D7251FE9B300AC6FA9 /* ProfileCoordinator+Handlers.swift */; };
 		43F1D8F12520D65300AC6FA9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D8F02520D65300AC6FA9 /* ProfileViewController.swift */; };
+		43F1D8F62520F8AF00AC6FA9 /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D8F52520F8AF00AC6FA9 /* UIBarButtonItem+Extensions.swift */; };
+		43F1D9022520FE7000AC6FA9 /* DiscoverCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D9012520FE7000AC6FA9 /* DiscoverCoordinator.swift */; };
+		43F1D9082521017600AC6FA9 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D9072521017600AC6FA9 /* DiscoverViewController.swift */; };
 		43F5D40124BB86E6004AE586 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F5D40024BB86E6004AE586 /* TextField.swift */; };
 		43F5D40324BB87C9004AE586 /* BorderedTextField+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F5D40224BB87C9004AE586 /* BorderedTextField+UITextView.swift */; };
 		43F5D40624BC06C5004AE586 /* AButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F5D40524BC06C5004AE586 /* AButton.swift */; };
@@ -97,7 +99,6 @@
 		4302616424CC7FA700ECB4F8 /* SettingsCellToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellToggleView.swift; sourceTree = "<group>"; };
 		4302616724CC90C500ECB4F8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4302616924CC9C1D00ECB4F8 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
-		4302616F24CD172E00ECB4F8 /* WebPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
 		430756AB24E96D9900443198 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		432D82F224F1813B007193AD /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		43308CFA24BC0C6700DDE2E5 /* SubmitEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitEmailViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +155,9 @@
 		43F1D8D2251FE3CB00AC6FA9 /* MainTabBarControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerDelegate.swift; sourceTree = "<group>"; };
 		43F1D8D7251FE9B300AC6FA9 /* ProfileCoordinator+Handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+Handlers.swift"; sourceTree = "<group>"; };
 		43F1D8F02520D65300AC6FA9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		43F1D8F52520F8AF00AC6FA9 /* UIBarButtonItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extensions.swift"; sourceTree = "<group>"; };
+		43F1D9012520FE7000AC6FA9 /* DiscoverCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCoordinator.swift; sourceTree = "<group>"; };
+		43F1D9072521017600AC6FA9 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		43F5D40024BB86E6004AE586 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		43F5D40224BB87C9004AE586 /* BorderedTextField+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BorderedTextField+UITextView.swift"; sourceTree = "<group>"; };
 		43F5D40524BC06C5004AE586 /* AButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AButton.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 		4302615E24CC76F400ECB4F8 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				43F1D9002520FE4800AC6FA9 /* DiscoverCoordinator */,
 				43B2E393251FE06B0067CA5A /* ProfileCoordinator */,
 				43B2E392251FE05C0067CA5A /* AuthenticationCoordinator */,
 				437E3C2F251FAB480030C23B /* MainCoordinator */,
@@ -240,14 +245,6 @@
 				4302616724CC90C500ECB4F8 /* Coordinator.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		4302616E24CD171900ECB4F8 /* WebPageViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4302616F24CD172E00ECB4F8 /* WebPageViewController.swift */,
-			);
-			path = WebPageViewController;
 			sourceTree = "<group>";
 		};
 		43308CF924BC0C5400DDE2E5 /* SubmitEmailViewController */ = {
@@ -512,6 +509,8 @@
 		43BC872124B98B95004CBB07 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				43F1D9062521016400AC6FA9 /* DiscoverViewController */,
+				43BC874F24BB6583004CBB07 /* LoginViewController */,
 				43F1D8EF2520D64200AC6FA9 /* ProfileViewController */,
 				43F1D8EE2520D61700AC6FA9 /* Authentication */,
 				43D648C9251C3BAB009A007B /* MainTabBarController */,
@@ -519,12 +518,10 @@
 				436ECB7724D705680054BA32 /* ChatRoomTableViewController */,
 				4372F03B24D5F17100E5FD33 /* ChangePasswordViewController */,
 				4372F02924CE807B00E5FD33 /* PersonalInfoViewController */,
-				4302616E24CD171900ECB4F8 /* WebPageViewController */,
 				4302615224CC28CE00ECB4F8 /* SettingsViewController */,
 				43518B7424C37E21009AA30D /* LiveStreamViewController */,
 				43308CFC24BC210300DDE2E5 /* SignupViewController */,
 				43308CF924BC0C5400DDE2E5 /* SubmitEmailViewController */,
-				43BC874F24BB6583004CBB07 /* LoginViewController */,
 				43BC874C24BAEEF8004CBB07 /* NotificationViewController */,
 				43BC872D24B98F1A004CBB07 /* NavigationController */,
 				43BC872824B98E02004CBB07 /* AuthenticationHomeViewController */,
@@ -543,6 +540,7 @@
 				43BC873824B9902C004CBB07 /* UITextField+Extensions.swift */,
 				43308D0224BC2A1100DDE2E5 /* UIStackView+Extensions.swift */,
 				4302616924CC9C1D00ECB4F8 /* UIImage+Extensions.swift */,
+				43F1D8F52520F8AF00AC6FA9 /* UIBarButtonItem+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -672,6 +670,22 @@
 				43F1D8F02520D65300AC6FA9 /* ProfileViewController.swift */,
 			);
 			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
+		43F1D9002520FE4800AC6FA9 /* DiscoverCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				43F1D9012520FE7000AC6FA9 /* DiscoverCoordinator.swift */,
+			);
+			path = DiscoverCoordinator;
+			sourceTree = "<group>";
+		};
+		43F1D9062521016400AC6FA9 /* DiscoverViewController */ = {
+			isa = PBXGroup;
+			children = (
+				43F1D9072521017600AC6FA9 /* DiscoverViewController.swift */,
+			);
+			path = DiscoverViewController;
 			sourceTree = "<group>";
 		};
 		43F5D3FF24BB86D8004AE586 /* TextField */ = {
@@ -828,10 +842,10 @@
 				4364A4CA24C16EE300AE9881 /* CheckboxView.swift in Sources */,
 				43518B7624C37E3A009AA30D /* LiveStreamViewController.swift in Sources */,
 				43BC873724B99002004CBB07 /* UIFont+Extensions.swift in Sources */,
+				43F1D9082521017600AC6FA9 /* DiscoverViewController.swift in Sources */,
 				43BC86F124B98A70004CBB07 /* ViewController.swift in Sources */,
 				43308CFB24BC0C6700DDE2E5 /* SubmitEmailViewController.swift in Sources */,
 				43F1D8F12520D65300AC6FA9 /* ProfileViewController.swift in Sources */,
-				4302617024CD172E00ECB4F8 /* WebPageViewController.swift in Sources */,
 				43F1D8D8251FE9B300AC6FA9 /* ProfileCoordinator+Handlers.swift in Sources */,
 				43BC873C24BA01C6004CBB07 /* TextFieldView.swift in Sources */,
 				436ECB7C24D7079E0054BA32 /* ChatInputBarView.swift in Sources */,
@@ -843,6 +857,7 @@
 				43D648CB251C3BFD009A007B /* MainTabBarController.swift in Sources */,
 				43BC874B24BA9CCA004CBB07 /* Button.swift in Sources */,
 				43BC875124BB6592004CBB07 /* LoginViewController.swift in Sources */,
+				43F1D8F62520F8AF00AC6FA9 /* UIBarButtonItem+Extensions.swift in Sources */,
 				4302616824CC90C500ECB4F8 /* Coordinator.swift in Sources */,
 				43BC872A24B98E18004CBB07 /* AuthenticationHomeViewController.swift in Sources */,
 				4372F03724CFEB0A00E5FD33 /* SettingsViewDataSource.swift in Sources */,
@@ -876,6 +891,7 @@
 				43BC873124B98F87004CBB07 /* UIView+Extensions.swift in Sources */,
 				4302616A24CC9C1D00ECB4F8 /* UIImage+Extensions.swift in Sources */,
 				430756AC24E96D9900443198 /* MainCoordinator.swift in Sources */,
+				43F1D9022520FE7000AC6FA9 /* DiscoverCoordinator.swift in Sources */,
 				43BC86EF24B98A70004CBB07 /* SceneDelegate.swift in Sources */,
 				4302616224CC772A00ECB4F8 /* SettingsViewController.swift in Sources */,
 			);

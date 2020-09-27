@@ -28,12 +28,21 @@ class MainCoordinator {
         return coordinator
     }()
     
+    private lazy var discoverCoordinator: DiscoverCoordinator = {
+        let coordinator = DiscoverCoordinator(mainCoordinator: self)
+        coordinator.rootViewController.setTabBarItem(
+            withIcon: .magnifyingGlass,
+            selectedIcon: .magnifyingGlass,
+            weight: .light,
+            selectedWeight: .bold)
+        return coordinator
+    }()
+    
     // MARK: - Public Properties
     
     enum Destination {
         case root
         case authentication
-        case settings
     }
     
     // MARK: - Controllers
@@ -46,7 +55,7 @@ class MainCoordinator {
     private lazy var controller1: UIViewController = {
         let controller = UIViewController()
         controller.view.backgroundColor = .black
-        controller.setTabBarItem(withIcon: .houseFill, selectedIcon: .houseFill, weight: .light, selectedWeight: .bold, tag: 1)
+        controller.setTabBarItem(withIcon: .house, selectedIcon: .houseFill, weight: .light, selectedWeight: .light, tag: 1)
         return controller
     }()
     
@@ -85,7 +94,7 @@ class MainCoordinator {
         case .root:
             rootViewController.viewControllers = [
                 controller1,
-                controller2,
+                discoverCoordinator.rootViewController,
                 controller3,
                 controller4,
                 settingsCoordinator.rootViewController
@@ -94,11 +103,6 @@ class MainCoordinator {
             authenticationCoordinator.rootViewController.modalPresentationStyle = .fullScreen
             rootViewController.present(
                 authenticationCoordinator.rootViewController,
-                animated: true,
-                completion: nil)
-        case .settings:
-            rootViewController.present(
-                settingsCoordinator.rootViewController,
                 animated: true,
                 completion: nil)
         }
@@ -111,6 +115,7 @@ class MainCoordinator {
         
         authenticationCoordinator.start()
         settingsCoordinator.start()
+        discoverCoordinator.start()
     }
     
     // MARK: - Private Methods
@@ -119,7 +124,7 @@ class MainCoordinator {
         case .root:
             rootViewController.viewControllers = [
                 controller1,
-                controller2,
+                discoverCoordinator.rootViewController,
                 controller3,
                 controller4,
                 settingsCoordinator.rootViewController
@@ -128,9 +133,6 @@ class MainCoordinator {
         case .authentication:
             authenticationCoordinator.start()
             return authenticationCoordinator.rootViewController
-        case .settings:
-            settingsCoordinator.start()
-            return settingsCoordinator.rootViewController
         }
     }
 }

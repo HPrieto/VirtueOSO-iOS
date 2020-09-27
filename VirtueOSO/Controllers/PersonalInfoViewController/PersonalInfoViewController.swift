@@ -71,7 +71,7 @@ class PersonalInfoViewController: UIViewController {
     ]
     var _title: String? {
         didSet {
-            navbar._title = _title
+            navigationItem.title = _title
         }
     }
     
@@ -79,11 +79,9 @@ class PersonalInfoViewController: UIViewController {
     private var updateButtonBottomLayoutConstraint: NSLayoutConstraint?
     
     // MARK: - Views
-    private lazy var navbar: SettingsNavigationBarView = {
-        let view = SettingsNavigationBarView()
-        view._title = "Personal Info"
-        view.leftButton.addTarget(self, action: #selector(handleGoBack), for: .touchUpInside)
-        return view
+    
+    private(set) lazy var leftBarButtonItem: UIBarButtonItem? = {
+        return UIBarButtonItem(sfSymbol: .arrowLeft, style: .plain, target: self, action: #selector(handleGoBack))
     }()
     
     private lazy var scrollView: UIScrollView = {
@@ -224,6 +222,14 @@ class PersonalInfoViewController: UIViewController {
         super.viewDidLoad()
         initializeSubviews()
         initializeTextFields()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        firstNameTextField.becomeFirstResponder()
         
         NotificationCenter.default.addObserver(
             self,
@@ -238,15 +244,6 @@ class PersonalInfoViewController: UIViewController {
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        firstNameTextField.becomeFirstResponder()
     }
     
     deinit {
@@ -257,17 +254,14 @@ class PersonalInfoViewController: UIViewController {
     private func initializeSubviews() {
         view.backgroundColor = .white
         
-        view.addSubview(navbar)
+        navigationItem.leftBarButtonItem = leftBarButtonItem
+        
         view.addSubview(scrollView)
         view.addSubview(updateButton)
         
-        navbar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        navbar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        navbar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
         scrollView.addSubview(vStackView)
         
-        scrollView.topAnchor.constraint(equalTo: navbar.bottomAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true

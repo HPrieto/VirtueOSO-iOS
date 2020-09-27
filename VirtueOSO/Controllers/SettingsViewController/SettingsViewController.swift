@@ -30,18 +30,13 @@ class SettingsViewController: UIViewController {
     
     var _title: String? {
         didSet {
-            navbar._title = _title
+            navigationItem.title = _title
         }
     }
     
     //MARK:- Views
-    private(set) lazy var navbar: SettingsNavigationBarView = {
-        let view = SettingsNavigationBarView()
-        view.leftButton.addTarget(
-            self,
-            action: #selector(handleGoBack),
-            for: .touchUpInside)
-        return view
+    private(set) lazy var leftBarButtonItem: UIBarButtonItem? = {
+        return UIBarButtonItem(sfSymbol: .arrowLeft, style: .plain, target: self, action: #selector(handleGoBack))
     }()
     
     private lazy var scrollView: UIScrollView = {
@@ -90,7 +85,7 @@ class SettingsViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = false
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -100,16 +95,13 @@ class SettingsViewController: UIViewController {
     private func initializeSubviews() {
         view.backgroundColor = .white
         
-        view.addSubview(navbar)
-        view.addSubview(scrollView)
+        navigationItem.leftBarButtonItem = leftBarButtonItem
         
-        navbar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        navbar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        navbar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        view.addSubview(scrollView)
         
         scrollView.addSubview(vStackView)
         
-        scrollView.topAnchor.constraint(equalTo: navbar.bottomAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true

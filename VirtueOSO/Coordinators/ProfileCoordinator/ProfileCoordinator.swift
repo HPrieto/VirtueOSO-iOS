@@ -22,7 +22,7 @@ class ProfileCoordinator: Coordinator {
         controller.navigationBar.backgroundColor = .white
         controller.navigationBar.isTranslucent = true
         controller.navigationBar.barTintColor = .white
-        controller.navigationBar.titleTextAttributes = [.foregroundColor: UIColor._black, .font: UIFont(type: .regular, size: .small) as Any]
+        controller.navigationBar.titleTextAttributes = [.foregroundColor: UIColor._black, .font: UIFont(type: .demiBold, size: .regular) as Any]
         controller.navigationBar.barStyle = .default
         return controller
     }()
@@ -229,7 +229,7 @@ class ProfileCoordinator: Coordinator {
     // MARK: - TermsAndConditionsViewController
     private lazy var termsAndConditionsViewController: WebViewController = {
         let controller = WebViewController("www.google.com")
-        controller.navbar._title = "Terms & Conditions"
+        controller.navigationItem.title = "Terms & Conditions"
         return controller
     }()
     
@@ -246,11 +246,6 @@ class ProfileCoordinator: Coordinator {
         ]
         let controller = SettingsViewController(coordinator: self, subviews: subviews)
         controller._title = "Home Preferences"
-        controller.navbar.leftButton.addTarget(
-            controller,
-            action: #selector(handleGoBack),
-            for: .touchUpInside
-        )
         return controller
     }()
     
@@ -321,11 +316,6 @@ class ProfileCoordinator: Coordinator {
         ]
         let controller = SettingsViewController(coordinator: self, subviews: subviews)
         controller._title = "Legal"
-        controller.navbar.leftButton.addTarget(
-            controller,
-            action: #selector(handleGoBack),
-            for: .touchUpInside
-        )
         return controller
     }()
     
