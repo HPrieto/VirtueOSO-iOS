@@ -31,7 +31,7 @@ class AuthenticationCoordinator: Coordinator {
     }
     
     // MARK: - Private Properties
-    let mainCoordinator: MainCoordinator
+    private(set) var mainCoordinator: MainCoordinator
     
     // MARK: - Public Properties
     private(set) lazy var rootViewController: UINavigationController = {

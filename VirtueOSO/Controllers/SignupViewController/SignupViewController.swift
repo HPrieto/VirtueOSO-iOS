@@ -125,7 +125,7 @@ class SignupViewController: UIViewController {
     }
     
     // MARK: - Initialize Subviews
-    private func initializeSubviews() {
+    fileprivate func initializeSubviews() {
         view.backgroundColor = _darkModeEnabled ? .black : .white
         
         navigationItem.title = "Sign up"

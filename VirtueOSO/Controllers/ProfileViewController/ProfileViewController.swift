@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    let coordinator: ProfileCoordinator
+    private(set) var coordinator: ProfileCoordinator
     
     // MARK: - Subviews
     

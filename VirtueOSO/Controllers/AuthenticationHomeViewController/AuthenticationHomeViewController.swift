@@ -34,7 +34,7 @@ class AuthenticationHomeViewController: UIViewController {
     }
     
     // MARK: - Views
-    lazy var verticalStackView: UIStackView = {
+    private(set) lazy var verticalStackView: UIStackView = {
         let view = UIStackView()
         view.alignment = .fill
         view.spacing = 20
@@ -44,14 +44,14 @@ class AuthenticationHomeViewController: UIViewController {
         return view
     }()
     
-    lazy var backgroundImageView: UIImageView = {
+    private(set) lazy var backgroundImageView: UIImageView = {
         let view = UIImageView()
         view.backgroundColor = ._primary
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var verticalButtonStackView: UIStackView = {
+    private(set) lazy var verticalButtonStackView: UIStackView = {
         let view = UIStackView()
         view.alignment = .leading
         view.spacing = 20
@@ -61,7 +61,7 @@ class AuthenticationHomeViewController: UIViewController {
         return view
     }()
     
-    lazy var iconImageView: UIImageView = {
+    private(set) lazy var iconImageView: UIImageView = {
         let image = UIImage(named: "music_tickets")!.withRenderingMode(.alwaysTemplate)
         let view = UIImageView()
         view.image = image
@@ -70,7 +70,7 @@ class AuthenticationHomeViewController: UIViewController {
         return view
     }()
     
-    lazy var titleTextView: TextView = {
+    private(set) lazy var titleTextView: TextView = {
         let view = TextView()
         view.font = UIFont(type: .medium, size: .title2)
         view.textColor = .white
@@ -78,7 +78,7 @@ class AuthenticationHomeViewController: UIViewController {
         return view
     }()
     
-    lazy var googleButton: Button = {
+    private(set) lazy var googleButton: Button = {
         let view = Button(Strings.googleButtonTitle.rawValue)
         view.backgroundColor = .white
         view._font = UIFont(type: .medium, size: .small)
@@ -88,7 +88,7 @@ class AuthenticationHomeViewController: UIViewController {
         return view
     }()
     
-    lazy var facebookButton: Button = {
+    private(set) lazy var facebookButton: Button = {
         let view = Button(Strings.facebookButtonTitle.rawValue)
         view.backgroundColor = .white
         view._font = UIFont(type: .medium, size: .small)
@@ -98,7 +98,7 @@ class AuthenticationHomeViewController: UIViewController {
         return view
     }()
     
-    lazy var createAccountButton: Button = {
+    private(set) lazy var createAccountButton: Button = {
         let view = Button(Strings.createAccountButtonTitle.rawValue)
         view.backgroundColor = .white
         view._font = UIFont(type: .medium, size: .small)
@@ -111,7 +111,7 @@ class AuthenticationHomeViewController: UIViewController {
         return view
     }()
     
-    lazy var optionsButton: AButton = {
+    private(set) lazy var optionsButton: AButton = {
         let view = AButton(Strings.moreOptionsButtonTitle.rawValue)
         view._textColor = .white
         view.backgroundColor = .clear
@@ -139,7 +139,7 @@ class AuthenticationHomeViewController: UIViewController {
         return view
     }()
     
-    lazy var loginBarButton: UIBarButtonItem = {
+    private(set) lazy var loginBarButton: UIBarButtonItem = {
         let view = UIBarButtonItem(
             title: Strings.loginButtonTitle.rawValue,
             style: .plain,
@@ -150,11 +150,11 @@ class AuthenticationHomeViewController: UIViewController {
     }()
     
     // MARK: - Handlers
-    @objc func handleLogin() {
+    @objc private func handleLogin() {
         coordinator.navigate(to: .login)
     }
     
-    @objc func handleCreateAccount() {
+    @objc private func handleCreateAccount() {
         coordinator.navigate(to: .signup)
     }
     

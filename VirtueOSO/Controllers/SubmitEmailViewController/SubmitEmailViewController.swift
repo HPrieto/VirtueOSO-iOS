@@ -37,25 +37,25 @@ class SubmitEmailViewController: UIViewController {
     }
     
     // MARK: - Subviews
-    lazy var messageTextView: TextView = {
+    private(set) lazy var messageTextView: TextView = {
         let view = TextView()
         view.font = UIFont(type: .regular, size: .large)
         view.textColor = ._gray
         return view
     }()
     
-    lazy var emailTextField: BorderedTextField = {
+    private(set) lazy var emailTextField: BorderedTextField = {
         let view = BorderedTextField()
         return view
     }()
     
-    lazy var submitButton: Button = {
+    private(set) lazy var submitButton: Button = {
         let view = Button()
         view.backgroundColor = ._black
         return view
     }()
     
-    lazy var closeBarButtonItem: UIBarButtonItem = {
+    private(set) lazy var closeBarButtonItem: UIBarButtonItem = {
         let view = UIBarButtonItem(
             title: "Close",
             style: .done,
@@ -66,7 +66,7 @@ class SubmitEmailViewController: UIViewController {
     }()
     
     // MARK: - Handlers
-    @objc func handleClose() {
+    @objc private func handleClose() {
         dismiss(animated: true, completion: nil)
     }
     
@@ -88,7 +88,7 @@ class SubmitEmailViewController: UIViewController {
     }
     
     // MARK: - Initialize Subviews
-    private func initializeSubviews() {
+    fileprivate func initializeSubviews() {
         view.backgroundColor = .white
         
         navigationItem.rightBarButtonItem = closeBarButtonItem

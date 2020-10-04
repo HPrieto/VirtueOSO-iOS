@@ -11,7 +11,7 @@ import UIKit
 class DiscoverViewController: UIViewController {
     
     // MARK: - Private Properties
-    let coordinator: DiscoverCoordinator
+    private(set) var coordinator: DiscoverCoordinator
     
     // MARK: - Subviews
     

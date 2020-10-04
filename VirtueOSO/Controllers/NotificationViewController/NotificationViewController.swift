@@ -15,6 +15,8 @@ protocol NotificationViewControllerDelegate {
 
 class NotificationViewController: UIViewController {
     
+    // MARK: - Public Properties
+    
     var delegate: NotificationViewControllerDelegate?
     
     var tag: Int = 0
@@ -43,7 +45,8 @@ class NotificationViewController: UIViewController {
         }
     }
     
-    lazy var imageView: UIImageView = {
+    // MARK: - Subviews
+    private(set) lazy var imageView: UIImageView = {
         let image = UIImage(named: "notification-bell")!.withRenderingMode(.alwaysTemplate)
         let view = UIImageView()
         view.tintColor = ._secondary
@@ -52,12 +55,12 @@ class NotificationViewController: UIViewController {
         return view
     }()
     
-    lazy var titleView: TitleView = {
+    private(set) lazy var titleView: TitleView = {
         let view = TitleView()
         return view
     }()
     
-    lazy var primaryButton: Button = {
+    private(set) lazy var primaryButton: Button = {
         let view = Button()
         view.backgroundColor = ._secondary
         view._textColor = .white
@@ -66,11 +69,11 @@ class NotificationViewController: UIViewController {
         return view
     }()
     
-    @objc func handlePrimaryButtonTapped() {
+    @objc private func handlePrimaryButtonTapped() {
         delegate?.notificationViewController(self, primaryButtonTapped: self.tag)
     }
     
-    lazy var secondaryButton: Button = {
+    private(set) lazy var secondaryButton: Button = {
         let view = Button()
         view.backgroundColor = .white
         view._borderWidth = 2
@@ -81,16 +84,21 @@ class NotificationViewController: UIViewController {
         return view
     }()
     
-    @objc func handleSecondaryButtonTapped() {
+    // MARK: - Handlers
+    
+    @objc private func handleSecondaryButtonTapped() {
         delegate?.notificationViewController(self, secondaryButtonTapped: self.tag)
     }
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeSubviews()
     }
     
-    private func initializeSubviews() {
+    // MARK: - Initialize Subviews
+    
+    fileprivate func initializeSubviews() {
         view.backgroundColor = self._darkModeEnabled ? .black : .white
         navigationController?.navigationBar.barStyle = .default
         

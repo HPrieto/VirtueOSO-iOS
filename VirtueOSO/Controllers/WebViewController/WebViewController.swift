@@ -32,12 +32,12 @@ class WebViewController: UIViewController {
         return UIBarButtonItem(sfSymbol: .arrowLeft, style: .plain, target: self, action: #selector(handleGoBack))
     }()
     
-    private lazy var loadingBarView: LoadingBarView = {
+    private(set) lazy var loadingBarView: LoadingBarView = {
         let view = LoadingBarView()
         return view
     }()
     
-    private lazy var webView: WKWebView = {
+    private(set) lazy var webView: WKWebView = {
         let view = WKWebView()
         view.allowsBackForwardNavigationGestures = false
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +85,7 @@ class WebViewController: UIViewController {
     }
     
     // MARK: - Initialize Subviews
-    private func initializeSubviews() {
+    fileprivate func initializeSubviews() {
         view.backgroundColor = .white
         
         navigationItem.leftBarButtonItem = leftBarButtonItem

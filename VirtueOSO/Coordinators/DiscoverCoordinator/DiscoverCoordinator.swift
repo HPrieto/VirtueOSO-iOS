@@ -16,7 +16,7 @@ class DiscoverCoordinator: Coordinator {
     }
     
     // MARK: Private Properties
-    private let mainCoordinator: MainCoordinator
+    private(set) var mainCoordinator: MainCoordinator
     
     // MARK: - Controllers
     private(set) lazy var rootViewController: UINavigationController = {

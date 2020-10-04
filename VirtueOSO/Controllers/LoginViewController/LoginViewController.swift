@@ -11,7 +11,8 @@ import UIKit
 class LoginViewController: UIViewController {
     
     // MARK: - Public Properties
-    let coordinator: AuthenticationCoordinator
+    
+    private(set) var coordinator: AuthenticationCoordinator
     
     // MARK: - Subviews
     
@@ -19,7 +20,7 @@ class LoginViewController: UIViewController {
         return UIBarButtonItem(sfSymbol: .chevronLeft, style: .plain, target: self, action: #selector(handleGoBack))
     }()
     
-    lazy var emailTextField: BorderedTextField = {
+    private(set) lazy var emailTextField: BorderedTextField = {
         let view = BorderedTextField()
         view._title = "Email"
         view.inputTextView.keyboardType = .emailAddress
@@ -27,7 +28,7 @@ class LoginViewController: UIViewController {
         return view
     }()
     
-    lazy var passwordTextField: BorderedTextField = {
+    private(set) lazy var passwordTextField: BorderedTextField = {
         let view = BorderedTextField()
         view._title = "Password"
         view._contentType = .password
@@ -37,13 +38,13 @@ class LoginViewController: UIViewController {
         return view
     }()
     
-    lazy var loginButton: Button = {
+    private(set) lazy var loginButton: Button = {
         let view = Button("Log in")
         view.backgroundColor = ._secondary
         return view
     }()
     
-    lazy var forgotPasswordButton: AButton = {
+    private(set) lazy var forgotPasswordButton: AButton = {
         let view = AButton("Forgot password?")
         view.addTarget(
             self,
@@ -53,14 +54,14 @@ class LoginViewController: UIViewController {
         return view
     }()
     
-    lazy var dontHaveAccountTextView: TextView = {
+    private(set) lazy var dontHaveAccountTextView: TextView = {
         let view = TextView()
         view.text = "Don't have an account?"
         view.textColor = ._gray
         return view
     }()
     
-    lazy var signupButton: AButton = {
+    private(set) lazy var signupButton: AButton = {
         let view = AButton("Sign up")
         view.addTarget(
             self,
@@ -72,7 +73,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Handlers
     
-    @objc func handleLogin() {
+    @objc private func handleLogin() {
         guard let email: String = emailTextField._text, email.count > 1,
               let password: String = passwordTextField._text, password.count > 5 else {
             return
@@ -80,7 +81,7 @@ class LoginViewController: UIViewController {
         coordinator.login(email: email, password: password)
     }
     
-    @objc func handleForgotPassword() {
+    @objc private func handleForgotPassword() {
         let controller = SubmitEmailViewController()
         controller._message = "Enter the email address associated with your account, and we’ll email you a link to reset your password."
         controller._title = "Email"
@@ -92,7 +93,7 @@ class LoginViewController: UIViewController {
         )
     }
     
-    @objc func handleSignup() {
+    @objc private func handleSignup() {
         coordinator.navigate(to: .loginToSignup)
     }
     
@@ -101,6 +102,7 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeSubviews()
@@ -119,7 +121,8 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Initialize Subviews
-    private func initializeSubviews() {
+    
+    fileprivate func initializeSubviews() {
         view.backgroundColor = .white
         
         navigationItem.title = "Log in"

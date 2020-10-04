@@ -31,6 +31,7 @@ class ChangePasswordViewController: UIViewController {
     public var nextButtonBottomConstraint: NSLayoutConstraint?
     
     // MARK: - Subviews
+    
     private(set) lazy var leftBarButtonItem: UIBarButtonItem? = {
         return UIBarButtonItem(sfSymbol: .arrowLeft, style: .plain, target: self, action: #selector(handleGoBack))
     }()
@@ -40,7 +41,7 @@ class ChangePasswordViewController: UIViewController {
         return view
     }()
     
-    private lazy var currentPasswordTextField: SettingsCellTextFieldView = {
+    private(set) lazy var currentPasswordTextField: SettingsCellTextFieldView = {
         let view = SettingsCellTextFieldView(title: Strings.currentPasswordTitle.rawValue)
         view.tag = Tags.currentPassword.rawValue
         view._inputMode = .secure
@@ -48,7 +49,7 @@ class ChangePasswordViewController: UIViewController {
         return view
     }()
     
-    private lazy var newPasswordTextField: SettingsCellTextFieldView = {
+    private(set) lazy var newPasswordTextField: SettingsCellTextFieldView = {
         let view = SettingsCellTextFieldView(title: Strings.newPasswordTitle.rawValue)
         view.tag = Tags.newPassword.rawValue
         view._inputMode = .secure
@@ -56,7 +57,7 @@ class ChangePasswordViewController: UIViewController {
         return view
     }()
     
-    private lazy var confirmPasswordTextField: SettingsCellTextFieldView = {
+    private(set) lazy var confirmPasswordTextField: SettingsCellTextFieldView = {
         let view = SettingsCellTextFieldView(title: Strings.confirmPasswordTitle.rawValue)
         view.tag = Tags.confirmNewPassword.rawValue
         view._inputMode = .secure
@@ -126,7 +127,8 @@ class ChangePasswordViewController: UIViewController {
     }
     
     // MARK: - Initialize Subviews
-    private func initializeSubviews() {
+    
+    fileprivate func initializeSubviews() {
         view.backgroundColor = .white
         
         navigationItem.title = "Change Password"

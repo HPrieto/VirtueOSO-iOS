@@ -17,6 +17,7 @@ protocol SettingsViewControllerDelegate {
 class SettingsViewController: UIViewController {
     
     //MARK: - Private Properties
+    
     private let coordinator: ProfileCoordinator
     
     //MARK: - Public Properties
@@ -34,12 +35,13 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    //MARK: - Views
+    // MARK: - Subviews
+    
     private(set) lazy var leftBarButtonItem: UIBarButtonItem? = {
         return UIBarButtonItem(sfSymbol: .arrowLeft, style: .plain, target: self, action: #selector(handleGoBack))
     }()
     
-    private lazy var scrollView: UIScrollView = {
+    private(set) lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.backgroundColor = ._background
         view.alwaysBounceVertical = true
@@ -49,7 +51,7 @@ class SettingsViewController: UIViewController {
         return view
     }()
     
-    private lazy var vStackView: UIStackView = {
+    private(set) lazy var vStackView: UIStackView = {
         let view = UIStackView()
         view.backgroundColor = .clear
         view.axis = .vertical
@@ -92,7 +94,7 @@ class SettingsViewController: UIViewController {
     }
     
     //MARK: - Init Subviews
-    private func initializeSubviews() {
+    fileprivate func initializeSubviews() {
         view.backgroundColor = .white
         
         navigationItem.leftBarButtonItem = leftBarButtonItem
