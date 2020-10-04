@@ -123,6 +123,7 @@ class SettingsCellTextFieldView: UIView {
         view.font = UIFont(type: .regular, size: .small)
         view.textColor = ._black
         view.tintColor = ._tertiary
+        view.autocorrectionType = .no
         view.translatesAutoresizingMaskIntoConstraints = false
         view.becomeFirstResponder()
         return view

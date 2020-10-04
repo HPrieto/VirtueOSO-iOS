@@ -40,13 +40,13 @@ class CheckboxView: ComponentView {
         }
     }
     
-    lazy var textView: TextView = {
+    private(set) lazy var textView: TextView = {
         let view = TextView()
         view.textColor = ._darkGray
         return view
     }()
     
-    lazy var checkboxButton: UIButton = {
+    private(set) lazy var checkboxButton: UIButton = {
         let view = UIButton()
         view.layer.masksToBounds = true
         view.layer.borderColor = UIColor._gray.cgColor

@@ -76,6 +76,17 @@ class SubmitEmailViewController: UIViewController {
         initializeSubviews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let navigationController = navigationController as? NavigationController {
+            navigationController._isClear = false
+            navigationController._font = UIFont(type: .regular, size: .small)
+            navigationController._tintColor = .black
+            navigationController._barStyle = .default
+            navigationController.navigationBar.backgroundColor = .white
+        }
+    }
+    
     // MARK: - Initialize Subviews
     private func initializeSubviews() {
         view.backgroundColor = .white

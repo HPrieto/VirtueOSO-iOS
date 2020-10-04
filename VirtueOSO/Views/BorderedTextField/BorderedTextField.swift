@@ -70,12 +70,6 @@ class BorderedTextField: ComponentView {
         }
     }
     
-    var _keyboardType: UIKeyboardType = .default {
-        didSet {
-            inputTextView.keyboardType = _keyboardType
-        }
-    }
-    
     var _contentType: UITextContentType = .username {
         didSet {
             inputTextView.textContentType = _contentType
@@ -131,15 +125,16 @@ class BorderedTextField: ComponentView {
     
     //MARK:- Subviews
     
-    lazy var titleTextView: TextView = {
+    private(set) lazy var titleTextView: TextView = {
         let view = TextView()
         view.font = UIFont(type: .regular, size: .micro)
         view.textColor = ._gray
         return view
     }()
     
-    lazy var inputTextView: TextView = {
+    private(set) lazy var inputTextView: TextView = {
         let view = TextView()
+        view.autocorrectionType = .no
         view.isEditable = true
         view.isUserInteractionEnabled = true
         view.font = UIFont(type: .regular, size: .small)

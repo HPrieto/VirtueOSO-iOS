@@ -17,6 +17,9 @@ import UIKit
 // MARK: - AuthenticationHomeViewController
 class AuthenticationHomeViewController: UIViewController {
     
+    // MARK: - Public Properties
+    private(set) var coordinator: AuthenticationCoordinator
+    
     // MARK: - Strings
     private enum Strings: String {
         case loginButtonTitle = "Log in"
@@ -116,11 +119,23 @@ class AuthenticationHomeViewController: UIViewController {
         return view
     }()
     
-    lazy var disclaimerTextView: TextView = {
-        let view = TextView()
-        view.textColor = .white
-        view.font = UIFont(type: .medium, size: .small)
-        view.text = Strings.disclaimer.rawValue
+    // By signing up, I agree to Virutuoso's Terms of Service, Non-Discrimination Policy, Payments Terms of Service, and Host Guarantee Terms.
+    private(set) lazy var disclaimerTextView: AttributedTextView = {
+        let view = AttributedTextView(attributes: [
+            NSAttributedString(string: "By signing up, I agree to Virutuoso's ", color: .white, fontSize: .small),
+            NSAttributedString(string: "Terms of Service", color: .white, fontType: .demiBold, fontSize: .small),
+            NSAttributedString(string: ", ", color: .white, fontSize: .small),
+            NSAttributedString(string: "Non-Discrimination Policy", color: .white, fontType: .demiBold, fontSize: .small),
+            NSAttributedString(string: ", ", color: .white, fontSize: .small),
+            NSAttributedString(string: "Payments Terms of Service", color: .white, fontType: .demiBold, fontSize: .small),
+            NSAttributedString(string: ", and ", color: .white, fontSize: .small),
+            NSAttributedString(string: "Host Gaurantee Terms", color: .white, fontType: .demiBold, fontSize: .small),
+        ])
+        view.textContainer.maximumNumberOfLines = 3
+        view.isEditable = false
+        view.isSelectable = true
+        view.isScrollEnabled = false
+        view.backgroundColor = .clear
         return view
     }()
     
@@ -133,6 +148,15 @@ class AuthenticationHomeViewController: UIViewController {
         )
         return view
     }()
+    
+    // MARK: - Handlers
+    @objc func handleLogin() {
+        coordinator.navigate(to: .login)
+    }
+    
+    @objc func handleCreateAccount() {
+        coordinator.navigate(to: .signup)
+    }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -186,14 +210,13 @@ class AuthenticationHomeViewController: UIViewController {
         createAccountButton.widthAnchor.constraint(equalTo: verticalButtonStackView.widthAnchor).isActive = true
     }
     
-    // MARK: - Handlers
-    @objc func handleLogin() {
-        let controller = LoginViewController()
-        navigationController?.pushViewController(controller, animated: true)
+    // MARK: - Init
+    init(coordinator: AuthenticationCoordinator) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
     }
     
-    @objc func handleCreateAccount() {
-        let controller = SignupViewController()
-        navigationController?.pushViewController(controller, animated: true)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

@@ -11,34 +11,53 @@ import UIKit
 // MARK: - LoginCoordinator
 class AuthenticationCoordinator: Coordinator {
     
+    // MARK: - Destination
+    enum Destination: Int {
+        case root
+        
+        /// Login
+        case login
+        case loginToRoot
+        case loginToForgotPassword
+        case loginToSignup
+        
+        /// Signup
+        case signup
+        case signupToRoot
+        
+        /// Reset Password
+        case resetPassword
+        case forgotPasswordToLogin
+    }
+    
     // MARK: - Private Properties
     let mainCoordinator: MainCoordinator
     
     // MARK: - Public Properties
-    lazy var rootViewController: UINavigationController = {
+    private(set) lazy var rootViewController: UINavigationController = {
         let navController = NavigationController()
         return navController
     }()
     
     // MARK: - ViewControllers
-    private lazy var homeViewController: AuthenticationHomeViewController = {
-        let controller = AuthenticationHomeViewController()
+    private(set) lazy var homeViewController: AuthenticationHomeViewController = {
+        let controller = AuthenticationHomeViewController(coordinator: self)
         return controller
     }()
     
     // MARK: - LoginViewController
-    private lazy var loginViewController: LoginViewController = {
-        let controller = LoginViewController()
+    private(set) lazy var loginViewController: LoginViewController = {
+        let controller = LoginViewController(coordinator: self)
         return controller
     }()
     
     // MARK: - SignupViewController
-    private lazy var signupViewController: SignupViewController = {
-        let controller = SignupViewController()
+    private(set) lazy var signupViewController: SignupViewController = {
+        let controller = SignupViewController(coordinator: self)
         return controller
     }()
     
-    private lazy var resetPasswordViewController: SubmitEmailViewController = {
+    private(set) lazy var resetPasswordViewController: SubmitEmailViewController = {
         let controller = SubmitEmailViewController()
         controller._message = "Enter the email address associated with your account, and we’ll email you a link to reset your password."
         controller._title = "Email"
@@ -46,18 +65,12 @@ class AuthenticationCoordinator: Coordinator {
         return controller
     }()
     
-    // MARK: - Destination
-    enum Destination: Int {
-        case root
-        
-        /// Login
-        case login
-        
-        /// Signup
-        case signup
-        
-        /// Reset Password
-        case resetPassword
+    // MAKR: - Utils
+    
+    public func login(email: String, password: String) {
+        print("Email: \(email)")
+        print("Password: \(password)")
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Init
@@ -67,19 +80,33 @@ class AuthenticationCoordinator: Coordinator {
     
     func navigate(to destination: Destination) {
         let controller = makeViewController(for: destination)
-        rootViewController.pushViewController(controller, animated: true)
-    }
-    
-    // MARK: - MakeViewController
-    private func makeViewController(for destination: Destination) -> UIViewController {
+        
         switch destination {
         case .root:
+            rootViewController.viewControllers = [controller]
+        case .loginToRoot, .signupToRoot:
+            rootViewController.popToViewController(controller, animated: true)
+        case .loginToSignup:
+            rootViewController.viewControllers = [homeViewController, signupViewController]
+        case .loginToForgotPassword:
+            rootViewController.present(controller, animated: true, completion: nil)
+        case .forgotPasswordToLogin:
+            controller.dismiss(animated: true, completion: nil)
+        default:
+            rootViewController.pushViewController(controller, animated: true)
+        }
+    }
+    
+    private func makeViewController(for destination: Destination) -> UIViewController {
+        
+        switch destination {
+        case .root, .loginToRoot, .signupToRoot:
             return homeViewController
-        case .login:
+        case .login, .forgotPasswordToLogin:
             return loginViewController
-        case .signup:
+        case .signup, .loginToSignup:
             return signupViewController
-        case .resetPassword:
+        case .resetPassword, .loginToForgotPassword:
             return resetPasswordViewController
         }
     }
@@ -87,5 +114,13 @@ class AuthenticationCoordinator: Coordinator {
     // MARK: - Start
     func start() {
         navigate(to: .root)
+    }
+    
+    func dismiss(animated: Bool, completion: (() -> Void)?) {
+        rootViewController.dismiss(animated: animated, completion: { [weak self] in
+            guard let `self` = self else { return }
+            completion?()
+            self.navigate(to: .root)
+        })
     }
 }

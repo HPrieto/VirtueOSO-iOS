@@ -8,18 +8,18 @@
 
 import UIKit
 
-//MARK:- SettingsViewControllerDelegate
+//MARK: - SettingsViewControllerDelegate
 protocol SettingsViewControllerDelegate {
     func settingsViewController(_ settingsViewController: SettingsViewController)
 }
 
-//MARK:- SettingsViewController
+//MARK: - SettingsViewController
 class SettingsViewController: UIViewController {
     
-    //MARK:- Private Properties
+    //MARK: - Private Properties
     private let coordinator: ProfileCoordinator
     
-    //MARK:- Public Properties
+    //MARK: - Public Properties
     
     var subviews: [UIView] = [UIView]() {
         didSet {
@@ -34,7 +34,7 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    //MARK:- Views
+    //MARK: - Views
     private(set) lazy var leftBarButtonItem: UIBarButtonItem? = {
         return UIBarButtonItem(sfSymbol: .arrowLeft, style: .plain, target: self, action: #selector(handleGoBack))
     }()
@@ -78,7 +78,7 @@ class SettingsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK:- Life Cycle
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeSubviews()
@@ -91,7 +91,7 @@ class SettingsViewController: UIViewController {
         super.viewDidAppear(animated)
     }
     
-    //MARK:- Init Subviews
+    //MARK: - Init Subviews
     private func initializeSubviews() {
         view.backgroundColor = .white
         

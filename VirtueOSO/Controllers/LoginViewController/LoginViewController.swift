@@ -10,10 +10,19 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    // MARK: - Public Properties
+    let coordinator: AuthenticationCoordinator
+    
     // MARK: - Subviews
+    
+    private(set) lazy var leftBarButtonItem: UIBarButtonItem? = {
+        return UIBarButtonItem(sfSymbol: .chevronLeft, style: .plain, target: self, action: #selector(handleGoBack))
+    }()
+    
     lazy var emailTextField: BorderedTextField = {
         let view = BorderedTextField()
         view._title = "Email"
+        view.inputTextView.keyboardType = .emailAddress
         view._roundCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return view
     }()
@@ -23,6 +32,7 @@ class LoginViewController: UIViewController {
         view._title = "Password"
         view._contentType = .password
         view._secureTextEntry = true
+        view.inputTextView.keyboardType = .default
         view._roundCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         return view
     }()
@@ -61,6 +71,15 @@ class LoginViewController: UIViewController {
     }()
     
     // MARK: - Handlers
+    
+    @objc func handleLogin() {
+        guard let email: String = emailTextField._text, email.count > 1,
+              let password: String = passwordTextField._text, password.count > 5 else {
+            return
+        }
+        coordinator.login(email: email, password: password)
+    }
+    
     @objc func handleForgotPassword() {
         let controller = SubmitEmailViewController()
         controller._message = "Enter the email address associated with your account, and we’ll email you a link to reset your password."
@@ -74,7 +93,11 @@ class LoginViewController: UIViewController {
     }
     
     @objc func handleSignup() {
-        navigationController?.popViewController(animated: true)
+        coordinator.navigate(to: .loginToSignup)
+    }
+    
+    @objc private func handleGoBack() {
+        coordinator.navigate(to: .loginToRoot)
     }
     
     // MARK: - Life Cycle
@@ -88,7 +111,7 @@ class LoginViewController: UIViewController {
         
         if let navigationController = navigationController as? NavigationController {
             navigationController._isClear = false
-            navigationController._font = UIFont(type: .medium, size: .small)
+            navigationController._font = UIFont(type: .demiBold, size: .regular)
             navigationController._tintColor = .black
             navigationController._barStyle = .default
             navigationController.navigationBar.backgroundColor = .white
@@ -100,6 +123,7 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         
         navigationItem.title = "Log in"
+        navigationItem.leftBarButtonItem = leftBarButtonItem
         
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
@@ -128,5 +152,15 @@ class LoginViewController: UIViewController {
         
         signupButton.leftAnchor.constraint(equalTo: dontHaveAccountTextView.rightAnchor).isActive = true
         signupButton.centerYAnchor.constraint(equalTo: dontHaveAccountTextView.centerYAnchor).isActive = true
+    }
+    
+    // MARK: Init
+    init(coordinator: AuthenticationCoordinator) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

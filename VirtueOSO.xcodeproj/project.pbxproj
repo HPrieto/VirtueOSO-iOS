@@ -68,6 +68,11 @@
 		43F1D8F62520F8AF00AC6FA9 /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D8F52520F8AF00AC6FA9 /* UIBarButtonItem+Extensions.swift */; };
 		43F1D9022520FE7000AC6FA9 /* DiscoverCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D9012520FE7000AC6FA9 /* DiscoverCoordinator.swift */; };
 		43F1D9082521017600AC6FA9 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D9072521017600AC6FA9 /* DiscoverViewController.swift */; };
+		43F1D91D2528AA8B00AC6FA9 /* AttributedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D91C2528AA8B00AC6FA9 /* AttributedLabel.swift */; };
+		43F1D9222528AE1900AC6FA9 /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D9212528AE1900AC6FA9 /* NSAttributedString+Extensions.swift */; };
+		43F1D9282528B74D00AC6FA9 /* AttributedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D9272528B74D00AC6FA9 /* AttributedTextView.swift */; };
+		43F1D92D2528BB0B00AC6FA9 /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D92C2528BB0B00AC6FA9 /* NSMutableAttributedString+Extensions.swift */; };
+		43F1D9322528D63400AC6FA9 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D9312528D63400AC6FA9 /* UINavigationController+Extensions.swift */; };
 		43F5D40124BB86E6004AE586 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F5D40024BB86E6004AE586 /* TextField.swift */; };
 		43F5D40324BB87C9004AE586 /* BorderedTextField+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F5D40224BB87C9004AE586 /* BorderedTextField+UITextView.swift */; };
 		43F5D40624BC06C5004AE586 /* AButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F5D40524BC06C5004AE586 /* AButton.swift */; };
@@ -158,6 +163,11 @@
 		43F1D8F52520F8AF00AC6FA9 /* UIBarButtonItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extensions.swift"; sourceTree = "<group>"; };
 		43F1D9012520FE7000AC6FA9 /* DiscoverCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCoordinator.swift; sourceTree = "<group>"; };
 		43F1D9072521017600AC6FA9 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		43F1D91C2528AA8B00AC6FA9 /* AttributedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedLabel.swift; sourceTree = "<group>"; };
+		43F1D9212528AE1900AC6FA9 /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
+		43F1D9272528B74D00AC6FA9 /* AttributedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedTextView.swift; sourceTree = "<group>"; };
+		43F1D92C2528BB0B00AC6FA9 /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
+		43F1D9312528D63400AC6FA9 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		43F5D40024BB86E6004AE586 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		43F5D40224BB87C9004AE586 /* BorderedTextField+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BorderedTextField+UITextView.swift"; sourceTree = "<group>"; };
 		43F5D40524BC06C5004AE586 /* AButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AButton.swift; sourceTree = "<group>"; };
@@ -480,6 +490,8 @@
 		43BC872024B98B8F004CBB07 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				43F1D9262528B73B00AC6FA9 /* AttributedTextView */,
+				43F1D91B2528AA7A00AC6FA9 /* AttributedLabel */,
 				43635CAB24DF0AD300759BE2 /* LoadingBarView */,
 				436ECB7A24D707240054BA32 /* ChatInputBarView */,
 				4372F03E24D5F39C00E5FD33 /* StackView */,
@@ -541,6 +553,9 @@
 				43308D0224BC2A1100DDE2E5 /* UIStackView+Extensions.swift */,
 				4302616924CC9C1D00ECB4F8 /* UIImage+Extensions.swift */,
 				43F1D8F52520F8AF00AC6FA9 /* UIBarButtonItem+Extensions.swift */,
+				43F1D9212528AE1900AC6FA9 /* NSAttributedString+Extensions.swift */,
+				43F1D92C2528BB0B00AC6FA9 /* NSMutableAttributedString+Extensions.swift */,
+				43F1D9312528D63400AC6FA9 /* UINavigationController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -686,6 +701,22 @@
 				43F1D9072521017600AC6FA9 /* DiscoverViewController.swift */,
 			);
 			path = DiscoverViewController;
+			sourceTree = "<group>";
+		};
+		43F1D91B2528AA7A00AC6FA9 /* AttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				43F1D91C2528AA8B00AC6FA9 /* AttributedLabel.swift */,
+			);
+			path = AttributedLabel;
+			sourceTree = "<group>";
+		};
+		43F1D9262528B73B00AC6FA9 /* AttributedTextView */ = {
+			isa = PBXGroup;
+			children = (
+				43F1D9272528B74D00AC6FA9 /* AttributedTextView.swift */,
+			);
+			path = AttributedTextView;
 			sourceTree = "<group>";
 		};
 		43F5D3FF24BB86D8004AE586 /* TextField */ = {
@@ -842,6 +873,7 @@
 				4364A4CA24C16EE300AE9881 /* CheckboxView.swift in Sources */,
 				43518B7624C37E3A009AA30D /* LiveStreamViewController.swift in Sources */,
 				43BC873724B99002004CBB07 /* UIFont+Extensions.swift in Sources */,
+				43F1D9282528B74D00AC6FA9 /* AttributedTextView.swift in Sources */,
 				43F1D9082521017600AC6FA9 /* DiscoverViewController.swift in Sources */,
 				43BC86F124B98A70004CBB07 /* ViewController.swift in Sources */,
 				43308CFB24BC0C6700DDE2E5 /* SubmitEmailViewController.swift in Sources */,
@@ -852,9 +884,11 @@
 				4372F04024D5F3AE00E5FD33 /* StackView.swift in Sources */,
 				43BC875424BB6669004CBB07 /* BorderedTextField.swift in Sources */,
 				4302615724CC2CB200ECB4F8 /* SettingsTableViewCell.swift in Sources */,
+				43F1D92D2528BB0B00AC6FA9 /* NSMutableAttributedString+Extensions.swift in Sources */,
 				43BC872C24B98E32004CBB07 /* UIColor+Extensions.swift in Sources */,
 				43BC86ED24B98A70004CBB07 /* AppDelegate.swift in Sources */,
 				43D648CB251C3BFD009A007B /* MainTabBarController.swift in Sources */,
+				43F1D91D2528AA8B00AC6FA9 /* AttributedLabel.swift in Sources */,
 				43BC874B24BA9CCA004CBB07 /* Button.swift in Sources */,
 				43BC875124BB6592004CBB07 /* LoginViewController.swift in Sources */,
 				43F1D8F62520F8AF00AC6FA9 /* UIBarButtonItem+Extensions.swift in Sources */,
@@ -879,12 +913,14 @@
 				43F5D40324BB87C9004AE586 /* BorderedTextField+UITextView.swift in Sources */,
 				436ECB7924D705800054BA32 /* ChatRoomTableViewController.swift in Sources */,
 				43308CFE24BC211500DDE2E5 /* SignupViewController.swift in Sources */,
+				43F1D9322528D63400AC6FA9 /* UINavigationController+Extensions.swift in Sources */,
 				4372F02B24CE809200E5FD33 /* PersonalInfoViewController.swift in Sources */,
 				4302616524CC7FA700ECB4F8 /* SettingsCellToggleView.swift in Sources */,
 				43F5D40624BC06C5004AE586 /* AButton.swift in Sources */,
 				4372F03424CFEAE200E5FD33 /* SettingsPickerView.swift in Sources */,
 				43308D0124BC266600DDE2E5 /* EmptySpaceView.swift in Sources */,
 				4372F03A24D5D98800E5FD33 /* RoundButton.swift in Sources */,
+				43F1D9222528AE1900AC6FA9 /* NSAttributedString+Extensions.swift in Sources */,
 				43308D0324BC2A1100DDE2E5 /* UIStackView+Extensions.swift in Sources */,
 				4372F03D24D5F18E00E5FD33 /* ChangePasswordViewController.swift in Sources */,
 				43635CAA24DF08B700759BE2 /* WebViewController.swift in Sources */,

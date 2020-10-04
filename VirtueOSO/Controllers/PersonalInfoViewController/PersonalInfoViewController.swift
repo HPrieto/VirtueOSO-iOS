@@ -104,26 +104,26 @@ class PersonalInfoViewController: UIViewController {
     }()
     
     // MARK: - Personal Info
-    private lazy var personalInfoSettingsHeaderView: SettingsHeaderCellView = {
+    private(set) lazy var personalInfoSettingsHeaderView: SettingsHeaderCellView = {
         let view = SettingsHeaderCellView(header: "Personal Info")
         return view
     }()
     
-    private lazy var firstNameTextField: SettingsCellTextFieldView = {
+    private(set) lazy var firstNameTextField: SettingsCellTextFieldView = {
         let view = SettingsCellTextFieldView(title: "First Name (required)")
         view.tag = Tags.firstName.rawValue
         view.delegate = self
         return view
     }()
     
-    private lazy var lastNameTextField: SettingsCellTextFieldView = {
+    private(set) lazy var lastNameTextField: SettingsCellTextFieldView = {
         let view = SettingsCellTextFieldView(title: "Last Name (required)")
         view.tag = Tags.lastName.rawValue
         view.delegate = self
         return view
     }()
     
-    private lazy var emailTextField: SettingsCellTextFieldView = {
+    private(set) lazy var emailTextField: SettingsCellTextFieldView = {
         let view = SettingsCellTextFieldView(title: "Email (required)", keyboardType: .emailAddress)
         view.tag = Tags.email.rawValue
         view._keyboardType = .emailAddress
@@ -131,7 +131,7 @@ class PersonalInfoViewController: UIViewController {
         return view
     }()
     
-    private lazy var phoneNumberTextField: SettingsCellTextFieldView = {
+    private(set) lazy var phoneNumberTextField: SettingsCellTextFieldView = {
         let view = SettingsCellTextFieldView(title: "Phone Number (required)", placeholder: "(xxx) xxx - xxxx")
         view.tag = Tags.phoneNumber.rawValue
         view._keyboardType = .phonePad
@@ -140,26 +140,26 @@ class PersonalInfoViewController: UIViewController {
     }()
     
     // MARK: - Residential Address
-    private lazy var residentialAddressSettingsHeaderView: SettingsHeaderCellView = {
+    private(set) lazy var residentialAddressSettingsHeaderView: SettingsHeaderCellView = {
         let view = SettingsHeaderCellView(header: "Residential Address")
         return view
     }()
     
-    private lazy var addressLine1TextField: SettingsCellTextFieldView = {
+    private(set) lazy var addressLine1TextField: SettingsCellTextFieldView = {
         let view = SettingsCellTextFieldView(title: "Address Line 1")
         view.tag = Tags.addressLine1.rawValue
         view.delegate = self
         return view
     }()
     
-    private lazy var addressLine2TextField: SettingsCellTextFieldView = {
+    private(set) lazy var addressLine2TextField: SettingsCellTextFieldView = {
         let view = SettingsCellTextFieldView(title: "Address Line 2")
         view.tag = Tags.addressLine2.rawValue
         view.delegate = self
         return view
     }()
     
-    private lazy var cityStateHStackView: UIStackView = {
+    private(set) lazy var cityStateHStackView: UIStackView = {
         let view = UIStackView()
         view.axis = .horizontal
         view.alignment = .trailing
@@ -167,14 +167,14 @@ class PersonalInfoViewController: UIViewController {
         return view
     }()
     
-    private lazy var cityTextField: SettingsCellTextFieldView = {
+    private(set) lazy var cityTextField: SettingsCellTextFieldView = {
         let view = SettingsCellTextFieldView(title: "City")
         view.tag = Tags.city.rawValue
         view.delegate = self
         return view
     }()
     
-    private lazy var statePickerView: SettingsPickerView = {
+    private(set) lazy var statePickerView: SettingsPickerView = {
         let view = SettingsPickerView(title: "State")
         view.tag = Tags.state.rawValue
         view.delegate = self
@@ -182,7 +182,7 @@ class PersonalInfoViewController: UIViewController {
         return view
     }()
     
-    private lazy var zipTextField: SettingsCellTextFieldView = {
+    private(set) lazy var zipTextField: SettingsCellTextFieldView = {
         let view = SettingsCellTextFieldView(title: "Zip")
         view.tag = Tags.zip.rawValue
         view._keyboardType = .numberPad
@@ -310,10 +310,6 @@ extension PersonalInfoViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        /// User should not be allowed to enter a space for an email
-        if textField.tag == Tags.email.rawValue && string == " " {
-            return false
-        }
         return true
     }
     

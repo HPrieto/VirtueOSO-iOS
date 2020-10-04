@@ -10,6 +10,12 @@ import UIKit
 
 class Button: UIButton {
     
+    enum State {
+        case enabled
+        case disabled
+        case pending
+    }
+    
     enum DefaultStyle: CGFloat {
         case cornerRadius = 8
         case paddingLeftRight = 23
