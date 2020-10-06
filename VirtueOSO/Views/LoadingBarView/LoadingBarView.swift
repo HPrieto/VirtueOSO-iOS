@@ -33,12 +33,11 @@ class LoadingBarView: UIView {
                 )
             )
             let progressWidth: CGFloat = abs(viewWidth * (widthPercent / 100))
-            print(progressWidth, _progress)
             progressWidthLayoutConstraint?.constant = progressWidth
         }
     }
     
-    var _height: CGFloat = 2 {
+    var _height: CGFloat = 10 {
         willSet {
             heightLayoutConstraint?.constant = newValue
         }
@@ -58,6 +57,14 @@ class LoadingBarView: UIView {
         UIView.animate(withDuration: duration, animations: {
             self.layoutIfNeeded()
         }, completion: completionHandler)
+    }
+    
+    public func show() {
+        alpha = 1
+    }
+    
+    public func hide() {
+        alpha = 0
     }
     
     // MARK: - Initialize Subviews

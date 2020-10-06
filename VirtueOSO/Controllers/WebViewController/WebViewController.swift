@@ -9,12 +9,16 @@
 import UIKit
 import WebKit
 
+var webViewContext = 0
+
 // MARK: - WebViewController
 class WebViewController: UIViewController {
     
     // MARK: - Public Properties
     var urlString: String? {
         didSet {
+            loadingBarView.show()
+            loadingBarView.setProgress(percent: 10)
             guard let urlString: String = urlString,
                 let url = URL(string: urlString) else {
                     return
@@ -23,6 +27,7 @@ class WebViewController: UIViewController {
             var urlRequest = URLRequest(url: url)
              urlRequest.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
             webView.load(urlRequest)
+            loadingBarView.setProgress(percent: 40)
         }
     }
     
@@ -33,16 +38,27 @@ class WebViewController: UIViewController {
     }()
     
     private(set) lazy var loadingBarView: LoadingBarView = {
-        let view = LoadingBarView()
-        return view
+        return LoadingBarView()
     }()
     
-    private(set) lazy var webView: WKWebView = {
+    @objc private(set) lazy var webView: WKWebView = {
         let view = WKWebView()
+        view.backgroundColor = .white
         view.allowsBackForwardNavigationGestures = false
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    // MARK: - Observers
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        guard let _ = change else { return }
+        
+        if context != &webViewContext, keyPath == #keyPath(webView.estimatedProgress) {
+            loadingBarView.setProgress(percent: CGFloat(webView.estimatedProgress))
+        }
+    }
     
     // MARK: - Handlers
     @objc private func handleGoBack() {
@@ -73,6 +89,9 @@ class WebViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Observe url loading progress
+        // webView.addObserver(self, forKeyPath: #keyPath(webView.estimatedProgress), options: .new, context: &webViewContext)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -93,10 +112,11 @@ class WebViewController: UIViewController {
         view.addSubview(loadingBarView)
         view.addSubview(webView)
         
-        loadingBarView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        loadingBarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         loadingBarView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         loadingBarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
+        webView.navigationDelegate = self
         webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         webView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         webView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
@@ -109,6 +129,10 @@ class WebViewController: UIViewController {
         self.load(urlString: urlString)
     }
     
+    deinit {
+        // webView.removeObserver(self, forKeyPath: #keyPath(webView.estimatedProgress), context: &webViewContext)
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -116,9 +140,17 @@ class WebViewController: UIViewController {
 
 
 // MARK: - WKNavigationDelegate
-extension WebViewController: WKNavigationDelegate {
+extension WebViewController: WKNavigationDelegate, WKUIDelegate {
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        loadingBarView.setProgress(percent: 100) { [weak self] _ in
+            guard let `self` = self else { return }
+            self.loadingBarView.setProgress(percent: 100, withDuration: 0.5)
+        }
+    }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         print("WebViewController didFail: \(error)")
+        loadingBarView.setProgress(percent: 0)
     }
 }

@@ -220,21 +220,28 @@ class ProfileCoordinator: Coordinator {
     }()
     
     // MARK: - PersonalInfoViewController
-    private lazy var personalInfoViewController: PersonalInfoViewController = {
+    private(set) lazy var personalInfoViewController: PersonalInfoViewController = {
         let controller = PersonalInfoViewController()
         controller._title = "Personal Info"
         return controller
     }()
     
     // MARK: - TermsAndConditionsViewController
-    private lazy var termsAndConditionsViewController: WebViewController = {
-        let controller = WebViewController("www.google.com")
+    private(set) lazy var termsAndConditionsViewController: WebViewController = {
+        let controller = WebViewController("https://www.airbnb.com/terms")
         controller.navigationItem.title = "Terms & Conditions"
         return controller
     }()
     
+    // MARK: - PrivacyPolicyViewController
+    private(set) lazy var privacyPolicyViewController: WebViewController = {
+        let controller = WebViewController("https://www.airbnb.com/terms/privacy_policy")
+        controller.navigationItem.title = "Virtuoso Privacy Policy"
+        return controller
+    }()
+    
     // MARK: - HomePreferencesViewController
-    private lazy var homePreferencesViewController: SettingsViewController = {
+    private(set) lazy var homePreferencesViewController: SettingsViewController = {
         let subviews: [UIView] = [
             EmptySpaceView(20),
             SettingsCellToggleView(
@@ -353,6 +360,8 @@ class ProfileCoordinator: Coordinator {
             return legalSettingsViewController
         case .termsAndConditions:
             return termsAndConditionsViewController
+        case .privacyPolicy:
+            return privacyPolicyViewController
         default:
             return UIViewController()
         }
@@ -380,6 +389,8 @@ extension ProfileCoordinator: SettingsCellViewDelegate {
             navigate(to: .legal)
         case Destination.termsAndConditions.rawValue:
             navigate(to: .termsAndConditions)
+        case Destination.privacyPolicy.rawValue:
+            navigate(to: .privacyPolicy)
         default:
             break
         }

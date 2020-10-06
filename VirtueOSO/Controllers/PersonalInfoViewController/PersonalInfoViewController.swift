@@ -110,21 +110,21 @@ class PersonalInfoViewController: UIViewController {
     }()
     
     private(set) lazy var firstNameTextField: SettingsCellTextFieldView = {
-        let view = SettingsCellTextFieldView(title: "First Name (required)")
+        let view = SettingsCellTextFieldView(title: "First Name")
         view.tag = Tags.firstName.rawValue
         view.delegate = self
         return view
     }()
     
     private(set) lazy var lastNameTextField: SettingsCellTextFieldView = {
-        let view = SettingsCellTextFieldView(title: "Last Name (required)")
+        let view = SettingsCellTextFieldView(title: "Last Name")
         view.tag = Tags.lastName.rawValue
         view.delegate = self
         return view
     }()
     
     private(set) lazy var emailTextField: SettingsCellTextFieldView = {
-        let view = SettingsCellTextFieldView(title: "Email (required)", keyboardType: .emailAddress)
+        let view = SettingsCellTextFieldView(title: "Email", keyboardType: .emailAddress)
         view.tag = Tags.email.rawValue
         view._keyboardType = .emailAddress
         view.delegate = self
@@ -132,7 +132,7 @@ class PersonalInfoViewController: UIViewController {
     }()
     
     private(set) lazy var phoneNumberTextField: SettingsCellTextFieldView = {
-        let view = SettingsCellTextFieldView(title: "Phone Number (required)", placeholder: "(xxx) xxx - xxxx")
+        let view = SettingsCellTextFieldView(title: "Phone Number", placeholder: "(xxx) xxx - xxxx")
         view.tag = Tags.phoneNumber.rawValue
         view._keyboardType = .phonePad
         view.delegate = self
@@ -192,7 +192,7 @@ class PersonalInfoViewController: UIViewController {
     
     private(set) lazy var updateButton: RoundButton = {
         let view = RoundButton("Update")
-        view.disable()
+        view.enable()
         return view
     }()
     
