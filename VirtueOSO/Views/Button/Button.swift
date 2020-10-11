@@ -17,9 +17,9 @@ class Button: UIButton {
     }
     
     enum DefaultStyle: CGFloat {
-        case cornerRadius = 8
-        case paddingLeftRight = 23
-        case paddingTopBottom = 13
+        case cornerRadius = 4
+        case paddingLeftRight = 9
+        case paddingTopBottom = 5
     }
     
     var _font: UIFont? = UIFont(type: .demiBold, size: .small) {

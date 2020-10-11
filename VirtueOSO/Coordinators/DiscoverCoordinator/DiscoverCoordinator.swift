@@ -13,6 +13,8 @@ class DiscoverCoordinator: Coordinator {
     
     enum Destination: Int {
         case root
+        case artist
+        case artistToRoot
     }
     
     // MARK: Private Properties
@@ -25,12 +27,20 @@ class DiscoverCoordinator: Coordinator {
         controller.navigationBar.backgroundColor = .white
         controller.navigationBar.isTranslucent = true
         controller.navigationBar.barTintColor = .white
-        controller.navigationBar.titleTextAttributes = [.foregroundColor: UIColor._black, .font: UIFont(type: .demiBold, size: .regular) as Any]
+        controller.navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor._black,
+            .font: UIFont(type: .demiBold, size: .regular) as Any
+        ]
         controller.navigationBar.barStyle = .default
         return controller
     }()
     
-    private lazy var discoverViewController: UIViewController = {
+    private(set) lazy var artistViewController: ArtistViewController = {
+        let controller = ArtistViewController(coordinator: self)
+        return controller
+    }()
+    
+    private lazy var discoverViewController: DiscoverViewController = {
         let controller = DiscoverViewController(coordinator: self)
         return controller
     }()
@@ -41,6 +51,10 @@ class DiscoverCoordinator: Coordinator {
         switch destination {
         case .root:
             rootViewController.viewControllers = [controller]
+        case .artistToRoot:
+            rootViewController.popToViewController(controller, animated: true)
+        case .artist:
+            rootViewController.pushViewController(controller, animated: true)
         }
     }
     
@@ -50,8 +64,10 @@ class DiscoverCoordinator: Coordinator {
     
     func makeViewController(for destination: Destination) -> UIViewController {
         switch destination {
-        case .root:
+        case .root, .artistToRoot:
             return discoverViewController
+        case .artist:
+            return artistViewController
         }
     }
     

@@ -14,12 +14,12 @@ class MainCoordinator {
     // MARK: - Private Properties
     private let window: UIWindow
     
-    private lazy var authenticationCoordinator: AuthenticationCoordinator = {
+    private(set) lazy var authenticationCoordinator: AuthenticationCoordinator = {
         let coordinator = AuthenticationCoordinator(mainCoordinator: self)
         return coordinator
     }()
     
-    private lazy var settingsCoordinator: ProfileCoordinator = {
+    private(set) lazy var profileCoordinator: ProfileCoordinator = {
         let coordinator = ProfileCoordinator(mainCoordinator: self)
         coordinator.rootViewController.setTabBarItem(
             withIcon: .person,
@@ -28,7 +28,7 @@ class MainCoordinator {
         return coordinator
     }()
     
-    private lazy var discoverCoordinator: DiscoverCoordinator = {
+    private(set) lazy var discoverCoordinator: DiscoverCoordinator = {
         let coordinator = DiscoverCoordinator(mainCoordinator: self)
         coordinator.rootViewController.setTabBarItem(
             withIcon: .magnifyingGlass,
@@ -97,7 +97,7 @@ class MainCoordinator {
                 discoverCoordinator.rootViewController,
                 controller3,
                 controller4,
-                settingsCoordinator.rootViewController
+                profileCoordinator.rootViewController
             ]
         case .authentication:
             authenticationCoordinator.rootViewController.modalPresentationStyle = .fullScreen
@@ -114,7 +114,7 @@ class MainCoordinator {
         navigate(to: .root)
         
         authenticationCoordinator.start()
-        settingsCoordinator.start()
+        profileCoordinator.start()
         discoverCoordinator.start()
     }
     
@@ -127,7 +127,7 @@ class MainCoordinator {
                 discoverCoordinator.rootViewController,
                 controller3,
                 controller4,
-                settingsCoordinator.rootViewController
+                profileCoordinator.rootViewController
             ]
             return rootViewController
         case .authentication:

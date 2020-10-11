@@ -343,7 +343,7 @@ class ProfileCoordinator: Coordinator {
         rootViewController.pushViewController(viewController, animated: true)
     }
     
-    // MARK: - Private
+    // MARK: - Make ViewController
     private func makeViewController(for destination: Destination) -> UIViewController {
         switch destination {
         case .root:

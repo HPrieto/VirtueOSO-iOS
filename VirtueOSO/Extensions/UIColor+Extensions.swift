@@ -49,6 +49,8 @@ extension UIColor {
     static let _redError: UIColor = UIColor(netHex: 0xd93900)
 
     static let _redErrorBackground: UIColor = UIColor(netHex: 0xd93900, alpha: 0.25)
+    
+    static let _blue: UIColor = UIColor(netHex: 0x0095f6)
 
 //    static let _primary: UIColor = UIColor(netHex: 0xb29dd9)
 //    static let _secondary: UIColor = UIColor(netHex:0x779ecb)

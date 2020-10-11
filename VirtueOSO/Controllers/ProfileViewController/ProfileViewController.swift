@@ -11,28 +11,103 @@ import UIKit
 // MARK: ProfileViewController
 class ProfileViewController: UIViewController {
     
+    enum Strings: String, CodingKey {
+        case follow = "Follow"
+        case following = "Following"
+    }
+    
     // MARK: - Private Properties
     
     private(set) var coordinator: ProfileCoordinator
     
+    private var navigationBarHeight: CGFloat {
+        navigationController?.navigationBar.frame.height ?? 0
+    }
+    
+    private let leftMarginConstant: CGFloat = 20
+    private var rightMarginConstant: CGFloat {
+        return -leftMarginConstant
+    }
+    
+    private let barButtonItemHeightWidth: CGFloat = 35
+    private var barButtonItemCornerRadius: CGFloat {
+        barButtonItemHeightWidth / 2
+    }
+    
+    private var profileImageViewHeight: CGFloat {
+        return view.frame.height * 0.4
+    }
+    
+    private var profileImageViewWidth: CGFloat {
+        return view.frame.width - 40
+    }
+    
     // MARK: - Subviews
     
-    private(set) lazy var rightBarButtonItem: UIBarButtonItem = {
-        let view = UIBarButtonItem(
-            image: UIImage(sfSymbol: .lineHorizontal3),
-            style: .plain,
-            target: self,
-            action: #selector(handleOpenSettings))
+    private(set) lazy var settingsBarButtonItem: UIBarButtonItem = {
+        let button = UIButton(sfSymbol: .lineHorizontal3)
+        button.backgroundColor = .white
+        button.tintColor = ._black
+        button.layer.masksToBounds = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: barButtonItemHeightWidth).isActive = true
+        button.widthAnchor.constraint(equalToConstant: barButtonItemHeightWidth).isActive = true
+        button.layer.cornerRadius = barButtonItemCornerRadius
+        button.addTarget(self, action: #selector(handleOpenSettings), for: .touchUpInside)
+        return UIBarButtonItem(customView: button)
+    }()
+    
+    private(set) lazy var editBarButtonItem: UIBarButtonItem = {
+        let button = UIButton(sfSymbol: .squareAndPencil)
+        button.backgroundColor = .white
+        button.tintColor = ._black
+        button.layer.masksToBounds = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: barButtonItemHeightWidth).isActive = true
+        button.widthAnchor.constraint(equalToConstant: barButtonItemHeightWidth).isActive = true
+        button.layer.cornerRadius = barButtonItemCornerRadius
+        button.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
+        return UIBarButtonItem(customView: button)
+    }()
+    
+    private(set) lazy var profileImageView: UIImageView = {
+        let view = UIImageView()
+        view.backgroundColor = .lightGray
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private(set) lazy var leftBarButtonItem: UIBarButtonItem = {
-        let view = UIBarButtonItem(
-            image: UIImage(sfSymbol: .plus),
-            style: .plain,
-            target: self,
-            action: #selector(handleAdd))
+    private(set) lazy var profileNameLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont(type: .demiBold, size: .title1)
+        view.textColor = .white
+        view.backgroundColor = .clear
+        view.text = "Heriberto Prieto"
+        view.numberOfLines = 1
+        view.adjustsFontSizeToFitWidth = true
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+    
+    private(set) lazy var subscriberCountLabel: UILabel = {
+        let view = UILabel()
+        view.text = "32,000,000 monthly viewers"
+        view.backgroundColor = .clear
+        view.textColor = ._gray
+        view.font = UIFont(type: .medium, size: .small)
+        view.numberOfLines = 1
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private(set) lazy var followButton: Button = {
+        let button = Button("Follow")
+        button.backgroundColor = ._blue
+        button._borderWidth = 1
+        button._borderColor = ._blue
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(handleFollowButtonToggle), for: .touchUpInside)
+        return button
     }()
     
     // MARK: - Handlers
@@ -45,13 +120,42 @@ class ProfileViewController: UIViewController {
         print("Adding something...")
     }
     
+    @objc private func handleFollowButtonToggle() {
+        print("Follow")
+    }
+    
+    @objc private func handleEdit() {
+        print("Editing")
+    }
+    
     // MARK: - Initialize Subviews
+    
     fileprivate func initializeSubviews() {
         view.backgroundColor = .white
         
-        navigationItem.rightBarButtonItem = rightBarButtonItem
-        navigationItem.leftBarButtonItem = leftBarButtonItem
-        navigationItem.title = "hprieto"
+        navigationItem.rightBarButtonItem = settingsBarButtonItem
+        navigationItem.leftBarButtonItem = editBarButtonItem
+        
+        view.addSubview(profileImageView)
+        view.addSubview(profileNameLabel)
+        view.addSubview(subscriberCountLabel)
+        view.addSubview(followButton)
+        
+        profileImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: -navigationBarHeight).isActive = true
+        profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        profileImageView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: profileImageViewHeight).isActive = true
+        
+        profileNameLabel.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor).isActive = true
+        profileNameLabel.widthAnchor.constraint(equalToConstant: profileImageViewWidth).isActive = true
+        profileNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        subscriberCountLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 10).isActive = true
+        subscriberCountLabel.widthAnchor.constraint(equalToConstant: profileImageViewWidth).isActive = true
+        subscriberCountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        followButton.topAnchor.constraint(equalTo: subscriberCountLabel.bottomAnchor, constant: 10).isActive = true
+        followButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
     }
     
     // MARK: - Life Cycle
@@ -64,6 +168,12 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.view.backgroundColor = .clear
+        navigationController?.navigationBar.backgroundColor = .clear
+        navigationController?.navigationBar.tintColor = ._black
     }
     
     override func viewDidAppear(_ animated: Bool) {
