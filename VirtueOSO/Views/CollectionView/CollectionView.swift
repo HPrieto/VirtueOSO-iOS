@@ -11,12 +11,43 @@ import UIKit
 class CollectionView: UICollectionView {
     
     // MARK: - Private Properties
+    public var views: [UIView] = [UIView]() {
+        didSet {
+            
+        }
+    }
+    
+    var stepViews: [UIImageView] = [UIImageView]() {
+        didSet {
+            
+        }
+    }
     
     // MARK: - Public Properties
+    var currentStep: Int = 0 {
+        didSet {
+            
+        }
+    }
     
     // MARK: - Subviews
     
+    private(set) lazy var stepStackView: UIStackView = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     // MARK: - Initialize Subviews
+    
+    fileprivate func initializeSubviews() {
+        addSubview(stepStackView)
+        
+        stepStackView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        stepStackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
+        stepStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
+        stepStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5).isActive = true
+    }
     
     // MARK: - Init
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {

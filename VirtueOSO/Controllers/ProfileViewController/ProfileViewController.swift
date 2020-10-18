@@ -125,7 +125,7 @@ class ProfileViewController: UIViewController {
     }
     
     @objc private func handleEdit() {
-        print("Editing")
+        self.coordinator.navigate(to: .editProfile)
     }
     
     // MARK: - Initialize Subviews

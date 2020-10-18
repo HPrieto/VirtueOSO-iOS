@@ -89,7 +89,7 @@ class SignupViewController: UIViewController {
     }()
     
     private(set) lazy var agreeAndContinueButton: Button = {
-        let view = Button("Agree and continue")
+        let view = Button("Agree and continue", buttonType: .large)
         view.backgroundColor = ._secondary
         view.addTarget(self, action: #selector(handleSignup), for: .touchUpInside)
         return view

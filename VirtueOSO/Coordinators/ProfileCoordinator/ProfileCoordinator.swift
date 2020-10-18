@@ -31,6 +31,7 @@ class ProfileCoordinator: Coordinator {
     enum Destination: Int {
         case root
         case settings
+        case editProfile
         /// Personal Settings
         case personalInfo
         case profile
@@ -73,9 +74,8 @@ class ProfileCoordinator: Coordinator {
     }()
     
     private lazy var logoutButton: Button = {
-        let view = Button()
+        let view = Button("Log Out", buttonType: .roundSides)
         view._font = UIFont(type: .medium, size: .small)
-        view._title = "Log Out"
         view._borderWidth = 0.5
         view._cornerRadius = 22
         view.backgroundColor = .clear
@@ -106,6 +106,12 @@ class ProfileCoordinator: Coordinator {
         return controller
     }()
     
+    // MARK: EditProfileViewController
+    private lazy var editProfileViewController: EditProfileViewController = {
+        EditProfileViewController()
+    }()
+    
+    // MARK: - SettingsRootViewController
     private lazy var settingsRootViewController: SettingsViewController = {
         // MARK: - Init Log Out
         logoutButtonView.addSubview(logoutButton)
@@ -340,7 +346,13 @@ class ProfileCoordinator: Coordinator {
     // MARK: - Coordinator
     func navigate(to destination: Destination) {
         let viewController = makeViewController(for: destination)
-        rootViewController.pushViewController(viewController, animated: true)
+        switch destination {
+        case .editProfile:
+            let navigationController = UINavigationController(rootViewController: viewController)
+            rootViewController.present(navigationController, animated: true, completion: nil)
+        default:
+            rootViewController.pushViewController(viewController, animated: true)
+        }
     }
     
     // MARK: - Make ViewController
@@ -348,6 +360,8 @@ class ProfileCoordinator: Coordinator {
         switch destination {
         case .root:
             return profileViewController
+        case .editProfile:
+            return editProfileViewController
         case .settings:
             return settingsRootViewController
         case .personalInfo:
@@ -379,6 +393,8 @@ extension ProfileCoordinator: SettingsCellViewDelegate {
         switch tag {
         case Destination.settings.rawValue:
             navigate(to: .settings)
+        case Destination.editProfile.rawValue:
+            navigate(to: .editProfile)
         case Destination.personalInfo.rawValue:
             navigate(to: .personalInfo)
         case Destination.preferences.rawValue:

@@ -125,7 +125,6 @@ class SettingsCellTextFieldView: UIView {
         view.tintColor = ._tertiary
         view.autocorrectionType = .no
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.becomeFirstResponder()
         return view
     }()
     

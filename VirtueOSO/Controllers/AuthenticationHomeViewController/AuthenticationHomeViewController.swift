@@ -79,7 +79,7 @@ class AuthenticationHomeViewController: UIViewController {
     }()
     
     private(set) lazy var googleButton: Button = {
-        let view = Button(Strings.googleButtonTitle.rawValue)
+        let view = Button(Strings.googleButtonTitle.rawValue, buttonType: .roundSides)
         view.backgroundColor = .white
         view._font = UIFont(type: .medium, size: .small)
         view._textColor = ._secondary
@@ -89,7 +89,7 @@ class AuthenticationHomeViewController: UIViewController {
     }()
     
     private(set) lazy var facebookButton: Button = {
-        let view = Button(Strings.facebookButtonTitle.rawValue)
+        let view = Button(Strings.facebookButtonTitle.rawValue, buttonType: .roundSides)
         view.backgroundColor = .white
         view._font = UIFont(type: .medium, size: .small)
         view._textColor = ._secondary
@@ -99,7 +99,7 @@ class AuthenticationHomeViewController: UIViewController {
     }()
     
     private(set) lazy var createAccountButton: Button = {
-        let view = Button(Strings.createAccountButtonTitle.rawValue)
+        let view = Button(Strings.createAccountButtonTitle.rawValue, buttonType: .roundSides)
         view.backgroundColor = .white
         view._font = UIFont(type: .medium, size: .small)
         view._textColor = .white
@@ -122,14 +122,50 @@ class AuthenticationHomeViewController: UIViewController {
     // By signing up, I agree to Virutuoso's Terms of Service, Non-Discrimination Policy, Payments Terms of Service, and Host Guarantee Terms.
     private(set) lazy var disclaimerTextView: AttributedTextView = {
         let view = AttributedTextView(attributes: [
-            NSAttributedString(string: "By signing up, I agree to Virutuoso's ", color: .white, fontSize: .small),
-            NSAttributedString(string: "Terms of Service", color: .white, fontType: .demiBold, fontSize: .small),
-            NSAttributedString(string: ", ", color: .white, fontSize: .small),
-            NSAttributedString(string: "Non-Discrimination Policy", color: .white, fontType: .demiBold, fontSize: .small),
-            NSAttributedString(string: ", ", color: .white, fontSize: .small),
-            NSAttributedString(string: "Payments Terms of Service", color: .white, fontType: .demiBold, fontSize: .small),
-            NSAttributedString(string: ", and ", color: .white, fontSize: .small),
-            NSAttributedString(string: "Host Gaurantee Terms", color: .white, fontType: .demiBold, fontSize: .small),
+            NSAttributedString(
+                string: "By signing up, I agree to Virutuoso's ",
+                color: .white,
+                fontSize: .small
+            ),
+            NSAttributedString(
+                string: "Terms of Service",
+                color: .white,
+                fontType: .demiBold,
+                fontSize: .small
+            ),
+            NSAttributedString(
+                string: ", ",
+                color: .white,
+                fontSize: .small
+            ),
+            NSAttributedString(
+                string: "Non-Discrimination Policy",
+                color: .white,
+                fontType: .demiBold,
+                fontSize: .small
+            ),
+            NSAttributedString(
+                string: ", ",
+                color: .white,
+                fontSize: .small
+            ),
+            NSAttributedString(
+                string: "Payments Terms of Service",
+                color: .white,
+                fontType: .demiBold,
+                fontSize: .small
+            ),
+            NSAttributedString(
+                string: ", and ",
+                color: .white,
+                fontSize: .small
+            ),
+            NSAttributedString(
+                string: "Host Gaurantee Terms",
+                color: .white,
+                fontType: .demiBold,
+                fontSize: .small
+            ),
         ])
         view.textContainer.maximumNumberOfLines = 3
         view.isEditable = false

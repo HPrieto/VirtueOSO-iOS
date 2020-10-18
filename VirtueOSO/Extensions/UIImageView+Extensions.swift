@@ -32,5 +32,11 @@ extension UIImageView {
             }
         }
     }
+    
+    convenience init(sfSymbol: UIImage.SFSymbol, weight: UIImage.SymbolWeight) {
+        self.init()
+        let image: UIImage? = UIImage(sfSymbol: sfSymbol, withWeight: weight)?.withRenderingMode(.alwaysTemplate)
+        self.image = image
+    }
 
 }

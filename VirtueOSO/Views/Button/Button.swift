@@ -10,16 +10,62 @@ import UIKit
 
 class Button: UIButton {
     
+    enum ButtonType {
+        case normal
+        case roundSides
+        case large
+    }
+    
     enum State {
         case enabled
         case disabled
         case pending
     }
     
-    enum DefaultStyle: CGFloat {
+    enum NormalButtonStyle: CGFloat {
         case cornerRadius = 4
         case paddingLeftRight = 9
         case paddingTopBottom = 5
+    }
+    
+    enum RoundSidesButtonStyle: CGFloat {
+        case cornerRadius = 8
+        case paddingLeftRight = 23
+        case paddingTopBottom = 13
+    }
+    
+    enum LargeButtonStyle: CGFloat {
+        case cornerRadius = 4
+        case paddingLeftRight = 23
+        case paddingTopBottom = 13
+    }
+    
+    var _buttonType: ButtonType = .normal {
+        didSet {
+            switch _buttonType {
+            case .normal:
+                contentEdgeInsets = UIEdgeInsets(
+                    top: NormalButtonStyle.paddingTopBottom.rawValue,
+                    left: NormalButtonStyle.paddingLeftRight.rawValue,
+                    bottom: NormalButtonStyle.paddingTopBottom.rawValue,
+                    right: NormalButtonStyle.paddingLeftRight.rawValue
+                )
+            case .roundSides:
+                contentEdgeInsets = UIEdgeInsets(
+                    top: RoundSidesButtonStyle.paddingTopBottom.rawValue,
+                    left: RoundSidesButtonStyle.paddingLeftRight.rawValue,
+                    bottom: RoundSidesButtonStyle.paddingTopBottom.rawValue,
+                    right: RoundSidesButtonStyle.paddingLeftRight.rawValue
+                )
+            case .large:
+                contentEdgeInsets = UIEdgeInsets(
+                    top: LargeButtonStyle.paddingTopBottom.rawValue,
+                    left: LargeButtonStyle.paddingLeftRight.rawValue,
+                    bottom: LargeButtonStyle.paddingTopBottom.rawValue,
+                    right: LargeButtonStyle.paddingLeftRight.rawValue
+                )
+            }
+        }
     }
     
     var _font: UIFont? = UIFont(type: .demiBold, size: .small) {
@@ -52,11 +98,19 @@ class Button: UIButton {
         }
     }
     
-    var _cornerRadius: CGFloat = DefaultStyle.cornerRadius.rawValue {
+    var _cornerRadius: CGFloat = NormalButtonStyle.cornerRadius.rawValue {
         didSet {
             layer.cornerRadius = _cornerRadius
         }
     }
+    
+    // MARK: - Public Methods
+    
+    public func setButtonType(_ buttonType: ButtonType) {
+        self._buttonType = buttonType
+    }
+    
+    // MARK: - Initialize
     
     private func initialize() {
         translatesAutoresizingMaskIntoConstraints = false
@@ -64,18 +118,19 @@ class Button: UIButton {
         titleLabel?.font = _font
         layer.cornerRadius = _cornerRadius
         contentEdgeInsets = UIEdgeInsets(
-            top: DefaultStyle.paddingTopBottom.rawValue,
-            left: DefaultStyle.paddingLeftRight.rawValue,
-            bottom: DefaultStyle.paddingTopBottom.rawValue,
-            right: DefaultStyle.paddingLeftRight.rawValue
+            top: NormalButtonStyle.paddingTopBottom.rawValue,
+            left: NormalButtonStyle.paddingLeftRight.rawValue,
+            bottom: NormalButtonStyle.paddingTopBottom.rawValue,
+            right: NormalButtonStyle.paddingLeftRight.rawValue
         )
     }
     
-    init(_ title: String) {
+    init(_ title: String, buttonType: ButtonType = .normal) {
         super.init(frame: CGRect.zero)
         self._title = title
         setTitle(title, for: .normal)
         initialize()
+        setButtonType(buttonType)
     }
     
     override init(frame: CGRect) {

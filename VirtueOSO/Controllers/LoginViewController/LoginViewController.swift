@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
     }()
     
     private(set) lazy var loginButton: Button = {
-        let view = Button("Log in")
+        let view = Button("Log in", buttonType: .large)
         view.backgroundColor = ._secondary
         return view
     }()
