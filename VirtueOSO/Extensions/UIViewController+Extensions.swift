@@ -26,9 +26,16 @@ extension UIViewController {
     }
 
     // MARK: - Utils
-    public func setTabBarItem(withIcon sfSymbol: UIImage.SFSymbol, selectedIcon: UIImage.SFSymbol, title: String? = nil, weight: UIImage.SymbolWeight = .regular, selectedWeight: UIImage.SymbolWeight = .regular, tag: Int = 0) {
-        guard let image: UIImage = UIImage(sfSymbol: sfSymbol, withWeight: weight),
-              let selectedImage: UIImage = UIImage(sfSymbol: selectedIcon, withWeight: selectedWeight) else { return }
+    public func setTabBarItem(withIcon sfSymbol: UIImage.SFSymbol,
+                              selectedIcon: UIImage.SFSymbol,
+                              title: String? = nil,
+                              weight: UIImage.SymbolWeight = .regular,
+                              selectedWeight: UIImage.SymbolWeight = .regular,
+                              tag: Int = 0) {
+        guard
+            let image: UIImage = UIImage(sfSymbol: sfSymbol, withWeight: weight),
+            let selectedImage: UIImage = UIImage(sfSymbol: selectedIcon, withWeight: selectedWeight)
+        else { return }
         let tabBarItem: UITabBarItem = UITabBarItem(
             title: title,
             image: image,

@@ -14,6 +14,18 @@ class MainCoordinator {
     // MARK: - Private Properties
     private let window: UIWindow
     
+    // MARK: - Coordinators
+    
+    private(set) lazy var eventsCoordinator: EventsCoordinator = {
+        let coordinator = EventsCoordinator(mainCoordinator: self)
+        coordinator.rootViewController.setTabBarItem(
+            withIcon: .house,
+            selectedIcon: .houseFill,
+            weight: .light,
+            selectedWeight: .light)
+        return coordinator
+    }()
+    
     private(set) lazy var authenticationCoordinator: AuthenticationCoordinator = {
         let coordinator = AuthenticationCoordinator(mainCoordinator: self)
         return coordinator
@@ -93,7 +105,7 @@ class MainCoordinator {
         switch destination {
         case .root:
             rootViewController.viewControllers = [
-                controller1,
+                eventsCoordinator.rootViewController,
                 discoverCoordinator.rootViewController,
                 controller3,
                 controller4,
@@ -113,6 +125,7 @@ class MainCoordinator {
         window.makeKeyAndVisible()
         navigate(to: .root)
         
+        eventsCoordinator.start()
         authenticationCoordinator.start()
         profileCoordinator.start()
         discoverCoordinator.start()
@@ -123,7 +136,7 @@ class MainCoordinator {
         switch destination {
         case .root:
             rootViewController.viewControllers = [
-                controller1,
+                eventsCoordinator.rootViewController,
                 discoverCoordinator.rootViewController,
                 controller3,
                 controller4,
@@ -144,7 +157,7 @@ extension MainCoordinator: MainTabBarControllerDelegate {
     func mainTabBarController(_ mainTabBarController: MainTabBarController, didSelect viewController: UIViewController, tag: Int) {
         switch tag {
         case 1:
-            rootViewController._tabBarType = .clear
+            rootViewController._tabBarType = .normal
         default:
             rootViewController._tabBarType = .normal
         }

@@ -14,17 +14,23 @@ extension UIView {
         return UITraitCollection().userInterfaceStyle == .dark
     }
 
-    func addShadow(_ opacity: Float = 0.1, _ shadowColor: UIColor = ._black) {
+    func addShadow(opacity: Float = 0.4, color: UIColor = ._black, width: CGFloat = 0, height: CGFloat = 0, radius: CGFloat = 8) {
         self.clipsToBounds = true
         self.layer.masksToBounds = false
-        self.layer.shadowRadius = self.layer.cornerRadius / 3
+        self.layer.shadowRadius = radius
         self.layer.shadowOpacity = opacity
-        self.layer.shadowOffset = CGSize(width: 0, height: 5)
-        self.layer.shadowColor = shadowColor.cgColor
+        self.layer.shadowOffset = CGSize(width: width, height: height)
+        self.layer.shadowColor = color.cgColor
     }
 
     public var _size: CGSize {
         return self.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+    }
+    
+    convenience init(corners: UIRectCorner, radius: Double) {
+        self.init()
+        layer.masksToBounds = true
+        round(corners: corners, radius: radius)
     }
     
     func round(corners: UIRectCorner, radius: Double) {

@@ -20,7 +20,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     // MARK: - Public Properties
     var _delegate: MainTabBarControllerDelegate?
     
-    var _tabBarType: TabBarType = .clear {
+    var _tabBarType: TabBarType = .normal {
         didSet {
             switch _tabBarType {
             case .clear:
@@ -54,7 +54,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     // MARK: - Initialize Subviews
     private func initializeSubviews() {
-        _tabBarType = .clear
+        _tabBarType = .normal
         delegate = self
     }
     

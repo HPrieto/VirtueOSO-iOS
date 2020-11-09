@@ -31,7 +31,7 @@ class ArtistViewController: UIViewController {
     }
     
     private var profileImageViewHeight: CGFloat {
-        view.frame.height * 0.4
+        view.frame.width * (6/9)
     }
     private let leftMarginConstant: CGFloat = 20
     private var rightMarginConstant: CGFloat {
@@ -101,6 +101,8 @@ class ArtistViewController: UIViewController {
     
     private(set) lazy var profileImageView: UIImageView = {
         let view = UIImageView()
+        view.contentMode = .scaleAspectFill
+        view.setTestImage()
         view.backgroundColor = .lightGray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -156,7 +158,7 @@ class ArtistViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         view.register(TitleTableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: TitleTableViewHeaderFooterView.reuseIdentifier)
-        view.register(ProfileTableViewCell.self, forCellReuseIdentifier: ProfileTableViewCell.reuseIdentifier)
+        view.register(EventDetailTableViewCell.self, forCellReuseIdentifier: EventDetailTableViewCell.reuseIdentifier)
         return view
     }()
     
@@ -194,7 +196,6 @@ class ArtistViewController: UIViewController {
     fileprivate func initializeSubviews() {
         view.backgroundColor = .white
         
-        // navigationItem.rightBarButtonItem = rightBarButtonItem
         navigationItem.leftBarButtonItem = leftBarButtonItem
         
         view.addSubview(profileImageView)
@@ -204,7 +205,7 @@ class ArtistViewController: UIViewController {
         view.addSubview(moreButton)
         view.addSubview(tableView)
         
-        profileImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: -navigationBarHeight).isActive = true
+        profileImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: profileImageViewHeight).isActive = true
@@ -292,25 +293,15 @@ extension ArtistViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: ProfileTableViewCell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.reuseIdentifier) as! ProfileTableViewCell
-        switch indexPath.section {
-        case 0:
-            cell.titleLabel.text = "Some Live Event Name"
-        case 1:
-            cell.titleLabel.text = "Some Upcoming Event Name"
-        case 2:
-            cell.titleLabel.text = "Some New Release Event Name"
-        case 3:
-            cell.titleLabel.text = "Some Past Event Name"
-        default:
-            cell.descriptionLabel.text = "October 14, 2020 7:00 PM"
-            break
+        let cell: EventDetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: EventDetailTableViewCell.reuseIdentifier) as! EventDetailTableViewCell
+        cell.titleLabel.text = "TEST_TITLE #119 - FA/HOCKEY, Kareem Campbell"
+        cell.nameLabel.text = "Kanye West"
+        cell.descriptionLabel.text = "We discuss the FA/Hockey 'Dancing On Thin Ice Vide', Anderson Cooper talks with Tony Hawk | We discuss the FA/Hockey 'Dancing On Thin Ice Vide', Anderson Cooper talks with Tony Hawk"
+        cell.timestampLabel.text = "October 14, 2020 7:00 PM · 1hr 30min"
+        cell.handleTitleButtonTapped = { button in
+            print("button tapped: \(indexPath)")
         }
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -18,7 +18,7 @@ class EventViewController: UIViewController {
     }
     
     private var eventImageViewHeight: CGFloat {
-        return view.frame.height * 0.4
+        return view.frame.height * 0.35
     }
     
     private let leftMarginConstant: CGFloat = 20
@@ -98,7 +98,7 @@ class EventViewController: UIViewController {
     // MARK: - Handlers
     
     @objc private func handleClose() {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc private func handleLike() {

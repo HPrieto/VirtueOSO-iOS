@@ -35,7 +35,7 @@ class ProfileViewController: UIViewController {
     }
     
     private var profileImageViewHeight: CGFloat {
-        return view.frame.height * 0.4
+        return view.frame.width * (6/9)
     }
     
     private var profileImageViewWidth: CGFloat {
@@ -43,6 +43,26 @@ class ProfileViewController: UIViewController {
     }
     
     // MARK: - Subviews
+    
+    private(set) lazy var mainScrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
+        view.automaticallyAdjustsScrollIndicatorInsets = true
+        view.alwaysBounceVertical = true
+        view.alwaysBounceHorizontal = false
+        view.showsVerticalScrollIndicator = true
+        view.showsHorizontalScrollIndicator = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private(set) lazy var mainStackView: UIStackView = {
+        let view = UIStackView()
+        view.axis = .vertical
+        view.spacing = 15
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     private(set) lazy var settingsBarButtonItem: UIBarButtonItem = {
         let button = UIButton(sfSymbol: .lineHorizontal3)
@@ -73,6 +93,8 @@ class ProfileViewController: UIViewController {
     private(set) lazy var profileImageView: UIImageView = {
         let view = UIImageView()
         view.backgroundColor = .lightGray
+        view.contentMode = .scaleAspectFill
+        view.setTestImage()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -89,25 +111,85 @@ class ProfileViewController: UIViewController {
         return view
     }()
     
-    private(set) lazy var subscriberCountLabel: UILabel = {
+    private(set) lazy var bioLabel: UILabel = {
         let view = UILabel()
-        view.text = "32,000,000 monthly viewers"
-        view.backgroundColor = .clear
+        view.font = UIFont(type: .medium, size: 12)
+        view.numberOfLines = 10
         view.textColor = ._gray
-        view.font = UIFont(type: .medium, size: .small)
-        view.numberOfLines = 1
+        // view.text = "A short message."
+        view.text = "The functions and arguments are renamed in a way that, for me, clarifies what's going on, for instance by distinguishing a Swift closure from a UIButton action."
+        // view.text = "The functions and arguments are renamed in a way that, for me, clarifies what's going on, for instance by distinguishing a Swift closure from a UIButton action. The functions and arguments are renamed in a way that, for me, clarifies what's going on, for instance by distinguishing a Swift closure from a UIButton action."
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private(set) lazy var followButton: Button = {
-        let button = Button("Follow")
-        button.backgroundColor = ._blue
-        button._borderWidth = 1
-        button._borderColor = ._blue
-        button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(handleFollowButtonToggle), for: .touchUpInside)
-        return button
+    private(set) lazy var tableView: EventDetailTableView = {
+        let view = EventDetailTableView()
+        view.generateTestData()
+        view.reloadData()
+        view.rowHeight = UITableView.automaticDimension
+        view.estimatedRowHeight = 44
+        view.isScrollEnabled = false
+        view.setFixedHeight()
+        return view
+    }()
+    
+    private(set) var eventsLabel: UILabel = {
+        let view = UILabel()
+        view.numberOfLines = 2
+        view.textAlignment = .center
+        view.attributedText = NSMutableAttributedString(
+            attributedStrings: [
+                NSAttributedString(string: "20", color: ._black, fontType: .demiBold, fontSize: .small),
+                NSAttributedString(string: "\nEvents", color: ._black, fontType: .regular, fontSize: .small),
+            ]
+        )
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private(set) var followersLabel: UILabel = {
+        let view = UILabel()
+        view.numberOfLines = 2
+        view.textAlignment = .center
+        view.attributedText = NSMutableAttributedString(
+            attributedStrings: [
+                NSAttributedString(string: "1,000", color: ._black, fontType: .demiBold, fontSize: .small),
+                NSAttributedString(string: "\nFollowers", color: ._black, fontType: .regular, fontSize: .small),
+            ]
+        )
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private(set) var followingLabel: UILabel = {
+        let view = UILabel()
+        view.numberOfLines = 2
+        view.textAlignment = .center
+        view.attributedText = NSMutableAttributedString(
+            attributedStrings: [
+                NSAttributedString(string: "150", color: ._black, fontType: .demiBold, fontSize: .small),
+                NSAttributedString(string: "\nFollowing", color: ._black, fontType: .regular, fontSize: .small),
+            ]
+        )
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private(set) lazy var labelStackView: UIStackView = {
+        let view = UIStackView(
+            arrangedSubviews: [
+                eventsLabel,
+                followersLabel,
+                followingLabel,
+            ]
+        )
+        view.spacing = 5
+        view.axis = .horizontal
+        view.alignment = .center
+        view.distribution = .equalSpacing
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     // MARK: - Handlers
@@ -137,25 +219,34 @@ class ProfileViewController: UIViewController {
         navigationItem.leftBarButtonItem = editBarButtonItem
         
         view.addSubview(profileImageView)
-        view.addSubview(profileNameLabel)
-        view.addSubview(subscriberCountLabel)
-        view.addSubview(followButton)
+        view.addSubview(mainScrollView)
         
-        profileImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: -navigationBarHeight).isActive = true
-        profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        profileImageView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        profileImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: profileImageViewHeight).isActive = true
+        profileImageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        profileImageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        profileImageView.addSubview(profileNameLabel)
         
         profileNameLabel.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor).isActive = true
         profileNameLabel.widthAnchor.constraint(equalToConstant: profileImageViewWidth).isActive = true
-        profileNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        profileNameLabel.centerXAnchor.constraint(equalTo: profileImageView.centerXAnchor).isActive = true
         
-        subscriberCountLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 10).isActive = true
-        subscriberCountLabel.widthAnchor.constraint(equalToConstant: profileImageViewWidth).isActive = true
-        subscriberCountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        mainScrollView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor).isActive = true
+        mainScrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        mainScrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        mainScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        followButton.topAnchor.constraint(equalTo: subscriberCountLabel.bottomAnchor, constant: 10).isActive = true
-        followButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        mainScrollView.addSubview(mainStackView)
+        
+        mainStackView.topAnchor.constraint(equalTo: mainScrollView.topAnchor).isActive = true
+        mainStackView.widthAnchor.constraint(equalTo: mainScrollView.widthAnchor).isActive = true
+        mainStackView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor).isActive = true
+        mainStackView.centerXAnchor.constraint(equalTo: mainScrollView.centerXAnchor).isActive = true
+        
+        mainStackView.addArrangedSubview(labelStackView)
+        mainStackView.addArrangedSubview(tableView)
+        
     }
     
     // MARK: - Life Cycle

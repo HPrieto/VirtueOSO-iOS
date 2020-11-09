@@ -10,5 +10,6 @@ import UIKit
 
 protocol TableViewCellDataSource {
     static var reuseIdentifier: String { get }
+    static var cellHeight: CGFloat { get }
     func initializeSubviews()
 }
