@@ -35,8 +35,7 @@ class MainCoordinator {
         let coordinator = ProfileCoordinator(mainCoordinator: self)
         coordinator.rootViewController.setTabBarItem(
             withIcon: .person,
-            selectedIcon: .personFill,
-            weight: .light)
+            selectedIcon: .personFill)
         return coordinator
     }()
     
@@ -44,9 +43,7 @@ class MainCoordinator {
         let coordinator = DiscoverCoordinator(mainCoordinator: self)
         coordinator.rootViewController.setTabBarItem(
             withIcon: .magnifyingGlass,
-            selectedIcon: .magnifyingGlass,
-            weight: .light,
-            selectedWeight: .bold)
+            selectedIcon: .magnifyingGlass)
         return coordinator
     }()
     
@@ -67,28 +64,28 @@ class MainCoordinator {
     private lazy var controller1: UIViewController = {
         let controller = UIViewController()
         controller.view.backgroundColor = .black
-        controller.setTabBarItem(withIcon: .house, selectedIcon: .houseFill, weight: .light, selectedWeight: .light, tag: 1)
+        controller.setTabBarItem(withIcon: .house, selectedIcon: .houseFill, tag: 1)
         return controller
     }()
     
     private lazy var controller2: UIViewController = {
         let controller = UIViewController()
         controller.view.backgroundColor = .orange
-        controller.setTabBarItem(withIcon: .magnifyingGlass, selectedIcon: .magnifyingGlass, weight: .light, selectedWeight: .bold)
+        controller.setTabBarItem(withIcon: .magnifyingGlass, selectedIcon: .magnifyingGlass)
         return controller
     }()
     
     private lazy var controller3: UIViewController = {
         let controller = UIViewController()
         controller.view.backgroundColor = .green
-        controller.setTabBarItem(withIcon: .plusRectangle, selectedIcon: .plusRectangleFill, weight: .light)
+        controller.setTabBarItem(withIcon: .plusRectangle, selectedIcon: .plusRectangleFill)
         return controller
     }()
     
     private lazy var controller4: UIViewController = {
         let controller = UIViewController()
         controller.view.backgroundColor = .blue
-        controller.setTabBarItem(withIcon: .heart, selectedIcon: .heartFill, weight: .light)
+        controller.setTabBarItem(withIcon: .heart, selectedIcon: .heartFill)
         return controller
     }()
     

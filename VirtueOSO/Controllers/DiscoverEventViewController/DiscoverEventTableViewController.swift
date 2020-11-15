@@ -10,6 +10,12 @@ import UIKit
 
 class DiscoverEventViewController: UIViewController {
     
+    // MARK: - Private Properties
+    
+    // MARK: - Public Properties
+    
+    private(set) var coordinator: EventsCoordinator
+    
     // MARK: - Subviews
     
     private(set) lazy var leftBarButtonItem: UIBarButtonItem? = {
@@ -18,7 +24,7 @@ class DiscoverEventViewController: UIViewController {
     }()
     
     private(set) lazy var rightBarButtonItem: UIBarButtonItem? = {
-        let view = UIBarButtonItem(sfSymbol: .sliderHorizontal3, style: .plain, target: self, action: nil)
+        let view = UIBarButtonItem(sfSymbol: .paperPlane, style: .plain, target: self, action: #selector(handleDirectMessages))
         return view
     }()
     
@@ -30,6 +36,12 @@ class DiscoverEventViewController: UIViewController {
         view.eventDelegate = self
         return view
     }()
+    
+    // MARK: - Handlers
+    
+    @objc private func handleDirectMessages() {
+        coordinator.navigate(to: .directMessages)
+    }
     
     // MARK: - Initialize Subviews
     
@@ -60,6 +72,15 @@ class DiscoverEventViewController: UIViewController {
     }
     
     // MARK: - Init
+    
+    init(coordinator: EventsCoordinator) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 // MARK: - EventTableViewDelegate
@@ -73,8 +94,8 @@ extension DiscoverEventViewController: EventTableViewDelegate {
         cell.usernameLabel.text = "Kanye West"
         cell.descriptionLabel.text = "The Yeezus Tour was a concert tour by American rapper Kanye West in support of West's sixth solo studio album."
         cell.amountLabel.attributedText = NSMutableAttributedString(attributedStrings: [
-            NSAttributedString(string: "$1", color: .black, fontType: .medium, fontSize: .small),
-            NSAttributedString(string: " / person", color: ._darkGray, fontType: .regular, fontSize: .small)
+            NSAttributedString(string: "$1", color: .black, fontType: .demiBold, fontSize: .small),
+            NSAttributedString(string: " / person", color: ._darkGray, fontType: .medium, fontSize: .small)
         ])
         if indexPath.row % 2 == 0 {
             cell.statusLabel.text = "Live"

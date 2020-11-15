@@ -10,10 +10,10 @@ import Foundation
 
 class EventViewModel {
     
-    var models: [Event] = [Event]()
+    var models: [Event]
     
     init() {
-        
+        models = [Event]()
     }
     
     init(_ models: [Event]) {

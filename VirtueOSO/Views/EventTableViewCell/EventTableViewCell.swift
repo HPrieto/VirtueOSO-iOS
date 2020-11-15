@@ -16,8 +16,15 @@ class EventTableViewCell: UITableViewCell {
     
     // MARK: - Constants
     
-    private let likeButtonHeight: CGFloat = 55
+    private let likeButtonHeight: CGFloat = 25
     private var likeButtonWidth: CGFloat {
+        return likeButtonHeight
+    }
+    
+    private var commentButtonHeight: CGFloat {
+        return likeButtonHeight
+    }
+    private var commentButtonWidth: CGFloat {
         return likeButtonHeight
     }
     
@@ -41,13 +48,22 @@ class EventTableViewCell: UITableViewCell {
         view.textColor = .white
         view.textAlignment = .center
         view.numberOfLines = 1
-        view.font = UIFont(type: .demiBold, size: 12)
+        view.font = UIFont(type: .demiBold, size: 14)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private(set) lazy var likeButton: UIButton = {
-        let button = UIButton(sfSymbol: .heart, withWeight: .medium)
+        let button = UIButton(sfSymbolForBackground: .heart, withWeight: .semibold)
+        button.tintColor = .white
+        button.contentMode = .scaleAspectFit
+        button.backgroundColor = .clear
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private(set) lazy var commentButton: UIButton = {
+        let button = UIButton(sfSymbolForBackground: .message, withWeight: .semibold)
         button.tintColor = .white
         button.contentMode = .scaleAspectFit
         button.backgroundColor = .clear
@@ -79,7 +95,7 @@ class EventTableViewCell: UITableViewCell {
     
     private(set) lazy var descriptionLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont(type: .regular, size: 14)
+        view.font = UIFont(type: .medium, size: 14)
         view.textColor = ._darkGray
         view.numberOfLines = 4
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -120,9 +136,9 @@ class EventTableViewCell: UITableViewCell {
         view.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
         view.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
         
-        
         eventImageView.addSubview(statusLabel)
         eventImageView.addSubview(likeButton)
+        eventImageView.addSubview(commentButton)
         eventImageView.addSubview(titleLabel)
         eventImageView.addSubview(usernameLabel)
         
@@ -139,10 +155,15 @@ class EventTableViewCell: UITableViewCell {
         statusLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         statusLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
         
-        likeButton.rightAnchor.constraint(equalTo: eventImageView.rightAnchor).isActive = true
-        likeButton.topAnchor.constraint(equalTo: eventImageView.topAnchor).isActive = true
+        likeButton.rightAnchor.constraint(equalTo: eventImageView.rightAnchor, constant: -15).isActive = true
+        likeButton.topAnchor.constraint(equalTo: eventImageView.topAnchor, constant: 15).isActive = true
         likeButton.heightAnchor.constraint(equalToConstant: likeButtonHeight).isActive = true
         likeButton.widthAnchor.constraint(equalToConstant: likeButtonWidth).isActive = true
+        
+        commentButton.rightAnchor.constraint(equalTo: likeButton.leftAnchor, constant: -10).isActive = true
+        commentButton.topAnchor.constraint(equalTo: likeButton.topAnchor).isActive = true
+        commentButton.heightAnchor.constraint(equalToConstant: commentButtonHeight).isActive = true
+        commentButton.widthAnchor.constraint(equalToConstant: commentButtonWidth).isActive = true
         
         usernameLabel.leftAnchor.constraint(equalTo: eventImageView.leftAnchor, constant: 10).isActive = true
         usernameLabel.rightAnchor.constraint(equalTo: eventImageView.rightAnchor, constant: -10).isActive = true

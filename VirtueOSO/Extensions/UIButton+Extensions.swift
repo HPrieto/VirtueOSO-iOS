@@ -10,7 +10,7 @@ import UIKit
 
 extension UIButton {
     
-    convenience init(sfSymbol: UIImage.SFSymbol, withWeight weight: UIImage.SymbolWeight = .regular) {
+    convenience init(sfSymbol: UIImage.SFSymbol, withWeight weight: UIImage.SymbolWeight = .semibold) {
         self.init()
         let image: UIImage? = UIImage(sfSymbol: sfSymbol, withWeight: weight)
         setImage(image, for: .normal)
@@ -18,7 +18,7 @@ extension UIButton {
         contentMode = .scaleAspectFit
     }
     
-    convenience init(sfSymbolForBackground sfSymbol: UIImage.SFSymbol, withWeight weight: UIImage.SymbolWeight = .regular) {
+    convenience init(sfSymbolForBackground sfSymbol: UIImage.SFSymbol, withWeight weight: UIImage.SymbolWeight = .semibold) {
         self.init()
         let image: UIImage? = UIImage(sfSymbol: sfSymbol, withWeight: weight)
         setBackgroundImage(image, for: .normal)

@@ -112,7 +112,7 @@ class EventDetailTableViewCell: UITableViewCell, TableViewCellDataSource {
     }()
     
     private(set) lazy var titleButton: UIButton = {
-        let view = UIButton(sfSymbol: .ellipses)
+        let view = UIButton(sfSymbol: .ellipses, withWeight: .semibold)
         view.tintColor = ._gray
         view.addTarget(self, action: #selector(handleCallTitleButtonTap), for: .touchUpInside)
         return view
@@ -130,9 +130,9 @@ class EventDetailTableViewCell: UITableViewCell, TableViewCellDataSource {
     
     private(set) lazy var descriptionLabel: UILabel = {
         let view = UILabel()
-        view.numberOfLines = 2
-        view.font = UIFont(type: .medium, size: 12)
-        view.textColor = ._gray
+        view.numberOfLines = 3
+        view.font = UIFont(type: .medium, size: 14)
+        view.textColor = ._darkGray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

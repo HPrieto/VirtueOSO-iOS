@@ -140,8 +140,8 @@ class ProfileViewController: UIViewController {
         view.textAlignment = .center
         view.attributedText = NSMutableAttributedString(
             attributedStrings: [
-                NSAttributedString(string: "20", color: ._black, fontType: .demiBold, fontSize: .small),
-                NSAttributedString(string: "\nEvents", color: ._black, fontType: .regular, fontSize: .small),
+                NSAttributedString(string: "20", color: ._black, fontType: .demiBold, fontSize: 16),
+                NSAttributedString(string: "\nEvents", color: ._black, fontType: .regular, fontSize: 13),
             ]
         )
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -154,8 +154,8 @@ class ProfileViewController: UIViewController {
         view.textAlignment = .center
         view.attributedText = NSMutableAttributedString(
             attributedStrings: [
-                NSAttributedString(string: "1,000", color: ._black, fontType: .demiBold, fontSize: .small),
-                NSAttributedString(string: "\nFollowers", color: ._black, fontType: .regular, fontSize: .small),
+                NSAttributedString(string: "1,000", color: ._black, fontType: .demiBold, fontSize: 16),
+                NSAttributedString(string: "\nFollowers", color: ._black, fontType: .regular, fontSize: 13),
             ]
         )
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -168,8 +168,8 @@ class ProfileViewController: UIViewController {
         view.textAlignment = .center
         view.attributedText = NSMutableAttributedString(
             attributedStrings: [
-                NSAttributedString(string: "150", color: ._black, fontType: .demiBold, fontSize: .small),
-                NSAttributedString(string: "\nFollowing", color: ._black, fontType: .regular, fontSize: .small),
+                NSAttributedString(string: "150", color: ._black, fontType: .demiBold, fontSize: 16),
+                NSAttributedString(string: "\nFollowing", color: ._black, fontType: .regular, fontSize: 13),
             ]
         )
         view.translatesAutoresizingMaskIntoConstraints = false

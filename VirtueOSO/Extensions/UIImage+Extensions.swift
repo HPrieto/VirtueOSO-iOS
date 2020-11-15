@@ -94,6 +94,8 @@ extension UIImage {
         
         // MARK: M
         case magnifyingGlass = "magnifyingglass"
+        case message = "message"
+        case messageFill = "message.fill"
         case mic = "mic"
         case micFill = "mic.fill"
         case micSlash = "mic.slash"

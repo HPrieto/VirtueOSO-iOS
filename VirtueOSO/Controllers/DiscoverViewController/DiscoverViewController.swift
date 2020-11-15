@@ -11,6 +11,7 @@ import UIKit
 class DiscoverViewController: UIViewController {
     
     // MARK: - Private Properties
+    
     private let tableViewCellHeight: CGFloat = 70
     private var tableViewCellProfileImageViewCornerRadius: CGFloat {
         let profileImageViewHeight: CGFloat = tableViewCellHeight - 20
@@ -30,8 +31,9 @@ class DiscoverViewController: UIViewController {
         return view
     }()
     
-    private(set) lazy var tableView: UITableView = {
-        let view = UITableView(frame: .zero, style: .plain)
+    private(set) lazy var tableView: ProfileTableView = {
+        let view = ProfileTableView()
+        view.profileDelegate = self
         view.separatorStyle = .none
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -53,6 +55,7 @@ class DiscoverViewController: UIViewController {
     }
     
     // MARK: - Initialize Subviews
+    
     fileprivate func initializeSubviews() {
         view.backgroundColor = .white
         
@@ -61,9 +64,6 @@ class DiscoverViewController: UIViewController {
         
         view.addSubview(tableView)
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: ProfileTableViewCell.reuseIdentifier)
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -71,6 +71,7 @@ class DiscoverViewController: UIViewController {
     }
     
     // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeSubviews()
@@ -81,7 +82,14 @@ class DiscoverViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.generateTestData()
+        tableView.reloadData()
+    }
+    
     // MARK: - Init
+    
     init(coordinator: DiscoverCoordinator) {
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
@@ -93,6 +101,7 @@ class DiscoverViewController: UIViewController {
 }
 
 // MARK: - UISearchBarDelegate
+
 extension DiscoverViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -104,24 +113,14 @@ extension DiscoverViewController: UISearchBarDelegate {
     }
 }
 
-// MARK: - Delegate, DataSource
+// MARK: - ProfileTableViewDelegate
 
-extension DiscoverViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: ProfileTableViewCell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.reuseIdentifier) as! ProfileTableViewCell
-        cell.profileImageView.layer.cornerRadius = tableViewCellProfileImageViewCornerRadius
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableViewCellHeight
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+extension DiscoverViewController: ProfileTableViewDelegate {
+    func profileTableView(_ profileTableView: ProfileTableView, didSelectRowAt indexPath: IndexPath) {
         coordinator.navigate(to: .artist)
+    }
+    
+    func profileTableView(_ profileTableView: ProfileTableView, cell: ProfileTableViewCell, cellForRowAt indexPath: IndexPath) {
+        
     }
 }
