@@ -19,6 +19,7 @@ class SearchBarTableViewHeaderFooterView: UITableViewHeaderFooterView {
     private(set) lazy var searchBar: UISearchBar = {
         let view = UISearchBar()
         view.placeholder = "Search"
+        view.barStyle = .default
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -26,13 +27,15 @@ class SearchBarTableViewHeaderFooterView: UITableViewHeaderFooterView {
     // MARK: - Initialize Subviews
     
     private func initializeSubviews() {
+        backgroundColor = .white
+        
         addSubview(searchBar)
         
-        searchBar.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-        searchBar.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
-        searchBar.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+        searchBar.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        searchBar.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
+        searchBar.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
         
-        bottomAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10).isActive = true
+        bottomAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
     }
     
     // MARK: - Init

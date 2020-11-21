@@ -30,6 +30,8 @@
 		4364A4CA24C16EE300AE9881 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364A4C924C16EE300AE9881 /* CheckboxView.swift */; };
 		436ECB7924D705800054BA32 /* ChatRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436ECB7824D705800054BA32 /* ChatRoomTableViewController.swift */; };
 		436ECB7C24D7079E0054BA32 /* ChatInputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436ECB7B24D7079E0054BA32 /* ChatInputBarView.swift */; };
+		436F93F2256245290048A31E /* SendTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436F93F1256245290048A31E /* SendTextFieldView.swift */; };
+		436F94012568EFA70048A31E /* DirectMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436F94002568EFA70048A31E /* DirectMessageTableViewController.swift */; };
 		4372F02B24CE809200E5FD33 /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372F02A24CE809200E5FD33 /* PersonalInfoViewController.swift */; };
 		4372F02E24CE814500E5FD33 /* SettingsCellTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372F02D24CE814500E5FD33 /* SettingsCellTextFieldView.swift */; };
 		4372F03124CE9EEE00E5FD33 /* SettingsNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372F03024CE9EEE00E5FD33 /* SettingsNavigationBarView.swift */; };
@@ -48,8 +50,10 @@
 		4392E54B255848ED007572C2 /* DiscoverEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4392E54A255848ED007572C2 /* DiscoverEventTableViewController.swift */; };
 		43B8C3F52561D1A4004D2429 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B8C3F42561D1A4004D2429 /* Profile.swift */; };
 		43B8C3FA2561D208004D2429 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B8C3F92561D208004D2429 /* ProfileViewModel.swift */; };
-		43B8C4032561E54F004D2429 /* DirectMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B8C4022561E54F004D2429 /* DirectMessageTableViewController.swift */; };
+		43B8C4032561E54F004D2429 /* DirectMessageListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B8C4022561E54F004D2429 /* DirectMessageListTableViewController.swift */; };
 		43B8C4092561E72B004D2429 /* SearchBarTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B8C4082561E72B004D2429 /* SearchBarTableViewHeaderFooterView.swift */; };
+		43B8C40F25622824004D2429 /* DirectMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B8C40E25622824004D2429 /* DirectMessageTableViewCell.swift */; };
+		43B8C41E25622E55004D2429 /* DirectMessageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B8C41D25622E55004D2429 /* DirectMessageTableView.swift */; };
 		43BC86ED24B98A70004CBB07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC86EC24B98A70004CBB07 /* AppDelegate.swift */; };
 		43BC86EF24B98A70004CBB07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC86EE24B98A70004CBB07 /* SceneDelegate.swift */; };
 		43BC86F124B98A70004CBB07 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC86F024B98A70004CBB07 /* ViewController.swift */; };
@@ -145,6 +149,8 @@
 		4364A4C924C16EE300AE9881 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		436ECB7824D705800054BA32 /* ChatRoomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewController.swift; sourceTree = "<group>"; };
 		436ECB7B24D7079E0054BA32 /* ChatInputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputBarView.swift; sourceTree = "<group>"; };
+		436F93F1256245290048A31E /* SendTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTextFieldView.swift; sourceTree = "<group>"; };
+		436F94002568EFA70048A31E /* DirectMessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessageTableViewController.swift; sourceTree = "<group>"; };
 		4372F02A24CE809200E5FD33 /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		4372F02D24CE814500E5FD33 /* SettingsCellTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellTextFieldView.swift; sourceTree = "<group>"; };
 		4372F03024CE9EEE00E5FD33 /* SettingsNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationBarView.swift; sourceTree = "<group>"; };
@@ -163,8 +169,10 @@
 		4392E54A255848ED007572C2 /* DiscoverEventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverEventTableViewController.swift; sourceTree = "<group>"; };
 		43B8C3F42561D1A4004D2429 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		43B8C3F92561D208004D2429 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		43B8C4022561E54F004D2429 /* DirectMessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessageTableViewController.swift; sourceTree = "<group>"; };
+		43B8C4022561E54F004D2429 /* DirectMessageListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessageListTableViewController.swift; sourceTree = "<group>"; };
 		43B8C4082561E72B004D2429 /* SearchBarTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		43B8C40E25622824004D2429 /* DirectMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessageTableViewCell.swift; sourceTree = "<group>"; };
+		43B8C41D25622E55004D2429 /* DirectMessageTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessageTableView.swift; sourceTree = "<group>"; };
 		43BC86E924B98A70004CBB07 /* VirtueOSO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtueOSO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43BC86EC24B98A70004CBB07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43BC86EE24B98A70004CBB07 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -407,6 +415,22 @@
 			path = ChatInputBarView;
 			sourceTree = "<group>";
 		};
+		436F93F02562450A0048A31E /* SendTextFieldView */ = {
+			isa = PBXGroup;
+			children = (
+				436F93F1256245290048A31E /* SendTextFieldView.swift */,
+			);
+			path = SendTextFieldView;
+			sourceTree = "<group>";
+		};
+		436F93FF2568EF930048A31E /* DirectMessageTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				436F94002568EFA70048A31E /* DirectMessageTableViewController.swift */,
+			);
+			path = DirectMessageTableViewController;
+			sourceTree = "<group>";
+		};
 		4372F02924CE807B00E5FD33 /* PersonalInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -545,12 +569,12 @@
 			path = ProfileCoordinator;
 			sourceTree = "<group>";
 		};
-		43B8C4012561E52E004D2429 /* DirectMessageTableViewController */ = {
+		43B8C4012561E52E004D2429 /* DirectMessageListTableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				43B8C4022561E54F004D2429 /* DirectMessageTableViewController.swift */,
+				43B8C4022561E54F004D2429 /* DirectMessageListTableViewController.swift */,
 			);
-			path = DirectMessageTableViewController;
+			path = DirectMessageListTableViewController;
 			sourceTree = "<group>";
 		};
 		43B8C4072561E70B004D2429 /* SearchBarTableViewHeaderFooterView */ = {
@@ -559,6 +583,22 @@
 				43B8C4082561E72B004D2429 /* SearchBarTableViewHeaderFooterView.swift */,
 			);
 			path = SearchBarTableViewHeaderFooterView;
+			sourceTree = "<group>";
+		};
+		43B8C40D25622808004D2429 /* DirectMessageTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				43B8C40E25622824004D2429 /* DirectMessageTableViewCell.swift */,
+			);
+			path = DirectMessageTableViewCell;
+			sourceTree = "<group>";
+		};
+		43B8C41925622E21004D2429 /* DirectMessageTableView */ = {
+			isa = PBXGroup;
+			children = (
+				43B8C41D25622E55004D2429 /* DirectMessageTableView.swift */,
+			);
+			path = DirectMessageTableView;
 			sourceTree = "<group>";
 		};
 		43BC86E024B98A70004CBB07 = {
@@ -636,6 +676,9 @@
 		43BC872024B98B8F004CBB07 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				436F93F02562450A0048A31E /* SendTextFieldView */,
+				43B8C41925622E21004D2429 /* DirectMessageTableView */,
+				43B8C40D25622808004D2429 /* DirectMessageTableViewCell */,
 				43B8C4072561E70B004D2429 /* SearchBarTableViewHeaderFooterView */,
 				435FF965255B9A1F0053735E /* ImageCountView */,
 				435FF95F25584E810053735E /* EventTableView */,
@@ -678,7 +721,8 @@
 		43BC872124B98B95004CBB07 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				43B8C4012561E52E004D2429 /* DirectMessageTableViewController */,
+				436F93FF2568EF930048A31E /* DirectMessageTableViewController */,
+				43B8C4012561E52E004D2429 /* DirectMessageListTableViewController */,
 				4392E549255848D5007572C2 /* DiscoverEventViewController */,
 				4392E5402556F130007572C2 /* EventsTableViewController */,
 				43C6610D253B603C002EAD93 /* EditProfileViewController */,
@@ -1088,7 +1132,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43B8C4032561E54F004D2429 /* DirectMessageTableViewController.swift in Sources */,
+				43B8C4032561E54F004D2429 /* DirectMessageListTableViewController.swift in Sources */,
 				435FF967255B9B790053735E /* ImageCountView.swift in Sources */,
 				43BC873524B98FE4004CBB07 /* UIImageView+Extensions.swift in Sources */,
 				43C660F4253380AD002EAD93 /* UIButton+Extensions.swift in Sources */,
@@ -1100,15 +1144,18 @@
 				43518B7624C37E3A009AA30D /* LiveStreamViewController.swift in Sources */,
 				43BC873724B99002004CBB07 /* UIFont+Extensions.swift in Sources */,
 				43C6610F253B6051002EAD93 /* EditProfileViewController.swift in Sources */,
+				43B8C41E25622E55004D2429 /* DirectMessageTableView.swift in Sources */,
 				43C6611D253CC90D002EAD93 /* UIScrollView+Extensions.swift in Sources */,
 				43F1D9282528B74D00AC6FA9 /* AttributedTextView.swift in Sources */,
 				43F1D9082521017600AC6FA9 /* DiscoverViewController.swift in Sources */,
+				43B8C40F25622824004D2429 /* DirectMessageTableViewCell.swift in Sources */,
 				43BC86F124B98A70004CBB07 /* ViewController.swift in Sources */,
 				43308CFB24BC0C6700DDE2E5 /* SubmitEmailViewController.swift in Sources */,
 				43C660C925314F73002EAD93 /* ArtistViewController.swift in Sources */,
 				43F1D8F12520D65300AC6FA9 /* ProfileViewController.swift in Sources */,
 				43F1D8D8251FE9B300AC6FA9 /* ProfileCoordinator+Handlers.swift in Sources */,
 				43BC873C24BA01C6004CBB07 /* TextFieldView.swift in Sources */,
+				436F93F2256245290048A31E /* SendTextFieldView.swift in Sources */,
 				436ECB7C24D7079E0054BA32 /* ChatInputBarView.swift in Sources */,
 				4372F04024D5F3AE00E5FD33 /* StackView.swift in Sources */,
 				43BC875424BB6669004CBB07 /* BorderedTextField.swift in Sources */,
@@ -1159,6 +1206,7 @@
 				43C661032533AD59002EAD93 /* CollectionView.swift in Sources */,
 				43F1D9322528D63400AC6FA9 /* UINavigationController+Extensions.swift in Sources */,
 				43C660C0252D6701002EAD93 /* ProfileTableViewCell.swift in Sources */,
+				436F94012568EFA70048A31E /* DirectMessageTableViewController.swift in Sources */,
 				4372F02B24CE809200E5FD33 /* PersonalInfoViewController.swift in Sources */,
 				4302616524CC7FA700ECB4F8 /* SettingsCellToggleView.swift in Sources */,
 				435FF96125584E900053735E /* EventTableView.swift in Sources */,
@@ -1351,13 +1399,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D593847M3E;
+				DEVELOPMENT_TEAM = ZDT7468M9V;
 				INFOPLIST_FILE = VirtueOSO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.VirtueOSO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hprietodev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 5.0;
@@ -1370,13 +1418,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D593847M3E;
+				DEVELOPMENT_TEAM = ZDT7468M9V;
 				INFOPLIST_FILE = VirtueOSO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.VirtueOSO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hprietodev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 5.0;

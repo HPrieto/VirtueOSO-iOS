@@ -48,7 +48,7 @@ class EventTableViewCell: UITableViewCell {
         view.textColor = .white
         view.textAlignment = .center
         view.numberOfLines = 1
-        view.font = UIFont(type: .demiBold, size: 14)
+        view.font = UIFont(type: .demiBold, size: 16)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -85,10 +85,10 @@ class EventTableViewCell: UITableViewCell {
     
     private(set) lazy var titleLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont(type: .bold, size: 28)
-        view.textColor = .white
+        view.font = UIFont(type: .medium, size: 18)
+        view.textColor = ._black
         view.numberOfLines = 2
-        view.textAlignment = .center
+        view.textAlignment = .left
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -104,7 +104,7 @@ class EventTableViewCell: UITableViewCell {
     
     private(set) lazy var usernameLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont(type: .bold, size: 14)
+        view.font = UIFont(type: .bold, size: 21)
         view.textColor = .white
         view.numberOfLines = 2
         view.textAlignment = .center
@@ -138,10 +138,10 @@ class EventTableViewCell: UITableViewCell {
         
         eventImageView.addSubview(statusLabel)
         eventImageView.addSubview(likeButton)
-        eventImageView.addSubview(commentButton)
-        eventImageView.addSubview(titleLabel)
+        //eventImageView.addSubview(commentButton)
         eventImageView.addSubview(usernameLabel)
         
+        view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(amountLabel)
         
@@ -150,34 +150,34 @@ class EventTableViewCell: UITableViewCell {
         eventImageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         eventImageView.heightAnchor.constraint(equalTo: eventImageView.widthAnchor, multiplier: (6/9)).isActive = true
         
-        statusLabel.leftAnchor.constraint(equalTo: eventImageView.leftAnchor, constant: 15).isActive = true
-        statusLabel.topAnchor.constraint(equalTo: eventImageView.topAnchor, constant: 15).isActive = true
-        statusLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        statusLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        statusLabel.leftAnchor.constraint(equalTo: eventImageView.leftAnchor, constant: 20).isActive = true
+        statusLabel.topAnchor.constraint(equalTo: eventImageView.topAnchor, constant: 20).isActive = true
+        statusLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        statusLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
-        likeButton.rightAnchor.constraint(equalTo: eventImageView.rightAnchor, constant: -15).isActive = true
-        likeButton.topAnchor.constraint(equalTo: eventImageView.topAnchor, constant: 15).isActive = true
+        likeButton.rightAnchor.constraint(equalTo: eventImageView.rightAnchor, constant: -20).isActive = true
+        likeButton.centerYAnchor.constraint(equalTo: statusLabel.centerYAnchor).isActive = true
         likeButton.heightAnchor.constraint(equalToConstant: likeButtonHeight).isActive = true
         likeButton.widthAnchor.constraint(equalToConstant: likeButtonWidth).isActive = true
         
-        commentButton.rightAnchor.constraint(equalTo: likeButton.leftAnchor, constant: -10).isActive = true
-        commentButton.topAnchor.constraint(equalTo: likeButton.topAnchor).isActive = true
-        commentButton.heightAnchor.constraint(equalToConstant: commentButtonHeight).isActive = true
-        commentButton.widthAnchor.constraint(equalToConstant: commentButtonWidth).isActive = true
+//        commentButton.rightAnchor.constraint(equalTo: likeButton.leftAnchor, constant: -15).isActive = true
+//        commentButton.centerYAnchor.constraint(equalTo: likeButton.centerYAnchor).isActive = true
+//        commentButton.heightAnchor.constraint(equalToConstant: commentButtonHeight).isActive = true
+//        commentButton.widthAnchor.constraint(equalToConstant: commentButtonWidth).isActive = true
         
-        usernameLabel.leftAnchor.constraint(equalTo: eventImageView.leftAnchor, constant: 10).isActive = true
-        usernameLabel.rightAnchor.constraint(equalTo: eventImageView.rightAnchor, constant: -10).isActive = true
-        usernameLabel.bottomAnchor.constraint(equalTo: eventImageView.bottomAnchor, constant: -10).isActive = true
+        usernameLabel.bottomAnchor.constraint(equalTo: eventImageView.bottomAnchor).isActive = true
+        usernameLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        usernameLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         
-        titleLabel.bottomAnchor.constraint(equalTo: usernameLabel.topAnchor).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: usernameLabel.leftAnchor).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: usernameLabel.rightAnchor).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: eventImageView.bottomAnchor, constant: 10).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         
-        descriptionLabel.topAnchor.constraint(equalTo: eventImageView.bottomAnchor, constant: 10).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true
         descriptionLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         descriptionLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         
-        amountLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10).isActive = true
+        amountLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 7).isActive = true
         amountLabel.leftAnchor.constraint(equalTo: descriptionLabel.leftAnchor).isActive = true
         amountLabel.rightAnchor.constraint(equalTo: descriptionLabel.rightAnchor).isActive = true
         

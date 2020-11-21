@@ -32,6 +32,7 @@ class EventsCoordinator: Coordinator {
         case root
         case event
         case directMessages
+        case directMessage
     }
     
     // MARK: - Controllers
@@ -45,7 +46,12 @@ class EventsCoordinator: Coordinator {
         return controller
     }()
     
-    private(set) lazy var directMessagesController: DirectMessageTableViewController = {
+    private(set) lazy var directMessageListViewController: DirectMessageListTableViewController = {
+        let controller = DirectMessageListTableViewController(coordinator: self)
+        return controller
+    }()
+    
+    private(set) lazy var directMessageViewController: DirectMessageTableViewController = {
         let controller = DirectMessageTableViewController()
         return controller
     }()
@@ -63,7 +69,7 @@ class EventsCoordinator: Coordinator {
     func navigate(to destination: Destination) {
         let viewController: UIViewController = makeViewController(for: destination)
         switch destination {
-        case .root, .event, .directMessages:
+        case .root, .event, .directMessages, .directMessage:
             rootViewController.pushViewController(viewController, animated: true)
         default:
             rootViewController.present(viewController, animated: true, completion: nil)
@@ -79,7 +85,9 @@ class EventsCoordinator: Coordinator {
         case .event:
             return eventViewController
         case .directMessages:
-            return directMessagesController
+            return directMessageListViewController
+        case .directMessage:
+            return directMessageViewController
         default:
             return UIViewController()
         }
