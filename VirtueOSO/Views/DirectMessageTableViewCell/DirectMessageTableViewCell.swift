@@ -23,6 +23,13 @@ class DirectMessageTableViewCell: UITableViewCell {
         return profileImageViewHeight / 2
     }
     
+    private let messageViewInsetX: CGFloat = 15
+    private let messageViewInsetY: CGFloat = 10
+    
+    private var bubbleViewCornerRadius: CGFloat {
+        return ((messageViewInsetY * 2) + 20) / 2
+    }
+    
     // MARK: - Enums
     
     enum State {
@@ -41,12 +48,16 @@ class DirectMessageTableViewCell: UITableViewCell {
             switch state {
             case .received:
                 profileImageView.alpha = 1
-                bubbleView.backgroundColor = .placeholderText
+                messageLabel.textColor = ._black
+                bubbleView.backgroundColor = ._lightGray
+                bubbleView.layer.borderColor = UIColor._lightGray.cgColor
                 bubbleViewRightLayoutConstraint?.isActive = false
                 profileImageViewLeftLayoutConstraint?.isActive = true
             case .sent:
                 profileImageView.alpha = 0
-                bubbleView.backgroundColor = .white
+                messageLabel.textColor = .white
+                bubbleView.layer.borderColor = UIColor._blue.cgColor
+                bubbleView.backgroundColor = ._blue
                 profileImageViewLeftLayoutConstraint?.isActive = false
                 bubbleViewRightLayoutConstraint?.isActive = true
             }
@@ -68,16 +79,18 @@ class DirectMessageTableViewCell: UITableViewCell {
     private(set) lazy var bubbleView: UIView = {
         let view = UIView()
         view.layer.masksToBounds = true
-        view.layer.cornerRadius = 16
+        view.layer.cornerRadius = bubbleViewCornerRadius
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.placeholderText.cgColor
+        view.backgroundColor = .white
+        view.layer.borderColor = UIColor._lightGray.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private(set) lazy var label: UILabel = {
+    private(set) lazy var messageLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont(type: .medium, size: 14)
+        view.font = UIFont(type: .medium, size: 16)
+        view.textColor = ._black
         view.numberOfLines = 10
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -91,22 +104,22 @@ class DirectMessageTableViewCell: UITableViewCell {
         addSubview(profileImageView)
         addSubview(bubbleView)
         
-        bubbleView.addSubview(label)
+        bubbleView.addSubview(messageLabel)
         
         bubbleView.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
-        bubbleView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: 0.6).isActive = true
+        bubbleView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: 0.75).isActive = true
         bubbleView.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 10).isActive = true
-        bubbleViewRightLayoutConstraint = bubbleView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20)
+        bubbleViewRightLayoutConstraint = bubbleView.rightAnchor.constraint(equalTo: rightAnchor, constant: -15)
         bubbleViewRightLayoutConstraint?.isActive = true
         
-        profileImageViewLeftLayoutConstraint = profileImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20)
+        profileImageViewLeftLayoutConstraint = profileImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 15)
         profileImageView.bottomAnchor.constraint(equalTo: bubbleView.bottomAnchor).isActive = true
         
-        label.topAnchor.constraint(equalTo: bubbleView.topAnchor, constant: 5).isActive = true
-        label.leftAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: 5).isActive = true
-        label.rightAnchor.constraint(equalTo: bubbleView.rightAnchor, constant: -5).isActive = true
+        messageLabel.topAnchor.constraint(equalTo: bubbleView.topAnchor, constant: messageViewInsetY).isActive = true
+        messageLabel.leftAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: messageViewInsetX).isActive = true
+        messageLabel.rightAnchor.constraint(equalTo: bubbleView.rightAnchor, constant: -messageViewInsetX).isActive = true
         
-        bubbleView.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: 5).isActive = true
+        bubbleView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: messageViewInsetY).isActive = true
         
         bottomAnchor.constraint(equalTo: bubbleView.bottomAnchor, constant: 5).isActive = true
     }

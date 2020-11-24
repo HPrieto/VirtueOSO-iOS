@@ -30,7 +30,7 @@ class ProfileTableViewCell: UITableViewCell {
     
     // MARK: - Private Properties
     
-    private let profileImageViewHeight: CGFloat = 50
+    private let profileImageViewHeight: CGFloat = 55
     private var profileImageViewWidth: CGFloat {
         return profileImageViewHeight
     }
@@ -61,7 +61,7 @@ class ProfileTableViewCell: UITableViewCell {
     
     private(set) lazy var titleLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont(type: .medium, size: .regular)
+        view.font = UIFont(type: .medium, size: 15)
         view.backgroundColor = .clear
         view.numberOfLines = 1
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -70,7 +70,7 @@ class ProfileTableViewCell: UITableViewCell {
     
     private(set) lazy var descriptionLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont(type: .medium, size: .small)
+        view.font = UIFont(type: .medium, size: 15)
         view.backgroundColor = .clear
         view.numberOfLines = 1
         view.textColor = ._gray
@@ -115,13 +115,11 @@ class ProfileTableViewCell: UITableViewCell {
         accessoryImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         accessoryImageView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
         
-        titleLabel.topAnchor.constraint(equalTo: profileImageView.topAnchor).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: profileImageView.centerYAnchor, constant: -2).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 10).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: accessoryImageView.leftAnchor, constant: -5).isActive = true
         
         descriptionLabel.topAnchor.constraint(equalTo: profileImageView.centerYAnchor, constant: 2).isActive = true
-        descriptionLabel.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor).isActive = true
         descriptionLabel.leftAnchor.constraint(equalTo: titleLabel.leftAnchor).isActive = true
         descriptionLabel.rightAnchor.constraint(equalTo: titleLabel.rightAnchor).isActive = true
         

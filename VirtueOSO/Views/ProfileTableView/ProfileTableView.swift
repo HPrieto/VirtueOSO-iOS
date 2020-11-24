@@ -84,6 +84,7 @@ extension ProfileTableView {
         var testModels: [Profile] = [Profile]()
         for i in 0 ..< count {
             let event: Profile = Profile(
+                id: UUID(),
                 username: "Yeezy(\(i))",
                 firstname: "Kanye",
                 lastname: "West",

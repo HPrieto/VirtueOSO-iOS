@@ -16,18 +16,27 @@ class DirectMessageListTableViewController: UIViewController {
     
     private weak var coordinator: EventsCoordinator?
     
+    // MARK: - Public Properties
+    
+    private(set) var viewModel: DirectMessageViewModel
+    
     // MARK: - Subviews
     
-    private(set) lazy var leftBarButtonItem: UIBarButtonItem? = {
-        return UIBarButtonItem(sfSymbol: .chevronLeft, style: .plain, target: self, action: #selector(handleGoBack))
+    private(set) lazy var backBarButtonItem: UIBarButtonItem? = {
+        return UIBarButtonItem(
+            sfSymbol: .chevronLeft,
+            style: .plain,
+            target: self,
+            action: #selector(handleGoBack)
+        )
     }()
     
-    private(set) lazy var rightBarButtonItem: UIBarButtonItem? = {
+    private(set) lazy var createMessageThreadBarButtonItem: UIBarButtonItem? = {
         return UIBarButtonItem(
             sfSymbol: .squareAndPencil,
             style: .plain,
             target: self,
-            action: nil
+            action: #selector(handleCreateMessageThread)
         )
     }()
     
@@ -51,14 +60,18 @@ class DirectMessageListTableViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc private func handleCreateMessageThread() {
+        coordinator?.navigate(to: .selectProfilesToMessage)
+    }
+    
     // MARK: - Initialize Subviews
     
     private func initializeSubviews() {
         view.backgroundColor = .white
         
         navigationItem.title = "hprieto"
-        navigationItem.leftBarButtonItem = leftBarButtonItem
-        navigationItem.rightBarButtonItem = rightBarButtonItem
+        navigationItem.leftBarButtonItem = backBarButtonItem
+        navigationItem.rightBarButtonItem = createMessageThreadBarButtonItem
         
         view.addSubview(tableView)
         
@@ -84,6 +97,7 @@ class DirectMessageListTableViewController: UIViewController {
     
     init(coordinator: EventsCoordinator) {
         self.coordinator = coordinator
+        self.viewModel = DirectMessageViewModel(withNTestModels: 12)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -102,7 +116,7 @@ extension DirectMessageListTableViewController: UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.models.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -112,8 +126,9 @@ extension DirectMessageListTableViewController: UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ProfileTableViewCell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.reuseIdentifier, for: indexPath) as! ProfileTableViewCell
-        cell.titleLabel.text = "Kanye West"
-        cell.descriptionLabel.text = "Artist"
+        let model: DirectMessage = viewModel.models[indexPath.row]
+        cell.titleLabel.text = model.username
+        cell.descriptionLabel.text = model.message
         cell.profileImageView.setTestImage()
         cell.roundProfileImageViewCorners()
         return cell

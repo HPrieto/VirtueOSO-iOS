@@ -9,9 +9,11 @@
 import UIKit
 
 // MARK: - EventsCoordinator
+
 class EventsCoordinator: Coordinator {
     
     // MARK: - Private Properties
+    
     private(set) var mainCoordinator: MainCoordinator
     
     // MARK: - Public Properties
@@ -33,6 +35,8 @@ class EventsCoordinator: Coordinator {
         case event
         case directMessages
         case directMessage
+        case directMessageSettings
+        case selectProfilesToMessage
     }
     
     // MARK: - Controllers
@@ -52,9 +56,31 @@ class EventsCoordinator: Coordinator {
     }()
     
     private(set) lazy var directMessageViewController: DirectMessageTableViewController = {
-        let controller = DirectMessageTableViewController()
+        let controller = DirectMessageTableViewController(coordinator: self)
         return controller
     }()
+    
+    private lazy var directMessageSettingsViewController: DirectMessageSettingsViewController = {
+        let controller = DirectMessageSettingsViewController(coordinator: self)
+        return controller
+    }()
+    
+    private lazy var selectProfileTableViewController: SelectProfilesTableViewController = {
+        let controller = SelectProfilesTableViewController(coordinator: self)
+        controller.navigationItem.title = "New Message"
+        controller.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            text: "Chat",
+            target: controller,
+            action: #selector(handleNavigateSelectProfileToChat)
+        )
+        return controller
+    }()
+    
+    // MARK: - Handlers
+    
+    @objc private func handleNavigateSelectProfileToChat() {
+        navigate(to: .directMessage)
+    }
     
     // MARK: - Init
     init(mainCoordinator: MainCoordinator) {
@@ -69,7 +95,7 @@ class EventsCoordinator: Coordinator {
     func navigate(to destination: Destination) {
         let viewController: UIViewController = makeViewController(for: destination)
         switch destination {
-        case .root, .event, .directMessages, .directMessage:
+        case .root, .event, .directMessages, .directMessage, .directMessageSettings, .selectProfilesToMessage:
             rootViewController.pushViewController(viewController, animated: true)
         default:
             rootViewController.present(viewController, animated: true, completion: nil)
@@ -88,6 +114,10 @@ class EventsCoordinator: Coordinator {
             return directMessageListViewController
         case .directMessage:
             return directMessageViewController
+        case .directMessageSettings:
+            return directMessageSettingsViewController
+        case .selectProfilesToMessage:
+            return selectProfileTableViewController
         default:
             return UIViewController()
         }

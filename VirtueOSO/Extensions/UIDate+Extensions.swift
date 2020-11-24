@@ -15,4 +15,17 @@ extension Date {
         formatter.dateFormat = dateFormat
         return formatter.string(from: self)
     }
+    
+    public func toJsonString() -> String {
+        return toString(withDateFormat: "yyyy-MM-dd'T'HH:mm:ssZ")
+    }
+}
+
+extension String {
+    
+    public func toJsonDate() -> Date? {
+        let formatter: DateFormatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        return formatter.date(from: self)
+    }
 }

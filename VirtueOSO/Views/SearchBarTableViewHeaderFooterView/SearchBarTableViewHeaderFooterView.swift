@@ -27,7 +27,6 @@ class SearchBarTableViewHeaderFooterView: UITableViewHeaderFooterView {
     // MARK: - Initialize Subviews
     
     private func initializeSubviews() {
-        backgroundColor = .white
         
         addSubview(searchBar)
         

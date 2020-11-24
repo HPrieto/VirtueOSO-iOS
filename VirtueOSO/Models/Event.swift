@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct Event {
+struct Event: Identifiable {
+    var id: UUID
     var title: String
     var name: String
     var description: String

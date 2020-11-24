@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430020E22569CDE3006A77EB /* DirectMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430020E12569CDE3006A77EB /* DirectMessage.swift */; };
+		430020E72569CE9F006A77EB /* DirectMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430020E62569CE9F006A77EB /* DirectMessageViewModel.swift */; };
+		430020F8256A4492006A77EB /* TimestampTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430020F7256A4492006A77EB /* TimestampTableViewHeaderFooterView.swift */; };
+		430020FD256AFCE3006A77EB /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430020FC256AFCE3006A77EB /* UITableView+Extensions.swift */; };
+		43002103256B17A9006A77EB /* DirectMessageSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43002102256B17A9006A77EB /* DirectMessageSettingsViewController.swift */; };
+		4300210C256B1823006A77EB /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4300210B256B1823006A77EB /* SwitchView.swift */; };
+		4300211B256B1A09006A77EB /* FollowProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4300211A256B1A09006A77EB /* FollowProfileView.swift */; };
+		43002124256B4F5F006A77EB /* FollowProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43002123256B4F5F006A77EB /* FollowProfileTableViewCell.swift */; };
+		4300212D256C33EE006A77EB /* SelectProfilesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4300212C256C33EE006A77EB /* SelectProfilesTableViewController.swift */; };
+		43002133256C34C5006A77EB /* SelectProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43002132256C34C5006A77EB /* SelectProfileTableViewCell.swift */; };
 		4302615724CC2CB200ECB4F8 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302615624CC2CB200ECB4F8 /* SettingsTableViewCell.swift */; };
 		4302615A24CC5D2E00ECB4F8 /* SettingsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302615924CC5D2E00ECB4F8 /* SettingsCellView.swift */; };
 		4302615D24CC622B00ECB4F8 /* SettingsHeaderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302615C24CC622B00ECB4F8 /* SettingsHeaderCellView.swift */; };
@@ -126,6 +136,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		430020E12569CDE3006A77EB /* DirectMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessage.swift; sourceTree = "<group>"; };
+		430020E62569CE9F006A77EB /* DirectMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessageViewModel.swift; sourceTree = "<group>"; };
+		430020F7256A4492006A77EB /* TimestampTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		430020FC256AFCE3006A77EB /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		43002102256B17A9006A77EB /* DirectMessageSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessageSettingsViewController.swift; sourceTree = "<group>"; };
+		4300210B256B1823006A77EB /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
+		4300211A256B1A09006A77EB /* FollowProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowProfileView.swift; sourceTree = "<group>"; };
+		43002123256B4F5F006A77EB /* FollowProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowProfileTableViewCell.swift; sourceTree = "<group>"; };
+		4300212C256C33EE006A77EB /* SelectProfilesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfilesTableViewController.swift; sourceTree = "<group>"; };
+		43002132256C34C5006A77EB /* SelectProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfileTableViewCell.swift; sourceTree = "<group>"; };
 		4302615624CC2CB200ECB4F8 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		4302615924CC5D2E00ECB4F8 /* SettingsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellView.swift; sourceTree = "<group>"; };
 		4302615C24CC622B00ECB4F8 /* SettingsHeaderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderCellView.swift; sourceTree = "<group>"; };
@@ -258,6 +278,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		430020F6256A446B006A77EB /* TimestampTableViewHeaderFooterView */ = {
+			isa = PBXGroup;
+			children = (
+				430020F7256A4492006A77EB /* TimestampTableViewHeaderFooterView.swift */,
+			);
+			path = TimestampTableViewHeaderFooterView;
+			sourceTree = "<group>";
+		};
+		43002101256B1793006A77EB /* DirectMessageSettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				43002102256B17A9006A77EB /* DirectMessageSettingsViewController.swift */,
+			);
+			path = DirectMessageSettingsViewController;
+			sourceTree = "<group>";
+		};
+		4300210A256B1815006A77EB /* SwitchView */ = {
+			isa = PBXGroup;
+			children = (
+				4300210B256B1823006A77EB /* SwitchView.swift */,
+			);
+			path = SwitchView;
+			sourceTree = "<group>";
+		};
+		43002119256B19F9006A77EB /* FollowProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				4300211A256B1A09006A77EB /* FollowProfileView.swift */,
+			);
+			path = FollowProfileView;
+			sourceTree = "<group>";
+		};
+		43002122256B4F4B006A77EB /* FollowProfileTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				43002123256B4F5F006A77EB /* FollowProfileTableViewCell.swift */,
+			);
+			path = FollowProfileTableViewCell;
+			sourceTree = "<group>";
+		};
+		4300212B256C33D3006A77EB /* SelectProfilesTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4300212C256C33EE006A77EB /* SelectProfilesTableViewController.swift */,
+			);
+			path = SelectProfilesTableViewController;
+			sourceTree = "<group>";
+		};
+		43002131256C34B2006A77EB /* SelectProfileTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				43002132256C34C5006A77EB /* SelectProfileTableViewCell.swift */,
+			);
+			path = SelectProfileTableViewCell;
+			sourceTree = "<group>";
+		};
 		4302615224CC28CE00ECB4F8 /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,6 +592,7 @@
 			children = (
 				4392E518254906AE007572C2 /* EventViewModel.swift */,
 				43B8C3F92561D208004D2429 /* ProfileViewModel.swift */,
+				430020E62569CE9F006A77EB /* DirectMessageViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -669,6 +746,7 @@
 			children = (
 				4392E52025490901007572C2 /* Event.swift */,
 				43B8C3F42561D1A4004D2429 /* Profile.swift */,
+				430020E12569CDE3006A77EB /* DirectMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -676,6 +754,11 @@
 		43BC872024B98B8F004CBB07 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				43002131256C34B2006A77EB /* SelectProfileTableViewCell */,
+				43002122256B4F4B006A77EB /* FollowProfileTableViewCell */,
+				43002119256B19F9006A77EB /* FollowProfileView */,
+				4300210A256B1815006A77EB /* SwitchView */,
+				430020F6256A446B006A77EB /* TimestampTableViewHeaderFooterView */,
 				436F93F02562450A0048A31E /* SendTextFieldView */,
 				43B8C41925622E21004D2429 /* DirectMessageTableView */,
 				43B8C40D25622808004D2429 /* DirectMessageTableViewCell */,
@@ -721,6 +804,8 @@
 		43BC872124B98B95004CBB07 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4300212B256C33D3006A77EB /* SelectProfilesTableViewController */,
+				43002101256B1793006A77EB /* DirectMessageSettingsViewController */,
 				436F93FF2568EF930048A31E /* DirectMessageTableViewController */,
 				43B8C4012561E52E004D2429 /* DirectMessageListTableViewController */,
 				4392E549255848D5007572C2 /* DiscoverEventViewController */,
@@ -765,6 +850,7 @@
 				43C660F3253380AD002EAD93 /* UIButton+Extensions.swift */,
 				43C6611C253CC90D002EAD93 /* UIScrollView+Extensions.swift */,
 				4392E532254E3C12007572C2 /* UIDate+Extensions.swift */,
+				430020FC256AFCE3006A77EB /* UITableView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1133,6 +1219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43B8C4032561E54F004D2429 /* DirectMessageListTableViewController.swift in Sources */,
+				430020FD256AFCE3006A77EB /* UITableView+Extensions.swift in Sources */,
 				435FF967255B9B790053735E /* ImageCountView.swift in Sources */,
 				43BC873524B98FE4004CBB07 /* UIImageView+Extensions.swift in Sources */,
 				43C660F4253380AD002EAD93 /* UIButton+Extensions.swift in Sources */,
@@ -1159,6 +1246,7 @@
 				436ECB7C24D7079E0054BA32 /* ChatInputBarView.swift in Sources */,
 				4372F04024D5F3AE00E5FD33 /* StackView.swift in Sources */,
 				43BC875424BB6669004CBB07 /* BorderedTextField.swift in Sources */,
+				4300210C256B1823006A77EB /* SwitchView.swift in Sources */,
 				4302615724CC2CB200ECB4F8 /* SettingsTableViewCell.swift in Sources */,
 				43F1D92D2528BB0B00AC6FA9 /* NSMutableAttributedString+Extensions.swift in Sources */,
 				43BC872C24B98E32004CBB07 /* UIColor+Extensions.swift in Sources */,
@@ -1177,6 +1265,7 @@
 				43C66115253CB9F7002EAD93 /* SettingsCellTextView.swift in Sources */,
 				4392E52125490901007572C2 /* Event.swift in Sources */,
 				43C661272544B09D002EAD93 /* EventDetailTableViewCell.swift in Sources */,
+				430020E22569CDE3006A77EB /* DirectMessage.swift in Sources */,
 				4372F03724CFEB0A00E5FD33 /* SettingsViewDataSource.swift in Sources */,
 				43C660DD2532457E002EAD93 /* TitleTableViewHeaderFooterView.swift in Sources */,
 				43BC873324B98FB8004CBB07 /* UIViewController+Extensions.swift in Sources */,
@@ -1185,6 +1274,7 @@
 				43BC874524BA0535004CBB07 /* TextView.swift in Sources */,
 				4392E54B255848ED007572C2 /* DiscoverEventTableViewController.swift in Sources */,
 				43BC86F724B98A70004CBB07 /* VirtueOSO.xcdatamodeld in Sources */,
+				4300211B256B1A09006A77EB /* FollowProfileView.swift in Sources */,
 				4372F02E24CE814500E5FD33 /* SettingsCellTextFieldView.swift in Sources */,
 				43BC874E24BAEF0F004CBB07 /* NotificationViewController.swift in Sources */,
 				4392E5422556F141007572C2 /* EventsTableViewController.swift in Sources */,
@@ -1198,6 +1288,8 @@
 				432D82F324F1813B007193AD /* AuthenticationCoordinator.swift in Sources */,
 				43BC873F24BA01FD004CBB07 /* ComponentView.swift in Sources */,
 				43BC873924B9902C004CBB07 /* UITextField+Extensions.swift in Sources */,
+				4300212D256C33EE006A77EB /* SelectProfilesTableViewController.swift in Sources */,
+				430020E72569CE9F006A77EB /* DirectMessageViewModel.swift in Sources */,
 				43B8C3FA2561D208004D2429 /* ProfileViewModel.swift in Sources */,
 				435FF95B25584AE90053735E /* EventTableViewCell.swift in Sources */,
 				43F5D40324BB87C9004AE586 /* BorderedTextField+UITextView.swift in Sources */,
@@ -1205,12 +1297,16 @@
 				43308CFE24BC211500DDE2E5 /* SignupViewController.swift in Sources */,
 				43C661032533AD59002EAD93 /* CollectionView.swift in Sources */,
 				43F1D9322528D63400AC6FA9 /* UINavigationController+Extensions.swift in Sources */,
+				43002124256B4F5F006A77EB /* FollowProfileTableViewCell.swift in Sources */,
 				43C660C0252D6701002EAD93 /* ProfileTableViewCell.swift in Sources */,
 				436F94012568EFA70048A31E /* DirectMessageTableViewController.swift in Sources */,
 				4372F02B24CE809200E5FD33 /* PersonalInfoViewController.swift in Sources */,
 				4302616524CC7FA700ECB4F8 /* SettingsCellToggleView.swift in Sources */,
+				43002103256B17A9006A77EB /* DirectMessageSettingsViewController.swift in Sources */,
 				435FF96125584E900053735E /* EventTableView.swift in Sources */,
+				43002133256C34C5006A77EB /* SelectProfileTableViewCell.swift in Sources */,
 				43F5D40624BC06C5004AE586 /* AButton.swift in Sources */,
+				430020F8256A4492006A77EB /* TimestampTableViewHeaderFooterView.swift in Sources */,
 				4372F03424CFEAE200E5FD33 /* SettingsPickerView.swift in Sources */,
 				43308D0124BC266600DDE2E5 /* EmptySpaceView.swift in Sources */,
 				4372F03A24D5D98800E5FD33 /* RoundButton.swift in Sources */,

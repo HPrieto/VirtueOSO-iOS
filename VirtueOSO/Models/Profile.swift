@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct Profile {
+struct Profile: Identifiable {
+    public var id: UUID
     public var username: String
     public var firstname: String
     public var lastname: String

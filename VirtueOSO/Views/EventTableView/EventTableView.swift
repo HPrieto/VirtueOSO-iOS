@@ -131,6 +131,7 @@ extension EventTableView {
         var testModels: [Event] = [Event]()
         for i in 0 ..< count {
             let event: Event = Event(
+                id: UUID(),
                 title: "TEST_TITLE #\(i) - FA/HOCKEY, Kareem Campbell",
                 name: "Test Name",
                 description: "We discuss the FA/Hockey 'Dancing On Thin Ice Vide', Anderson Cooper talks with Tony Hawk | We discuss the FA/Hockey 'Dancing On Thin Ice Vide', Anderson Cooper talks with Tony Hawk",

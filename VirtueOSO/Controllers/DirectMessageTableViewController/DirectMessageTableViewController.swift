@@ -14,10 +14,21 @@ class DirectMessageTableViewController: UIViewController {
     
     private var sendTextFieldViewBottomLayoutConstraint: NSLayoutConstraint?
     
+    // MARK: - Public Properties
+    
+    private(set) var viewModel: DirectMessageViewModel
+    
+    private weak var coordinator: EventsCoordinator?
+    
     // MARK: - Subviews
     
     private(set) lazy var leftBarButtonItem: UIBarButtonItem? = {
-        return UIBarButtonItem(sfSymbol: .chevronLeft, style: .plain, target: self, action: #selector(handleGoBack))
+        return UIBarButtonItem(
+            sfSymbol: .chevronLeft,
+            style: .plain,
+            target: self,
+            action: #selector(handleGoBack)
+        )
     }()
     
     private(set) lazy var leftBackBarButtonItem: UIBarButtonItem? = {
@@ -50,15 +61,20 @@ class DirectMessageTableViewController: UIViewController {
             sfSymbol: .infoCircle,
             style: .plain,
             target: self,
-            action: nil
+            action: #selector(handleGoToSettings)
         )
     }()
     
     private(set) lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .grouped)
         view.backgroundColor = .white
+        view.separatorStyle = .none
+        view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         view.translatesAutoresizingMaskIntoConstraints = false
         
+        view.delegate = self
+        view.dataSource = self
+        view.register(TimestampTableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: TimestampTableViewHeaderFooterView.reuseIdentifier)
         view.register(DirectMessageTableViewCell.self, forCellReuseIdentifier: DirectMessageTableViewCell.reuseIdentifier)
         return view
     }()
@@ -72,6 +88,10 @@ class DirectMessageTableViewController: UIViewController {
     
     @objc private func handleGoBack() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func handleGoToSettings() {
+        coordinator?.navigate(to: .directMessageSettings)
     }
     
     // MARK: - Initialize Subviews
@@ -110,7 +130,6 @@ class DirectMessageTableViewController: UIViewController {
         sendTextFieldView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         sendTextFieldViewBottomLayoutConstraint?.isActive = true
         
-        tableView.backgroundColor = ._blue
         tableView.bottomAnchor.constraint(equalTo: sendTextFieldView.centerYAnchor).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
@@ -129,10 +148,15 @@ class DirectMessageTableViewController: UIViewController {
         tabBarController?.tabBar.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
+        tableView.scrollToBottom(animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     // MARK: - Keyboard Show/Hide
@@ -141,8 +165,8 @@ class DirectMessageTableViewController: UIViewController {
         guard let userInfo = notification.userInfo else { return }
         let keyboardRect: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         let keyboardHeight: CGFloat = keyboardRect.height
-        
-        setSendTextFieldViewBottomConstant(-(keyboardHeight + 10))
+        let bottomMargin: CGFloat = -(keyboardHeight + 10)
+        setSendTextFieldViewBottomConstant(bottomMargin)
     }
     
     @objc private func keyboardWillDisappear(notification: NSNotification) {
@@ -157,7 +181,17 @@ class DirectMessageTableViewController: UIViewController {
         }
     }
     
-    // Init
+    // MARK: - Init
+    
+    init(coordinator: EventsCoordinator) {
+        self.coordinator = coordinator
+        self.viewModel = DirectMessageViewModel(withNTestModels: 4)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -167,13 +201,31 @@ class DirectMessageTableViewController: UIViewController {
 // MARK: - UITableViewDelegate
 
 extension DirectMessageTableViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 4
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.models.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header: TimestampTableViewHeaderFooterView = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: TimestampTableViewHeaderFooterView.reuseIdentifier
+        ) as! TimestampTableViewHeaderFooterView
+        header.date = Date()
+        return header
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: DirectMessageTableViewCell = tableView.dequeueReusableCell(withIdentifier: DirectMessageTableViewCell.reuseIdentifier, for: indexPath) as! DirectMessageTableViewCell
-        
+        let cell: DirectMessageTableViewCell = tableView.dequeueReusableCell(
+            withIdentifier: DirectMessageTableViewCell.reuseIdentifier,
+            for: indexPath
+        ) as! DirectMessageTableViewCell
+        let model: DirectMessage = viewModel.models[indexPath.row]
+        cell.messageLabel.text = indexPath.row % 3 == 0 ? "Test" : model.message
+        cell.state = indexPath.row % 2 == 0 ? .sent : .received
         return cell
     }
 }

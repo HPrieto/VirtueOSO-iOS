@@ -19,4 +19,22 @@ class ProfileViewModel {
     init(_ models: [Profile]) {
         self.models = models
     }
+    
+    init(withNTestModels n: Int) {
+        var testModels: [Profile] = [Profile]()
+        for i in 0 ..< n {
+            testModels.append(
+                Profile(
+                    id: UUID(),
+                    username: "HPrieto\(i)",
+                    firstname: "Heriberto",
+                    lastname: "Prieto",
+                    imageUrl: "",
+                    createdDate: Date(),
+                    updatedDate: Date()
+                )
+            )
+        }
+        self.models = testModels
+    }
 }
