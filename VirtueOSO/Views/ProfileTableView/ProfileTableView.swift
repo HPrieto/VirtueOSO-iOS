@@ -63,8 +63,8 @@ extension ProfileTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ProfileTableViewCell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.reuseIdentifier) as! ProfileTableViewCell
         let model: Profile = viewModel.models[indexPath.row]
-        cell.titleLabel.text = "\(model.firstname) \(model.lastname)"
-        cell.descriptionLabel.text = "Artist"
+        cell.usernameLabel.text = "\(model.firstname) \(model.lastname)"
+        cell.nameLabel.text = "Artist"
         cell.profileImageView.setImage(fromUrlString: model.imageUrl)
         cell.roundProfileImageViewCorners()
         profileDelegate?.profileTableView(self, cell: cell, cellForRowAt: indexPath)

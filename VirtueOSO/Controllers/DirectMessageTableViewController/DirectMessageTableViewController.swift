@@ -50,8 +50,10 @@ class DirectMessageTableViewController: UIViewController {
     
     private(set) lazy var leftUsernameBarButtonItem: UIBarButtonItem? = {
         return UIBarButtonItem(
-            text: "Yeezy",
-            target: self,
+            title: "Yeezy",
+            fontType: .demiBold,
+            size: 18,
+            target: nil,
             action: nil
         )
     }()

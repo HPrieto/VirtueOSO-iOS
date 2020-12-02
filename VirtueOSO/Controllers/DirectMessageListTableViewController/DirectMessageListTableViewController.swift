@@ -127,8 +127,8 @@ extension DirectMessageListTableViewController: UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ProfileTableViewCell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.reuseIdentifier, for: indexPath) as! ProfileTableViewCell
         let model: DirectMessage = viewModel.models[indexPath.row]
-        cell.titleLabel.text = model.username
-        cell.descriptionLabel.text = model.message
+        cell.usernameLabel.text = model.username
+        cell.nameLabel.text = model.message
         cell.profileImageView.setTestImage()
         cell.roundProfileImageViewCorners()
         return cell

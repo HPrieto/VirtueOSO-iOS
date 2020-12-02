@@ -31,7 +31,7 @@ class ArtistViewController: UIViewController {
     }
     
     private var profileImageViewHeight: CGFloat {
-        view.frame.width * (6/9)
+        view.frame.width
     }
     private let leftMarginConstant: CGFloat = 20
     private var rightMarginConstant: CGFloat {
@@ -41,6 +41,8 @@ class ArtistViewController: UIViewController {
     private var barButtonItemCornerRadius: CGFloat {
         barButtonItemHeightWidth / 2
     }
+    
+    private var tableViewHeightLayoutConstraint: NSLayoutConstraint?
     
     // MARK: - Public Properties
     
@@ -56,21 +58,13 @@ class ArtistViewController: UIViewController {
             switch state {
             case .following:
                 // Follow Button
-                followButton.backgroundColor = .clear
-                followButton.setTitleColor(._black, for: .normal)
-                followButton.layer.borderColor = UIColor._lightGray.cgColor
-                followButton.alpha = 1
-                followButton.setTitle(Strings.following.rawValue, for: .normal)
+                actionView.state = .following
             case .notFollowing:
                 
                 // Follow Button
-                followButton.backgroundColor = ._blue
-                followButton.setTitleColor(.white, for: .normal)
-                followButton.layer.borderColor = UIColor._blue.cgColor
-                followButton.alpha = 1
-                followButton.setTitle(Strings.follow.rawValue, for: .normal)
+                actionView.state = .follow
             default:
-                followButton.alpha = 0
+                actionView.alpha = 0
             }
         }
     }
@@ -96,7 +90,25 @@ class ArtistViewController: UIViewController {
         button.widthAnchor.constraint(equalToConstant: barButtonItemHeightWidth).isActive = true
         button.layer.cornerRadius = barButtonItemCornerRadius
         button.addTarget(self, action: #selector(handleGoBack), for: .touchUpInside)
+        button.addShadow()
         return UIBarButtonItem(customView: button)
+    }()
+    
+    private(set) lazy var scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.contentInsetAdjustmentBehavior = .never
+        view.alwaysBounceVertical = true
+        view.alwaysBounceHorizontal = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private(set) lazy var stackView: UIStackView = {
+        let view = UIStackView()
+        view.axis = .vertical
+        view.spacing = 10
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     private(set) lazy var profileImageView: UIImageView = {
@@ -110,7 +122,7 @@ class ArtistViewController: UIViewController {
     
     private(set) lazy var profileNameLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont(type: .demiBold, size: .title1)
+        view.font = UIFont(type: .bold, size: 46)
         view.textColor = .white
         view.backgroundColor = .clear
         view.text = "Heriberto Prieto"
@@ -131,23 +143,12 @@ class ArtistViewController: UIViewController {
         return view
     }()
     
-    private(set) lazy var followButton: Button = {
-        let button = Button("Follow")
-        button.backgroundColor = ._blue
-        button._borderWidth = 1
-        button._borderColor = ._blue
-        button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(handleFollowButtonToggle), for: .touchUpInside)
-        return button
-    }()
-    
-    private(set) lazy var moreButton: UIButton = {
-        let view = UIButton(sfSymbol: .ellipses)
-        view.tintColor = ._gray
-        view.backgroundColor = .clear
-        view.setImage(UIImage(sfSymbol: .ellipses), for: .normal)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(handleMore), for: .touchUpInside)
+    private(set) lazy var actionView: ArtistActionView = {
+        let view = ArtistActionView()
+        view.followButton.addTarget(self, action: #selector(handleFollowButtonToggle), for: .touchUpInside)
+        view.actionsButton.addTarget(self, action: #selector(handleMore), for: .touchUpInside)
+        view.usernameLabel.text = "@hprieto"
+        view.bioLabel.text = "Kanye Omari West is an American rapper, record producer, and fashion designer. He has been influential in the 21st-century development of mainstream hip hop and popular music in general."
         return view
     }()
     
@@ -155,8 +156,11 @@ class ArtistViewController: UIViewController {
         let view = UITableView(frame: .zero, style: .grouped)
         view.backgroundColor = .clear
         view.separatorStyle = .none
+        view.isScrollEnabled = false
         view.translatesAutoresizingMaskIntoConstraints = false
         
+        view.delegate = self
+        view.dataSource = self
         view.register(TitleTableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: TitleTableViewHeaderFooterView.reuseIdentifier)
         view.register(EventDetailTableViewCell.self, forCellReuseIdentifier: EventDetailTableViewCell.reuseIdentifier)
         return view
@@ -198,42 +202,34 @@ class ArtistViewController: UIViewController {
         
         navigationItem.leftBarButtonItem = leftBarButtonItem
         
-        view.addSubview(profileImageView)
-        view.addSubview(profileNameLabel)
-        view.addSubview(subscriberCountLabel)
-        view.addSubview(followButton)
-        view.addSubview(moreButton)
-        view.addSubview(tableView)
+        view.addSubview(scrollView)
         
-        profileImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        profileImageView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        scrollView.addSubview(stackView)
+        
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        
         profileImageView.heightAnchor.constraint(equalToConstant: profileImageViewHeight).isActive = true
         
+        profileImageView.addSubview(profileNameLabel)
+        
         profileNameLabel.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor).isActive = true
-        profileNameLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: leftMarginConstant).isActive = true
-        profileNameLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: rightMarginConstant).isActive = true
-        profileNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        profileNameLabel.leftAnchor.constraint(equalTo: profileImageView.leftAnchor, constant: leftMarginConstant).isActive = true
+        profileNameLabel.rightAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: rightMarginConstant).isActive = true
         
-        subscriberCountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        subscriberCountLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 10).isActive = true
-        subscriberCountLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: leftMarginConstant).isActive = true
-        subscriberCountLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: rightMarginConstant).isActive = true
+        stackView.addArrangedSubview(profileImageView)
+        stackView.addArrangedSubview(actionView)
+        stackView.addArrangedSubview(tableView)
         
-        followButton.topAnchor.constraint(equalTo: subscriberCountLabel.bottomAnchor, constant: 10).isActive = true
-        followButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        
-        moreButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        moreButton.heightAnchor.constraint(equalTo: followButton.heightAnchor).isActive = true
-        moreButton.centerYAnchor.constraint(equalTo: followButton.centerYAnchor).isActive = true
-        moreButton.leftAnchor.constraint(equalTo: followButton.rightAnchor, constant: 10).isActive = true
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.topAnchor.constraint(equalTo: followButton.bottomAnchor, constant: 10).isActive = true
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        tableViewHeightLayoutConstraint = tableView.heightAnchor.constraint(equalToConstant: 0)
+        tableViewHeightLayoutConstraint?.isActive = true
     }
     
     // MARK: - Life Cycle
@@ -253,10 +249,27 @@ class ArtistViewController: UIViewController {
         navigationController?.view.backgroundColor = .clear
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.tintColor = ._black
+        
+        tableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tableView.removeObserver(self, forKeyPath: "contentSize")
+    }
+    
+    // MARK: - Observers
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "contentSize",
+           object is UITableView,
+           let newSize: CGSize = change?[.newKey] as? CGSize {
+            tableViewHeightLayoutConstraint?.constant = newSize.height
+        }
     }
     
     // MARK: - Init

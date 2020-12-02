@@ -16,9 +16,15 @@ class ProfileViewController: UIViewController {
         case following = "Following"
     }
     
+    // MARK: - Constants
+    
+    private let eventsTableViewKeyPath: String = "contentSize"
+    
     // MARK: - Private Properties
     
     private(set) var coordinator: ProfileCoordinator
+    
+    private var eventsTableViewHeightLayoutConstraint: NSLayoutConstraint?
     
     private var navigationBarHeight: CGFloat {
         navigationController?.navigationBar.frame.height ?? 0
@@ -35,7 +41,7 @@ class ProfileViewController: UIViewController {
     }
     
     private var profileImageViewHeight: CGFloat {
-        return view.frame.width * (6/9)
+        return view.frame.width
     }
     
     private var profileImageViewWidth: CGFloat {
@@ -46,9 +52,10 @@ class ProfileViewController: UIViewController {
     
     private(set) lazy var mainScrollView: UIScrollView = {
         let view = UIScrollView()
-        view.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
         view.automaticallyAdjustsScrollIndicatorInsets = true
-        view.alwaysBounceVertical = true
+        view.contentInsetAdjustmentBehavior = .never
+        view.contentInset = .zero
+        view.alwaysBounceVertical = false
         view.alwaysBounceHorizontal = false
         view.showsVerticalScrollIndicator = true
         view.showsHorizontalScrollIndicator = false
@@ -74,6 +81,7 @@ class ProfileViewController: UIViewController {
         button.widthAnchor.constraint(equalToConstant: barButtonItemHeightWidth).isActive = true
         button.layer.cornerRadius = barButtonItemCornerRadius
         button.addTarget(self, action: #selector(handleOpenSettings), for: .touchUpInside)
+        button.addShadow(radius: 5)
         return UIBarButtonItem(customView: button)
     }()
     
@@ -87,6 +95,7 @@ class ProfileViewController: UIViewController {
         button.widthAnchor.constraint(equalToConstant: barButtonItemHeightWidth).isActive = true
         button.layer.cornerRadius = barButtonItemCornerRadius
         button.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
+        button.addShadow(radius: 5)
         return UIBarButtonItem(customView: button)
     }()
     
@@ -101,7 +110,7 @@ class ProfileViewController: UIViewController {
     
     private(set) lazy var profileNameLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont(type: .demiBold, size: .title1)
+        view.font = UIFont(type: .bold, size: 46)
         view.textColor = .white
         view.backgroundColor = .clear
         view.text = "Heriberto Prieto"
@@ -111,15 +120,10 @@ class ProfileViewController: UIViewController {
         return view
     }()
     
-    private(set) lazy var bioLabel: UILabel = {
-        let view = UILabel()
-        view.font = UIFont(type: .medium, size: 12)
-        view.numberOfLines = 10
-        view.textColor = ._gray
-        // view.text = "A short message."
-        view.text = "The functions and arguments are renamed in a way that, for me, clarifies what's going on, for instance by distinguishing a Swift closure from a UIButton action."
-        // view.text = "The functions and arguments are renamed in a way that, for me, clarifies what's going on, for instance by distinguishing a Swift closure from a UIButton action. The functions and arguments are renamed in a way that, for me, clarifies what's going on, for instance by distinguishing a Swift closure from a UIButton action."
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private(set) lazy var profileActionView: ProfileActionView = {
+        let view = ProfileActionView()
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleFollowMgmt))
+        view.labelStackView.addGestureRecognizer(tapGesture)
         return view
     }()
     
@@ -130,65 +134,9 @@ class ProfileViewController: UIViewController {
         view.rowHeight = UITableView.automaticDimension
         view.estimatedRowHeight = 44
         view.isScrollEnabled = false
-        view.setFixedHeight()
-        return view
-    }()
-    
-    private(set) var eventsLabel: UILabel = {
-        let view = UILabel()
-        view.numberOfLines = 2
-        view.textAlignment = .center
-        view.attributedText = NSMutableAttributedString(
-            attributedStrings: [
-                NSAttributedString(string: "20", color: ._black, fontType: .demiBold, fontSize: 16),
-                NSAttributedString(string: "\nEvents", color: ._black, fontType: .regular, fontSize: 13),
-            ]
-        )
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private(set) var followersLabel: UILabel = {
-        let view = UILabel()
-        view.numberOfLines = 2
-        view.textAlignment = .center
-        view.attributedText = NSMutableAttributedString(
-            attributedStrings: [
-                NSAttributedString(string: "1,000", color: ._black, fontType: .demiBold, fontSize: 16),
-                NSAttributedString(string: "\nFollowers", color: ._black, fontType: .regular, fontSize: 13),
-            ]
-        )
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private(set) var followingLabel: UILabel = {
-        let view = UILabel()
-        view.numberOfLines = 2
-        view.textAlignment = .center
-        view.attributedText = NSMutableAttributedString(
-            attributedStrings: [
-                NSAttributedString(string: "150", color: ._black, fontType: .demiBold, fontSize: 16),
-                NSAttributedString(string: "\nFollowing", color: ._black, fontType: .regular, fontSize: 13),
-            ]
-        )
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private(set) lazy var labelStackView: UIStackView = {
-        let view = UIStackView(
-            arrangedSubviews: [
-                eventsLabel,
-                followersLabel,
-                followingLabel,
-            ]
-        )
-        view.spacing = 5
-        view.axis = .horizontal
-        view.alignment = .center
-        view.distribution = .equalSpacing
-        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        eventsTableViewHeightLayoutConstraint = view.heightAnchor.constraint(equalToConstant: 0)
+        eventsTableViewHeightLayoutConstraint?.isActive = true
         return view
     }()
     
@@ -210,6 +158,10 @@ class ProfileViewController: UIViewController {
         self.coordinator.navigate(to: .editProfile)
     }
     
+    @objc private func handleFollowMgmt() {
+        navigationController?.pushViewController(FollowMgmtViewController(), animated: true)
+    }
+    
     // MARK: - Initialize Subviews
     
     fileprivate func initializeSubviews() {
@@ -218,13 +170,9 @@ class ProfileViewController: UIViewController {
         navigationItem.rightBarButtonItem = settingsBarButtonItem
         navigationItem.leftBarButtonItem = editBarButtonItem
         
-        view.addSubview(profileImageView)
         view.addSubview(mainScrollView)
         
-        profileImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: profileImageViewHeight).isActive = true
-        profileImageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        profileImageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
         profileImageView.addSubview(profileNameLabel)
         
@@ -232,7 +180,7 @@ class ProfileViewController: UIViewController {
         profileNameLabel.widthAnchor.constraint(equalToConstant: profileImageViewWidth).isActive = true
         profileNameLabel.centerXAnchor.constraint(equalTo: profileImageView.centerXAnchor).isActive = true
         
-        mainScrollView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor).isActive = true
+        mainScrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mainScrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         mainScrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         mainScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -244,7 +192,8 @@ class ProfileViewController: UIViewController {
         mainStackView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor).isActive = true
         mainStackView.centerXAnchor.constraint(equalTo: mainScrollView.centerXAnchor).isActive = true
         
-        mainStackView.addArrangedSubview(labelStackView)
+        mainStackView.addArrangedSubview(profileImageView)
+        mainStackView.addArrangedSubview(profileActionView)
         mainStackView.addArrangedSubview(tableView)
         
     }
@@ -265,10 +214,27 @@ class ProfileViewController: UIViewController {
         navigationController?.view.backgroundColor = .clear
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.tintColor = ._black
+        
+        tableView.addObserver(self, forKeyPath: eventsTableViewKeyPath, options: .new, context: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        tableView.removeObserver(self, forKeyPath: eventsTableViewKeyPath)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == eventsTableViewKeyPath, object is UITableView {
+            guard let newSize: CGSize = change?[.newKey] as? CGSize else {
+                return
+            }
+            eventsTableViewHeightLayoutConstraint?.constant = newSize.height
+        }
     }
     
     // MARK: - Init

@@ -12,8 +12,8 @@ class SelectProfilesTableViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    private var viewModel: ProfileViewModel
-    private weak var coordinator: EventsCoordinator?
+    private var viewModel: SelectProfilesViewModel
+    private let coordinator: EventsCoordinator
     
     // MARK: - Public Properties
     
@@ -27,6 +27,16 @@ class SelectProfilesTableViewController: UIViewController {
             style: .plain,
             target: self,
             action: #selector(handleGoBack)
+        )
+    }()
+    
+    private(set) lazy var chatBarButtonItem: UIBarButtonItem? = {
+        return UIBarButtonItem(
+            title: "Chat",
+            fontType: .demiBold,
+            size: 18,
+            target: self,
+            action: #selector(handleGoToChat)
         )
     }()
     
@@ -67,18 +77,28 @@ class SelectProfilesTableViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc private func handleGoToChat() {
+        coordinator.navigate(to: .directMessage)
+    }
+    
     // MARK: - Initialize Subviews
     
     private func initializeSubviews() {
         view.backgroundColor = .white
         
+        var rightBarButtonItems: [UIBarButtonItem] = [UIBarButtonItem]()
         var leftBarButtonItems: [UIBarButtonItem] = [UIBarButtonItem]()
+        
+        if let chatBarButtonItem: UIBarButtonItem = chatBarButtonItem {
+            rightBarButtonItems.append(chatBarButtonItem)
+        }
         
         if let backBarButtonItem: UIBarButtonItem = backBarButtonItem {
             leftBarButtonItems.append(backBarButtonItem)
         }
         
         navigationItem.leftBarButtonItems = leftBarButtonItems
+        navigationItem.rightBarButtonItems = rightBarButtonItems
         
         view.addSubview(toLabel)
         view.addSubview(textField)
@@ -105,12 +125,16 @@ class SelectProfilesTableViewController: UIViewController {
         initializeSubviews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     // MARK: - Init
     
     init(coordinator: EventsCoordinator) {
         self.coordinator = coordinator
         self.selectedModels = [Profile]()
-        self.viewModel = ProfileViewModel(withNTestModels: 20)
+        self.viewModel = SelectProfilesViewModel(withNTestModels: 20)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -149,11 +173,13 @@ extension SelectProfilesTableViewController: UITableViewDelegate, UITableViewDat
         cell.usernameLabel.text = model.username
         cell.nameLabel.text = "\(model.firstname) \(model.lastname)"
         cell.profileImageView.setTestImage()
-        cell.selectButtonOnClick = {
-            print("Button Clicked: \(indexPath.row)")
-        }
+        cell.isOn = viewModel.states[indexPath.row]
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.states[indexPath.row] = !viewModel.states[indexPath.row]
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
     
 }

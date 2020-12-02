@@ -12,6 +12,8 @@ class DiscoverViewController: UIViewController {
     
     // MARK: - Private Properties
     
+    private let viewModel: DiscoverProfilesViewModel
+    
     private let tableViewCellHeight: CGFloat = 70
     private var tableViewCellProfileImageViewCornerRadius: CGFloat {
         let profileImageViewHeight: CGFloat = tableViewCellHeight - 20
@@ -31,21 +33,28 @@ class DiscoverViewController: UIViewController {
         return view
     }()
     
-    private(set) lazy var tableView: ProfileTableView = {
-        let view = ProfileTableView()
-        view.profileDelegate = self
+    private(set) lazy var tableView: UITableView = {
+        let view = UITableView(frame: .zero, style: .grouped)
         view.separatorStyle = .none
+        view.backgroundColor = .white
+        view.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        
+        view.delegate = self
+        view.dataSource = self
+        view.register(TitleTableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: TitleTableViewHeaderFooterView.reuseIdentifier)
+        view.register(ProfileTableViewCell.self, forCellReuseIdentifier: ProfileTableViewCell.reuseIdentifier)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private(set) lazy var rightBarButtonItem: UIBarButtonItem = {
-        let view = UIBarButtonItem(
+    private(set) lazy var rightBarButtonItem: UIBarButtonItem? = {
+        return UIBarButtonItem(
             title: "Cancel",
-            style: .plain,
+            fontType: .demiBold,
+            size: 18,
             target: self,
-            action: #selector(handleDismissSearchBar))
-        return view
+            action: #selector(handleDismissSearchBar)
+        )
     }()
     
     // MARK: - Handlers
@@ -80,11 +89,11 @@ class DiscoverViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isTranslucent = true
+        tableView.scrollToTop()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tableView.generateTestData()
         tableView.reloadData()
     }
     
@@ -92,6 +101,7 @@ class DiscoverViewController: UIViewController {
     
     init(coordinator: DiscoverCoordinator) {
         self.coordinator = coordinator
+        self.viewModel = DiscoverProfilesViewModel(withNTestModels: 20)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -113,14 +123,62 @@ extension DiscoverViewController: UISearchBarDelegate {
     }
 }
 
-// MARK: - ProfileTableViewDelegate
+// MARK: - UITableViewDelegate
 
-extension DiscoverViewController: ProfileTableViewDelegate {
-    func profileTableView(_ profileTableView: ProfileTableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator.navigate(to: .artist)
+extension DiscoverViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.recentModels.isEmpty ? 1 : 2
     }
     
-    func profileTableView(_ profileTableView: ProfileTableView, cell: ProfileTableViewCell, cellForRowAt indexPath: IndexPath) {
-        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard !viewModel.recentModels.isEmpty else {
+            return viewModel.models.count
+        }
+        return section == 0 ? viewModel.recentModels.count : viewModel.models.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header: TitleTableViewHeaderFooterView = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: TitleTableViewHeaderFooterView.reuseIdentifier
+        ) as! TitleTableViewHeaderFooterView
+        if viewModel.recentModels.isEmpty {
+            header.titleLabel.text = "Accounts"
+        } else {
+            header.titleLabel.text = section == 0 ? "Recent" : "Accounts"
+        }
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: ProfileTableViewCell = tableView.dequeueReusableCell(
+            withIdentifier: ProfileTableViewCell.reuseIdentifier,
+            for: indexPath
+        ) as! ProfileTableViewCell
+        if viewModel.recentModels.isEmpty {
+            let model: Profile = viewModel.models[indexPath.row]
+            cell.usernameLabel.text = model.username
+            cell.nameLabel.text = "\(model.firstname) \(model.lastname)"
+            cell.roundProfileImageViewCorners()
+            cell.state = .normal
+        } else if indexPath.section == 0 {
+            let model: Profile = viewModel.recentModels[indexPath.row]
+            cell.usernameLabel.text = model.username
+            cell.nameLabel.text = "\(model.firstname) \(model.lastname)"
+            cell.roundProfileImageViewCorners()
+            cell.state = .previouslySearched
+        } else if indexPath.section == 1 {
+            let model: Profile = viewModel.models[indexPath.row]
+            cell.usernameLabel.text = model.username
+            cell.nameLabel.text = "\(model.firstname) \(model.lastname)"
+            cell.roundProfileImageViewCorners()
+            cell.state = .normal
+        }
+        cell.profileImageView.setTestImage()
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        coordinator.navigate(to: .artist)
     }
 }

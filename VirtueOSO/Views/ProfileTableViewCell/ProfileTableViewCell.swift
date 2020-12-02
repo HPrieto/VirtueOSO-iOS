@@ -21,9 +21,11 @@ class ProfileTableViewCell: UITableViewCell {
         didSet {
             switch state {
             case .normal:
-                accessoryImageView.image = UIImage(sfSymbol: .chevronRight)
+                accessoryImageView.image = UIImage(sfSymbol: .chevronRight, withWeight: .medium)
+                accessoryImageView.contentMode = .scaleAspectFit
             case .previouslySearched:
-                accessoryImageView.image = UIImage(sfSymbol: .xMark)
+                accessoryImageView.image = UIImage(sfSymbol: .xMark, withWeight: .medium)
+                accessoryImageView.contentMode = .scaleAspectFit
             }
         }
     }
@@ -59,18 +61,19 @@ class ProfileTableViewCell: UITableViewCell {
         return view
     }()
     
-    private(set) lazy var titleLabel: UILabel = {
+    private(set) lazy var usernameLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont(type: .medium, size: 15)
+        view.font = UIFont(type: .demiBold, size: 15)
         view.backgroundColor = .clear
         view.numberOfLines = 1
+        view.textColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private(set) lazy var descriptionLabel: UILabel = {
+    private(set) lazy var nameLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont(type: .medium, size: 15)
+        view.font = UIFont(type: .medium, size: 16)
         view.backgroundColor = .clear
         view.numberOfLines = 1
         view.textColor = ._gray
@@ -101,8 +104,8 @@ class ProfileTableViewCell: UITableViewCell {
         selectionStyle = .none
         
         addSubview(profileImageView)
-        addSubview(titleLabel)
-        addSubview(descriptionLabel)
+        addSubview(usernameLabel)
+        addSubview(nameLabel)
         addSubview(accessoryImageView)
         
         profileImageView.heightAnchor.constraint(equalToConstant: profileImageViewHeight).isActive = true
@@ -115,13 +118,13 @@ class ProfileTableViewCell: UITableViewCell {
         accessoryImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         accessoryImageView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
         
-        titleLabel.bottomAnchor.constraint(equalTo: profileImageView.centerYAnchor, constant: -2).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 10).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: accessoryImageView.leftAnchor, constant: -5).isActive = true
+        usernameLabel.bottomAnchor.constraint(equalTo: profileImageView.centerYAnchor, constant: 0).isActive = true
+        usernameLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 10).isActive = true
+        usernameLabel.rightAnchor.constraint(equalTo: accessoryImageView.leftAnchor, constant: -5).isActive = true
         
-        descriptionLabel.topAnchor.constraint(equalTo: profileImageView.centerYAnchor, constant: 2).isActive = true
-        descriptionLabel.leftAnchor.constraint(equalTo: titleLabel.leftAnchor).isActive = true
-        descriptionLabel.rightAnchor.constraint(equalTo: titleLabel.rightAnchor).isActive = true
+        nameLabel.topAnchor.constraint(equalTo: profileImageView.centerYAnchor, constant: 0).isActive = true
+        nameLabel.leftAnchor.constraint(equalTo: usernameLabel.leftAnchor).isActive = true
+        nameLabel.rightAnchor.constraint(equalTo: usernameLabel.rightAnchor).isActive = true
         
         bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 10).isActive = true
     }

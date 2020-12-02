@@ -91,7 +91,7 @@ extension DiscoverEventViewController: EventTableViewDelegate {
     }
     
     func eventTableView(_ eventTableView: EventTableView, cell: EventTableViewCell, cellForRowAt indexPath: IndexPath) {
-        cell.titleLabel.text = "Yeezus Tour 2020"
+        cell.eventNameLabel.text = "Yeezus Tour 2020"
         cell.usernameLabel.text = "Kanye West"
         cell.descriptionLabel.text = "The Yeezus Tour was a concert tour by American rapper Kanye West in support of West's sixth solo studio album."
         cell.amountLabel.attributedText = NSMutableAttributedString(attributedStrings: [
@@ -99,11 +99,16 @@ extension DiscoverEventViewController: EventTableViewDelegate {
             NSAttributedString(string: " / person", color: ._darkGray, fontType: .medium, fontSize: .small)
         ])
         if indexPath.row % 2 == 0 {
-            cell.statusLabel.text = "Live"
-            cell.statusLabel.backgroundColor = UIColor._secondary
+            cell.statusTextView.text = "Live"
+            cell.statusTextView.backgroundColor = UIColor._secondary
+            cell.statusTextView.textColor = .white
+            cell.statusTextView.addShadow()
         } else {
-            cell.statusLabel.text = ""
-            cell.statusLabel.backgroundColor = ._black
+            //cell.statusTextView.text = "Thurs 12/1 @ 12pm"
+            cell.statusTextView.text = Date().toString(withDateFormat: "EEE MM/dd @ HHa")
+            cell.statusTextView.backgroundColor = ._lightGray
+            cell.statusTextView.textColor = .black
+            cell.statusTextView.addShadow()
         }
     }
     

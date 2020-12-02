@@ -14,6 +14,7 @@ extension UIButton {
         self.init()
         let image: UIImage? = UIImage(sfSymbol: sfSymbol, withWeight: weight)
         setImage(image, for: .normal)
+        imageView?.contentMode = .scaleAspectFit
         translatesAutoresizingMaskIntoConstraints = false
         contentMode = .scaleAspectFit
     }
@@ -22,6 +23,8 @@ extension UIButton {
         self.init()
         let image: UIImage? = UIImage(sfSymbol: sfSymbol, withWeight: weight)
         setBackgroundImage(image, for: .normal)
+        imageView?.contentMode = .scaleAspectFit
+        imageView?.backgroundColor = .clear
         translatesAutoresizingMaskIntoConstraints = false
         contentMode = .scaleAspectFit
     }

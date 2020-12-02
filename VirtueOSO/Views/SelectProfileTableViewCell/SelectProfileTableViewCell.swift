@@ -32,25 +32,14 @@ class SelectProfileTableViewCell: UITableViewCell {
         return selectButtonHeight / 2
     }
     
-    // MARK: - Enums
-    
-    enum State {
-        case selected
-        case unselected
-    }
-    
     // MARK: - Public Properties
     
     public var selectButtonOnClick: (() -> Void)?
     
-    var state: State = .selected {
+    var isOn: Bool = false {
         didSet {
-            switch state {
-            case .selected:
-                selectButton.backgroundColor = ._blue
-            case .unselected:
-                selectButton.backgroundColor = .white
-            }
+            selectButton.backgroundColor = isOn ? ._blue : .clear
+            selectButton.layer.borderColor = isOn ? UIColor._blue.cgColor : UIColor.lightGray.cgColor
         }
     }
     
@@ -99,11 +88,10 @@ class SelectProfileTableViewCell: UITableViewCell {
         return view
     }()
     
-    // MARK: - Handlers
+    // MARK: - Utils
     
-    @objc private func handleSelectButtonTap() {
-        state = self.state == .selected ? .unselected : .selected
-        selectButtonOnClick?()
+    public func toggle() {
+        isOn = !isOn
     }
     
     // MARK: - Initialize Subviews

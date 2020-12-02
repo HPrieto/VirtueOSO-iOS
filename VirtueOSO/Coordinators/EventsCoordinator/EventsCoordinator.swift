@@ -24,12 +24,16 @@ class EventsCoordinator: Coordinator {
         controller.navigationBar.backgroundColor = .white
         controller.navigationBar.isTranslucent = true
         controller.navigationBar.barTintColor = .white
-        controller.navigationBar.titleTextAttributes = [.foregroundColor: UIColor._black, .font: UIFont(type: .demiBold, size: .regular) as Any]
+        controller.navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor._black,
+            .font: UIFont(type: .demiBold, size: .regular) as Any
+        ]
         controller.navigationBar.barStyle = .default
         return controller
     }()
     
     // MARK: - Destinations
+    
     enum Destination: Int {
         case root
         case event
@@ -68,19 +72,10 @@ class EventsCoordinator: Coordinator {
     private lazy var selectProfileTableViewController: SelectProfilesTableViewController = {
         let controller = SelectProfilesTableViewController(coordinator: self)
         controller.navigationItem.title = "New Message"
-        controller.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            text: "Chat",
-            target: controller,
-            action: #selector(handleNavigateSelectProfileToChat)
-        )
         return controller
     }()
     
     // MARK: - Handlers
-    
-    @objc private func handleNavigateSelectProfileToChat() {
-        navigate(to: .directMessage)
-    }
     
     // MARK: - Init
     init(mainCoordinator: MainCoordinator) {
@@ -95,7 +90,12 @@ class EventsCoordinator: Coordinator {
     func navigate(to destination: Destination) {
         let viewController: UIViewController = makeViewController(for: destination)
         switch destination {
-        case .root, .event, .directMessages, .directMessage, .directMessageSettings, .selectProfilesToMessage:
+        case .root,
+             .event,
+             .directMessages,
+             .directMessage,
+             .directMessageSettings,
+             .selectProfilesToMessage:
             rootViewController.pushViewController(viewController, animated: true)
         default:
             rootViewController.present(viewController, animated: true, completion: nil)
