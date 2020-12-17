@@ -183,7 +183,7 @@ class ArtistActionView: UIView {
     // MARK: - Initialize Subviews
     
     private func initializeSubviews() {
-        backgroundColor = .clear
+        backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(buttonStack)
@@ -192,7 +192,7 @@ class ArtistActionView: UIView {
         addSubview(usernameLabel)
         addSubview(bioLabel)
         
-        labelStackView.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
+        labelStackView.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
         labelStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
         labelStackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
         
@@ -213,7 +213,7 @@ class ArtistActionView: UIView {
         actionsButton.centerYAnchor.constraint(equalTo: buttonStack.centerYAnchor).isActive = true
         actionsButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
         
-        bottomAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant: 10).isActive = true
+        bottomAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant: 20).isActive = true
     }
     
     // MARK: - Init

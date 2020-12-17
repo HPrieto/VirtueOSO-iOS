@@ -48,7 +48,7 @@ class DiscoverEventViewController: UIViewController {
     private func initializeSubviews() {
         view.backgroundColor = .white
         
-        navigationItem.title = "Virtuoso"
+        navigationItem.title = "Indee"
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
         

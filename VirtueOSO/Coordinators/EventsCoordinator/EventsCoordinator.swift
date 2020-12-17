@@ -39,13 +39,13 @@ class EventsCoordinator: Coordinator {
         case event
         case directMessages
         case directMessage
-        case directMessageSettings
         case selectProfilesToMessage
     }
     
     // MARK: - Controllers
-    private(set) lazy var discoverEventTableViewController: DiscoverEventViewController = {
-        let controller = DiscoverEventViewController(coordinator: self)
+    private(set) lazy var discoverEventTableViewController: HomeViewController = {
+        // let controller = DiscoverEventViewController(coordinator: self)
+        let controller = HomeViewController()
         return controller
     }()
     
@@ -60,12 +60,7 @@ class EventsCoordinator: Coordinator {
     }()
     
     private(set) lazy var directMessageViewController: DirectMessageTableViewController = {
-        let controller = DirectMessageTableViewController(coordinator: self)
-        return controller
-    }()
-    
-    private lazy var directMessageSettingsViewController: DirectMessageSettingsViewController = {
-        let controller = DirectMessageSettingsViewController(coordinator: self)
+        let controller = DirectMessageTableViewController()
         return controller
     }()
     
@@ -94,7 +89,6 @@ class EventsCoordinator: Coordinator {
              .event,
              .directMessages,
              .directMessage,
-             .directMessageSettings,
              .selectProfilesToMessage:
             rootViewController.pushViewController(viewController, animated: true)
         default:
@@ -114,8 +108,6 @@ class EventsCoordinator: Coordinator {
             return directMessageListViewController
         case .directMessage:
             return directMessageViewController
-        case .directMessageSettings:
-            return directMessageSettingsViewController
         case .selectProfilesToMessage:
             return selectProfileTableViewController
         default:

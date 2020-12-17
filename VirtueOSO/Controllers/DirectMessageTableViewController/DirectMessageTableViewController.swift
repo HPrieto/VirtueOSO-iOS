@@ -18,7 +18,12 @@ class DirectMessageTableViewController: UIViewController {
     
     private(set) var viewModel: DirectMessageViewModel
     
-    private weak var coordinator: EventsCoordinator?
+    // MARK: ViewControllers
+    
+    private(set) lazy var directMessageSettingsViewController: DirectMessageSettingsViewController = {
+        let controller = DirectMessageSettingsViewController()
+        return controller
+    }()
     
     // MARK: - Subviews
     
@@ -93,7 +98,7 @@ class DirectMessageTableViewController: UIViewController {
     }
     
     @objc private func handleGoToSettings() {
-        coordinator?.navigate(to: .directMessageSettings)
+        navigationController?.pushViewController(directMessageSettingsViewController, animated: true)
     }
     
     // MARK: - Initialize Subviews
@@ -185,8 +190,7 @@ class DirectMessageTableViewController: UIViewController {
     
     // MARK: - Init
     
-    init(coordinator: EventsCoordinator) {
-        self.coordinator = coordinator
+    init() {
         self.viewModel = DirectMessageViewModel(withNTestModels: 4)
         super.init(nibName: nil, bundle: nil)
     }

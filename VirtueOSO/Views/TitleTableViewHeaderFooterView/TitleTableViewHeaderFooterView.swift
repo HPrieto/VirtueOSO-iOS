@@ -10,14 +10,11 @@ import UIKit
 
 class TitleTableViewHeaderFooterView: UITableViewHeaderFooterView {
     
+    // MARK: - Private Properties
+    
     // MARK: - Public Properties
     
-    static let reuseIdentifier: String = "title-table-view-header-footger-view"
-    
-    public var leftAnchorConstant: CGFloat = 20
-    public var rightAnchorConstant: CGFloat = -20
-    public var topAnchorConstant: CGFloat = 0
-    public var bottomAnchorConstant: CGFloat = 0
+    static let reuseIdentifier: String = "title-table-view-header-footer-view"
     
     // MARK: - Subviews
     
@@ -33,14 +30,14 @@ class TitleTableViewHeaderFooterView: UITableViewHeaderFooterView {
     // MARK: - Initialize Subviews
     
     fileprivate func initializeSubviews() {
-        contentView.backgroundColor = .white
         
         addSubview(titleLabel)
         
-        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: topAnchorConstant).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: leftAnchorConstant).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: rightAnchorConstant).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottomAnchorConstant).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        
+        bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
     }
     
     // MARK: - Init

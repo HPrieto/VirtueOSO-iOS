@@ -56,6 +56,23 @@
 		4372F03A24D5D98800E5FD33 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372F03924D5D98800E5FD33 /* RoundButton.swift */; };
 		4372F03D24D5F18E00E5FD33 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372F03C24D5F18E00E5FD33 /* ChangePasswordViewController.swift */; };
 		4372F04024D5F3AE00E5FD33 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372F03F24D5F3AE00E5FD33 /* StackView.swift */; };
+		4384F089257818EE006D8DA4 /* FollowMgmtViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F088257818EE006D8DA4 /* FollowMgmtViewModel.swift */; };
+		4384F09325785E79006D8DA4 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F09225785E79006D8DA4 /* NotificationTableViewCell.swift */; };
+		4384F09925786A10006D8DA4 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F09825786A10006D8DA4 /* NotificationsViewController.swift */; };
+		4384F0A425786E76006D8DA4 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F0A325786E76006D8DA4 /* NotificationViewModel.swift */; };
+		4384F0AA25794A52006D8DA4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F0A925794A52006D8DA4 /* HomeViewController.swift */; };
+		4384F0B025794A79006D8DA4 /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F0AF25794A79006D8DA4 /* EventCollectionViewCell.swift */; };
+		4384F0C225794E7C006D8DA4 /* EventListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F0C125794E7C006D8DA4 /* EventListTableViewCell.swift */; };
+		4384F0CD2579531D006D8DA4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F0CC2579531D006D8DA4 /* HomeViewModel.swift */; };
+		4384F0E6257D6D76006D8DA4 /* EventGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F0E5257D6D76006D8DA4 /* EventGroup.swift */; };
+		4384F0EE258338C1006D8DA4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F0ED258338C1006D8DA4 /* User.swift */; };
+		4384F0F425833957006D8DA4 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F0F325833957006D8DA4 /* DBManager.swift */; };
+		4384F0FC2583F623006D8DA4 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F0FB2583F623006D8DA4 /* NetworkServiceError.swift */; };
+		4384F1012583F7A1006D8DA4 /* NetworkServiceResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F1002583F7A1006D8DA4 /* NetworkServiceResponseError.swift */; };
+		4384F1062583F927006D8DA4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F1052583F927006D8DA4 /* Endpoint.swift */; };
+		4384F10B2583FCD9006D8DA4 /* AppEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F10A2583FCD9006D8DA4 /* AppEndpoint.swift */; };
+		4384F1102583FD1D006D8DA4 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F10F2583FD1D006D8DA4 /* Credentials.swift */; };
+		4384F11825840373006D8DA4 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384F11725840373006D8DA4 /* APIResponse.swift */; };
 		4392E51025490391007572C2 /* EventDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4392E50F25490391007572C2 /* EventDetailTableView.swift */; };
 		4392E519254906AE007572C2 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4392E518254906AE007572C2 /* EventViewModel.swift */; };
 		4392E52125490901007572C2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4392E52025490901007572C2 /* Event.swift */; };
@@ -191,6 +208,23 @@
 		4372F03924D5D98800E5FD33 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		4372F03C24D5F18E00E5FD33 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		4372F03F24D5F3AE00E5FD33 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		4384F088257818EE006D8DA4 /* FollowMgmtViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowMgmtViewModel.swift; sourceTree = "<group>"; };
+		4384F09225785E79006D8DA4 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		4384F09825786A10006D8DA4 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		4384F0A325786E76006D8DA4 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		4384F0A925794A52006D8DA4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		4384F0AF25794A79006D8DA4 /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
+		4384F0C125794E7C006D8DA4 /* EventListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListTableViewCell.swift; sourceTree = "<group>"; };
+		4384F0CC2579531D006D8DA4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		4384F0E5257D6D76006D8DA4 /* EventGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGroup.swift; sourceTree = "<group>"; };
+		4384F0ED258338C1006D8DA4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4384F0F325833957006D8DA4 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		4384F0FB2583F623006D8DA4 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
+		4384F1002583F7A1006D8DA4 /* NetworkServiceResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceResponseError.swift; sourceTree = "<group>"; };
+		4384F1052583F927006D8DA4 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		4384F10A2583FCD9006D8DA4 /* AppEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEndpoint.swift; sourceTree = "<group>"; };
+		4384F10F2583FD1D006D8DA4 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		4384F11725840373006D8DA4 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		4392E50F25490391007572C2 /* EventDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailTableView.swift; sourceTree = "<group>"; };
 		4392E518254906AE007572C2 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		4392E52025490901007572C2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -623,6 +657,59 @@
 			path = MainCoordinator;
 			sourceTree = "<group>";
 		};
+		4384F09025785E5C006D8DA4 /* NotificationTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4384F09225785E79006D8DA4 /* NotificationTableViewCell.swift */,
+			);
+			path = NotificationTableViewCell;
+			sourceTree = "<group>";
+		};
+		4384F097257869F4006D8DA4 /* NotificationsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4384F09825786A10006D8DA4 /* NotificationsViewController.swift */,
+			);
+			path = NotificationsViewController;
+			sourceTree = "<group>";
+		};
+		4384F0A825794A2E006D8DA4 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4384F0A925794A52006D8DA4 /* HomeViewController.swift */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		4384F0AE25794A62006D8DA4 /* EventCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4384F0AF25794A79006D8DA4 /* EventCollectionViewCell.swift */,
+			);
+			path = EventCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		4384F0C025794E6B006D8DA4 /* EventListTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4384F0C125794E7C006D8DA4 /* EventListTableViewCell.swift */,
+			);
+			path = EventListTableViewCell;
+			sourceTree = "<group>";
+		};
+		4384F0F22583394B006D8DA4 /* DBManager */ = {
+			isa = PBXGroup;
+			children = (
+				4384F0F325833957006D8DA4 /* DBManager.swift */,
+				4384F0FB2583F623006D8DA4 /* NetworkServiceError.swift */,
+				4384F1002583F7A1006D8DA4 /* NetworkServiceResponseError.swift */,
+				4384F1052583F927006D8DA4 /* Endpoint.swift */,
+				4384F10A2583FCD9006D8DA4 /* AppEndpoint.swift */,
+				4384F11725840373006D8DA4 /* APIResponse.swift */,
+			);
+			path = DBManager;
+			sourceTree = "<group>";
+		};
 		4392E50E2549037E007572C2 /* EventDetailTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -639,6 +726,9 @@
 				430020E62569CE9F006A77EB /* DirectMessageViewModel.swift */,
 				4300213D256D9041006A77EB /* SelectProfilesViewModel.swift */,
 				43002142256DE54C006A77EB /* DiscoverProfilesViewModel.swift */,
+				4384F088257818EE006D8DA4 /* FollowMgmtViewModel.swift */,
+				4384F0A325786E76006D8DA4 /* NotificationViewModel.swift */,
+				4384F0CC2579531D006D8DA4 /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -747,6 +837,7 @@
 		43BC86EB24B98A70004CBB07 /* VirtueOSO */ = {
 			isa = PBXGroup;
 			children = (
+				4384F0F22583394B006D8DA4 /* DBManager */,
 				4392E51725490699007572C2 /* ViewModels */,
 				4372F03524CFEAF500E5FD33 /* DataSources */,
 				4302616624CC90B300ECB4F8 /* Protocols */,
@@ -793,6 +884,9 @@
 				4392E52025490901007572C2 /* Event.swift */,
 				43B8C3F42561D1A4004D2429 /* Profile.swift */,
 				430020E12569CDE3006A77EB /* DirectMessage.swift */,
+				4384F0E5257D6D76006D8DA4 /* EventGroup.swift */,
+				4384F0ED258338C1006D8DA4 /* User.swift */,
+				4384F10F2583FD1D006D8DA4 /* Credentials.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -800,6 +894,9 @@
 		43BC872024B98B8F004CBB07 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4384F0C025794E6B006D8DA4 /* EventListTableViewCell */,
+				4384F0AE25794A62006D8DA4 /* EventCollectionViewCell */,
+				4384F09025785E5C006D8DA4 /* NotificationTableViewCell */,
 				4369575125776953005F640E /* CollectionSectionHeaderView */,
 				4369573E257431F4005F640E /* ProfileActionView */,
 				4300214725705955006A77EB /* ArtistActionView */,
@@ -853,6 +950,8 @@
 		43BC872124B98B95004CBB07 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4384F0A825794A2E006D8DA4 /* HomeViewController */,
+				4384F097257869F4006D8DA4 /* NotificationsViewController */,
 				4369574725775A07005F640E /* FollowMgmtViewController */,
 				4300212B256C33D3006A77EB /* SelectProfilesTableViewController */,
 				43002101256B1793006A77EB /* DirectMessageSettingsViewController */,
@@ -1270,6 +1369,7 @@
 			files = (
 				43B8C4032561E54F004D2429 /* DirectMessageListTableViewController.swift in Sources */,
 				430020FD256AFCE3006A77EB /* UITableView+Extensions.swift in Sources */,
+				4384F10B2583FCD9006D8DA4 /* AppEndpoint.swift in Sources */,
 				435FF967255B9B790053735E /* ImageCountView.swift in Sources */,
 				43BC873524B98FE4004CBB07 /* UIImageView+Extensions.swift in Sources */,
 				43C660F4253380AD002EAD93 /* UIButton+Extensions.swift in Sources */,
@@ -1306,13 +1406,17 @@
 				4392E51025490391007572C2 /* EventDetailTableView.swift in Sources */,
 				4392E5392556EE8E007572C2 /* EventsCoordinator.swift in Sources */,
 				4369575325776974005F640E /* CollectionSectionHeaderView.swift in Sources */,
+				4384F1062583F927006D8DA4 /* Endpoint.swift in Sources */,
 				43BC86ED24B98A70004CBB07 /* AppDelegate.swift in Sources */,
 				43D648CB251C3BFD009A007B /* MainTabBarController.swift in Sources */,
 				43B8C3F52561D1A4004D2429 /* Profile.swift in Sources */,
+				4384F0B025794A79006D8DA4 /* EventCollectionViewCell.swift in Sources */,
 				43F1D91D2528AA8B00AC6FA9 /* AttributedLabel.swift in Sources */,
+				4384F0CD2579531D006D8DA4 /* HomeViewModel.swift in Sources */,
 				43BC874B24BA9CCA004CBB07 /* Button.swift in Sources */,
 				43BC875124BB6592004CBB07 /* LoginViewController.swift in Sources */,
 				43F1D8F62520F8AF00AC6FA9 /* UIBarButtonItem+Extensions.swift in Sources */,
+				4384F0FC2583F623006D8DA4 /* NetworkServiceError.swift in Sources */,
 				4302616824CC90C500ECB4F8 /* Coordinator.swift in Sources */,
 				43BC872A24B98E18004CBB07 /* AuthenticationHomeViewController.swift in Sources */,
 				43C66115253CB9F7002EAD93 /* SettingsCellTextView.swift in Sources */,
@@ -1322,26 +1426,33 @@
 				4372F03724CFEB0A00E5FD33 /* SettingsViewDataSource.swift in Sources */,
 				43C660DD2532457E002EAD93 /* TitleTableViewHeaderFooterView.swift in Sources */,
 				4300214925705967006A77EB /* ArtistActionView.swift in Sources */,
+				4384F1012583F7A1006D8DA4 /* NetworkServiceResponseError.swift in Sources */,
 				43BC873324B98FB8004CBB07 /* UIViewController+Extensions.swift in Sources */,
 				4302615A24CC5D2E00ECB4F8 /* SettingsCellView.swift in Sources */,
 				43635CAD24DF0AE500759BE2 /* LoadingBarView.swift in Sources */,
 				43BC874524BA0535004CBB07 /* TextView.swift in Sources */,
 				4392E54B255848ED007572C2 /* DiscoverEventTableViewController.swift in Sources */,
 				43BC86F724B98A70004CBB07 /* VirtueOSO.xcdatamodeld in Sources */,
+				4384F1102583FD1D006D8DA4 /* Credentials.swift in Sources */,
 				4300211B256B1A09006A77EB /* FollowProfileView.swift in Sources */,
 				4372F02E24CE814500E5FD33 /* SettingsCellTextFieldView.swift in Sources */,
 				43BC874E24BAEF0F004CBB07 /* NotificationViewController.swift in Sources */,
 				4392E5422556F141007572C2 /* EventsTableViewController.swift in Sources */,
 				43BC872F24B98F29004CBB07 /* NavigationController.swift in Sources */,
 				4302615D24CC622B00ECB4F8 /* SettingsHeaderCellView.swift in Sources */,
+				4384F0EE258338C1006D8DA4 /* User.swift in Sources */,
 				43BC874824BA3BD4004CBB07 /* TitleView.swift in Sources */,
+				4384F089257818EE006D8DA4 /* FollowMgmtViewModel.swift in Sources */,
+				4384F0E6257D6D76006D8DA4 /* EventGroup.swift in Sources */,
 				4392E519254906AE007572C2 /* EventViewModel.swift in Sources */,
 				43F1D8D3251FE3CB00AC6FA9 /* MainTabBarControllerDelegate.swift in Sources */,
 				4302616024CC770B00ECB4F8 /* ProfileCoordinator.swift in Sources */,
 				43C660D725323FCD002EAD93 /* TableViewCellDataSource.swift in Sources */,
+				4384F0F425833957006D8DA4 /* DBManager.swift in Sources */,
 				432D82F324F1813B007193AD /* AuthenticationCoordinator.swift in Sources */,
 				43BC873F24BA01FD004CBB07 /* ComponentView.swift in Sources */,
 				43BC873924B9902C004CBB07 /* UITextField+Extensions.swift in Sources */,
+				4384F0AA25794A52006D8DA4 /* HomeViewController.swift in Sources */,
 				4300212D256C33EE006A77EB /* SelectProfilesTableViewController.swift in Sources */,
 				430020E72569CE9F006A77EB /* DirectMessageViewModel.swift in Sources */,
 				43B8C3FA2561D208004D2429 /* ProfileViewModel.swift in Sources */,
@@ -1349,8 +1460,10 @@
 				43F5D40324BB87C9004AE586 /* BorderedTextField+UITextView.swift in Sources */,
 				4300213E256D9041006A77EB /* SelectProfilesViewModel.swift in Sources */,
 				436ECB7924D705800054BA32 /* ChatRoomTableViewController.swift in Sources */,
+				4384F09925786A10006D8DA4 /* NotificationsViewController.swift in Sources */,
 				43308CFE24BC211500DDE2E5 /* SignupViewController.swift in Sources */,
 				43C661032533AD59002EAD93 /* CollectionView.swift in Sources */,
+				4384F09325785E79006D8DA4 /* NotificationTableViewCell.swift in Sources */,
 				43F1D9322528D63400AC6FA9 /* UINavigationController+Extensions.swift in Sources */,
 				43002124256B4F5F006A77EB /* FollowProfileTableViewCell.swift in Sources */,
 				43C660C0252D6701002EAD93 /* ProfileTableViewCell.swift in Sources */,
@@ -1358,6 +1471,7 @@
 				4369574925775A55005F640E /* FollowMgmtViewController.swift in Sources */,
 				4372F02B24CE809200E5FD33 /* PersonalInfoViewController.swift in Sources */,
 				4302616524CC7FA700ECB4F8 /* SettingsCellToggleView.swift in Sources */,
+				4384F11825840373006D8DA4 /* APIResponse.swift in Sources */,
 				43002103256B17A9006A77EB /* DirectMessageSettingsViewController.swift in Sources */,
 				435FF96125584E900053735E /* EventTableView.swift in Sources */,
 				43002133256C34C5006A77EB /* SelectProfileTableViewCell.swift in Sources */,
@@ -1372,12 +1486,14 @@
 				4372F03D24D5F18E00E5FD33 /* ChangePasswordViewController.swift in Sources */,
 				43635CAA24DF08B700759BE2 /* WebViewController.swift in Sources */,
 				43BC873124B98F87004CBB07 /* UIView+Extensions.swift in Sources */,
+				4384F0C225794E7C006D8DA4 /* EventListTableViewCell.swift in Sources */,
 				4302616A24CC9C1D00ECB4F8 /* UIImage+Extensions.swift in Sources */,
 				43C660FA253388D8002EAD93 /* EventViewController.swift in Sources */,
 				430756AC24E96D9900443198 /* MainCoordinator.swift in Sources */,
 				43F1D9022520FE7000AC6FA9 /* DiscoverCoordinator.swift in Sources */,
 				43BC86EF24B98A70004CBB07 /* SceneDelegate.swift in Sources */,
 				4302616224CC772A00ECB4F8 /* SettingsViewController.swift in Sources */,
+				4384F0A425786E76006D8DA4 /* NotificationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

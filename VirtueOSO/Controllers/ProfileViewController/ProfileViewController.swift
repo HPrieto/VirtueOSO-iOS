@@ -32,7 +32,7 @@ class ProfileViewController: UIViewController {
     
     private let leftMarginConstant: CGFloat = 20
     private var rightMarginConstant: CGFloat {
-        return -leftMarginConstant
+        -leftMarginConstant
     }
     
     private let barButtonItemHeightWidth: CGFloat = 35
@@ -40,12 +40,14 @@ class ProfileViewController: UIViewController {
         barButtonItemHeightWidth / 2
     }
     
-    private var profileImageViewHeight: CGFloat {
-        return view.frame.width
+    private var profileImageViewMinHeight: CGFloat {
+        view.frame.width
     }
     
+    private var profileImageViewHeightLayoutConstraint: NSLayoutConstraint?
+    
     private var profileImageViewWidth: CGFloat {
-        return view.frame.width - 40
+        view.frame.width - 40
     }
     
     // MARK: - Subviews
@@ -54,19 +56,21 @@ class ProfileViewController: UIViewController {
         let view = UIScrollView()
         view.automaticallyAdjustsScrollIndicatorInsets = true
         view.contentInsetAdjustmentBehavior = .never
-        view.contentInset = .zero
         view.alwaysBounceVertical = false
         view.alwaysBounceHorizontal = false
         view.showsVerticalScrollIndicator = true
         view.showsHorizontalScrollIndicator = false
         view.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.contentInset = UIEdgeInsets(top: profileImageViewMinHeight, left: 0, bottom: 80, right: 0)
+        view.delegate = self
         return view
     }()
     
     private(set) lazy var mainStackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
-        view.spacing = 15
+        view.spacing = 0
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -131,8 +135,6 @@ class ProfileViewController: UIViewController {
         let view = EventDetailTableView()
         view.generateTestData()
         view.reloadData()
-        view.rowHeight = UITableView.automaticDimension
-        view.estimatedRowHeight = 44
         view.isScrollEnabled = false
         
         eventsTableViewHeightLayoutConstraint = view.heightAnchor.constraint(equalToConstant: 0)
@@ -170,15 +172,15 @@ class ProfileViewController: UIViewController {
         navigationItem.rightBarButtonItem = settingsBarButtonItem
         navigationItem.leftBarButtonItem = editBarButtonItem
         
+        view.addSubview(profileImageView)
+        view.addSubview(profileNameLabel)
         view.addSubview(mainScrollView)
         
-        profileImageView.heightAnchor.constraint(equalToConstant: profileImageViewHeight).isActive = true
-        
-        profileImageView.addSubview(profileNameLabel)
-        
-        profileNameLabel.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor).isActive = true
-        profileNameLabel.widthAnchor.constraint(equalToConstant: profileImageViewWidth).isActive = true
-        profileNameLabel.centerXAnchor.constraint(equalTo: profileImageView.centerXAnchor).isActive = true
+        profileImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        profileImageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        profileImageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        profileImageViewHeightLayoutConstraint = profileImageView.heightAnchor.constraint(equalToConstant: profileImageViewMinHeight)
+        profileImageViewHeightLayoutConstraint?.isActive = true
         
         mainScrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mainScrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -192,10 +194,12 @@ class ProfileViewController: UIViewController {
         mainStackView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor).isActive = true
         mainStackView.centerXAnchor.constraint(equalTo: mainScrollView.centerXAnchor).isActive = true
         
-        mainStackView.addArrangedSubview(profileImageView)
         mainStackView.addArrangedSubview(profileActionView)
         mainStackView.addArrangedSubview(tableView)
         
+        profileNameLabel.bottomAnchor.constraint(equalTo: profileActionView.topAnchor).isActive = true
+        profileNameLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        profileNameLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
     }
     
     // MARK: - Life Cycle
@@ -245,5 +249,18 @@ class ProfileViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension ProfileViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let y: CGFloat = scrollView.contentOffset.y
+        let yAbs: CGFloat = abs(y)
+        if y > 0 { return }
+        
+        profileImageViewHeightLayoutConstraint?.constant = max(profileImageViewMinHeight, yAbs)
     }
 }

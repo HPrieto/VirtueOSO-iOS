@@ -8,24 +8,13 @@
 
 import UIKit
 
+protocol CollectionSectionHeaderViewDelegate {
+    func collectionSectionHeaderView(_ collectionSectionHeaderView: CollectionSectionHeaderView, didSelectItemAt index: Int)
+}
+
 class CollectionSectionHeaderView: UIView {
     
     // MARK: - Private Properties
-    
-    private var selectedItem: Int = 0 {
-        didSet {
-            let section: Int = 0
-            for i in 0 ..< collectionView.numberOfItems(inSection: section) {
-                let cellIndexPath: IndexPath = IndexPath(item: i, section: section)
-                if let cellLabel: UILabel = collectionView.cellForItem(at: cellIndexPath)?.contentView.subviews.first(where: { (subview: UIView) -> Bool in
-                    guard let label = subview as? UILabel else { return false }
-                    return label.tag == 1
-                }) as? UILabel {
-                    cellLabel.textColor = i == selectedItem ? .black : .lightGray
-                }
-            }
-        }
-    }
     
     private let cellId: String = "collection-section-header-view-cell"
     
@@ -46,7 +35,21 @@ class CollectionSectionHeaderView: UIView {
     
     // MARK: - Public Properties
     
+    public var delegate: CollectionSectionHeaderViewDelegate?
+    
     private(set) var sections: [String]
+    
+    var selectedItem: Int = 0 {
+        didSet {
+            bottomBarViewLeftLayoutConstraint?.constant = CGFloat(selectedItem) * cellSize.width
+            UIView.animate(withDuration: 0.25) {
+                self.layoutIfNeeded()
+            } completion: { [weak self] _ in
+                guard let `self` = self else { return }
+                self.updateLabels()
+            }
+        }
+    }
     
     // MARK: - Subviews
     
@@ -77,6 +80,23 @@ class CollectionSectionHeaderView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    // MARK: - Utils
+    
+    private func updateLabels() {
+        DispatchQueue.main.async {
+            let section: Int = 0
+            for i in 0 ..< self.collectionView.numberOfItems(inSection: section) {
+                let cellIndexPath: IndexPath = IndexPath(item: i, section: section)
+                if let cellLabel: UILabel = self.collectionView.cellForItem(at: cellIndexPath)?.contentView.subviews.first(where: { (subview: UIView) -> Bool in
+                    guard let label = subview as? UILabel else { return false }
+                    return label.tag == 1
+                }) as? UILabel {
+                    cellLabel.textColor = i == self.selectedItem ? .black : .lightGray
+                }
+            }
+        }
+    }
     
     // MARK: - Initialize
     
@@ -146,15 +166,8 @@ extension CollectionSectionHeaderView: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        bottomBarViewLeftLayoutConstraint?.constant = CGFloat(indexPath.row) * cellSize.width
-        UIView.animate(withDuration: 0.25) {
-            self.layoutIfNeeded()
-        } completion: { [weak self] _ in
-            guard let `self` = self else { return }
-            DispatchQueue.main.async {
-                self.selectedItem = indexPath.row
-            }
-        }
+        self.selectedItem = indexPath.row
+        delegate?.collectionSectionHeaderView(self, didSelectItemAt: indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

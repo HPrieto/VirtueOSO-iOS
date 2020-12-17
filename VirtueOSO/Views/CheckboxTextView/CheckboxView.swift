@@ -8,7 +8,19 @@
 
 import UIKit
 
+// MARK: - CheckboxDelegate
+
+protocol CheckboxDelegate {
+    func checkboxView(_ view: CheckboxView, isChecked: Bool)
+}
+
+// MARK: - CheckboxView
+
 class CheckboxView: ComponentView {
+    
+    // MARK: - Public Properties
+    
+    var checkboxDelegate: CheckboxDelegate?
     
     var _checked: Bool = false {
         didSet {
@@ -40,6 +52,8 @@ class CheckboxView: ComponentView {
         }
     }
     
+    // MARK: - Subviews
+    
     private(set) lazy var textView: TextView = {
         let view = TextView()
         view.textColor = ._darkGray
@@ -63,9 +77,14 @@ class CheckboxView: ComponentView {
         return view
     }()
     
+    // MARK: - Handlers
+    
     @objc private func handleCheckboxTapped() {
         _checked = !_checked
+        checkboxDelegate?.checkboxView(self, isChecked: _checked)
     }
+    
+    // MARK: - Initialize Subviews
     
     override func initializeSubviews() {
         addSubview(textView)

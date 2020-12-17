@@ -101,7 +101,7 @@ class ProfileActionView: UIView {
         addSubview(usernameLabel)
         addSubview(bioLabel)
         
-        labelStackView.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        labelStackView.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
         labelStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         labelStackView.rightAnchor.constraint(lessThanOrEqualTo: rightAnchor, constant: -20).isActive = true
         labelStackView.leftAnchor.constraint(greaterThanOrEqualTo: leftAnchor, constant: 20).isActive = true
@@ -114,7 +114,7 @@ class ProfileActionView: UIView {
         bioLabel.leftAnchor.constraint(equalTo: labelStackView.leftAnchor).isActive = true
         bioLabel.rightAnchor.constraint(equalTo: labelStackView.rightAnchor).isActive = true
         
-        bottomAnchor.constraint(equalTo: bioLabel.bottomAnchor, constant: 10).isActive = true
+        bottomAnchor.constraint(equalTo: bioLabel.bottomAnchor, constant: 20).isActive = true
     }
     
     // MARK: - Init

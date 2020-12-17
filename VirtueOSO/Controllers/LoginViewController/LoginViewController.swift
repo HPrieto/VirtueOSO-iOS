@@ -8,11 +8,37 @@
 
 import UIKit
 
+protocol LoginViewControllerDelegate {
+    func loginViewController(_ controller: LoginViewController, didEnterEmail email: String?, password: String?)
+    func loginViewController(_ controller: LoginViewController, forgotPasswordTapped button: UIButton)
+    func loginViewController(_ controller: LoginViewController, loginButtonTapped button: UIButton, credentials: Credentials)
+    func loginViewController(_ controller: LoginViewController, signupButtonTapped button: UIButton)
+    func loginViewController(_ controller: LoginViewController, goBack buttonItem: UIBarButtonItem)
+}
+
 class LoginViewController: UIViewController {
+    
+    enum State {
+        case enabled
+        case disabled
+    }
     
     // MARK: - Public Properties
     
-    private(set) var coordinator: AuthenticationCoordinator
+    public var loginDelegate: LoginViewControllerDelegate?
+    
+    var state: State = .disabled {
+        didSet {
+            switch state {
+            case .disabled:
+                loginButton.backgroundColor = ._lightGray
+                loginButton.isEnabled = false
+            case .enabled:
+                loginButton.backgroundColor = ._secondary
+                loginButton.isEnabled = true
+            }
+        }
+    }
     
     // MARK: - Subviews
     
@@ -25,6 +51,9 @@ class LoginViewController: UIViewController {
         view._title = "Email"
         view.inputTextView.keyboardType = .emailAddress
         view._roundCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        view.inputTextView.delegate = self
+        view.inputTextView.tag = 1
         return view
     }()
     
@@ -35,11 +64,19 @@ class LoginViewController: UIViewController {
         view._secureTextEntry = true
         view.inputTextView.keyboardType = .default
         view._roundCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        
+        view.inputTextView.delegate = self
+        view.inputTextView.tag = 2
         return view
     }()
     
     private(set) lazy var loginButton: Button = {
         let view = Button("Log in", buttonType: .large)
+        view.addTarget(
+            self,
+            action: #selector(handleLogin),
+            for: .touchUpInside
+        )
         view.backgroundColor = ._secondary
         return view
     }()
@@ -73,32 +110,27 @@ class LoginViewController: UIViewController {
     
     // MARK: - Handlers
     
-    @objc private func handleLogin() {
-        guard let email: String = emailTextField._text, email.count > 1,
-              let password: String = passwordTextField._text, password.count > 5 else {
+    @objc private func handleLogin(sender: UIButton) {
+        guard
+            let email: String = emailTextField._text,
+            let password: String = passwordTextField._text
+        else {
             return
         }
-        coordinator.login(email: email, password: password)
+        let credentials: Credentials = Credentials(username: email, password: password)
+        loginDelegate?.loginViewController(self, loginButtonTapped: sender, credentials: credentials)
     }
     
-    @objc private func handleForgotPassword() {
-        let controller = SubmitEmailViewController()
-        controller._message = "Enter the email address associated with your account, and we’ll email you a link to reset your password."
-        controller._title = "Email"
-        controller._submitButtonText = "Send reset link"
-        present(
-            NavigationController(rootViewController: controller),
-            animated: true,
-            completion: nil
-        )
+    @objc private func handleForgotPassword(sender: UIButton) {
+        loginDelegate?.loginViewController(self, forgotPasswordTapped: sender)
     }
     
-    @objc private func handleSignup() {
-        coordinator.navigate(to: .loginToSignup)
+    @objc private func handleSignup(sender: UIButton) {
+        loginDelegate?.loginViewController(self, signupButtonTapped: sender)
     }
     
-    @objc private func handleGoBack() {
-        coordinator.navigate(to: .loginToRoot)
+    @objc private func handleGoBack(sender: UIBarButtonItem) {
+        loginDelegate?.loginViewController(self, goBack: sender)
     }
     
     // MARK: - Life Cycle
@@ -156,14 +188,13 @@ class LoginViewController: UIViewController {
         signupButton.leftAnchor.constraint(equalTo: dontHaveAccountTextView.rightAnchor).isActive = true
         signupButton.centerYAnchor.constraint(equalTo: dontHaveAccountTextView.centerYAnchor).isActive = true
     }
+}
+
+// MARK: - UITextViewDelegate
+
+extension LoginViewController: UITextViewDelegate {
     
-    // MARK: Init
-    init(coordinator: AuthenticationCoordinator) {
-        self.coordinator = coordinator
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func textViewDidChange(_ textView: UITextView) {
+        loginDelegate?.loginViewController(self, didEnterEmail: emailTextField.inputTextView.text, password: passwordTextField.inputTextView.text)
     }
 }

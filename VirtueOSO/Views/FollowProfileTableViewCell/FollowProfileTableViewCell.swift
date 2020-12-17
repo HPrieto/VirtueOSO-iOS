@@ -48,6 +48,7 @@ class FollowProfileTableViewCell: UITableViewCell {
         let view = UIImageView()
         view.backgroundColor = .lightGray
         view.layer.masksToBounds = true
+        view.contentMode = .scaleAspectFill
         view.layer.cornerRadius = profileImageViewCornerRadius
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -91,6 +92,8 @@ class FollowProfileTableViewCell: UITableViewCell {
         view.setTitleColor(.black, for: .normal)
         view.contentEdgeInsets = UIEdgeInsets(top: 3, left: 20, bottom: 3, right: 20)
         view.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.setTitle("Follow", for: .normal)
         return view
     }()
     

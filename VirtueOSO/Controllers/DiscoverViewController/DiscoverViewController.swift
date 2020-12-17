@@ -89,6 +89,8 @@ class DiscoverViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.shadowImage = nil
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         tableView.scrollToTop()
     }
     

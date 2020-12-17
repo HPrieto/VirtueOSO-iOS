@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 // MARK: ArtistViewController
 class ArtistViewController: UIViewController {
@@ -30,9 +31,12 @@ class ArtistViewController: UIViewController {
         navigationController?.navigationBar.frame.height ?? 0
     }
     
-    private var profileImageViewHeight: CGFloat {
+    private var profileImageViewHeightLayoutConstraint: NSLayoutConstraint?
+    
+    private var profileImageViewMinHeight: CGFloat {
         view.frame.width
     }
+    
     private let leftMarginConstant: CGFloat = 20
     private var rightMarginConstant: CGFloat {
         return -leftMarginConstant
@@ -69,6 +73,19 @@ class ArtistViewController: UIViewController {
         }
     }
     
+    // MARK: - Controllers
+    
+    private(set) lazy var emailComposeViewController: MFMailComposeViewController = {
+        let controller = MFMailComposeViewController()
+        controller.mailComposeDelegate = self
+        return controller
+    }()
+    
+    private(set) lazy var directMessageViewController: DirectMessageTableViewController = {
+        let controller = DirectMessageTableViewController()
+        return controller
+    }()
+    
     // MARK: - Subviews
     
     private(set) lazy var rightBarButtonItem: UIBarButtonItem = {
@@ -100,13 +117,16 @@ class ArtistViewController: UIViewController {
         view.alwaysBounceVertical = true
         view.alwaysBounceHorizontal = false
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentInset = UIEdgeInsets(top: profileImageViewMinHeight, left: 0, bottom: 80, right: 0)
+        
+        view.delegate = self
         return view
     }()
     
     private(set) lazy var stackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
-        view.spacing = 10
+        view.spacing = 0
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -147,6 +167,8 @@ class ArtistViewController: UIViewController {
         let view = ArtistActionView()
         view.followButton.addTarget(self, action: #selector(handleFollowButtonToggle), for: .touchUpInside)
         view.actionsButton.addTarget(self, action: #selector(handleMore), for: .touchUpInside)
+        view.emailButton.addTarget(self, action: #selector(handleComposeEmail), for: .touchUpInside)
+        view.messageButton.addTarget(self, action: #selector(handleDM), for: .touchUpInside)
         view.usernameLabel.text = "@hprieto"
         view.bioLabel.text = "Kanye Omari West is an American rapper, record producer, and fashion designer. He has been influential in the 21st-century development of mainstream hip hop and popular music in general."
         return view
@@ -154,7 +176,7 @@ class ArtistViewController: UIViewController {
     
     private(set) lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .grouped)
-        view.backgroundColor = .clear
+        view.backgroundColor = .white
         view.separatorStyle = .none
         view.isScrollEnabled = false
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -196,12 +218,26 @@ class ArtistViewController: UIViewController {
         print("Showing More.")
     }
     
+    @objc private func handleComposeEmail() {
+        present(emailComposeViewController, animated: true, completion: nil)
+    }
+    
+    @objc private func handleDM() {
+        navigationController?.pushViewController(directMessageViewController, animated: true)
+    }
+    
+    @objc private func handleCloseComposeEmail() {
+        emailComposeViewController.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Initialize Subviews
     fileprivate func initializeSubviews() {
         view.backgroundColor = .white
         
         navigationItem.leftBarButtonItem = leftBarButtonItem
         
+        view.addSubview(profileImageView)
+        view.addSubview(profileNameLabel)
         view.addSubview(scrollView)
         
         scrollView.addSubview(stackView)
@@ -216,17 +252,18 @@ class ArtistViewController: UIViewController {
         stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         
-        profileImageView.heightAnchor.constraint(equalToConstant: profileImageViewHeight).isActive = true
+        profileImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        profileImageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        profileImageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        profileImageViewHeightLayoutConstraint = profileImageView.heightAnchor.constraint(equalToConstant: profileImageViewMinHeight)
+        profileImageViewHeightLayoutConstraint?.isActive = true
         
-        profileImageView.addSubview(profileNameLabel)
-        
-        profileNameLabel.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor).isActive = true
-        profileNameLabel.leftAnchor.constraint(equalTo: profileImageView.leftAnchor, constant: leftMarginConstant).isActive = true
-        profileNameLabel.rightAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: rightMarginConstant).isActive = true
-        
-        stackView.addArrangedSubview(profileImageView)
         stackView.addArrangedSubview(actionView)
         stackView.addArrangedSubview(tableView)
+        
+        profileNameLabel.bottomAnchor.constraint(equalTo: actionView.topAnchor).isActive = true
+        profileNameLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: leftMarginConstant).isActive = true
+        profileNameLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: rightMarginConstant).isActive = true
         
         tableViewHeightLayoutConstraint = tableView.heightAnchor.constraint(equalToConstant: 0)
         tableViewHeightLayoutConstraint?.isActive = true
@@ -241,6 +278,8 @@ class ArtistViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        tabBarController?.tabBar.isHidden = false
         
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -314,6 +353,7 @@ extension ArtistViewController: UITableViewDelegate, UITableViewDataSource {
         cell.handleTitleButtonTapped = { button in
             print("button tapped: \(indexPath)")
         }
+        cell.eventImageView.setTestEventImage()
         return cell
     }
     
@@ -322,4 +362,25 @@ extension ArtistViewController: UITableViewDelegate, UITableViewDataSource {
         present(navController, animated: true, completion: nil)
     }
     
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension ArtistViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let y: CGFloat = scrollView.contentOffset.y
+        let yAbs: CGFloat = abs(y)
+        if y > 0 { return }
+        profileImageViewHeightLayoutConstraint?.constant = max(profileImageViewMinHeight, yAbs)
+    }
+}
+
+// MARK: - MFMailComposeViewControllerDelegate
+
+extension ArtistViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
 }

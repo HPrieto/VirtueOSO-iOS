@@ -8,10 +8,51 @@
 
 import UIKit
 
+// MARK: - SignupModel
+
+struct SignupModel {
+    public var firstname: String?
+    public var lastname: String?
+    public var birthDate: Date?
+    public var email: String?
+    public var password: String?
+    public var confirmPassword: String?
+    public var agreedToTerms: Bool
+}
+
+// MARK: - SignupViewControllerDelegate
+
+protocol SignupViewControllerDelegate {
+    func signupViewController(_ controller: SignupViewController, didEnter model: SignupModel)
+    func signupViewController(_ controller: SignupViewController, agreeAndContinue button: UIButton, model: SignupModel)
+    func signupViewController(_ controller: SignupViewController, goBack buttonItem: UIBarButtonItem)
+}
+
+// MARK: - SignupViewController
+
 class SignupViewController: UIViewController {
     
+    enum State {
+        case enabled
+        case disabled
+    }
+    
+    var state: State = .enabled {
+        didSet {
+            switch state {
+            case .enabled:
+                agreeAndContinueButton.isEnabled = true
+                agreeAndContinueButton.backgroundColor = ._secondary
+            case .disabled:
+                agreeAndContinueButton.isEnabled = false
+                agreeAndContinueButton.backgroundColor = ._lightGray
+            }
+        }
+    }
+    
     // MARK: - Public Properties
-    private(set) var coordinator: AuthenticationCoordinator
+    
+    var signupDelegate: SignupViewControllerDelegate?
     
     // MARK: - Subviews
     
@@ -42,6 +83,7 @@ class SignupViewController: UIViewController {
         let view = BorderedTextField()
         view._title = "First name"
         view._roundCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        view.inputTextView.delegate = self
         return view
     }()
     
@@ -49,18 +91,21 @@ class SignupViewController: UIViewController {
         let view = BorderedTextField()
         view._title = "Last name"
         view._roundCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        view.inputTextView.delegate = self
         return view
     }()
     
     private(set) lazy var birthdateTextField: BorderedTextField = {
         let view = BorderedTextField()
         view._title = "Birthdate"
+        view.inputTextView.delegate = self
         return view
     }()
     
     private(set) lazy var emailTextField: BorderedTextField = {
         let view = BorderedTextField()
         view._title = "Email address"
+        view.inputTextView.delegate = self
         return view
     }()
     
@@ -69,6 +114,7 @@ class SignupViewController: UIViewController {
         view._title = "Password"
         view.inputTextView.isSecureTextEntry = true
         view._roundCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        view.inputTextView.delegate = self
         return view
     }()
     
@@ -77,6 +123,7 @@ class SignupViewController: UIViewController {
         view._title = "Confirm Password"
         view.inputTextView.isSecureTextEntry = true
         view._roundCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        view.inputTextView.delegate = self
         return view
     }()
     
@@ -96,12 +143,26 @@ class SignupViewController: UIViewController {
     }()
     
     // MARK: - Handlers
-    @objc private func handleGoBack() {
-        coordinator.navigate(to: .signupToRoot)
+    @objc private func handleGoBack(sender: UIBarButtonItem) {
+        signupDelegate?.signupViewController(self, goBack: sender)
     }
     
-    @objc private func handleSignup() {
-        coordinator.dismiss(animated: true, completion: nil)
+    @objc private func handleSignup(sender: UIButton) {
+        signupDelegate?.signupViewController(self, agreeAndContinue: sender, model: buildSignupModel())
+    }
+    
+    // MARK: - Utils
+    
+    private func buildSignupModel() -> SignupModel {
+        SignupModel(
+            firstname: firstNameTextField.inputTextView.text,
+            lastname: lastNameTextField.inputTextView.text,
+            birthDate: birthdateTextField.inputTextView.text.toJsonDate(),
+            email: emailTextField.inputTextView.text,
+            password: passwordTextField.inputTextView.text,
+            confirmPassword: confirmPasswordTextField.inputTextView.text,
+            agreedToTerms: receiveMessagesCheckboxView._checked
+        )
     }
     
     // MARK: - Life Cycle
@@ -168,14 +229,25 @@ class SignupViewController: UIViewController {
         verticalStackView.addArrangedSubview(agreeAndContinueButton)
         verticalStackView.addVerticalEmptySpace(view.frame.height / 2)
     }
+}
+
+// MARK: - UITextViewDelegate
+
+extension SignupViewController: UITextViewDelegate {
     
-    // MARK: - Init
-    init(coordinator: AuthenticationCoordinator) {
-        self.coordinator = coordinator
-        super.init(nibName: nil, bundle: nil)
+    func textViewDidChange(_ textView: UITextView) {
+        signupDelegate?.signupViewController(
+            self,
+            didEnter: buildSignupModel()
+        )
     }
+}
+
+// MARK: - CheckboxDelegate
+
+extension SignupViewController: CheckboxDelegate {
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func checkboxView(_ view: CheckboxView, isChecked: Bool) {
+        signupDelegate?.signupViewController(self, didEnter: buildSignupModel())
     }
 }

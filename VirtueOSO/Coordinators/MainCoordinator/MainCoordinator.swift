@@ -16,6 +16,17 @@ class MainCoordinator {
     
     // MARK: - Coordinators
     
+    private(set) lazy var homeViewController: HomeViewController = {
+        let controller = HomeViewController()
+        controller.setTabBarItem(
+            withIcon: .house,
+            selectedIcon: .houseFill,
+            weight: .light,
+            selectedWeight: .light
+        )
+        return controller
+    }()
+    
     private(set) lazy var eventsCoordinator: EventsCoordinator = {
         let coordinator = EventsCoordinator(mainCoordinator: self)
         coordinator.rootViewController.setTabBarItem(
@@ -61,51 +72,19 @@ class MainCoordinator {
         return controller
     }()
     
-    private lazy var controller1: UIViewController = {
-        let controller = UIViewController()
-        controller.view.backgroundColor = .black
-        controller.setTabBarItem(withIcon: .house, selectedIcon: .houseFill, tag: 1)
-        return controller
-    }()
-    
-    private lazy var controller2: UIViewController = {
-        let controller = UIViewController()
-        controller.view.backgroundColor = .orange
-        controller.setTabBarItem(withIcon: .magnifyingGlass, selectedIcon: .magnifyingGlass)
-        return controller
-    }()
-    
-    private lazy var controller3: UIViewController = {
-        let controller = UIViewController()
-        controller.view.backgroundColor = .green
-        controller.setTabBarItem(withIcon: .plusRectangle, selectedIcon: .plusRectangleFill)
-        return controller
-    }()
-    
-    private lazy var controller4: UIViewController = {
-        let controller = UIViewController()
-        controller.view.backgroundColor = .blue
-        controller.setTabBarItem(withIcon: .heart, selectedIcon: .heartFill)
-        return controller
-    }()
-    
-    // MARK: - Create ViewControllers
-    
     // MARK: - Init
     init(window: UIWindow) {
         self.window = window
     }
     
     
-    // MARK: - Flow Public
+    // MARK: - Flow
     public func navigate(to destination: Destination) {
         switch destination {
         case .root:
             rootViewController.viewControllers = [
                 eventsCoordinator.rootViewController,
                 discoverCoordinator.rootViewController,
-                controller3,
-                controller4,
                 profileCoordinator.rootViewController
             ]
         case .authentication:
@@ -113,7 +92,8 @@ class MainCoordinator {
             rootViewController.present(
                 authenticationCoordinator.rootViewController,
                 animated: true,
-                completion: nil)
+                completion: nil
+            )
         }
     }
     
@@ -135,8 +115,6 @@ class MainCoordinator {
             rootViewController.viewControllers = [
                 eventsCoordinator.rootViewController,
                 discoverCoordinator.rootViewController,
-                controller3,
-                controller4,
                 profileCoordinator.rootViewController
             ]
             return rootViewController

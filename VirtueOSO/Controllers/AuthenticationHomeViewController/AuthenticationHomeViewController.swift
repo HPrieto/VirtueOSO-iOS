@@ -8,6 +8,16 @@
 
 import UIKit
 
+// MARK: - AuthenticationHomeViewControllerDelegate
+
+protocol AuthenticationHomeViewControllerDelegate {
+    func authenticationHomeViewController(_ controller: AuthenticationHomeViewController, didPressLoginButton button: UIButton)
+    func authenticationHomeViewController(_ controller: AuthenticationHomeViewController, didPressGoogleButton button: UIButton)
+    func authenticationHomeViewController(_ controller: AuthenticationHomeViewController, didPressFacebookButton button: UIButton)
+    func authenticationHomeViewController(_ controller: AuthenticationHomeViewController, didPressCreateAccountButton button: UIButton)
+    func authenticationHomeViewController(_ controller: AuthenticationHomeViewController, didPressMoreOptionsButton button: UIButton)
+}
+
 /**
  
  Root ViewController for user authentication process.
@@ -19,6 +29,8 @@ class AuthenticationHomeViewController: UIViewController {
     
     // MARK: - Public Properties
     private(set) var coordinator: AuthenticationCoordinator
+    
+    var authenticationDelegate: AuthenticationHomeViewControllerDelegate?
     
     // MARK: - Strings
     private enum Strings: String {
@@ -85,6 +97,7 @@ class AuthenticationHomeViewController: UIViewController {
         view._textColor = ._secondary
         view._cornerRadius = 22.5
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.addTarget(self, action: #selector(handleGoogle), for: .touchUpInside)
         return view
     }()
     
@@ -95,6 +108,7 @@ class AuthenticationHomeViewController: UIViewController {
         view._textColor = ._secondary
         view._cornerRadius = 22.5
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.addTarget(self, action: #selector(handleFacebook), for: .touchUpInside)
         return view
     }()
     
@@ -186,12 +200,20 @@ class AuthenticationHomeViewController: UIViewController {
     }()
     
     // MARK: - Handlers
-    @objc private func handleLogin() {
-        coordinator.navigate(to: .login)
+    @objc private func handleLogin(sender: UIButton) {
+        authenticationDelegate?.authenticationHomeViewController(self, didPressLoginButton: sender)
     }
     
-    @objc private func handleCreateAccount() {
-        coordinator.navigate(to: .signup)
+    @objc private func handleGoogle(sender: UIButton) {
+        authenticationDelegate?.authenticationHomeViewController(self, didPressGoogleButton: sender)
+    }
+    
+    @objc private func handleFacebook(sender: UIButton) {
+        authenticationDelegate?.authenticationHomeViewController(self, didPressFacebookButton: sender)
+    }
+    
+    @objc private func handleCreateAccount(sender: UIButton) {
+        authenticationDelegate?.authenticationHomeViewController(self, didPressCreateAccountButton: sender)
     }
     
     // MARK: - Life Cycle

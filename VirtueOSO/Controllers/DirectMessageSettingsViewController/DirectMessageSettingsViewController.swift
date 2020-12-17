@@ -14,8 +14,6 @@ class DirectMessageSettingsViewController: UIViewController {
     
     private var viewModel: ProfileViewModel
     
-    private weak var coordinator: EventsCoordinator?
-    
     private var followersTableViewHeightLayoutConstraint: NSLayoutConstraint?
     
     // MARK: - Subviews
@@ -179,9 +177,8 @@ class DirectMessageSettingsViewController: UIViewController {
     
     // MARK: - Init
     
-    init(coordinator: EventsCoordinator) {
+    init() {
         self.viewModel = ProfileViewModel(withNTestModels: 4)
-        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
