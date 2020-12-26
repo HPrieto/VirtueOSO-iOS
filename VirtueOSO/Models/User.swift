@@ -19,12 +19,20 @@ public struct User: Codable, Equatable, Identifiable {
     public var password: String?
     public var firstName: String?
     public var lastName: String?
-    public var preferredName: String?
     public var email: String?
+    public var description: String?
     public var phoneNumber: String?
-    public var dateOfBirth: Date?
-    public var lastLogin: Date?
-    public var createdDate: Date?
+    public var birthDate: Date?
+    public var lastLoginTime: Date?
+    public var createTime: Date?
+    public var deleteTime: Date?
+    public var updateTime: Date?
+    public var tokenExpireTime: Date?
+    public var timeZone: String?
+    public var regionCode: String?
+    public var languageCode: String?
+    public var imageUrl: String?
+    public var isActive: Bool?
     
     public init() {
         
@@ -37,12 +45,20 @@ public struct User: Codable, Equatable, Identifiable {
         case password = "password"
         case firstName = "firstName"
         case lastName = "lastName"
-        case preferredName = "preferredName"
         case email = "email"
+        case description = "description"
         case phoneNumber = "phoneNumber"
-        case dateOfBirth = "dateOfBirth"
-        case lastLogin = "lastLogin"
-        case createdDate = "createdDate"
+        case birthDate = "birthDate"
+        case lastLoginTime = "lastLoginTime"
+        case createTime = "createTime"
+        case deleteTime = "deleteTime"
+        case updateTime = "updateTime"
+        case tokenExpireTime = "tokenExpireTime"
+        case timeZone = "timeZone"
+        case regionCode = "regionCode"
+        case languageCode = "languageCode"
+        case imageUrl = "imageUrl"
+        case isActive = "isActive"
     }
     
     public init(from decoder: Decoder) throws {
@@ -53,11 +69,19 @@ public struct User: Codable, Equatable, Identifiable {
         password = try values.decode(String.self, forKey: .password)
         firstName = try values.decode(String.self, forKey: .firstName)
         lastName = try values.decode(String.self, forKey: .lastName)
-        preferredName = try values.decode(String.self, forKey: .preferredName)
         email = try values.decode(String.self, forKey: .email)
+        description = try values.decode(String.self, forKey: .description)
         phoneNumber = try values.decode(String.self, forKey: .phoneNumber)
-        dateOfBirth = try values.decode(String.self, forKey: .dateOfBirth).toJsonDate()
-        lastLogin = try values.decode(String.self, forKey: .lastLogin).toJsonDate()
-        createdDate = try values.decode(String.self, forKey: .createdDate).toJsonDate()
+        birthDate = try values.decode(String.self, forKey: .birthDate).toJsonDate()
+        lastLoginTime = try values.decode(String.self, forKey: .lastLoginTime).toJsonDate()
+        createTime = try values.decode(String.self, forKey: .createTime).toJsonDate()
+        deleteTime = try values.decode(String.self, forKey: .deleteTime).toJsonDate()
+        updateTime = try values.decode(String.self, forKey: .updateTime).toJsonDate()
+        tokenExpireTime = try values.decode(String.self, forKey: .tokenExpireTime).toJsonDate()
+        timeZone = try values.decode(String.self, forKey: .timeZone)
+        regionCode = try values.decode(String.self, forKey: .regionCode)
+        languageCode = try values.decode(String.self, forKey: .languageCode)
+        imageUrl = try values.decode(String.self, forKey: .imageUrl)
+        isActive = try values.decode(Int.self, forKey: .isActive) == 1 ? true : false
     }
 }

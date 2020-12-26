@@ -41,10 +41,14 @@
 		43635CAA24DF08B700759BE2 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43635CA924DF08B700759BE2 /* WebViewController.swift */; };
 		43635CAD24DF0AE500759BE2 /* LoadingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43635CAC24DF0AE500759BE2 /* LoadingBarView.swift */; };
 		4364A4CA24C16EE300AE9881 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364A4C924C16EE300AE9881 /* CheckboxView.swift */; };
+		4364DBFB2597C5D700E25BAF /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364DBFA2597C5D700E25BAF /* Follower.swift */; };
+		4364DC002597C62D00E25BAF /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364DBFF2597C62D00E25BAF /* ChatRoom.swift */; };
+		4364DC052597C67700E25BAF /* ChatRoomMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364DC042597C67700E25BAF /* ChatRoomMember.swift */; };
+		4364DC102597C93F00E25BAF /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364DC0F2597C93F00E25BAF /* ChatMessage.swift */; };
+		4364DC182597CAA800E25BAF /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364DC172597CAA800E25BAF /* ChatModel.swift */; };
 		4369574025743207005F640E /* ProfileActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369573F25743207005F640E /* ProfileActionView.swift */; };
 		4369574925775A55005F640E /* FollowMgmtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369574825775A55005F640E /* FollowMgmtViewController.swift */; };
 		4369575325776974005F640E /* CollectionSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369575225776974005F640E /* CollectionSectionHeaderView.swift */; };
-		436ECB7924D705800054BA32 /* ChatRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436ECB7824D705800054BA32 /* ChatRoomTableViewController.swift */; };
 		436ECB7C24D7079E0054BA32 /* ChatInputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436ECB7B24D7079E0054BA32 /* ChatInputBarView.swift */; };
 		436F93F2256245290048A31E /* SendTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436F93F1256245290048A31E /* SendTextFieldView.swift */; };
 		436F94012568EFA70048A31E /* DirectMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436F94002568EFA70048A31E /* DirectMessageTableViewController.swift */; };
@@ -193,10 +197,14 @@
 		43635CA924DF08B700759BE2 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		43635CAC24DF0AE500759BE2 /* LoadingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingBarView.swift; sourceTree = "<group>"; };
 		4364A4C924C16EE300AE9881 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
+		4364DBFA2597C5D700E25BAF /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
+		4364DBFF2597C62D00E25BAF /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
+		4364DC042597C67700E25BAF /* ChatRoomMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomMember.swift; sourceTree = "<group>"; };
+		4364DC0F2597C93F00E25BAF /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		4364DC172597CAA800E25BAF /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		4369573F25743207005F640E /* ProfileActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActionView.swift; sourceTree = "<group>"; };
 		4369574825775A55005F640E /* FollowMgmtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowMgmtViewController.swift; sourceTree = "<group>"; };
 		4369575225776974005F640E /* CollectionSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSectionHeaderView.swift; sourceTree = "<group>"; };
-		436ECB7824D705800054BA32 /* ChatRoomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewController.swift; sourceTree = "<group>"; };
 		436ECB7B24D7079E0054BA32 /* ChatInputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputBarView.swift; sourceTree = "<group>"; };
 		436F93F1256245290048A31E /* SendTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTextFieldView.swift; sourceTree = "<group>"; };
 		436F94002568EFA70048A31E /* DirectMessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessageTableViewController.swift; sourceTree = "<group>"; };
@@ -553,14 +561,6 @@
 			path = CollectionSectionHeaderView;
 			sourceTree = "<group>";
 		};
-		436ECB7724D705680054BA32 /* ChatRoomTableViewController */ = {
-			isa = PBXGroup;
-			children = (
-				436ECB7824D705800054BA32 /* ChatRoomTableViewController.swift */,
-			);
-			path = ChatRoomTableViewController;
-			sourceTree = "<group>";
-		};
 		436ECB7A24D707240054BA32 /* ChatInputBarView */ = {
 			isa = PBXGroup;
 			children = (
@@ -887,6 +887,11 @@
 				4384F0E5257D6D76006D8DA4 /* EventGroup.swift */,
 				4384F0ED258338C1006D8DA4 /* User.swift */,
 				4384F10F2583FD1D006D8DA4 /* Credentials.swift */,
+				4364DBFA2597C5D700E25BAF /* Follower.swift */,
+				4364DBFF2597C62D00E25BAF /* ChatRoom.swift */,
+				4364DC042597C67700E25BAF /* ChatRoomMember.swift */,
+				4364DC0F2597C93F00E25BAF /* ChatMessage.swift */,
+				4364DC172597CAA800E25BAF /* ChatModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -967,7 +972,6 @@
 				43F1D8EF2520D64200AC6FA9 /* ProfileViewController */,
 				43D648C9251C3BAB009A007B /* MainTabBarController */,
 				43635CA824DF08A500759BE2 /* WebViewController */,
-				436ECB7724D705680054BA32 /* ChatRoomTableViewController */,
 				4372F03B24D5F17100E5FD33 /* ChangePasswordViewController */,
 				4372F02924CE807B00E5FD33 /* PersonalInfoViewController */,
 				4302615224CC28CE00ECB4F8 /* SettingsViewController */,
@@ -1373,6 +1377,7 @@
 				435FF967255B9B790053735E /* ImageCountView.swift in Sources */,
 				43BC873524B98FE4004CBB07 /* UIImageView+Extensions.swift in Sources */,
 				43C660F4253380AD002EAD93 /* UIButton+Extensions.swift in Sources */,
+				4364DC052597C67700E25BAF /* ChatRoomMember.swift in Sources */,
 				43F5D40124BB86E6004AE586 /* TextField.swift in Sources */,
 				4372F03124CE9EEE00E5FD33 /* SettingsNavigationBarView.swift in Sources */,
 				4392E52A25490FC5007572C2 /* ProfileTableView.swift in Sources */,
@@ -1397,6 +1402,7 @@
 				436ECB7C24D7079E0054BA32 /* ChatInputBarView.swift in Sources */,
 				4372F04024D5F3AE00E5FD33 /* StackView.swift in Sources */,
 				4369574025743207005F640E /* ProfileActionView.swift in Sources */,
+				4364DC002597C62D00E25BAF /* ChatRoom.swift in Sources */,
 				43BC875424BB6669004CBB07 /* BorderedTextField.swift in Sources */,
 				4300210C256B1823006A77EB /* SwitchView.swift in Sources */,
 				4302615724CC2CB200ECB4F8 /* SettingsTableViewCell.swift in Sources */,
@@ -1418,6 +1424,7 @@
 				43F1D8F62520F8AF00AC6FA9 /* UIBarButtonItem+Extensions.swift in Sources */,
 				4384F0FC2583F623006D8DA4 /* NetworkServiceError.swift in Sources */,
 				4302616824CC90C500ECB4F8 /* Coordinator.swift in Sources */,
+				4364DBFB2597C5D700E25BAF /* Follower.swift in Sources */,
 				43BC872A24B98E18004CBB07 /* AuthenticationHomeViewController.swift in Sources */,
 				43C66115253CB9F7002EAD93 /* SettingsCellTextView.swift in Sources */,
 				4392E52125490901007572C2 /* Event.swift in Sources */,
@@ -1457,9 +1464,10 @@
 				430020E72569CE9F006A77EB /* DirectMessageViewModel.swift in Sources */,
 				43B8C3FA2561D208004D2429 /* ProfileViewModel.swift in Sources */,
 				435FF95B25584AE90053735E /* EventTableViewCell.swift in Sources */,
+				4364DC182597CAA800E25BAF /* ChatModel.swift in Sources */,
+				4364DC102597C93F00E25BAF /* ChatMessage.swift in Sources */,
 				43F5D40324BB87C9004AE586 /* BorderedTextField+UITextView.swift in Sources */,
 				4300213E256D9041006A77EB /* SelectProfilesViewModel.swift in Sources */,
-				436ECB7924D705800054BA32 /* ChatRoomTableViewController.swift in Sources */,
 				4384F09925786A10006D8DA4 /* NotificationsViewController.swift in Sources */,
 				43308CFE24BC211500DDE2E5 /* SignupViewController.swift in Sources */,
 				43C661032533AD59002EAD93 /* CollectionView.swift in Sources */,
