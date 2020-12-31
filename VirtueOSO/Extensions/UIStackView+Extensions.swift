@@ -21,7 +21,8 @@ extension UIStackView {
         topPadding: CGFloat = TextView()._padding.top,
         rightPadding: CGFloat = TextView()._padding.right,
         bottomPadding: CGFloat = TextView()._padding.bottom,
-        leftPadding: CGFloat = TextView()._padding.left
+        leftPadding: CGFloat = TextView()._padding.left,
+        tag: Int = 0
     ) {
         let textView: TextView = TextView(
             text: message,
@@ -34,6 +35,7 @@ extension UIStackView {
             bottom: bottomPadding,
             right: rightPadding
         )
+        textView.tag = tag
         addArrangedSubview(
             textView
         )

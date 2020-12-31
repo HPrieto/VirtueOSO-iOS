@@ -62,8 +62,8 @@
             filePath = "VirtueOSO/DBManager/Endpoint.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "urlRequest(using:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "VirtueOSO/DBManager/DBManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "request(type:from:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,24 +110,8 @@
             filePath = "VirtueOSO/DBManager/DBManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "request(type:from:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "04842617-4DAF-4711-A79F-3FBAF11FB85E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VirtueOSO/DBManager/DBManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "request(type:from:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,24 +126,168 @@
             filePath = "VirtueOSO/DBManager/DBManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "request(type:from:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BBDFDFE7-F8B7-49D3-B61B-CA75C069D898 - ce289bd63c4cc411"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in VirtueOSO.DBManager.request&lt;A where A: Swift.Decodable&gt;(type: A.Type, from: VirtueOSO.Endpoint, completionHandler: (Swift.Result&lt;A, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "VirtueOSO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hprieto/Dev/VirtueOSO/VirtueOSO/DBManager/DBManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "4493">
+               </Location>
+               <Location
+                  uuid = "BBDFDFE7-F8B7-49D3-B61B-CA75C069D898 - 206154a23d4a8d50"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in VirtueOSO.DBManager.request&lt;A where A: Swift.Decodable&gt;(type: A.Type, from: VirtueOSO.Endpoint, completionHandler: (Swift.Result&lt;A, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "VirtueOSO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hprieto/Dev/VirtueOSO/VirtueOSO/DBManager/DBManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "135">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B6E185CC-12A1-479D-A84D-5493AF49318B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VirtueOSO/Coordinators/AuthenticationCoordinator/AuthenticationCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "login(email:password:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B6E185CC-12A1-479D-A84D-5493AF49318B - 5726b8efedb13e70"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VirtueOSO.AuthenticationCoordinator.login(email: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "VirtueOSO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hprieto/Dev/VirtueOSO/VirtueOSO/Coordinators/AuthenticationCoordinator/AuthenticationCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  uuid = "B6E185CC-12A1-479D-A84D-5493AF49318B - c7e4f302b81f5c1c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;VirtueOSO.User, Swift.Error&gt;) -&gt; () in VirtueOSO.AuthenticationCoordinator.login(email: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "VirtueOSO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hprieto/Dev/VirtueOSO/VirtueOSO/Coordinators/AuthenticationCoordinator/AuthenticationCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "138">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4CF38C0C-D85B-4995-BB43-BE58F004FDE0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VirtueOSO/Coordinators/AuthenticationCoordinator/AuthenticationCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "loginViewController(_:loginButtonTapped:credentials:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D5759175-6783-4DF2-B142-745590955799"
+            uuid = "086E48B8-2B4C-4312-8814-D8EA0EC31F7B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VirtueOSO/DBManager/DBManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "request(type:from:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "086E48B8-2B4C-4312-8814-D8EA0EC31F7B - 7de555fdd85ed522"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VirtueOSO.DBManager.request&lt;A where A: Swift.Decodable&gt;(type: A.Type, from: VirtueOSO.Endpoint, completionHandler: (Swift.Result&lt;A, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "VirtueOSO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hprieto/Dev/VirtueOSO/VirtueOSO/DBManager/DBManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "1644">
+               </Location>
+               <Location
+                  uuid = "086E48B8-2B4C-4312-8814-D8EA0EC31F7B - ce289bd63c4cca9d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in VirtueOSO.DBManager.request&lt;A where A: Swift.Decodable&gt;(type: A.Type, from: VirtueOSO.Endpoint, completionHandler: (Swift.Result&lt;A, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "VirtueOSO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hprieto/Dev/VirtueOSO/VirtueOSO/DBManager/DBManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "604">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8D88F682-B878-4F9E-80AE-5534378B27D7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VirtueOSO/DBManager/DBManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "request(type:from:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -167,65 +295,353 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "146CC591-898F-4664-969A-730BD14DA575"
+            uuid = "76893A14-FF94-44CA-901E-707E91F1596A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VirtueOSO/DBManager/DBManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "request(type:from:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "76893A14-FF94-44CA-901E-707E91F1596A - ce289bd63c4cc785"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in VirtueOSO.DBManager.request&lt;A where A: Swift.Decodable&gt;(type: A.Type, from: VirtueOSO.Endpoint, completionHandler: (Swift.Result&lt;A, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "VirtueOSO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hprieto/Dev/VirtueOSO/VirtueOSO/DBManager/DBManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "2356">
+               </Location>
+               <Location
+                  uuid = "76893A14-FF94-44CA-901E-707E91F1596A - ce289bd63c4cc785"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in VirtueOSO.DBManager.request&lt;A where A: Swift.Decodable&gt;(type: A.Type, from: VirtueOSO.Endpoint, completionHandler: (Swift.Result&lt;A, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "VirtueOSO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hprieto/Dev/VirtueOSO/VirtueOSO/DBManager/DBManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "3138">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "02B2E6BE-9309-4984-B7B9-6F8DA877C2FA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VirtueOSO/DBManager/DBManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "request(type:from:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "329C08F0-3C03-4F46-BDC9-27DF00FBDE20"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VirtueOSO/DBManager/DBManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "request(type:from:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "329C08F0-3C03-4F46-BDC9-27DF00FBDE20 - ce289bd63c4cc118"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in VirtueOSO.DBManager.request&lt;A where A: Swift.Decodable&gt;(type: A.Type, from: VirtueOSO.Endpoint, completionHandler: (Swift.Result&lt;A, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "VirtueOSO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hprieto/Dev/VirtueOSO/VirtueOSO/DBManager/DBManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "5304">
+               </Location>
+               <Location
+                  uuid = "329C08F0-3C03-4F46-BDC9-27DF00FBDE20 - e966c7e209680057"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 () -&gt; () in closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in VirtueOSO.DBManager.request&lt;A where A: Swift.Decodable&gt;(type: A.Type, from: VirtueOSO.Endpoint, completionHandler: (Swift.Result&lt;A, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "VirtueOSO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hprieto/Dev/VirtueOSO/VirtueOSO/DBManager/DBManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "147">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "03205D1B-3A5B-471B-80F4-25DD2C0A2CCB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VirtueOSO/Coordinators/AuthenticationCoordinator/AuthenticationCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "loginViewController(_:loginButtonTapped:credentials:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C3252113-9C04-4B20-9DE9-5A69A3A8BB65"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VirtueOSO/Coordinators/AuthenticationCoordinator/AuthenticationCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "loginViewController(_:loginButtonTapped:credentials:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F9B1E7EC-5315-4E64-9510-1FDA687901FE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VirtueOSO/Models/User.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "init(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CDFF96BF-3C56-41BD-AA10-10D58922CD35"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VirtueOSO/Coordinators/AuthenticationCoordinator/AuthenticationCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "signupViewController(_:agreeAndContinue:newUser:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0BC87B4E-54EC-4BB1-96BB-7124319159C6"
+            uuid = "6AF81D18-4C99-4E6C-8969-19AAE6024CA9"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VirtueOSO/Controllers/SignupViewController/SignupViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "newUser"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "773EEB95-AD00-4710-9617-88D2915E0D12"
+            uuid = "ADE2F4D1-BB43-471C-A41D-4D7370FE7B27"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VirtueOSO/Controllers/SignupViewController/SignupViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "newUser"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DA1FB525-6E48-4067-B697-DD52C9280F40"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VirtueOSO/Controllers/SignupViewController/SignupViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "newUser"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "61C49428-6EE7-4A74-8E3F-3EC681F083D7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VirtueOSO/Controllers/SignupViewController/SignupViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "newUser"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BA03E87A-9F67-421A-A5B7-28C4A10F744E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VirtueOSO/Controllers/SignupViewController/SignupViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
+            landmarkName = "textFieldDidEndEditing(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4E2007BB-9C2C-459F-8B4B-06CA1416F113"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VirtueOSO/Coordinators/AuthenticationCoordinator/AuthenticationCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "signupViewController(_:didEnterUsername:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5DA12B9D-742D-4A51-B3ED-FD49CEC66A0F"
+            uuid = "C3E67A48-E54F-4BA4-9A65-6FF02404CD15"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VirtueOSO/Coordinators/AuthenticationCoordinator/AuthenticationCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "231"
+            endingLineNumber = "231"
+            landmarkName = "signupViewController(_:didEnterUsername:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C3E67A48-E54F-4BA4-9A65-6FF02404CD15 - ee6f952dab0af1c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Dictionary&lt;Swift.String, Any&gt;, Swift.Error&gt;) -&gt; () in VirtueOSO.AuthenticationCoordinator.signupViewController(_: VirtueOSO.SignupViewController, didEnterUsername: Swift.String) -&gt; ()"
+                  moduleName = "VirtueOSO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hprieto/Dev/VirtueOSO/VirtueOSO/Coordinators/AuthenticationCoordinator/AuthenticationCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "232"
+                  endingLineNumber = "232"
+                  offsetFromSymbolStart = "165">
+               </Location>
+               <Location
+                  uuid = "C3E67A48-E54F-4BA4-9A65-6FF02404CD15 - ee6f952dab0af1c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Dictionary&lt;Swift.String, Any&gt;, Swift.Error&gt;) -&gt; () in VirtueOSO.AuthenticationCoordinator.signupViewController(_: VirtueOSO.SignupViewController, didEnterUsername: Swift.String) -&gt; ()"
+                  moduleName = "VirtueOSO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hprieto/Dev/VirtueOSO/VirtueOSO/Coordinators/AuthenticationCoordinator/AuthenticationCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "232"
+                  endingLineNumber = "232"
+                  offsetFromSymbolStart = "187">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA0F2BDB-15B2-4435-B1C7-4B118A9BEBC0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VirtueOSO/Coordinators/AuthenticationCoordinator/AuthenticationCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
+            landmarkName = "signupViewController(_:didEnterUsername:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F526B018-15D8-4818-81E2-4B0F034D23FB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VirtueOSO/DBManager/DBManager+Users.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "isUsernameAvailable(username:completionHandler:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

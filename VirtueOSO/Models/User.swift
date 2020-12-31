@@ -13,7 +13,7 @@ public typealias UsersCompletion = (Result<[User], Swift.Error>) -> Void
 
 public struct User: Codable, Equatable, Identifiable {
     
-    public var id: String = UUID().uuidString
+    public var id: Int?
     public var token: String?
     public var username: String?
     public var password: String?
@@ -63,25 +63,36 @@ public struct User: Codable, Equatable, Identifiable {
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decode(String.self, forKey: .id)
-        token = try values.decode(String.self, forKey: .token)
-        username = try values.decode(String.self, forKey: .username)
-        password = try values.decode(String.self, forKey: .password)
-        firstName = try values.decode(String.self, forKey: .firstName)
-        lastName = try values.decode(String.self, forKey: .lastName)
-        email = try values.decode(String.self, forKey: .email)
-        description = try values.decode(String.self, forKey: .description)
-        phoneNumber = try values.decode(String.self, forKey: .phoneNumber)
-        birthDate = try values.decode(String.self, forKey: .birthDate).toJsonDate()
-        lastLoginTime = try values.decode(String.self, forKey: .lastLoginTime).toJsonDate()
-        createTime = try values.decode(String.self, forKey: .createTime).toJsonDate()
-        deleteTime = try values.decode(String.self, forKey: .deleteTime).toJsonDate()
-        updateTime = try values.decode(String.self, forKey: .updateTime).toJsonDate()
-        tokenExpireTime = try values.decode(String.self, forKey: .tokenExpireTime).toJsonDate()
-        timeZone = try values.decode(String.self, forKey: .timeZone)
-        regionCode = try values.decode(String.self, forKey: .regionCode)
-        languageCode = try values.decode(String.self, forKey: .languageCode)
-        imageUrl = try values.decode(String.self, forKey: .imageUrl)
-        isActive = try values.decode(Int.self, forKey: .isActive) == 1 ? true : false
+        id = try values.decode(Int.self, forKey: .id)
+        token = try values.decodeIfPresent(String.self, forKey: .token)
+        username = try values.decodeIfPresent(String.self, forKey: .username)
+        password = try values.decodeIfPresent(String.self, forKey: .password)
+        firstName = try values.decodeIfPresent(String.self, forKey: .firstName)
+        lastName = try values.decodeIfPresent(String.self, forKey: .lastName)
+        email = try values.decodeIfPresent(String.self, forKey: .email)
+        description = try values.decodeIfPresent(String.self, forKey: .description)
+        phoneNumber = try values.decodeIfPresent(String.self, forKey: .phoneNumber)
+        birthDate = try values.decodeIfPresent(String.self, forKey: .birthDate)?.toJsonDate()
+        if let lastLoginTimeString = try values.decodeIfPresent(String.self, forKey: .lastLoginTime) {
+            lastLoginTime = lastLoginTimeString.toJsonDate()
+        }
+        if let createTimeString = try values.decodeIfPresent(String.self, forKey: .createTime) {
+            let createTimeDate: Date? = createTimeString.toJsonDate()
+            createTime = createTimeDate
+        }
+        if let deleteTimeString = try values.decodeIfPresent(String.self, forKey: .deleteTime) {
+            deleteTime = deleteTimeString.toJsonDate()
+        }
+        if let updateTimeString = try values.decodeIfPresent(String.self, forKey: .updateTime) {
+            updateTime = updateTimeString.toJsonDate()
+        }
+        if let tokenExpireTimeString = try values.decodeIfPresent(String.self, forKey: .tokenExpireTime) {
+            tokenExpireTime = tokenExpireTimeString.toJsonDate()
+        }
+        timeZone = try values.decodeIfPresent(String.self, forKey: .timeZone)
+        regionCode = try values.decodeIfPresent(String.self, forKey: .regionCode)
+        languageCode = try values.decodeIfPresent(String.self, forKey: .languageCode)
+        imageUrl = try values.decodeIfPresent(String.self, forKey: .imageUrl)
+        isActive = try values.decodeIfPresent(Int.self, forKey: .isActive) == 1 ? true : false
     }
 }

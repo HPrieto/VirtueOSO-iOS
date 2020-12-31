@@ -70,22 +70,19 @@ class AuthenticationCoordinator: Coordinator {
         return controller
     }()
     
-    // MAKR: - Utils
+    // MAKR: - Network Methods
     
-    public func login(email: String, password: String) {
-        print("Email: \(email)")
-        print("Password: \(password)")
-        dismiss(animated: true, completion: nil)
-        let credentials: Credentials = Credentials(username: "duskayame@gmail.com", password: "Amada2020")
-        DBManager.shared.login(credentials: credentials) { (result) in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let user):
-                print(user.username ?? "empty username")
-            }
-        }
-        
+    public func login(email: String, password: String, completionHandler: @escaping UserCompletion) {
+        let credentials: Credentials = Credentials(username: "duskayame@gmail.com", password: "MFourT3st")
+        DBManager.shared.login(credentials: credentials, completionHandler: completionHandler)
+    }
+    
+    public func isUsernameAvailable(username: String, completionHandler: @escaping GenericCompletion<[String: Any]>) {
+        DBManager.shared.isUsernameAvailable(username: username, completionHandler: completionHandler)
+    }
+    
+    public func isEmailAvailable(email: String, completionHandler: @escaping GenericCompletion<[String: Any]>) {
+        DBManager.shared.isEmailAvailable(email: email, completionHandler: completionHandler)
     }
     
     // MARK: - Init
@@ -197,7 +194,15 @@ extension AuthenticationCoordinator: LoginViewControllerDelegate {
     func loginViewController(_ controller: LoginViewController, loginButtonTapped button: UIButton, credentials: Credentials) {
         let email: String = credentials.username
         let password: String = credentials.password
-        login(email: email, password: password)
+        login(email: email, password: password) { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .failure(let error):
+                self.rootViewController.presentAlert(title: "Error", message: error.localizedDescription)
+            case .success(let user):
+                print(user.username, user.id, user.createTime)
+            }
+        }
     }
     
     func loginViewController(_ controller: LoginViewController, signupButtonTapped button: UIButton) {
@@ -213,37 +218,40 @@ extension AuthenticationCoordinator: LoginViewControllerDelegate {
 
 extension AuthenticationCoordinator: SignupViewControllerDelegate {
     
-    func signupViewController(_ controller: SignupViewController, didEnter model: SignupModel) {
-        guard
-            let firstname: String = model.firstname, firstname.count > 1,
-            let lastname: String = model.lastname, lastname.count > 1,
-            let email: String = model.email, email.count > 3,
-            let password: String = model.password, password.count > 5,
-            let confirmPassword: String = model.confirmPassword, password == confirmPassword,
-            model.agreedToTerms
-        else {
-            controller.state = .disabled
-            return
-        }
-        controller.state = .enabled
-    }
-    
-    func signupViewController(_ controller: SignupViewController, agreeAndContinue button: UIButton, model: SignupModel) {
-        guard
-            let firstname: String = model.firstname, firstname.count > 1,
-            let lastname: String = model.lastname, lastname.count > 1,
-            let email: String = model.email, email.count > 3,
-            let password: String = model.password, password.count > 5,
-            let confirmPassword: String = model.confirmPassword, password == confirmPassword,
-            model.agreedToTerms
-        else {
-            controller.state = .disabled
-            return
-        }
-        dismiss(animated: true, completion: nil)
+    func signupViewController(_ controller: SignupViewController, agreeAndContinue button: UIButton, newUser: User) {
+        print(newUser.username, newUser.email, newUser.password)
     }
     
     func signupViewController(_ controller: SignupViewController, goBack buttonItem: UIBarButtonItem) {
         navigate(to: .signupToRoot)
+    }
+    
+    // TODO: Finish handling when an invalid username is chosen by user
+    func signupViewController(_ controller: SignupViewController, didEnterUsername username: String) {
+        isUsernameAvailable(username: username) { (result) in
+            switch result {
+            case .failure(let error):
+                controller.presentAlert(title: "Oops, something happened.", message: error.localizedDescription)
+            case .success(let model):
+                print(model)
+//                guard
+//                    let available: Bool = model["available"]?.boolValue,
+//                    let message: String = model["message"]
+//                else {
+//                    return
+//                }
+//                if available {
+//
+//                } else {
+//                    controller.state = .usernameUnavailable(message: message)
+//                }
+                
+            }
+        }
+    }
+    
+    // TODO: Finish handling when an invalid email is chosen by user
+    func signupViewController(_ controller: SignupViewController, didEnterEmail email: String) {
+        
     }
 }

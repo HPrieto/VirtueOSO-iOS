@@ -24,8 +24,6 @@ extension Date {
 extension String {
     
     public func toJsonDate() -> Date? {
-        let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        return formatter.date(from: self)
+        return JSON.dateFormatter.date(from: self)
     }
 }

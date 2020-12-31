@@ -74,10 +74,12 @@ class AuthenticationHomeViewController: UIViewController {
     }()
     
     private(set) lazy var iconImageView: UIImageView = {
-        let image = UIImage(named: "music_tickets")!.withRenderingMode(.alwaysTemplate)
+        // let image = UIImage(named: "music_tickets")!.withRenderingMode(.alwaysTemplate)
+        let image = UIImage(sfSymbol: "tv.music.note", withWeight: .light)
         let view = UIImageView()
         view.image = image
         view.tintColor = .white
+        view.contentMode = .scaleAspectFit
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

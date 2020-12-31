@@ -160,6 +160,11 @@ extension UIImage {
         self.init(systemName: sfSymbol.rawValue, withConfiguration: configuration)
     }
     
+    convenience init?(sfSymbol: String, withWeight weight: SymbolWeight = .regular) {
+        let configuration = UIImage.SymbolConfiguration(weight: weight)
+        self.init(systemName: sfSymbol, withConfiguration: configuration)
+    }
+    
     static let _backArrow: UIImage? = UIImage(named: "back-arrow")?.withRenderingMode(.alwaysTemplate)
     
     static let _unlocked: UIImage? = UIImage(named: "unlocked")?.withRenderingMode(.alwaysTemplate)

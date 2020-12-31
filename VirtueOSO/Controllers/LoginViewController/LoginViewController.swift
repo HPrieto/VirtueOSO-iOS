@@ -49,11 +49,11 @@ class LoginViewController: UIViewController {
     private(set) lazy var emailTextField: BorderedTextField = {
         let view = BorderedTextField()
         view._title = "Email"
-        view.inputTextView.keyboardType = .emailAddress
+        view.textField.keyboardType = .emailAddress
         view._roundCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
-        view.inputTextView.delegate = self
-        view.inputTextView.tag = 1
+        view.textField.delegate = self
+        view.textField.tag = 1
         return view
     }()
     
@@ -62,11 +62,11 @@ class LoginViewController: UIViewController {
         view._title = "Password"
         view._contentType = .password
         view._secureTextEntry = true
-        view.inputTextView.keyboardType = .default
+        view.textField.keyboardType = .default
         view._roundCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         
-        view.inputTextView.delegate = self
-        view.inputTextView.tag = 2
+        view.textField.delegate = self
+        view.textField.tag = 2
         return view
     }()
     
@@ -112,8 +112,8 @@ class LoginViewController: UIViewController {
     
     @objc private func handleLogin(sender: UIButton) {
         guard
-            let email: String = emailTextField._text,
-            let password: String = passwordTextField._text
+            let email: String = emailTextField.textField.text,
+            let password: String = passwordTextField.textField.text
         else {
             return
         }
@@ -150,6 +150,8 @@ class LoginViewController: UIViewController {
             navigationController._barStyle = .default
             navigationController.navigationBar.backgroundColor = .white
         }
+        
+        emailTextField.textField.becomeFirstResponder()
     }
     
     // MARK: - Initialize Subviews
@@ -190,11 +192,11 @@ class LoginViewController: UIViewController {
     }
 }
 
-// MARK: - UITextViewDelegate
+// MARK: - UITextFieldDelegate
 
-extension LoginViewController: UITextViewDelegate {
+extension LoginViewController: UITextFieldDelegate {
     
-    func textViewDidChange(_ textView: UITextView) {
-        loginDelegate?.loginViewController(self, didEnterEmail: emailTextField.inputTextView.text, password: passwordTextField.inputTextView.text)
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        loginDelegate?.loginViewController(self, didEnterEmail: emailTextField.textField.text, password: passwordTextField.textField.text)
     }
 }

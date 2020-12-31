@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Endpoint {
+protocol Endpoint {
     /// Request Method Type
     var method: String { get }
     /// API Endpoint Path
@@ -28,6 +28,14 @@ extension Endpoint {
         let url: URL = baseURL.appendingPathComponent(path)
         var request: URLRequest = URLRequest(url: url)
         request.httpMethod = method
+        
+        if let body = self.body,
+           let jsonData = JSON.data(from: body) {
+            request.httpBody = jsonData
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            print("HttpBody: ", String(data: jsonData, encoding: .utf8) ?? "None.")
+        }
+        
         return request
     }
 }

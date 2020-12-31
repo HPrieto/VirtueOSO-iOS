@@ -27,7 +27,7 @@ class BorderedTextField: ComponentView {
     //MARK:- Public Properties
     var _secureTextEntry: Bool = false {
         didSet {
-            inputTextView.isSecureTextEntry = _secureTextEntry
+            textField.isSecureTextEntry = _secureTextEntry
         }
     }
     
@@ -66,13 +66,13 @@ class BorderedTextField: ComponentView {
     
     var _text: String? {
         didSet {
-            inputTextView.text = _text
+            textField.text = _text
         }
     }
     
     var _contentType: UITextContentType = .username {
         didSet {
-            inputTextView.textContentType = _contentType
+            textField.textContentType = _contentType
         }
     }
     
@@ -106,14 +106,14 @@ class BorderedTextField: ComponentView {
     
     var _textColor: UIColor = ._black {
         didSet {
-            inputTextView.textColor = _textColor
+            textField.textColor = _textColor
         }
     }
     
     var _font: UIFont? = UIFont(type: .regular, size: .small) {
         didSet {
             titleTextView.font = _font
-            inputTextView.font = _font
+            textField.font = _font
         }
     }
     
@@ -132,14 +132,11 @@ class BorderedTextField: ComponentView {
         return view
     }()
     
-    private(set) lazy var inputTextView: TextView = {
-        let view = TextView()
-        view.autocorrectionType = .no
-        view.isEditable = true
-        view.isUserInteractionEnabled = true
+    private(set) lazy var textField: UITextField = {
+        let view = UITextField()
         view.font = UIFont(type: .regular, size: .small)
-        view.textColor = ._black
-        view.delegate = self
+        view.autocorrectionType = .no
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -153,16 +150,16 @@ class BorderedTextField: ComponentView {
         layer.borderColor = _borderColor.cgColor
         
         addSubview(titleTextView)
-        addSubview(inputTextView)
+        addSubview(textField)
         
         titleTextView.topAnchor.constraint(equalTo: topAnchor, constant: 13).isActive = true
         titleTextView.leftAnchor.constraint(equalTo: leftAnchor, constant: 23).isActive = true
         titleTextView.rightAnchor.constraint(equalTo: rightAnchor, constant: -23).isActive = true
         
-        inputTextView.topAnchor.constraint(equalTo: titleTextView.bottomAnchor, constant: 2).isActive = true
-        inputTextView.leftAnchor.constraint(equalTo: titleTextView.leftAnchor).isActive = true
-        inputTextView.rightAnchor.constraint(equalTo: titleTextView.rightAnchor).isActive = true
-        inputTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -13).isActive = true
+        textField.topAnchor.constraint(equalTo: titleTextView.bottomAnchor, constant: 2).isActive = true
+        textField.leftAnchor.constraint(equalTo: titleTextView.leftAnchor).isActive = true
+        textField.rightAnchor.constraint(equalTo: titleTextView.rightAnchor).isActive = true
+        textField.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -13).isActive = true
         
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleViewTapped))
         addGestureRecognizer(tapGesture)
@@ -170,7 +167,7 @@ class BorderedTextField: ComponentView {
     
     //MARK:- Handlers
     @objc func handleViewTapped() {
-        inputTextView.becomeFirstResponder()
+        textField.becomeFirstResponder()
     }
     
     override var alignmentRectInsets: UIEdgeInsets {
