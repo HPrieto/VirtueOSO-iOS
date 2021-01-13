@@ -23,6 +23,7 @@ class ProfileCoordinator: Coordinator {
         controller.navigationBar.isTranslucent = true
         controller.navigationBar.barTintColor = .white
         controller.navigationBar.titleTextAttributes = [.foregroundColor: UIColor._black, .font: UIFont(type: .demiBold, size: .regular) as Any]
+        controller.navigationBar.shadowImage = nil
         controller.navigationBar.barStyle = .default
         return controller
     }()
@@ -129,35 +130,35 @@ class ProfileCoordinator: Coordinator {
                 tag: Destination.personalInfo.rawValue,
                 delegate: self
             ),
-            SettingsCellView(
-                title: "Profile",
-                systemImageName: "headphones",
-                tag: Destination.profile.rawValue,
-                delegate: self
-            ),
-            SettingsCellView(
-                title: "My Subscription",
-                systemImageName: "bag.badge.plus",
-                detail: "Personal",
-                detailTextColor: ._tertiary,
-                tag: Destination.mySubscription.rawValue,
-                delegate: self
-            ),
-            SettingsCellView(
-                title: "Linked Accounts",
-                systemImageName: "person.2.square.stack",
-                tag: Destination.linkedAccounts.rawValue,
-                delegate: self
-            ),
+//            SettingsCellView(
+//                title: "Profile",
+//                systemImageName: "headphones",
+//                tag: Destination.profile.rawValue,
+//                delegate: self
+//            ),
+//            SettingsCellView(
+//                title: "My Subscription",
+//                systemImageName: "bag.badge.plus",
+//                detail: "Personal",
+//                detailTextColor: ._tertiary,
+//                tag: Destination.mySubscription.rawValue,
+//                delegate: self
+//            ),
+//            SettingsCellView(
+//                title: "Linked Accounts",
+//                systemImageName: "person.2.square.stack",
+//                tag: Destination.linkedAccounts.rawValue,
+//                delegate: self
+//            ),
             
             /// Home
-            SettingsHeaderCellView(header: "Home"),
-            SettingsCellView(
-                title: "Preferences",
-                systemImageName: "slider.horizontal.3",
-                tag: Destination.preferences.rawValue,
-                delegate: self
-            ),
+//            SettingsHeaderCellView(header: "Home"),
+//            SettingsCellView(
+//                title: "Preferences",
+//                systemImageName: "slider.horizontal.3",
+//                tag: Destination.preferences.rawValue,
+//                delegate: self
+//            ),
             
             /// Device
             SettingsHeaderCellView(header: "Device"),
@@ -173,19 +174,19 @@ class ProfileCoordinator: Coordinator {
                 tag: Destination.changePassword.rawValue,
                 delegate: self
             ),
-            SettingsCellView(
-                title: "Change Log In PIN",
-                systemImageName: "circle.grid.3x3.fill",
-                tag: Destination.changeLoginPIN.rawValue,
-                delegate: self
-            ),
-            SettingsCellToggleView(
-                title: "Enable Face ID",
-                systemImageName: "faceid",
-                isOn: false,
-                tag: Destination.enableFaceID.rawValue,
-                delegate: self
-            ),
+//            SettingsCellView(
+//                title: "Change Log In PIN",
+//                systemImageName: "circle.grid.3x3.fill",
+//                tag: Destination.changeLoginPIN.rawValue,
+//                delegate: self
+//            ),
+//            SettingsCellToggleView(
+//                title: "Enable Face ID",
+//                systemImageName: "faceid",
+//                isOn: false,
+//                tag: Destination.enableFaceID.rawValue,
+//                delegate: self
+//            ),
             
             /// Support
             SettingsHeaderCellView(header: "Support"),
@@ -195,7 +196,7 @@ class ProfileCoordinator: Coordinator {
                 delegate: self
             ),
             SettingsCellView(
-                title: "Rate VirtueOSO",
+                title: "Rate Kashmir",
                 tag: Destination.rate.rawValue,
                 delegate: self
             ),
@@ -205,10 +206,20 @@ class ProfileCoordinator: Coordinator {
                 delegate: self
             ),
             SettingsCellView(
-                title: "Legal",
-                tag: Destination.legal.rawValue,
+                title: "Terms and Conditions",
+                tag: Destination.termsAndConditions.rawValue,
                 delegate: self
             ),
+            SettingsCellView(
+                title: "Privacy Policy",
+                tag: Destination.privacyPolicy.rawValue,
+                delegate: self
+            ),
+//            SettingsCellView(
+//                title: "Legal",
+//                tag: Destination.legal.rawValue,
+//                delegate: self
+//            ),
             
             /// Logout Button
             EmptySpaceView(30),
@@ -235,14 +246,14 @@ class ProfileCoordinator: Coordinator {
     // MARK: - TermsAndConditionsViewController
     private(set) lazy var termsAndConditionsViewController: WebViewController = {
         let controller = WebViewController("https://www.airbnb.com/terms")
-        controller.navigationItem.title = "Terms & Conditions"
+        controller.navigationItem.title = "Kashmir Terms & Conditions"
         return controller
     }()
     
     // MARK: - PrivacyPolicyViewController
     private(set) lazy var privacyPolicyViewController: WebViewController = {
         let controller = WebViewController("https://www.airbnb.com/terms/privacy_policy")
-        controller.navigationItem.title = "Virtuoso Privacy Policy"
+        controller.navigationItem.title = "Kashmir Privacy Policy"
         return controller
     }()
     
@@ -291,41 +302,41 @@ class ProfileCoordinator: Coordinator {
                 tag: Destination.privacyPolicy.rawValue,
                 delegate: self
             ),
-            SettingsCellView(
-                title: "Program Agreement",
-                tag: Destination.programAgreement.rawValue,
-                delegate: self
-            ),
-            SettingsCellView(
-                title: "Referral Agreement",
-                tag: Destination.referralAgreement.rawValue,
-                delegate: self
-            ),
-            SettingsCellView(
-                title: "Important Disclosures",
-                tag: Destination.importantDisclosures.rawValue,
-                delegate: self
-            ),
-            SettingsCellView(
-                title: "Spend Terms and Conditions",
-                tag: Destination.spendTermsAndConditions.rawValue,
-                delegate: self
-            ),
-            SettingsCellView(
-                title: "Spend Electronic Funds Transfers Disclosure",
-                tag: Destination.spendElectronicFundsTransfersDisclosure.rawValue,
-                delegate: self
-            ),
-            SettingsCellView(
-                title: "Spend Funds Availability",
-                tag: Destination.spendFundsAvailability.rawValue,
-                delegate: self
-            ),
-            SettingsCellView(
-                title: "Spend Privacy Policy",
-                tag: Destination.spendPrivacyPolicy.rawValue,
-                delegate: self
-            )
+//            SettingsCellView(
+//                title: "Program Agreement",
+//                tag: Destination.programAgreement.rawValue,
+//                delegate: self
+//            ),
+//            SettingsCellView(
+//                title: "Referral Agreement",
+//                tag: Destination.referralAgreement.rawValue,
+//                delegate: self
+//            ),
+//            SettingsCellView(
+//                title: "Important Disclosures",
+//                tag: Destination.importantDisclosures.rawValue,
+//                delegate: self
+//            ),
+//            SettingsCellView(
+//                title: "Spend Terms and Conditions",
+//                tag: Destination.spendTermsAndConditions.rawValue,
+//                delegate: self
+//            ),
+//            SettingsCellView(
+//                title: "Spend Electronic Funds Transfers Disclosure",
+//                tag: Destination.spendElectronicFundsTransfersDisclosure.rawValue,
+//                delegate: self
+//            ),
+//            SettingsCellView(
+//                title: "Spend Funds Availability",
+//                tag: Destination.spendFundsAvailability.rawValue,
+//                delegate: self
+//            ),
+//            SettingsCellView(
+//                title: "Spend Privacy Policy",
+//                tag: Destination.spendPrivacyPolicy.rawValue,
+//                delegate: self
+//            )
         ]
         let controller = SettingsViewController(coordinator: self, subviews: subviews)
         controller._title = "Legal"

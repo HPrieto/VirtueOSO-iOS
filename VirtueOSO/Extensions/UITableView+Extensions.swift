@@ -10,6 +10,10 @@ import UIKit
 
 extension UITableView {
     
+    public static var reuseIdentifier: String {
+        return String(describing: self)
+    }
+    
     public func scrollToBottom(animated: Bool = true) {
         let numberOfSections: Int = self.numberOfSections
         let lastSection: Int = numberOfSections - 1

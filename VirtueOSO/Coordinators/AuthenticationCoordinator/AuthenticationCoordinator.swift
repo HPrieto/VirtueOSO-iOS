@@ -54,6 +54,13 @@ class AuthenticationCoordinator: Coordinator {
         return controller
     }()
     
+    // MARK: - SubmitEmailViewController
+    private(set) lazy var submitEmailViewController: SubmitEmailViewController = {
+        let controller = SubmitEmailViewController()
+        controller.delegate = self
+        return controller
+    }()
+    
     // MARK: - SignupViewController
     private(set) lazy var signupViewController: SignupViewController = {
         let controller = SignupViewController()
@@ -77,12 +84,12 @@ class AuthenticationCoordinator: Coordinator {
         DBManager.shared.login(credentials: credentials, completionHandler: completionHandler)
     }
     
-    public func isUsernameAvailable(username: String, completionHandler: @escaping GenericCompletion<[String: Any]>) {
-        DBManager.shared.isUsernameAvailable(username: username, completionHandler: completionHandler)
+    public func isUsernameAvailable(username: String, completionHandler: @escaping AvailabilityCompletion) {
+        DBManager.shared.getUsernameAvailability(username: username, completionHandler: completionHandler)
     }
     
-    public func isEmailAvailable(email: String, completionHandler: @escaping GenericCompletion<[String: Any]>) {
-        DBManager.shared.isEmailAvailable(email: email, completionHandler: completionHandler)
+    public func isEmailAvailable(email: String, completionHandler: @escaping AvailabilityCompletion) {
+        DBManager.shared.getEmailAvailability(email: email, completionHandler: completionHandler)
     }
     
     // MARK: - Init
@@ -180,12 +187,12 @@ extension AuthenticationCoordinator: LoginViewControllerDelegate {
     }
     
     func loginViewController(_ controller: LoginViewController, forgotPasswordTapped button: UIButton) {
-        let controller = SubmitEmailViewController()
-        controller._message = "Enter the email address associated with your account, and we’ll email you a link to reset your password."
-        controller._title = "Email"
-        controller._submitButtonText = "Send reset link"
+        submitEmailViewController._message = "Enter the email address associated with your account, and we’ll email you a link to reset your password."
+        submitEmailViewController._title = "Email"
+        submitEmailViewController._submitButtonText = "Send reset link"
+        submitEmailViewController.emailTextField.textField.text = ""
         rootViewController.present(
-            NavigationController(rootViewController: controller),
+            NavigationController(rootViewController: submitEmailViewController),
             animated: true,
             completion: nil
         )
@@ -231,27 +238,51 @@ extension AuthenticationCoordinator: SignupViewControllerDelegate {
         isUsernameAvailable(username: username) { (result) in
             switch result {
             case .failure(let error):
-                controller.presentAlert(title: "Oops, something happened.", message: error.localizedDescription)
+                controller.state = .usernameUnavailable(message: error.localizedDescription)
             case .success(let model):
-                print(model)
-//                guard
-//                    let available: Bool = model["available"]?.boolValue,
-//                    let message: String = model["message"]
-//                else {
-//                    return
-//                }
-//                if available {
-//
-//                } else {
-//                    controller.state = .usernameUnavailable(message: message)
-//                }
-                
+                guard
+                    let available: Bool = model.available,
+                    let message: String = model.message
+                else {
+                    return
+                }
+                if available {
+                    controller.state = .usernameAvailable(message: message)
+                } else {
+                    controller.state = .usernameUnavailable(message: message)
+                }
             }
         }
     }
     
     // TODO: Finish handling when an invalid email is chosen by user
     func signupViewController(_ controller: SignupViewController, didEnterEmail email: String) {
-        
+        isEmailAvailable(email: email) { (result) in
+            switch result {
+            case .failure(let error):
+                controller.state = .emailUnavailable(message: error.localizedDescription)
+            case .success(let model):
+                guard
+                    let available: Bool = model.available,
+                    let message: String = model.message
+                else {
+                    return
+                }
+                if available {
+                    controller.state = .emailAvailable(message: message)
+                } else {
+                    controller.state = .emailUnavailable(message: message)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - SubmitEmailViewController
+
+extension AuthenticationCoordinator: SubmitEmailViewControllerDelegate {
+    
+    func submitEmailViewController(_ controller: SubmitEmailViewController, didSubmitEmail email: String) {
+        print("Submitting email: ", email)
     }
 }

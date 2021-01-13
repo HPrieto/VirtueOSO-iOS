@@ -219,11 +219,9 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.tintColor = ._black
         
+        tabBarController?.tabBar.isHidden = false
+        
         tableView.addObserver(self, forKeyPath: eventsTableViewKeyPath, options: .new, context: nil)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

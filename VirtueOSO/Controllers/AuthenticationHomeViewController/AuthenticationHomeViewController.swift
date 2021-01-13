@@ -35,13 +35,13 @@ class AuthenticationHomeViewController: UIViewController {
     // MARK: - Strings
     private enum Strings: String {
         case loginButtonTitle = "Log in"
-        case title = "Welcome to Virtuoso"
+        case title = "Welcome to Kashmir"
         case googleButtonTitle = "Continue with Google"
         case facebookButtonTitle = "Continue with Facebook"
         case createAccountButtonTitle = "Create an Account"
         case moreOptionsButtonTitle = "More options"
         case disclaimer = """
-        By signing up, I agree to Virutuoso's Terms of Service, Non-Discrimination Policy, Payments Terms of Service, and Host Guarantee Terms.
+        By signing up, I agree to Kashmir's Terms of Service, Non-Discrimination Policy, Payments Terms of Service, and Host Guarantee Terms.
         """
     }
     
@@ -139,7 +139,7 @@ class AuthenticationHomeViewController: UIViewController {
     private(set) lazy var disclaimerTextView: AttributedTextView = {
         let view = AttributedTextView(attributes: [
             NSAttributedString(
-                string: "By signing up, I agree to Virutuoso's ",
+                string: "By signing up, I agree to Kashmir's ",
                 color: .white,
                 fontSize: .small
             ),

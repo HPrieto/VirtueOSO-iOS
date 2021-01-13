@@ -27,7 +27,7 @@ extension UIStackView {
         let textView: TextView = TextView(
             text: message,
             textColor: ._gray,
-            font: UIFont(type: .regular, size: .small)
+            font: UIFont(type: .regular, size: 14)
         )
         textView._padding = UIEdgeInsets(
             top: topPadding,

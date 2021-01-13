@@ -18,22 +18,33 @@ protocol LoginViewControllerDelegate {
 
 class LoginViewController: UIViewController {
     
-    enum State {
+    enum ViewState {
         case enabled
         case disabled
+        case loginFailed(message: String)
     }
     
     // MARK: - Public Properties
     
     public var loginDelegate: LoginViewControllerDelegate?
     
-    var state: State = .disabled {
+    var state: ViewState = .disabled {
         didSet {
             switch state {
             case .disabled:
+                messageLabel.text = ""
+                messageLabel.alpha = 0
                 loginButton.backgroundColor = ._lightGray
                 loginButton.isEnabled = false
             case .enabled:
+                messageLabel.text = ""
+                messageLabel.alpha = 0
+                loginButton.backgroundColor = ._secondary
+                loginButton.isEnabled = true
+            case .loginFailed(let message):
+                messageLabel.text = message
+                messageLabel.textColor = ._redError
+                messageLabel.alpha = 1
                 loginButton.backgroundColor = ._secondary
                 loginButton.isEnabled = true
             }
@@ -67,6 +78,15 @@ class LoginViewController: UIViewController {
         
         view.textField.delegate = self
         view.textField.tag = 2
+        return view
+    }()
+    
+    private(set) lazy var messageLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont(type: .regular, size: 14)
+        view.numberOfLines = 2
+        view.adjustsFontSizeToFitWidth = true
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     

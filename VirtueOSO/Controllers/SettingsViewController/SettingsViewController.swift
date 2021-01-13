@@ -87,10 +87,9 @@ class SettingsViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.shadowImage = nil
         navigationController?.navigationBar.isHidden = false
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        tabBarController?.tabBar.isHidden = true
     }
     
     //MARK: - Init Subviews

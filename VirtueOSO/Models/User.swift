@@ -33,6 +33,8 @@ public struct User: Codable, Equatable, Identifiable {
     public var languageCode: String?
     public var imageUrl: String?
     public var isActive: Bool?
+    public var emailConfirmed: Bool?
+    public var phoneNumberConfirmed: Bool?
     
     public init() {
         
@@ -59,6 +61,8 @@ public struct User: Codable, Equatable, Identifiable {
         case languageCode = "languageCode"
         case imageUrl = "imageUrl"
         case isActive = "isActive"
+        case emailConfirmed = "emailConfirmed"
+        case phoneNumberConfirmed = "phoneNumberConfirmed"
     }
     
     public init(from decoder: Decoder) throws {
@@ -94,5 +98,7 @@ public struct User: Codable, Equatable, Identifiable {
         languageCode = try values.decodeIfPresent(String.self, forKey: .languageCode)
         imageUrl = try values.decodeIfPresent(String.self, forKey: .imageUrl)
         isActive = try values.decodeIfPresent(Int.self, forKey: .isActive) == 1 ? true : false
+        emailConfirmed = try values.decodeIfPresent(Int.self, forKey: .emailConfirmed) == 1 ? true : false
+        phoneNumberConfirmed = try values.decodeIfPresent(Int.self, forKey: .phoneNumberConfirmed) == 1 ? true : false
     }
 }

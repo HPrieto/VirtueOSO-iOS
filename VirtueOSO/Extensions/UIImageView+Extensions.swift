@@ -8,31 +8,33 @@
 
 import UIKit
 
-fileprivate var imageCache: NSCache<NSString, UIImage> = NSCache<NSString, UIImage>();
+fileprivate let imageCacheManager = CacheManager<String, Data>()
+fileprivate let imageCache = NSCache<NSString, UIImage>()
 
 extension UIImage {
     
     static func get(fromUrlString urlString: String, completionHandler: @escaping (UIImage?) -> Void) {
-        if let cachedImage = imageCache.object(forKey: urlString as NSString) {
-            completionHandler(cachedImage)
-            return
-        }
-        guard let url = URL(string: urlString) else {
-            completionHandler(nil)
-            return
-        }
-        DispatchQueue.global().async {
+        DispatchQueue.global().sync {
+            if let cachedImage: UIImage = imageCache.object(forKey: urlString as NSString) {
+                DispatchQueue.main.async {
+                    completionHandler(cachedImage)
+                }
+                return
+            }
             guard
-                let data = try? Data(contentsOf: url),
-                let newImage = UIImage(data: data)
+                let url: URL = URL(string: urlString),
+                let data: Data = try? Data(contentsOf: url),
+                let image: UIImage = UIImage(data: data)
             else {
-                completionHandler(nil)
+                DispatchQueue.main.async {
+                    completionHandler(nil)
+                }
                 return
             }
             DispatchQueue.main.async {
-                imageCache.setObject(newImage, forKey: urlString as NSString)
-                completionHandler(newImage)
+                completionHandler(image)
             }
+            imageCache.setObject(image, forKey: urlString as NSString)
         }
     }
 }

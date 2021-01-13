@@ -358,6 +358,7 @@ extension ArtistViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        eventViewController._state = .resume
         let navController: UINavigationController = UINavigationController(rootViewController: eventViewController)
         present(navController, animated: true, completion: nil)
     }

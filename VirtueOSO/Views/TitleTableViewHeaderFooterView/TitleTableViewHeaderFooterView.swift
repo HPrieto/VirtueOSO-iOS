@@ -14,7 +14,7 @@ class TitleTableViewHeaderFooterView: UITableViewHeaderFooterView {
     
     // MARK: - Public Properties
     
-    static let reuseIdentifier: String = "title-table-view-header-footer-view"
+    public static let reuseIdentifier: String = "title-table-view-header-footer-view"
     
     // MARK: - Subviews
     
@@ -30,14 +30,14 @@ class TitleTableViewHeaderFooterView: UITableViewHeaderFooterView {
     // MARK: - Initialize Subviews
     
     fileprivate func initializeSubviews() {
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(titleLabel)
         
-        addSubview(titleLabel)
+        titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         
-        titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-        
-        bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
     }
     
     // MARK: - Init

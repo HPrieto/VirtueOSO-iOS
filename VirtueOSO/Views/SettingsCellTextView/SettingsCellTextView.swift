@@ -110,7 +110,7 @@ class SettingsCellTextView: UIView {
         let view = TextView()
         view.font = UIFont(type: .regular, size: .small)
         view.textColor = ._black
-        view.tintColor = ._tertiary
+        view.tintColor = ._secondary
         view.autocorrectionType = .no
         view.isUserInteractionEnabled = true
         view.isEditable = true

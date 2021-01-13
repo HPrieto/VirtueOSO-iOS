@@ -35,4 +35,28 @@ extension UIFont {
     convenience init?(type: FontType, size: CGFloat) {
         self.init(name: type.rawValue, size: size)
     }
+    
+    public static func light(size: CGFloat) -> UIFont? {
+        return UIFont(name: UIFont.FontType.light.rawValue, size: size)
+    }
+    
+    public static func regular(size: CGFloat) -> UIFont? {
+        return UIFont(name: UIFont.FontType.regular.rawValue, size: size)
+    }
+    
+    public static func medium(size: CGFloat) -> UIFont? {
+        return UIFont(name: UIFont.FontType.medium.rawValue, size: size)
+    }
+    
+    public static func demiBold(size: CGFloat) -> UIFont? {
+        return UIFont(name: UIFont.FontType.demiBold.rawValue, size: size)
+    }
+    
+    public static func bold(size: CGFloat) -> UIFont? {
+        return UIFont(name: UIFont.FontType.bold.rawValue, size: size)
+    }
+    
+    public static func heavy(size: CGFloat) -> UIFont? {
+        return UIFont(name: UIFont.FontType.heavy.rawValue, size: size)
+    }
 }

@@ -23,7 +23,7 @@ extension NSAttributedString {
             string: string,
             attributes: [
                 .font: UIFont(type: fontType, size: fontSize) as Any,
-                NSAttributedString.Key.foregroundColor: color
+                .foregroundColor: color
             ])
         self.init(attributedString: attributedString)
     }
@@ -32,12 +32,13 @@ extension NSAttributedString {
                      color: UIColor = ._black,
                      fontType: UIFont.FontType = .regular,
                      fontSize: CGFloat = 12) {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont(type: fontType, size: fontSize) as Any,
+            .foregroundColor: color
+        ]
         let attributedString: NSAttributedString = NSAttributedString(
             string: string,
-            attributes: [
-                .font: UIFont(type: fontType, size: fontSize) as Any,
-                NSAttributedString.Key.foregroundColor: color
-            ])
+            attributes: attributes)
         self.init(attributedString: attributedString)
     }
 }

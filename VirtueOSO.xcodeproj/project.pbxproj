@@ -34,6 +34,11 @@
 		43308CFE24BC211500DDE2E5 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308CFD24BC211500DDE2E5 /* SignupViewController.swift */; };
 		43308D0124BC266600DDE2E5 /* EmptySpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308D0024BC266600DDE2E5 /* EmptySpaceView.swift */; };
 		43308D0324BC2A1100DDE2E5 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43308D0224BC2A1100DDE2E5 /* UIStackView+Extensions.swift */; };
+		4344E92925ACEE720057029B /* EventActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344E92825ACEE720057029B /* EventActionView.swift */; };
+		4344E92E25ACF0770057029B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344E92D25ACF0770057029B /* Theme.swift */; };
+		4344E93425AD246F0057029B /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344E93325AD246F0057029B /* AppEnvironment.swift */; };
+		4344E93925AD25560057029B /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344E93825AD25560057029B /* AccountManager.swift */; };
+		4344E93E25AED3070057029B /* LRUCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344E93D25AED3070057029B /* LRUCache.swift */; };
 		43518B7624C37E3A009AA30D /* LiveStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43518B7524C37E3A009AA30D /* LiveStreamViewController.swift */; };
 		435FF95B25584AE90053735E /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435FF95A25584AE90053735E /* EventTableViewCell.swift */; };
 		435FF96125584E900053735E /* EventTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435FF96025584E900053735E /* EventTableView.swift */; };
@@ -148,8 +153,10 @@
 		43F1D92D2528BB0B00AC6FA9 /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D92C2528BB0B00AC6FA9 /* NSMutableAttributedString+Extensions.swift */; };
 		43F1D9322528D63400AC6FA9 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1D9312528D63400AC6FA9 /* UINavigationController+Extensions.swift */; };
 		43F5D40124BB86E6004AE586 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F5D40024BB86E6004AE586 /* TextField.swift */; };
-		43F5D40324BB87C9004AE586 /* BorderedTextField+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F5D40224BB87C9004AE586 /* BorderedTextField+UITextView.swift */; };
 		43F5D40624BC06C5004AE586 /* AButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F5D40524BC06C5004AE586 /* AButton.swift */; };
+		43FA05EC25A142A7007B4E87 /* AvailabilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA05EB25A142A7007B4E87 /* AvailabilityModel.swift */; };
+		43FA05F225A14D32007B4E87 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA05F125A14D32007B4E87 /* DatePickerViewController.swift */; };
+		43FA05FB25A4EEE6007B4E87 /* BorderedDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA05FA25A4EEE6007B4E87 /* BorderedDatePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +204,11 @@
 		43308CFD24BC211500DDE2E5 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		43308D0024BC266600DDE2E5 /* EmptySpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpaceView.swift; sourceTree = "<group>"; };
 		43308D0224BC2A1100DDE2E5 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
+		4344E92825ACEE720057029B /* EventActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionView.swift; sourceTree = "<group>"; };
+		4344E92D25ACF0770057029B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		4344E93325AD246F0057029B /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		4344E93825AD25560057029B /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
+		4344E93D25AED3070057029B /* LRUCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRUCache.swift; sourceTree = "<group>"; };
 		43518B7524C37E3A009AA30D /* LiveStreamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamViewController.swift; sourceTree = "<group>"; };
 		435FF95A25584AE90053735E /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		435FF96025584E900053735E /* EventTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableView.swift; sourceTree = "<group>"; };
@@ -317,8 +329,10 @@
 		43F1D92C2528BB0B00AC6FA9 /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		43F1D9312528D63400AC6FA9 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		43F5D40024BB86E6004AE586 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		43F5D40224BB87C9004AE586 /* BorderedTextField+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BorderedTextField+UITextView.swift"; sourceTree = "<group>"; };
 		43F5D40524BC06C5004AE586 /* AButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AButton.swift; sourceTree = "<group>"; };
+		43FA05EB25A142A7007B4E87 /* AvailabilityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityModel.swift; sourceTree = "<group>"; };
+		43FA05F125A14D32007B4E87 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		43FA05FA25A4EEE6007B4E87 /* BorderedDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedDatePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -495,6 +509,22 @@
 			path = EmptySpaceView;
 			sourceTree = "<group>";
 		};
+		4344E92725ACEE610057029B /* EventActionView */ = {
+			isa = PBXGroup;
+			children = (
+				4344E92825ACEE720057029B /* EventActionView.swift */,
+			);
+			path = EventActionView;
+			sourceTree = "<group>";
+		};
+		4344E93225AD24590057029B /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				4344E93325AD246F0057029B /* AppEnvironment.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
 		43518B7424C37E21009AA30D /* LiveStreamViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -668,6 +698,8 @@
 			children = (
 				4384F1052583F927006D8DA4 /* Endpoint.swift */,
 				43A40EB9259A90CD009E4350 /* JSON.swift */,
+				4344E92D25ACF0770057029B /* Theme.swift */,
+				4344E93D25AED3070057029B /* LRUCache.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -878,6 +910,7 @@
 		43BC86EB24B98A70004CBB07 /* VirtueOSO */ = {
 			isa = PBXGroup;
 			children = (
+				4344E93225AD24590057029B /* Environment */,
 				437343B8259A83F700066925 /* Utils */,
 				4384F0F22583394B006D8DA4 /* DBManager */,
 				4392E51725490699007572C2 /* ViewModels */,
@@ -935,6 +968,8 @@
 				4364DC0F2597C93F00E25BAF /* ChatMessage.swift */,
 				4364DC172597CAA800E25BAF /* ChatModel.swift */,
 				43A40ECD259B9EAC009E4350 /* TableUpateStatusModel.swift */,
+				43FA05EB25A142A7007B4E87 /* AvailabilityModel.swift */,
+				4344E93825AD25560057029B /* AccountManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -942,6 +977,8 @@
 		43BC872024B98B8F004CBB07 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4344E92725ACEE610057029B /* EventActionView */,
+				43FA05F925A4EED6007B4E87 /* BorderedDatePicker */,
 				4384F0C025794E6B006D8DA4 /* EventListTableViewCell */,
 				4384F0AE25794A62006D8DA4 /* EventCollectionViewCell */,
 				4384F09025785E5C006D8DA4 /* NotificationTableViewCell */,
@@ -998,6 +1035,7 @@
 		43BC872124B98B95004CBB07 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				43FA05F025A14D11007B4E87 /* DatePickerViewController */,
 				4384F0A825794A2E006D8DA4 /* HomeViewController */,
 				4384F097257869F4006D8DA4 /* NotificationsViewController */,
 				4369574725775A07005F640E /* FollowMgmtViewController */,
@@ -1152,7 +1190,6 @@
 			isa = PBXGroup;
 			children = (
 				43BC875324BB6669004CBB07 /* BorderedTextField.swift */,
-				43F5D40224BB87C9004AE586 /* BorderedTextField+UITextView.swift */,
 			);
 			path = BorderedTextField;
 			sourceTree = "<group>";
@@ -1283,6 +1320,22 @@
 				43F5D40524BC06C5004AE586 /* AButton.swift */,
 			);
 			path = AButton;
+			sourceTree = "<group>";
+		};
+		43FA05F025A14D11007B4E87 /* DatePickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				43FA05F125A14D32007B4E87 /* DatePickerViewController.swift */,
+			);
+			path = DatePickerViewController;
+			sourceTree = "<group>";
+		};
+		43FA05F925A4EED6007B4E87 /* BorderedDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				43FA05FA25A4EEE6007B4E87 /* BorderedDatePicker.swift */,
+			);
+			path = BorderedDatePicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1420,6 +1473,7 @@
 				430020FD256AFCE3006A77EB /* UITableView+Extensions.swift in Sources */,
 				4384F10B2583FCD9006D8DA4 /* AppEndpoint.swift in Sources */,
 				435FF967255B9B790053735E /* ImageCountView.swift in Sources */,
+				4344E92E25ACF0770057029B /* Theme.swift in Sources */,
 				43BC873524B98FE4004CBB07 /* UIImageView+Extensions.swift in Sources */,
 				43C660F4253380AD002EAD93 /* UIButton+Extensions.swift in Sources */,
 				4364DC052597C67700E25BAF /* ChatRoomMember.swift in Sources */,
@@ -1432,6 +1486,7 @@
 				43518B7624C37E3A009AA30D /* LiveStreamViewController.swift in Sources */,
 				43BC873724B99002004CBB07 /* UIFont+Extensions.swift in Sources */,
 				43C6610F253B6051002EAD93 /* EditProfileViewController.swift in Sources */,
+				43FA05F225A14D32007B4E87 /* DatePickerViewController.swift in Sources */,
 				43B8C41E25622E55004D2429 /* DirectMessageTableView.swift in Sources */,
 				43C6611D253CC90D002EAD93 /* UIScrollView+Extensions.swift in Sources */,
 				43002143256DE54C006A77EB /* DiscoverProfilesViewModel.swift in Sources */,
@@ -1439,6 +1494,7 @@
 				43F1D9082521017600AC6FA9 /* DiscoverViewController.swift in Sources */,
 				43B8C40F25622824004D2429 /* DirectMessageTableViewCell.swift in Sources */,
 				43BC86F124B98A70004CBB07 /* ViewController.swift in Sources */,
+				4344E93E25AED3070057029B /* LRUCache.swift in Sources */,
 				43308CFB24BC0C6700DDE2E5 /* SubmitEmailViewController.swift in Sources */,
 				43C660C925314F73002EAD93 /* ArtistViewController.swift in Sources */,
 				43F1D8F12520D65300AC6FA9 /* ProfileViewController.swift in Sources */,
@@ -1466,6 +1522,7 @@
 				43B8C3F52561D1A4004D2429 /* Profile.swift in Sources */,
 				4384F0B025794A79006D8DA4 /* EventCollectionViewCell.swift in Sources */,
 				43F1D91D2528AA8B00AC6FA9 /* AttributedLabel.swift in Sources */,
+				4344E93425AD246F0057029B /* AppEnvironment.swift in Sources */,
 				4384F0CD2579531D006D8DA4 /* HomeViewModel.swift in Sources */,
 				43BC874B24BA9CCA004CBB07 /* Button.swift in Sources */,
 				43BC875124BB6592004CBB07 /* LoginViewController.swift in Sources */,
@@ -1497,6 +1554,7 @@
 				43BC874E24BAEF0F004CBB07 /* NotificationViewController.swift in Sources */,
 				4392E5422556F141007572C2 /* EventsTableViewController.swift in Sources */,
 				43BC872F24B98F29004CBB07 /* NavigationController.swift in Sources */,
+				4344E93925AD25560057029B /* AccountManager.swift in Sources */,
 				4302615D24CC622B00ECB4F8 /* SettingsHeaderCellView.swift in Sources */,
 				4384F0EE258338C1006D8DA4 /* User.swift in Sources */,
 				43BC874824BA3BD4004CBB07 /* TitleView.swift in Sources */,
@@ -1509,6 +1567,7 @@
 				43C660D725323FCD002EAD93 /* TableViewCellDataSource.swift in Sources */,
 				4384F0F425833957006D8DA4 /* DBManager.swift in Sources */,
 				432D82F324F1813B007193AD /* AuthenticationCoordinator.swift in Sources */,
+				4344E92925ACEE720057029B /* EventActionView.swift in Sources */,
 				43BC873F24BA01FD004CBB07 /* ComponentView.swift in Sources */,
 				43BC873924B9902C004CBB07 /* UITextField+Extensions.swift in Sources */,
 				4384F0AA25794A52006D8DA4 /* HomeViewController.swift in Sources */,
@@ -1518,7 +1577,6 @@
 				435FF95B25584AE90053735E /* EventTableViewCell.swift in Sources */,
 				4364DC182597CAA800E25BAF /* ChatModel.swift in Sources */,
 				4364DC102597C93F00E25BAF /* ChatMessage.swift in Sources */,
-				43F5D40324BB87C9004AE586 /* BorderedTextField+UITextView.swift in Sources */,
 				4300213E256D9041006A77EB /* SelectProfilesViewModel.swift in Sources */,
 				4384F09925786A10006D8DA4 /* NotificationsViewController.swift in Sources */,
 				43308CFE24BC211500DDE2E5 /* SignupViewController.swift in Sources */,
@@ -1526,6 +1584,7 @@
 				4384F09325785E79006D8DA4 /* NotificationTableViewCell.swift in Sources */,
 				43F1D9322528D63400AC6FA9 /* UINavigationController+Extensions.swift in Sources */,
 				43002124256B4F5F006A77EB /* FollowProfileTableViewCell.swift in Sources */,
+				43FA05FB25A4EEE6007B4E87 /* BorderedDatePicker.swift in Sources */,
 				43C660C0252D6701002EAD93 /* ProfileTableViewCell.swift in Sources */,
 				436F94012568EFA70048A31E /* DirectMessageTableViewController.swift in Sources */,
 				4369574925775A55005F640E /* FollowMgmtViewController.swift in Sources */,
@@ -1550,6 +1609,7 @@
 				4302616A24CC9C1D00ECB4F8 /* UIImage+Extensions.swift in Sources */,
 				43C660FA253388D8002EAD93 /* EventViewController.swift in Sources */,
 				430756AC24E96D9900443198 /* MainCoordinator.swift in Sources */,
+				43FA05EC25A142A7007B4E87 /* AvailabilityModel.swift in Sources */,
 				43F1D9022520FE7000AC6FA9 /* DiscoverCoordinator.swift in Sources */,
 				43BC86EF24B98A70004CBB07 /* SceneDelegate.swift in Sources */,
 				4302616224CC772A00ECB4F8 /* SettingsViewController.swift in Sources */,

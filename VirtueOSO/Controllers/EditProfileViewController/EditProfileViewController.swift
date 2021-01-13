@@ -8,7 +8,16 @@
 
 import UIKit
 
+protocol EditProfileViewControllerDelegate {
+    func editProfileViewController(_ controller: EditProfileViewController, didSaveUsername username: String?, bio: String?, image: UIImage?)
+}
+
 class EditProfileViewController: UIViewController {
+    
+    enum State {
+        case normal
+        case updated
+    }
     
     // MARK: - Private Properties
     
@@ -16,15 +25,30 @@ class EditProfileViewController: UIViewController {
         return view.frame.height * 0.3
     }
     
-    private let cameraButtonViewHeight: CGFloat = 30
+    private let cameraButtonViewHeight: CGFloat = 50
     
     private var cameraButtonViewWidth: CGFloat {
         return cameraButtonViewHeight
     }
     
-    private let cameraButtonRightMarginConstant: CGFloat = -20
+    private let cameraButtonRightMarginConstant: CGFloat = -10
     
-    private let cameraButtonBottomMarginConstant: CGFloat = -20
+    private let cameraButtonBottomMarginConstant: CGFloat = -10
+    
+    // MARK: - Public Properties
+    
+    public var _state: State = .updated {
+        didSet {
+            switch _state {
+            case .normal:
+                rightBarButtonItem.isEnabled = false
+                rightBarButtonItem.tintColor = ._lightGray
+            case .updated:
+                rightBarButtonItem.isEnabled = true
+                rightBarButtonItem.tintColor = ._black
+            }
+        }
+    }
     
     // MARK: - Subviews
     
@@ -38,12 +62,15 @@ class EditProfileViewController: UIViewController {
     }()
     
     private(set) lazy var rightBarButtonItem: UIBarButtonItem = {
-        UIBarButtonItem(
+       let view = UIBarButtonItem(
             title: "Save",
             style: .done,
             target: self,
             action: #selector(handleSave)
         )
+        view.tintColor = ._lightGray
+        view.isEnabled = false
+        return view
     }()
     
     private(set) lazy var scrollView: UIScrollView = {
@@ -58,33 +85,37 @@ class EditProfileViewController: UIViewController {
     private(set) lazy var imageView: UIImageView = {
         let view = UIImageView()
         view.backgroundColor = .lightGray
+        view.contentMode = .scaleAspectFit
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private(set) lazy var cameraButton: UIImageView = {
-        let view = UIImageView(sfSymbol: .camera, weight: .regular)
-        view.contentMode = .scaleAspectFit
+    private(set) lazy var cameraButton: UIButton = {
+        let view = UIButton(sfSymbol: .camera, withWeight: .regular)
         view.tintColor = .white
         view.backgroundColor = .clear
+        view.contentMode = .scaleToFill
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.addTarget(self, action: #selector(handleSelectPicture), for: .touchUpInside)
         return view
     }()
     
     private(set) lazy var usernameTextField: SettingsCellTextFieldView = {
-        SettingsCellTextFieldView(
+        let view = SettingsCellTextFieldView(
             title: "Username",
             placeholder: "What's your username?",
             keyboardType: .emailAddress
         )
+        view.textField.addTarget(self, action: #selector(handleTextFieldValueChanged), for: .valueChanged)
+        return view
     }()
     
     private(set) lazy var bioTextField: SettingsCellTextView = {
         let view = SettingsCellTextView(
             title: "Bio",
-            placeholder: "Tell the world a little about yourself",
             keyboardType: .default
         )
+        view.textView.delegate = self
         return view
     }()
     
@@ -120,18 +151,26 @@ class EditProfileViewController: UIViewController {
         return controller
     }()
     
+    private(set) lazy var imagePickerController: UIImagePickerController = {
+        let controller = UIImagePickerController()
+        controller.delegate = self
+        return controller
+    }()
+    
     // MARK: - Handlers
     
     @objc private func handleTakePhoto(action: UIAlertAction) -> Void {
-        
+        imagePickerController.sourceType = .camera
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     @objc private func handleChoosePhoto(action: UIAlertAction) {
-        
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     @objc private func handleSelectPicture() {
-        navigationController?.present(cameraSelectAlertController, animated: true, completion: nil)
+        present(cameraSelectAlertController, animated: true, completion: nil)
     }
     
     @objc private func handleClose() {
@@ -139,7 +178,16 @@ class EditProfileViewController: UIViewController {
     }
     
     @objc private func handleSave() {
-        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func handleTextFieldValueChanged(textField: UITextField) {
+        guard
+            let text: String = textField.text,
+            text.count > 0
+        else {
+            return
+        }
+        _state = .updated
     }
     
     // MARK: - Initialize Subviews
@@ -198,9 +246,11 @@ class EditProfileViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         scrollView.scrollToTop()
+        _state = .normal
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.isTranslucent = true
@@ -208,5 +258,33 @@ class EditProfileViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.tintColor = ._black
         navigationItem.title = "Edit Profile"
+    }
+}
+
+// MARK: - UITextViewDelegate
+
+extension EditProfileViewController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        guard
+            let text: String = textView.text,
+            text.count > 0
+        else {
+            return
+        }
+        _state = .updated
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate
+
+extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image: UIImage = info[.originalImage] as? UIImage {
+            imageView.image = image
+            _state = .updated
+        }
+        picker.dismiss(animated: true, completion: nil)
     }
 }

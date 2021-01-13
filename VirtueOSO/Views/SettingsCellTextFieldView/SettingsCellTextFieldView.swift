@@ -26,9 +26,11 @@ class SettingsCellTextFieldView: UIView {
     }
     
     // MARK: - Private Properties
+    
     private var heightLayoutConstraint: NSLayoutConstraint?
     
     // MARK: - Public Properties
+    
     var _text: String? {
         get {
             return textField.text
@@ -99,13 +101,6 @@ class SettingsCellTextFieldView: UIView {
         }
     }
     
-    // MARK: - Public Methods
-    public func set(title: String, placeholder: String, keyboardType: UIKeyboardType = .default) {
-        self._title = title
-        self._placeholder = placeholder
-        self._keyboardType = keyboardType
-    }
-    
     // MARK: - Views
     private lazy var titleLabel: UILabel = {
         let view = UILabel()
@@ -122,7 +117,7 @@ class SettingsCellTextFieldView: UIView {
         let view = UITextField()
         view.font = UIFont(type: .regular, size: .small)
         view.textColor = ._black
-        view.tintColor = ._tertiary
+        view.tintColor = ._secondary
         view.autocorrectionType = .no
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -151,7 +146,16 @@ class SettingsCellTextFieldView: UIView {
         return view
     }()
     
+    // MARK: - Utils
+    
+    public func set(title: String, placeholder: String, keyboardType: UIKeyboardType = .default) {
+        self._title = title
+        self._placeholder = placeholder
+        self._keyboardType = keyboardType
+    }
+    
     // MARK: - Handlers
+    
     @objc private func handleTap() {
         textField.becomeFirstResponder()
     }
@@ -164,9 +168,8 @@ class SettingsCellTextFieldView: UIView {
         )
     }
     
-    // MARK: - Utils
-    
     // MARK: - Initialize Subviews
+    
     private func initializeSubviews() {
         backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
@@ -197,6 +200,7 @@ class SettingsCellTextFieldView: UIView {
     }
     
     // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         initializeSubviews()

@@ -10,12 +10,12 @@ import UIKit
 
 class ArtistActionView: UIView {
     
-    enum State {
+    enum ViewState {
         case follow
         case following
     }
     
-    var state: State = .follow {
+    var state: ViewState = .follow {
         didSet {
             switch state {
             case .follow:

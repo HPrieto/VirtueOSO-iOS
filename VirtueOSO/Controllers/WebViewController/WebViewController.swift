@@ -14,20 +14,32 @@ var webViewContext = 0
 // MARK: - WebViewController
 class WebViewController: UIViewController {
     
+    enum ViewState {
+        case loading
+        case normal
+        case error(message: String)
+    }
+    
+    enum Strings: String {
+        case errorMessage = "Our apologies! We're experiencing a technical problem, and our team is investigating"
+    }
+    
     // MARK: - Public Properties
-    var urlString: String? {
+    
+    var urlString: String?
+    
+    var _state: ViewState = .loading {
         didSet {
-            loadingBarView.show()
-            loadingBarView.setProgress(percent: 10)
-            guard let urlString: String = urlString,
-                let url = URL(string: urlString) else {
-                    return
+            switch _state {
+            case .loading:
+                loadingBarView.show()
+            case .normal:
+                loadingBarView.hide()
+            case .error(let message):
+                loadingBarView.show()
+                alertController.message = message
+                present(alertController, animated: true, completion: nil)
             }
-            
-            var urlRequest = URLRequest(url: url)
-             urlRequest.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
-            webView.load(urlRequest)
-            loadingBarView.setProgress(percent: 40)
         }
     }
     
@@ -43,10 +55,27 @@ class WebViewController: UIViewController {
     
     @objc private(set) lazy var webView: WKWebView = {
         let view = WKWebView()
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         view.allowsBackForwardNavigationGestures = false
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.navigationDelegate = self
         return view
+    }()
+    
+    private(set) lazy var alertController: UIAlertController = {
+        let controller = UIAlertController(
+            title: "Error",
+            message: Strings.errorMessage.rawValue,
+            preferredStyle: .alert
+        )
+        controller.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: .cancel,
+                handler: nil
+            )
+        )
+        return controller
     }()
     
     // MARK: - Observers
@@ -56,21 +85,34 @@ class WebViewController: UIViewController {
         guard let _ = change else { return }
         
         if context != &webViewContext, keyPath == #keyPath(webView.estimatedProgress) {
+            print(webView.estimatedProgress)
             loadingBarView.setProgress(percent: CGFloat(webView.estimatedProgress))
         }
     }
     
     // MARK: - Handlers
+    
     @objc private func handleGoBack() {
         navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Utils
-    public func load(urlString: String) {
-        self.urlString = urlString
+    
+    public func loadWebpage() {
+        _state = .loading
+        loadingBarView.setProgress(percent: 10)
+        guard let urlString: String = urlString,
+            let url = URL(string: urlString) else {
+                return
+        }
+        
+        let urlRequest = URLRequest(url: url)
+        webView.load(urlRequest)
+        loadingBarView.setProgress(percent: 40)
     }
     
     private func clean() {
+        _state = .normal
         webView.load(URLRequest(url: URL(string:"about:blank")!))
         HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
         WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
@@ -89,7 +131,7 @@ class WebViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        loadWebpage()
         // Observe url loading progress
         // webView.addObserver(self, forKeyPath: #keyPath(webView.estimatedProgress), options: .new, context: &webViewContext)
     }
@@ -116,7 +158,6 @@ class WebViewController: UIViewController {
         loadingBarView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         loadingBarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        webView.navigationDelegate = self
         webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         webView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         webView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
@@ -126,7 +167,8 @@ class WebViewController: UIViewController {
     // MARK: - Init
     init(_ urlString: String) {
         super.init(nibName: nil, bundle: nil)
-        self.load(urlString: urlString)
+        self.urlString = urlString
+        loadWebpage()
     }
     
     deinit {
@@ -151,6 +193,10 @@ extension WebViewController: WKNavigationDelegate, WKUIDelegate {
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         print("WebViewController didFail: \(error)")
-        loadingBarView.setProgress(percent: 0)
+        _state = .error(message: Strings.errorMessage.rawValue)
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        _state = .error(message: error.localizedDescription)
     }
 }

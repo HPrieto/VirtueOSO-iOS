@@ -14,6 +14,8 @@ public typealias VoidCompletion = (Result<Void, Swift.Error>) -> Void
 public typealias StringCompletion = (Result<String, Swift.Error>) -> Void
 public typealias StringsCompletion = (Result<[String], Swift.Error>) -> Void
 public typealias GenericCompletion<T> = (Result<T, Swift.Error>) -> Void
+public typealias AnyDecodable = Any & Decodable
+public typealias SuccessCompletion = (Bool) -> Void
 
 // MARK: - DBManager
 

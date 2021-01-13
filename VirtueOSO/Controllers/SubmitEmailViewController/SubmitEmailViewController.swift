@@ -8,10 +8,39 @@
 
 import UIKit
 
+protocol SubmitEmailViewControllerDelegate {
+    func submitEmailViewController(_ controller: SubmitEmailViewController, didSubmitEmail email: String)
+}
+
 // MARK: - SubmitEmailViewController
 class SubmitEmailViewController: UIViewController {
     
+    enum State {
+        case enabled
+        case disabled
+    }
+    
+    enum SubviewTags: Int {
+        case emailTextField
+    }
+    
     // MARK: - Public Properties
+    
+    var delegate: SubmitEmailViewControllerDelegate?
+    
+    var _state: State = .disabled {
+        didSet {
+            switch _state {
+            case .disabled:
+                submitButton.backgroundColor = ._lightGray
+                submitButton.isEnabled = false
+            case .enabled:
+                submitButton.backgroundColor = ._black
+                submitButton.isEnabled = true
+            }
+        }
+    }
+    
     var _message: String = "" {
         didSet {
             messageTextView.text = _message
@@ -37,21 +66,26 @@ class SubmitEmailViewController: UIViewController {
     }
     
     // MARK: - Subviews
+    
     private(set) lazy var messageTextView: TextView = {
         let view = TextView()
-        view.font = UIFont(type: .regular, size: .large)
+        view.font = UIFont(type: .regular, size: 14)
         view.textColor = ._gray
         return view
     }()
     
     private(set) lazy var emailTextField: BorderedTextField = {
         let view = BorderedTextField()
+        view.textField.tag = SubviewTags.emailTextField.rawValue
+        view.textField.addTarget(self, action: #selector(handleEmailTextFieldValueChanged), for: .valueChanged)
         return view
     }()
     
     private(set) lazy var submitButton: Button = {
-        let view = Button()
-        view.backgroundColor = ._black
+        let view = Button("", buttonType: .large)
+        view.backgroundColor = ._lightGray
+        view.isEnabled = false
+        view.addTarget(self, action: #selector(handleSubmitEmail), for: .touchUpInside)
         return view
     }()
     
@@ -66,11 +100,36 @@ class SubmitEmailViewController: UIViewController {
     }()
     
     // MARK: - Handlers
+    
     @objc private func handleClose() {
         dismiss(animated: true, completion: nil)
     }
     
+    @objc private func handleSubmitEmail(sender: UIButton) {
+        guard
+            let email: String = emailTextField.textField.text,
+            email.count > 3
+        else {
+            return
+        }
+        delegate?.submitEmailViewController(self, didSubmitEmail: email)
+    }
+    
+    @objc private func handleEmailTextFieldValueChanged(textField: UITextField) {
+        print(textField.text)
+        guard
+            textField.tag == SubviewTags.emailTextField.rawValue,
+            let email: String = textField.text,
+            email.count > 3
+        else {
+            _state = .disabled
+            return
+        }
+        _state = .enabled
+    }
+    
     // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeSubviews()
@@ -85,6 +144,7 @@ class SubmitEmailViewController: UIViewController {
             navigationController._barStyle = .default
             navigationController.navigationBar.backgroundColor = .white
         }
+        emailTextField.becomeFirstResponder()
     }
     
     // MARK: - Initialize Subviews
@@ -97,7 +157,7 @@ class SubmitEmailViewController: UIViewController {
         view.addSubview(emailTextField)
         view.addSubview(submitButton)
         
-        messageTextView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.safeAreaInsets.top + Margins.top.rawValue).isActive = true
+        messageTextView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         messageTextView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: Margins.width.rawValue).isActive = true
         messageTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         

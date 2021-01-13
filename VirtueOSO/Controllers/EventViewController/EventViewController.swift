@@ -10,6 +10,27 @@ import UIKit
 
 class EventViewController: UIViewController {
     
+    enum ViewState {
+        case normal
+        case resume
+        case error
+    }
+    
+    // MARK: - Public Properties
+    
+    var _state: ViewState = .normal {
+        didSet {
+            switch _state {
+            case .normal:
+                eventActionView._state = .normal
+            case .resume:
+                eventActionView._state = .resume
+            case .error:
+                view.backgroundColor = .red
+            }
+        }
+    }
+    
     // MARK: - Private Properties
     
     private var navigationBarHeight: CGFloat {
@@ -79,10 +100,9 @@ class EventViewController: UIViewController {
         return view
     }()
     
-    private(set) lazy var vStackView: UIStackView = {
+    private(set) lazy var stackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
-        view.distribution = .equalSpacing
         view.spacing = 0
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -92,6 +112,11 @@ class EventViewController: UIViewController {
         let view = UIImageView()
         view.backgroundColor = .lightGray
         view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private(set) lazy var eventActionView: EventActionView = {
+        let view = EventActionView()
         return view
     }()
     
@@ -114,15 +139,26 @@ class EventViewController: UIViewController {
     fileprivate func initializeSubviews() {
         view.backgroundColor = .white
         
-        view.addSubview(eventImageView)
+        navigationItem.rightBarButtonItems = [closeBarButtonItem]
         
-        navigationItem.leftBarButtonItem = closeBarButtonItem
-        navigationItem.rightBarButtonItems = [shareBarButtonItem, likeBarButtonItem]
+        view.addSubview(scrollView)
         
-        eventImageView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        eventImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        scrollView.addSubview(stackView)
+        
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        
+        stackView.addArrangedSubview(eventImageView)
+        stackView.addArrangedSubview(eventActionView)
+        
         eventImageView.heightAnchor.constraint(equalToConstant: eventImageViewHeight).isActive = true
-        eventImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: -navigationBarHeight).isActive = true
     }
     
     // MARK: - Life Cycle

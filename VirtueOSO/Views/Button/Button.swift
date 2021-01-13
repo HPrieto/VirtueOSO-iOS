@@ -44,26 +44,11 @@ class Button: UIButton {
         didSet {
             switch _buttonType {
             case .normal:
-                contentEdgeInsets = UIEdgeInsets(
-                    top: NormalButtonStyle.paddingTopBottom.rawValue,
-                    left: NormalButtonStyle.paddingLeftRight.rawValue,
-                    bottom: NormalButtonStyle.paddingTopBottom.rawValue,
-                    right: NormalButtonStyle.paddingLeftRight.rawValue
-                )
+                contentEdgeInsets = Theme.Margins.normal
             case .roundSides:
-                contentEdgeInsets = UIEdgeInsets(
-                    top: RoundSidesButtonStyle.paddingTopBottom.rawValue,
-                    left: RoundSidesButtonStyle.paddingLeftRight.rawValue,
-                    bottom: RoundSidesButtonStyle.paddingTopBottom.rawValue,
-                    right: RoundSidesButtonStyle.paddingLeftRight.rawValue
-                )
+                contentEdgeInsets = Theme.Margins.large
             case .large:
-                contentEdgeInsets = UIEdgeInsets(
-                    top: LargeButtonStyle.paddingTopBottom.rawValue,
-                    left: LargeButtonStyle.paddingLeftRight.rawValue,
-                    bottom: LargeButtonStyle.paddingTopBottom.rawValue,
-                    right: LargeButtonStyle.paddingLeftRight.rawValue
-                )
+                contentEdgeInsets = Theme.Margins.large
             }
         }
     }

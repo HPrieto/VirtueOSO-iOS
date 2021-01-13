@@ -15,27 +15,13 @@ extension DBManager {
     /// `api/users/signup`
     public func signup(newUser: User, completionHandler: @escaping UserCompletion) {
         let endpoint: Endpoint = AppEndpoint.signup(user: newUser)
-        request(type: User.self, from: endpoint) { result in
-            switch result {
-            case .failure(let error):
-                completionHandler(.failure(error))
-            case .success(let user):
-                completionHandler(.success(user))
-            }
-        }
+        request(type: User.self, from: endpoint, completionHandler: completionHandler)
     }
     
     /// `api/users/login`
     public func login(credentials: Credentials, completionHandler: @escaping UserCompletion) {
         let endpoint: Endpoint = AppEndpoint.login(credentials: credentials)
-        request(type: User.self, from: endpoint) { (result) in
-            switch result {
-            case .failure(let error):
-                completionHandler(.failure(error))
-            case .success(let user):
-                completionHandler(.success(user))
-            }
-        }
+        request(type: User.self, from: endpoint, completionHandler: completionHandler)
     }
     
     public func logout(credentials: Credentials, completionHandler: @escaping VoidCompletion) {
@@ -56,109 +42,45 @@ extension DBManager {
         
     }
     
-    public func get(userWithId id: Int, completionHandler: @escaping UserCompletion) {
+    public func getUser(withId id: Int, completionHandler: @escaping UserCompletion) {
         let endpoint: Endpoint = AppEndpoint.getUser(id: id)
-        request(type: User.self, from: endpoint) { (result) in
-            switch result {
-            case .failure(let error):
-                completionHandler(.failure(error))
-            case .success(let user):
-                completionHandler(.success(user))
-            }
-        }
+        request(type: User.self, from: endpoint, completionHandler: completionHandler)
     }
     
-    public func put(id: Int, updatePassword oldPassword: String, newPassword: String, completionHandler: @escaping TableStatusCompletion) {
+    public func updatePassword(forUserWithId id: Int, newPassword: String, oldPassword: String, completionHandler: @escaping TableStatusCompletion) {
         let endpoint: Endpoint = AppEndpoint.updatePassword(id: id, oldPassword: oldPassword, newPassword: newPassword)
-        request(type: TableUpdateStatusModel.self, from: endpoint) { (result) in
-            switch result {
-            case .failure(let error):
-                completionHandler(.failure(error))
-            case .success(let model):
-                completionHandler(.success(model))
-            }
-        }
+        request(type: TableUpdateStatusModel.self, from: endpoint, completionHandler: completionHandler)
     }
     
-    public func get(usersFollowingUserWithId id: Int, completionHandler: @escaping UsersCompletion) {
+    public func getFollowers(ofUserWithId id: Int, completionHandler: @escaping UsersCompletion) {
         let endpoint: Endpoint = AppEndpoint.userFollowers(id: id)
-        request(type: [User].self, from: endpoint) { (result) in
-            switch result {
-            case .failure(let error):
-                completionHandler(.failure(error))
-            case .success(let followers):
-                completionHandler(.success(followers))
-            }
-        }
+        request(type: [User].self, from: endpoint, completionHandler: completionHandler)
     }
     
-    public func get(usersFollowedByUserWithId id: Int, completionHandler: @escaping UsersCompletion) {
+    public func getUsersFollowedBy(userWithId id: Int, completionHandler: @escaping UsersCompletion) {
         let endpoint: Endpoint = AppEndpoint.userFollowing(id: id)
-        request(type: [User].self, from: endpoint) { (result) in
-            switch result {
-            case .failure(let error):
-                completionHandler(.failure(error))
-            case .success(let followers):
-                completionHandler(.success(followers))
-            }
-        }
+        request(type: [User].self, from: endpoint, completionHandler: completionHandler)
     }
     
     // TODO: Finish implementing dictionary completionHandler parameter type
-    public func isUsernameAvailable(username: String, completionHandler: @escaping GenericCompletion<[String: Any]>) {
+    public func getUsernameAvailability(username: String, completionHandler: @escaping AvailabilityCompletion) {
         let endpoint: Endpoint = AppEndpoint.isUsernameAvailable(username: username)
-        request(type: Data.self, from: endpoint) { (result) in
-            switch result {
-            case .failure(let error):
-                completionHandler(.failure(error))
-            case .success(let model):
-                if let dict: [String: Any] = model.asDictionary() {
-                    completionHandler(.success(dict))
-                } else {
-                    completionHandler(.failure(NetworkServiceError.notFound))
-                }
-            }
-        }
+        request(type: AvailabilityModel.self, from: endpoint, completionHandler: completionHandler)
     }
     
     // TODO: Finish implementing dictionary completionHandler parameter type
-    public func isEmailAvailable(email: String, completionHandler: @escaping GenericCompletion<[String: Any]>) {
+    public func getEmailAvailability(email: String, completionHandler: @escaping AvailabilityCompletion) {
         let endpoint: Endpoint = AppEndpoint.isEmailAvailable(email: email)
-        request(type: Data.self, from: endpoint) { (result) in
-            switch result {
-            case .failure(let error):
-                completionHandler(.failure(error))
-            case .success(let model):
-                if let dict: [String: Any] = model.asDictionary() {
-                    completionHandler(.success(dict))
-                } else {
-                    completionHandler(.failure(NetworkServiceError.notFound))
-                }
-            }
-        }
+        request(type: AvailabilityModel.self, from: endpoint, completionHandler: completionHandler)
     }
     
-    public func post(id: Int, followerUserWithId followId: Int, completionHandler: @escaping TableStatusCompletion) {
-        let endpoint: Endpoint = AppEndpoint.follow(followerId: id, userId: followId)
-        request(type: TableUpdateStatusModel.self, from: endpoint) { (result) in
-            switch result {
-            case .failure(let error):
-                completionHandler(.failure(error))
-            case .success(let followers):
-                completionHandler(.success(followers))
-            }
-        }
+    public func follow(userWithId id: Int, byId followerId: Int, completionHandler: @escaping TableStatusCompletion) {
+        let endpoint: Endpoint = AppEndpoint.follow(followerId: followerId, userId: id)
+        request(type: TableUpdateStatusModel.self, from: endpoint, completionHandler: completionHandler)
     }
     
-    public func delete(id: Int, unfollowUserWithId unfollowId: Int, completionHandler: @escaping TableStatusCompletion) {
-        let endpoint: Endpoint = AppEndpoint.unfollow(followerId: id, userId: unfollowId)
-        request(type: TableUpdateStatusModel.self, from: endpoint) { (result) in
-            switch result {
-            case .failure(let error):
-                completionHandler(.failure(error))
-            case .success(let followers):
-                completionHandler(.success(followers))
-            }
-        }
+    public func unfollow(userWithId id: Int, byId unfollowerId: Int, completionHandler: @escaping TableStatusCompletion) {
+        let endpoint: Endpoint = AppEndpoint.unfollow(followerId: id, userId: unfollowerId)
+        request(type: TableUpdateStatusModel.self, from: endpoint, completionHandler: completionHandler)
     }
 }
