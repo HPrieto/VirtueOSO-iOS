@@ -8,7 +8,6 @@
 
 import UIKit
 
-fileprivate let imageCacheManager = CacheManager<String, Data>()
 fileprivate let imageCache = NSCache<NSString, UIImage>()
 
 extension UIImage {

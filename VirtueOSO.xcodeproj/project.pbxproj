@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		142FD9C02CA417DF225BAF7A /* Pods_VirtueOSO_VirtueOSOUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5741BC72A423E5FE64C1F245 /* Pods_VirtueOSO_VirtueOSOUITests.framework */; };
 		430020E22569CDE3006A77EB /* DirectMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430020E12569CDE3006A77EB /* DirectMessage.swift */; };
 		430020E72569CE9F006A77EB /* DirectMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430020E62569CE9F006A77EB /* DirectMessageViewModel.swift */; };
 		430020F8256A4492006A77EB /* TimestampTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430020F7256A4492006A77EB /* TimestampTableViewHeaderFooterView.swift */; };
@@ -157,6 +158,8 @@
 		43FA05EC25A142A7007B4E87 /* AvailabilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA05EB25A142A7007B4E87 /* AvailabilityModel.swift */; };
 		43FA05F225A14D32007B4E87 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA05F125A14D32007B4E87 /* DatePickerViewController.swift */; };
 		43FA05FB25A4EEE6007B4E87 /* BorderedDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA05FA25A4EEE6007B4E87 /* BorderedDatePicker.swift */; };
+		87EC95C9F1C7EEF33ED7D24D /* Pods_VirtueOSO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD3373EBAE5E9A5854AD65D /* Pods_VirtueOSO.framework */; };
+		A18D7569FFA04005CB1775FA /* Pods_VirtueOSOTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428B5F6970B24BB7F682277E /* Pods_VirtueOSOTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +180,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		084AD99B3F292A391C6ACF8A /* Pods-VirtueOSO-VirtueOSOUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtueOSO-VirtueOSOUITests.debug.xcconfig"; path = "Target Support Files/Pods-VirtueOSO-VirtueOSOUITests/Pods-VirtueOSO-VirtueOSOUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3BEA0129D87F812676E01300 /* Pods-VirtueOSOTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtueOSOTests.debug.xcconfig"; path = "Target Support Files/Pods-VirtueOSOTests/Pods-VirtueOSOTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3FD3373EBAE5E9A5854AD65D /* Pods_VirtueOSO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtueOSO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4067C026D44A9FC0519EBA6B /* Pods-VirtueOSO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtueOSO.release.xcconfig"; path = "Target Support Files/Pods-VirtueOSO/Pods-VirtueOSO.release.xcconfig"; sourceTree = "<group>"; };
+		428B5F6970B24BB7F682277E /* Pods_VirtueOSOTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtueOSOTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		430020E12569CDE3006A77EB /* DirectMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessage.swift; sourceTree = "<group>"; };
 		430020E62569CE9F006A77EB /* DirectMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessageViewModel.swift; sourceTree = "<group>"; };
 		430020F7256A4492006A77EB /* TimestampTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
@@ -333,6 +341,10 @@
 		43FA05EB25A142A7007B4E87 /* AvailabilityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityModel.swift; sourceTree = "<group>"; };
 		43FA05F125A14D32007B4E87 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		43FA05FA25A4EEE6007B4E87 /* BorderedDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedDatePicker.swift; sourceTree = "<group>"; };
+		5741BC72A423E5FE64C1F245 /* Pods_VirtueOSO_VirtueOSOUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtueOSO_VirtueOSOUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D6D8C497959441D6AC2145A /* Pods-VirtueOSOTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtueOSOTests.release.xcconfig"; path = "Target Support Files/Pods-VirtueOSOTests/Pods-VirtueOSOTests.release.xcconfig"; sourceTree = "<group>"; };
+		B3BC9F357A55979C5FA1EC64 /* Pods-VirtueOSO-VirtueOSOUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtueOSO-VirtueOSOUITests.release.xcconfig"; path = "Target Support Files/Pods-VirtueOSO-VirtueOSOUITests/Pods-VirtueOSO-VirtueOSOUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D115728E69D67D2605139CB7 /* Pods-VirtueOSO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtueOSO.debug.xcconfig"; path = "Target Support Files/Pods-VirtueOSO/Pods-VirtueOSO.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,6 +352,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87EC95C9F1C7EEF33ED7D24D /* Pods_VirtueOSO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +360,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A18D7569FFA04005CB1775FA /* Pods_VirtueOSOTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,12 +368,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				142FD9C02CA417DF225BAF7A /* Pods_VirtueOSO_VirtueOSOUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36A10E19C2056F56777C56BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3FD3373EBAE5E9A5854AD65D /* Pods_VirtueOSO.framework */,
+				5741BC72A423E5FE64C1F245 /* Pods_VirtueOSO_VirtueOSOUITests.framework */,
+				428B5F6970B24BB7F682277E /* Pods_VirtueOSOTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		430020F6256A446B006A77EB /* TimestampTableViewHeaderFooterView */ = {
 			isa = PBXGroup;
 			children = (
@@ -894,6 +919,8 @@
 				43BC870524B98A72004CBB07 /* VirtueOSOTests */,
 				43BC871024B98A72004CBB07 /* VirtueOSOUITests */,
 				43BC86EA24B98A70004CBB07 /* Products */,
+				6373547B3A9581122CF4505D /* Pods */,
+				36A10E19C2056F56777C56BD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1338,6 +1365,20 @@
 			path = BorderedDatePicker;
 			sourceTree = "<group>";
 		};
+		6373547B3A9581122CF4505D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D115728E69D67D2605139CB7 /* Pods-VirtueOSO.debug.xcconfig */,
+				4067C026D44A9FC0519EBA6B /* Pods-VirtueOSO.release.xcconfig */,
+				084AD99B3F292A391C6ACF8A /* Pods-VirtueOSO-VirtueOSOUITests.debug.xcconfig */,
+				B3BC9F357A55979C5FA1EC64 /* Pods-VirtueOSO-VirtueOSOUITests.release.xcconfig */,
+				3BEA0129D87F812676E01300 /* Pods-VirtueOSOTests.debug.xcconfig */,
+				6D6D8C497959441D6AC2145A /* Pods-VirtueOSOTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1345,6 +1386,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43BC871624B98A72004CBB07 /* Build configuration list for PBXNativeTarget "VirtueOSO" */;
 			buildPhases = (
+				C220B7E5E38D39694574088A /* [CP] Check Pods Manifest.lock */,
 				43BC86E524B98A70004CBB07 /* Sources */,
 				43BC86E624B98A70004CBB07 /* Frameworks */,
 				43BC86E724B98A70004CBB07 /* Resources */,
@@ -1362,6 +1404,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43BC871924B98A72004CBB07 /* Build configuration list for PBXNativeTarget "VirtueOSOTests" */;
 			buildPhases = (
+				A753DC0E7DBFF8091266E644 /* [CP] Check Pods Manifest.lock */,
 				43BC86FE24B98A72004CBB07 /* Sources */,
 				43BC86FF24B98A72004CBB07 /* Frameworks */,
 				43BC870024B98A72004CBB07 /* Resources */,
@@ -1380,6 +1423,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43BC871C24B98A72004CBB07 /* Build configuration list for PBXNativeTarget "VirtueOSOUITests" */;
 			buildPhases = (
+				FD8DCF97CADF9265CA674D30 /* [CP] Check Pods Manifest.lock */,
 				43BC870924B98A72004CBB07 /* Sources */,
 				43BC870A24B98A72004CBB07 /* Frameworks */,
 				43BC870B24B98A72004CBB07 /* Resources */,
@@ -1463,6 +1507,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A753DC0E7DBFF8091266E644 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VirtueOSOTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C220B7E5E38D39694574088A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VirtueOSO-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD8DCF97CADF9265CA674D30 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VirtueOSO-VirtueOSOUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		43BC86E524B98A70004CBB07 /* Sources */ = {
@@ -1784,6 +1897,7 @@
 		};
 		43BC871724B98A72004CBB07 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D115728E69D67D2605139CB7 /* Pods-VirtueOSO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1803,6 +1917,7 @@
 		};
 		43BC871824B98A72004CBB07 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4067C026D44A9FC0519EBA6B /* Pods-VirtueOSO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1822,6 +1937,7 @@
 		};
 		43BC871A24B98A72004CBB07 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BEA0129D87F812676E01300 /* Pods-VirtueOSOTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1843,6 +1959,7 @@
 		};
 		43BC871B24B98A72004CBB07 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D6D8C497959441D6AC2145A /* Pods-VirtueOSOTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1864,6 +1981,7 @@
 		};
 		43BC871D24B98A72004CBB07 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 084AD99B3F292A391C6ACF8A /* Pods-VirtueOSO-VirtueOSOUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1883,6 +2001,7 @@
 		};
 		43BC871E24B98A72004CBB07 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3BC9F357A55979C5FA1EC64 /* Pods-VirtueOSO-VirtueOSOUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

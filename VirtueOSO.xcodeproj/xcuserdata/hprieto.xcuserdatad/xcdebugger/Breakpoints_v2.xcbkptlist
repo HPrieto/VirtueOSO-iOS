@@ -654,8 +654,8 @@
             filePath = "VirtueOSO/Extensions/UIImageView+Extensions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "setImage(fromUrlString:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -1,0 +1,6 @@
+framework module Pods_VirtueOSO {
+  umbrella header "Pods-VirtueOSO-umbrella.h"
+
+  export *
+  module * { export * }
+}
